@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label for="description">Deskripsi</label>
-            <textarea name="description" id="description" class="form-control" required>{{ $course->description }}</textarea>
+            <textarea name="description" id="summernote" class="form-control" required>{{ $course->description }}</textarea>
         </div>
 
         <div class="form-group">

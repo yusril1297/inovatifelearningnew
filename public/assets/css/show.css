@@ -1,0 +1,23 @@
+.card {
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+iframe, video {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.btn-primary, .btn-danger {
+    font-size: 0.875rem;
+    padding: 8px 12px;
+}

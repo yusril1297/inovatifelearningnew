@@ -150,16 +150,23 @@ class CourseController extends Controller
                          ->with('success', 'Video berhasil ditambahkan.');
     }
 
-    public function deleteVideo(Video $video)
+    public function deleteVideo(Course $course, Video $video)
     {
-        $this->authorizeAccess($video->course);
+        $this->authorizeAccess($course);
 
+        // Memastikan bahwa video yang dihapus benar-benar terkait dengan course yang diberikan
+        if ($video->course_id != $course->id) {
+            abort(403, 'Video ini tidak terkait dengan kursus tersebut.');
+        }
+    
+        // Hapus file video jika ada
         if ($video->filename && Storage::exists('public/videos/' . $video->filename)) {
             Storage::delete('public/videos/' . $video->filename);
         }
-
+    
+        // Hapus data video dari database
         $video->delete();
-
+    
         return redirect()->back()->with('success', 'Video berhasil dihapus.');
     }
 

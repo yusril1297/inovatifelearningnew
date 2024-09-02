@@ -12,7 +12,7 @@
     @if($courses->isEmpty())
         <p>No courses available.</p>
     @else
-    <table class="table table-bordered table-striped">
+    <table id="dataTable" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>#</th>

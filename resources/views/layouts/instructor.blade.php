@@ -12,6 +12,13 @@
   @yield('styles')
   @yield('editstyles')
   <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+
+  <!-- Summernote CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" rel="stylesheet">
+
+ <!-- DataTables  -->
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -39,6 +46,36 @@
 <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+
+
+<!-- Summernote JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $('#summernote').summernote({
+          height: 300,   // Atur tinggi editor
+          placeholder: 'Tulis konten course Anda di sini...',
+          toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['fontname', ['fontname']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+      });
+  });
+</script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $('#dataTable').DataTable(); 
+  });
+</script>
+
 </body>
 
 </html>

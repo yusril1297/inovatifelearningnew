@@ -20,6 +20,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Icon</th>
+                <th>Total Course</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                         <span>No Icon</span>
                     @endif
                 </td>
+                <td>{{ $category->courses_count }}</td>
                 {{-- <td>{{ $category->slug }}</td> --}}
                 <td>
                     <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>

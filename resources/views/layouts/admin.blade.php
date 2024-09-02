@@ -12,6 +12,7 @@
   {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" /> --}}
   @yield('styles')
   @yield('editstyles')
+  @yield('show')
   <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
 
 <!-- Summernote CSS -->
