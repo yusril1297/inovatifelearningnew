@@ -26,8 +26,31 @@
         </div>
 
         <div class="form-group">
-            <label for="thumbnail">Thumbnail</label>
-            <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+            <label for="level_id">Level</label>
+            <select name="level_id" id="level_id" class="form-control" required>
+                <option value="">Pilih Level</option>
+                @foreach($levels as $level)
+                    <option value="{{ $level->id }}" {{ old('level_id') == $level->id ? 'selected' : '' }}>
+                        {{ $level->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <select name="tags[]" id="tags" class="form-control select2" multiple="multiple">
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}" {{ (collect(old('tags'))->contains($tag->id)) ? 'selected' : '' }}>
+                        {{ $tag->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="youtube_thumbnail_url">YouTube Thumbnail URL</label>
+            <input type="url" name="youtube_thumbnail_url" id="youtube_thumbnail_url" class="form-control" value="{{ old('youtube_thumbnail_url', $course->youtube_thumbnail_url ?? '') }}">
         </div>
 
         <div class="form-group">
@@ -38,12 +61,16 @@
         <div class="form-group">
             <label for="status">Status</label>
             <select name="status" id="status" class="form-control" required>
-                <option value="published">Published</option>
-                <option value="draft">Draft</option>
+                <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+                <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published</option>
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="d-flex justify-content-end mt-4">
+            <a href="{{ route('instructor.courses.index') }}" class="btn btn-secondary me-2">Back</a>
+            <button type="submit" class="btn btn-primary">Save Course</button>
+        </div>
     </form>
 </div>
 @endsection
+

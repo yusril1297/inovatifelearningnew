@@ -31,6 +31,14 @@
           </li> 
           
           <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('instructor.students.index') }}" aria-expanded="false">
+              <span>
+                <i class="ti ti-cards"></i>
+              </span>
+              <span class="hide-menu">Manage Student</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('instructor.courses.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-cards"></i>

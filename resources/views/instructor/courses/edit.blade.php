@@ -62,11 +62,8 @@
     
 
         <div class="form-group">
-            <label for="thumbnail">Thumbnail</label>
-            <input type="file" name="thumbnail" id="thumbnail" class="form-control">
-            @if ($course->thumbnail)
-            <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="Thumbnail" class="img-thumbnail mt-2" width="200">
-            @endif
+            <label for="youtube_thumbnail_url">YouTube Thumbnail URL</label>
+            <input type="url" name="youtube_thumbnail_url" id="youtube_thumbnail_url" class="form-control" value="{{ old('youtube_thumbnail_url', $course->youtube_thumbnail_url ?? '') }}">
         </div>
 
         <div class="form-group">

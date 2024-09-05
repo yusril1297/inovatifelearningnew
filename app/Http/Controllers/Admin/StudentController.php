@@ -5,19 +5,37 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Course;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = User::where('role', 2)
-        ->withCount('courses')
-        ->get();
+         // Check the role of the logged-in user
+         $user = $request->user();
 
-        return view('admin.students.index', compact('students'));
+         if ($user->role === 0) {
+             // Admin view: show all students
+             $students = User::where('role', 2)->withCount('courses')->get();
+             $view = 'admin.students.index';
+         } elseif ($user->role === 1) {
+             // Instructor view: show students only in courses they teach
+             $courses = Course::where('instructor_id', $user->id)->pluck('id');
+             $students = User::where('role', 2)
+                 ->whereHas('courses', function ($query) use ($courses) {
+                     $query->whereIn('courses.id', $courses);
+                 })
+                 ->withCount('courses')
+                 ->get();
+             $view = 'instructor.students.index';
+         } else {
+             abort(403);
+         }
+ 
+         return view($view, compact('students'));
     }
 
     /**

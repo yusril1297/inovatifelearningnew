@@ -19,6 +19,7 @@ class Course extends Model
         'level_id',
         'thumbnail',
         'price',
+        'youtube_thumbnail_url',
         'status',
     ];  
 

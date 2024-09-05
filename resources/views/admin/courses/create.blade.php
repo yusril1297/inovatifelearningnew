@@ -48,9 +48,9 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="thumbnail">Thumbnail</label>
-            <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+        <div id="urlInput" class="form-group">
+            <label for="youtube_thumbnail_url">YouTube Thumbnail URL</label>
+            <input type="url" name="youtube_thumbnail_url" id="youtube_thumbnail_url" class="form-control" value="{{ old('youtube_thumbnail_url', $course->youtube_thumbnail_url ?? '') }}">
         </div>
 
         <div class="form-group">
@@ -72,5 +72,16 @@
         </div>
     </form>
 </div>
+<script>
+    function toggleVideoInput(value) {
+        if (value === 'url') {
+            document.getElementById('urlInput').style.display = 'block';
+            document.getElementById('fileInput').style.display = 'none';
+        } else {
+            document.getElementById('urlInput').style.display = 'none';
+            document.getElementById('fileInput').style.display = 'block';
+        }
+    }
+    </script>
 @endsection
 
