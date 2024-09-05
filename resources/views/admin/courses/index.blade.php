@@ -43,13 +43,13 @@
                 <td>
                     
                         
-                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-sm btn-info">Lihat Detail</a>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-sm btn-info"><i class="ti ti-eye"></i></a>
                     
-                    <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
                     <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-danger  " onclick="return confirm('Are you sure?')">Delete</button>
+                        <button class="btn btn-sm btn-danger  " onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
                     </form>
                 </td>
             </tr>

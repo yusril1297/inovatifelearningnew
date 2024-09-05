@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+
 class InstructorController extends Controller
 {
     /**
@@ -12,7 +13,10 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        $instructors = User::where('role', 1)->get();
+        // Mengambil data instruktur dengan menghitung jumlah kursus yang mereka buat
+        $instructors = User::where('role', 1)
+        ->withCount('courses') // Asumsikan relasi bernama 'courses' ada di model User
+        ->get();
         return view('admin.instructors.index', compact('instructors'));
     }
 

@@ -41,11 +41,11 @@
                 <td>{{ $category->courses_count }}</td>
                 {{-- <td>{{ $category->slug }}</td> --}}
                 <td>
-                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning"><i class="ti ti-pencil"></i></a>
                     <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
                     </form>
                 </td>
             </tr>

@@ -1,10 +1,10 @@
 @extends('admin.dashboard')
 
-@section('title', 'Instructor')
+@section('title', 'Students')
 
 @section('content')
 <div class="container">
-    <h1>Instructor</h1>
+    <h1>Students</h1>
 
      <!-- Menampilkan pesan sukses -->
      @if(session('success'))
@@ -20,22 +20,22 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Total Course</th>
+                <th>Enrolled Course</th>
                 <th>Action</th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach($instructors as $instructor)
+            @foreach($students as $student)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $instructor->name }}</td>
-                    <td>{{ $instructor->email }}</td>
-                    <td>{{ $instructor->courses_count}}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->email }}</td>
+                    <td>{{ $student->courses_count}}</td>
                   
                     <td>
-                        <a href="{{ route('admin.instructors.edit', $instructor->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
-                        <form action="{{ route('admin.instructors.destroy', $instructor->id) }}" method="POST" style="display:inline-block;">
+                        <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
+                        <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>

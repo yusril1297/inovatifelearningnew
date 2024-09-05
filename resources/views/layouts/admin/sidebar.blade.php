@@ -47,6 +47,14 @@
                 <span class="hide-menu">Instructor</span>
             </a>
         </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Students</span>
+            </a>
+        </li>
 
         <!-- Courses Dropdown Section -->
         <li class="sidebar-item">

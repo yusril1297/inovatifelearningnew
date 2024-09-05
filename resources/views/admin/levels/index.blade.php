@@ -23,11 +23,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $level->name }}</td>
                     <td>
-                        <a href="{{ route('admin.levels.edit', $level->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.levels.edit', $level->id) }}" class="btn btn-warning"><i class="ti ti-pencil"></i></a>
                         <form action="{{ route('admin.levels.destroy', $level->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
                         </form>
                     </td>
                 </tr>
