@@ -18,6 +18,7 @@
                 <th>#</th>
                 <th>Title</th>
                 <th>Category</th>
+                <th>Thumbnail</th>
                 <th>Enrolled Student</th>
                 <th>Price</th>
                 <th>Status</th>
@@ -30,6 +31,13 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $course->title }}</td>
                 <td>{{ $course->category->name }}</td>
+                <td> @if($course->youtube_thumbnail_url)
+                    <iframe width="120" height="80" src="https://www.youtube.com/embed/{{ $course->youtube_thumbnail_url }}" frameborder="0" allowfullscreen></iframe>
+                @else
+                    No Thumbnail
+                @endif</td>
+                   
+             
                 <td>{{ $course->students_count }}</td> <!-- Example for enrolled students count -->
                 <td>{{ $course->price == 0 ? 'Gratis' : 'Rp' . number_format($course->price, 0, ',', '.') }}</td>
                 <td>

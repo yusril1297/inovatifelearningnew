@@ -97,7 +97,7 @@ class CourseController extends Controller
         // Mengambil ID video dari URL YouTube
         if (!empty($validated['youtube_thumbnail_url'])) {
             $youtubeUrl = $validated['youtube_thumbnail_url'];
-            parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);
+            parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);     
 
             if (isset($queryParams['v'])) {
                 // ID video dari URL `https://www.youtube.com/watch?v=VIDEO_ID`

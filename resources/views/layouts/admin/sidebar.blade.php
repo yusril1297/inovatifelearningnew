@@ -29,7 +29,7 @@
         <!-- UI Components Section -->
         <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">UI COMPONENTS</span>
+            <span class="hide-menu">MENU</span>
         </li>
         <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
@@ -44,7 +44,7 @@
                 <span>
                     <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Instructor</span>
+                <span class="hide-menu">Manage Instructor</span>
             </a>
         </li>
         <li class="sidebar-item">
@@ -52,7 +52,7 @@
                 <span>
                     <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Students</span>
+                <span class="hide-menu">Manage Students</span>
             </a>
         </li>
 
@@ -62,7 +62,7 @@
                 <span>
                     <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Courses</span>
+                <span class="hide-menu">Manage Courses</span>
             </a>
             <ul id="coursesDropdown" aria-expanded="false" class="collapse first-level">
                 <!-- Course List -->
