@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\StudentController;
@@ -33,6 +34,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('tags', TagController::class);
     Route::resource('levels',LevelController::class);
     Route::resource('students', StudentController::class);
+    Route::resource('enrollments', EnrollmentController::class);
+    
+
   
 });
 

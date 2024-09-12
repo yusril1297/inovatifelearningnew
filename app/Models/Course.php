@@ -80,7 +80,14 @@ class Course extends Model
 
      public function videos()
     {
-    return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+
  
 }

@@ -26,7 +26,9 @@ class CourseController extends Controller
     {
         if (Auth::user()->role == 0) { // Admin
             // Ambil semua kursus dengan relasi instructor, category, level, dan tags
-            $courses = Course::with('instructor', 'category', 'level', 'tags')->get();
+            $courses = Course::with('instructor', 'category', 'level', 'tags')
+            ->withCount('enrollments')
+            ->get();
             $view = 'admin.courses.index'; // Gunakan view untuk Admin
         } elseif (Auth::user()->role == 1) { // Instructor
             // Ambil kursus yang hanya dibuat oleh instructor yang sedang login

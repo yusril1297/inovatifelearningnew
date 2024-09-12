@@ -88,11 +88,11 @@
         
         
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('admin.enrollments.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
-              <span class="hide-menu">Forms</span>
+              <span class="hide-menu">Enrollment</span>
             </a>
           </li>
           <li class="sidebar-item">
