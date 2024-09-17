@@ -14,27 +14,27 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $user = $request->user();
+         $user = $request->user();
 
-        if ($user->role === 0) {
-            // Admin view
-            $students = User::where('role', 2)->withCount('enrollments')->get();
-            $view = 'admin.students.index';
-        } elseif ($user->role === 1) {
-            // Instructor view
-            $courses = Course::where('instructor_id', $user->id)->pluck('id');
-            $students = User::where('role', 2)
-                ->whereHas('enrollments', function ($query) use ($courses) {
-                    $query->whereIn('course_id', $courses);
-                })
-                ->withCount('enrollments')
-                ->get();
-            $view = 'instructor.students.index';
-        } else {
-            abort(403);
-        }
-    
-        return view($view, compact('students'));
+    if ($user->role === 0) {
+        // Admin view
+        $students = User::where('role', 2)->withCount('enrollments')->get();
+        $view = 'admin.students.index';
+    } elseif ($user->role === 1) {
+        // Instructor view
+        $courses = Course::where('instructor_id', $user->id)->pluck('id');
+        $students = User::where('role', 2)
+            ->whereHas('enrollments', function ($query) use ($courses) {
+                $query->whereIn('course_id', $courses);
+            })
+            ->withCount('enrollments')
+            ->get();
+        $view = 'instructor.students.index';
+    } else {
+        abort(403);
+    }
+
+    return view($view, compact('students'));
     }
 
     /**

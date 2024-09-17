@@ -12,6 +12,7 @@
     @if($courses->isEmpty())
         <p>No courses available.</p>
     @else
+    <div class="table-responsive">
     <table id="dataTable" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -65,7 +66,9 @@
         </tbody>
     </table>
     @endif
+    </div>
 </div>
+
 @endsection
 
 @section('editstyles')

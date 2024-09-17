@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Course extends Model
 {
     use HasFactory;
@@ -85,7 +86,12 @@ class Course extends Model
 
     public function enrollments()
     {
-        return $this->hasMany(Enrollment::class);
+        return $this->hasMany(Enrollment::class, 'course_id');
+    }
+
+    public function student(){
+        return $this->hasMany(User::class, 'course_id', 'enrollments', 'user_id');
+
     }
 
 

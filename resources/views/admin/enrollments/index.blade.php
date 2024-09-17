@@ -18,6 +18,7 @@
         <p>No enrollments available.</p>
     @else
 
+    <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -63,5 +64,6 @@
         </tbody>
     </table>
     @endif
+</div>
 </div>
 @endsection
