@@ -32,7 +32,9 @@ class CourseController extends Controller
             $view = 'admin.courses.index'; // Gunakan view untuk Admin
         } elseif (Auth::user()->role == 1) { // Instructor
             // Ambil kursus yang hanya dibuat oleh instructor yang sedang login
-            $courses = Course::where('instructor_id', Auth::id())->with('category', 'level', 'tags')->get();
+            $courses = Course::where('instructor_id', Auth::id())
+            ->withCount('enrollments')
+            ->with('category', 'level', 'tags')->get();
             $view = 'instructor.courses.index'; // Gunakan view untuk Instructor
         } else {
             abort(403); // Role tidak diizinkan

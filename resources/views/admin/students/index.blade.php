@@ -31,7 +31,9 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
-                    <td>{{ $student->courses_count}}</td>
+                   
+                    <td>{{ $student->enrollments_count }}</td>
+                   
                   
                     <td>
                         <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>

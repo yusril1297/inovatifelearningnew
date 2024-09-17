@@ -38,7 +38,7 @@
                 @endif</td>
                    
              
-                <td>{{ $course->students_count }}</td> <!-- Example for enrolled students count -->
+                <td>{{ $course->enrollments_count }}</td>  <!-- Example for enrolled students count -->
                 <td>{{ $course->price == 0 ? 'Gratis' : 'Rp' . number_format($course->price, 0, ',', '.') }}</td>
                 <td>
                     <span class="badge {{ $course->status == 'approved' ? 'bg-success' : 'bg-warning' }}">

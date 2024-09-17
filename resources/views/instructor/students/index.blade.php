@@ -21,6 +21,8 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Enrolled Course</th>
+                <th>Enrollment Date</th>
+                
                 <th>Action</th>
             </tr>
         </thead>
@@ -31,7 +33,9 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
-                    <td>{{ $student->courses_count}}</td>
+                    <td>{{ $student->enrollments->first()->course->title }}</td>
+                    <td>{{ $student->enrollments->first()->enrollment_date->format('d M Y') }}</td>
+                    
                   
                     <td>
                         <a href="{{ route('instructor.students.edit', $student->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>

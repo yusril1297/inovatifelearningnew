@@ -29,7 +29,7 @@ class EnrollmentController extends Controller
     public function create()
     {
         // Ambil semua siswa yang tersedia
-        $students = User::whereDoesntHave('enrollments')->get();
+        $students = User::where('role', '2')->get();
 
         // Ambil semua kursus yang tersedia
         $courses = Course::all();
@@ -44,6 +44,7 @@ class EnrollmentController extends Controller
     {
         // Validasi input
         $request->validate([
+        
         'user_id' => 'required|exists:users,id',
         'course_id' => 'required|exists:courses,id',
     ]);
