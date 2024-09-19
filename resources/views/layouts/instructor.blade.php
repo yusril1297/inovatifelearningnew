@@ -29,7 +29,7 @@
     @include('layouts.instructor.sidebar')
     <!--  Sidebar End -->
     <!--  Main wrapper -->
-    <div class="body-wrapper" style="background-color: #F3FFD3;">
+    <div class="body-wrapper" >
       <!--  Header Start -->
       @include('layouts.instructor.navbar')
       <!--  Header End -->

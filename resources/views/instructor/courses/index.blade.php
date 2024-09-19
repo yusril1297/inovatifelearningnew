@@ -2,18 +2,27 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-5">Instructor Courses</h1>
-
-    <div class="mb-3 d-flex justify-content-between align-items-center">
-        <a href="{{ route('instructor.courses.create') }}" class="btn btn-success">+ Add New Course</a>
-      
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-3">Course List</h1>
+          <!-- Menampilkan pesan sukses -->
+     @if(session('success'))
+     <div class="alert alert-success">
+         {{ session('success') }}
+     </div>
+        @endif
+        <a href="{{ route('admin.courses.create') }}" class="btn btn-success">
+            + Add New Course
+        </a>
     </div>
 
     @if($courses->isEmpty())
         <p>No courses available.</p>
     @else
-    <table id="dataTable" class="table table-bordered table-striped">
-        <thead>
+
+    <div class="card-body">
+        <div class="table-responsive">
+        <table id="dataTable" class="table table-striped align-middle mb-0">
+        <thead  class="table-light">
             <tr>
                 <th>#</th>
                 <th>Title</th>
@@ -62,6 +71,9 @@
             @endforeach
         </tbody>
     </table>
+
+    </div>
+    </div>
     @endif
 </div>
 @endsection
