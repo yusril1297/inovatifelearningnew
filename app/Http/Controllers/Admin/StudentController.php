@@ -66,9 +66,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $students = User::findOrFail($id);
-
-        return view('admin.students.edit', compact('students'));
+       
     }
 
     /**
@@ -76,15 +74,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-        ]);
-
-        $students = User::findOrFail($id);
-        $students->update($validated);
-
-        return redirect()->route('admin.students.index')->with('success', 'Student updated successfully!');
+        
     }
 
     /**

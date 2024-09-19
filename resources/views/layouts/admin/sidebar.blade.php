@@ -95,7 +95,7 @@
               <span class="hide-menu">Enrollment</span>
             </a>
           </li>
-          <li class="sidebar-item">
+          {{-- <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
               <span>
                 <i class="ti ti-typography"></i>
@@ -155,7 +155,7 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> --}}
       <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->

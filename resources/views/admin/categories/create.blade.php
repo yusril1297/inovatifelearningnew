@@ -19,6 +19,7 @@
     @endif
 
     <!-- Form untuk membuat kategori baru dengan style yang lebih menarik -->
+    <div class="card">
     <div class="card p-4 shadow-sm">
         <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -44,6 +45,7 @@
                 <button type="submit" class="btn btn-primary">Save Category</button>
             </div>
         </form>
+    </div>
     </div>
 </div>
 @endsection

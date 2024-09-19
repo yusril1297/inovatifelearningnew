@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>Enrollments</h1>
-
-    <div class="mb-3 d-flex justify-content-between align-items-center">
-        <a href="{{ route('admin.enrollments.create') }}" class="btn btn-success">+ Add Students To Course</a>
-      
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-3">Enrollment List</h1>
+        <a href="{{ route('admin.enrollments.create') }}" class="btn btn-success">
+            + Add New Enrollment
+        </a>
     </div>
 
 
@@ -18,9 +18,10 @@
         <p>No enrollments available.</p>
     @else
 
-    <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="dataTable" class="table table-striped align-middle mb-0">
+                <thead class="table-light">
             <tr>
                 <th>#</th>
                 <th>Student Name</th>
@@ -51,19 +52,23 @@
                     @endif
                 </td>
                 <td>
-                    <!-- Aksi seperti melihat detail, menghapus, atau mengubah status -->
-                    <a href="{{ route('admin.enrollments.show', $enrollment->id) }}" class="btn btn-info btn-sm">View</a>
+                   
                     <form action="{{ route('admin.enrollments.destroy', $enrollment->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
                     </form>
                 </td>
             </tr>
-            @endforeach
-        </tbody>
-    </table>
+                     @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
     @endif
 </div>
-</div>
+@endsection
+
+@section('styles')
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 @endsection

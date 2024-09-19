@@ -2,8 +2,20 @@
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* .card-body {
     padding: 20px;
 }
+
+.table-responsive {
+    margin-top: 15px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+} */
 
 .form-control {
     border-radius: 4px;
@@ -53,3 +65,4 @@
 .container h1{
     font-family: 'Oswald', sans-serif;
 }
+ 

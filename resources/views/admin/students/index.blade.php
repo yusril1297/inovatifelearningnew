@@ -36,7 +36,7 @@
                    
                   
                     <td>
-                        <a href="{{ route('admin.students.edit', $student->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
+                        
                         <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')

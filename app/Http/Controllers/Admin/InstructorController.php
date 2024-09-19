@@ -62,9 +62,7 @@ class InstructorController extends Controller
      */
     public function edit( string $id)
     {
-        $instructor = User::findOrFail($id);
-
-        return view('admin.instructors.edit', compact('instructor'));
+       
 
     }
 
@@ -73,15 +71,7 @@ class InstructorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-        ]);
-
-        $instructor = User::findOrFail($id);
-        $instructor->update($validated);
-
-        return redirect()->route('admin.instructors.index')->with('success', 'Instructor updated successfully!');
+       
     }
 
     /**

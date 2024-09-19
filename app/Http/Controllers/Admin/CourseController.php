@@ -101,16 +101,22 @@ class CourseController extends Controller
         // Mengambil ID video dari URL YouTube
         if (!empty($validated['youtube_thumbnail_url'])) {
             $youtubeUrl = $validated['youtube_thumbnail_url'];
-            parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);     
-
+            parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);
+        
+            // Jika URL dalam format `https://www.youtube.com/watch?v=VIDEO_ID`
             if (isset($queryParams['v'])) {
-                // ID video dari URL `https://www.youtube.com/watch?v=VIDEO_ID`
-                $course->youtube_thumbnail_url = $queryParams['v'];
+                $videoId = $queryParams['v'];
             } else {
-                // ID video dari URL `https://youtu.be/VIDEO_ID`
-                $course->youtube_thumbnail_url = basename(parse_url($youtubeUrl, PHP_URL_PATH));
+                // Jika URL dalam format `https://youtu.be/VIDEO_ID`
+                $videoId = basename(parse_url($youtubeUrl, PHP_URL_PATH));
             }
-        }
+        
+            // Simpan URL dalam format embed
+            $course->youtube_thumbnail_url = 'https://www.youtube.com/embed/' . $videoId;
+            }
+         
+    
+           
 
         // Simpan course ke database
         $course->save();
@@ -273,16 +279,21 @@ class CourseController extends Controller
         $course->status = $validated['status'];
 
       // Mengambil ID video dari URL YouTube
-    if (!empty($validated['youtube_thumbnail_url'])) {
+         if (!empty($validated['youtube_thumbnail_url'])) {
         $youtubeUrl = $validated['youtube_thumbnail_url'];
         parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);
-
+    
+        // Jika URL dalam format `https://www.youtube.com/watch?v=VIDEO_ID`
         if (isset($queryParams['v'])) {
-            $course->youtube_thumbnail_url = $queryParams['v']; // ID video dari URL `https://www.youtube.com/watch?v=VIDEO_ID`
+            $videoId = $queryParams['v'];
         } else {
-            $course->youtube_thumbnail_url = basename(parse_url($youtubeUrl, PHP_URL_PATH)); // ID video dari URL `https://youtu.be/VIDEO_ID`
+            // Jika URL dalam format `https://youtu.be/VIDEO_ID`
+            $videoId = basename(parse_url($youtubeUrl, PHP_URL_PATH));
         }
-    }
+    
+        // Simpan URL dalam format embed
+        $course->youtube_thumbnail_url = 'https://www.youtube.com/embed/' . $videoId;
+        }
      
 
         $course->save();
@@ -301,7 +312,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, Course $course)
+    public function destroy( Course $course)
     {
         if (Auth::user()->role == 1 && $course->instructor_id != Auth::id()) {
             abort(403); // Instructor hanya bisa menghapus kursus miliknya

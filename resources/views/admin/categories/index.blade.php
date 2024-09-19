@@ -4,18 +4,28 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-5 fw-bold">Categories</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-3">Category List</h1>
 
      <!-- Menampilkan pesan sukses -->
-     @if(session('success'))
-     <div class="alert alert-success">
+        @if(session('success'))
+        <div class="alert alert-success">
          {{ session('success') }}
-     </div>
-    @endif
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Add New Category</a>
+        </div>
+        @endif
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
+            + Add New Category
+        </a>
+    </div>
 
-    <table id="dataTable" class="table mt-3 table-bordered table-striped" >
-        <thead class="table-dark">
+    @if($categories->isEmpty())
+    <p>No categories available.</p>
+    @endif    
+
+    <div class="card card-body ">
+        <div class="table-responsive">
+            <table id="dataTable" class="table table-striped align-middle mb-0" >
+                <thead class="table-light">
             <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -23,8 +33,8 @@
                 <th>Total Course</th>
                 <th>Action</th>
             </tr>
-        </thead>
-        <tbody>
+                </thead>
+            <tbody>
             @foreach ($categories as $category)
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -41,20 +51,25 @@
                 <td>{{ $category->courses_count }}</td>
                 {{-- <td>{{ $category->slug }}</td> --}}
                 <td>
-                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning"><i class="ti ti-pencil"></i></a>
+                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
                     <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="ti ti-trash"></i></button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    </div>
+    </div>
 </div>
 @endsection
 
-@section('editstyles')
-    <link href="{{ asset('assets/css/edit.css') }}" rel="stylesheet">
+
+
+@section('styles')
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 @endsection 

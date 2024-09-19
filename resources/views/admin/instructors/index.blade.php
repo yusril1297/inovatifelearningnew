@@ -34,7 +34,7 @@
                     <td>{{ $instructor->courses_count}}</td>
                   
                     <td>
-                        <a href="{{ route('admin.instructors.edit', $instructor->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
+                        
                         <form action="{{ route('admin.instructors.destroy', $instructor->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
