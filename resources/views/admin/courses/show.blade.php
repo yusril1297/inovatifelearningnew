@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+       @endif
     <h2 class="mb-4">{{ $course->title }}</h2>
 
     <div class="mt-4">

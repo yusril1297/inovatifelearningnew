@@ -123,7 +123,7 @@ class CourseController extends Controller
 
         // Redirect ke halaman index course sesuai role dengan pesan sukses
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.index' : 'instructor.courses.index')
-                         ->with('success', 'Course berhasil dibuat.');
+                         ->with('success', 'Course created successfully.');
     }
 
     /**
@@ -186,7 +186,7 @@ class CourseController extends Controller
 
         // Redirect kembali ke halaman detail course dengan pesan sukses
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.show' : 'instructor.courses.show', $course->id)
-                         ->with('success', 'Video berhasil ditambahkan.');
+                         ->with('success', 'Video added successfully.');
     }
 
     /**
@@ -199,7 +199,7 @@ class CourseController extends Controller
 
         // Memastikan bahwa video yang dihapus benar-benar terkait dengan course yang diberikan
         if ($video->course_id != $course->id) {
-            abort(403, 'Video ini tidak terkait dengan kursus tersebut.');
+            abort(403, 'This video is not related to the course.');
         }
 
         // Hapus file video jika ada
@@ -211,7 +211,7 @@ class CourseController extends Controller
         $video->delete();
 
         // Redirect kembali dengan pesan sukses
-        return redirect()->back()->with('success', 'Video berhasil dihapus.');
+        return redirect()->back()->with('success', 'Video deleted successfully.');
     }
 
     /**
@@ -221,7 +221,7 @@ class CourseController extends Controller
     private function authorizeAccess(Course $course)
     {
         if (Auth::user()->role == 1 && $course->instructor_id != Auth::id()) {
-            abort(403, 'Anda tidak memiliki akses ke kursus ini.');
+            abort(403, 'You do not have access to this course.');
         }
     }
 
@@ -306,7 +306,7 @@ class CourseController extends Controller
         }
 
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.index' : 'instructor.courses.index')
-                         ->with('success', 'Course berhasil diupdate.');
+                         ->with('success', 'Course updated successfully.');
     }
 
     /**
@@ -321,7 +321,7 @@ class CourseController extends Controller
         $course->delete();
 
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.index' : 'instructor.courses.index')
-                         ->with('success', 'Course berhasil dihapus.');
+                         ->with('success', 'Course deleted successfully.');
     }
 
   

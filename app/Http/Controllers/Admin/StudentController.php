@@ -16,6 +16,7 @@ class StudentController extends Controller
     {
          $user = $request->user();
 
+    // Memeriksa peran pengguna yang sedang login
     if ($user->role === 0) {
         // Admin view
         $students = User::where('role', 2)->withCount('enrollments')->get();

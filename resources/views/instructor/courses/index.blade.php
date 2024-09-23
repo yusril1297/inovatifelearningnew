@@ -10,7 +10,7 @@
          {{ session('success') }}
      </div>
         @endif
-        <a href="{{ route('admin.courses.create') }}" class="btn btn-success">
+        <a href="{{ route('instructor.courses.create') }}" class="btn btn-success">
             + Add New Course
         </a>
     </div>

@@ -5,11 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="mb-3">Course List</h1>
           <!-- Menampilkan pesan sukses -->
-     @if(session('success'))
-     <div class="alert alert-success">
-         {{ session('success') }}
-     </div>
-        @endif
+     
         <a href="{{ route('admin.courses.create') }}" class="btn btn-success">
             + Add New Course
         </a>
