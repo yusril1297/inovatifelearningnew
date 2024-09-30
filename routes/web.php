@@ -7,13 +7,13 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
