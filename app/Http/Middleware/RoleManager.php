@@ -69,7 +69,7 @@ class RoleManager
         return match($authUserRole) {
             0 => redirect()->route('admin.dashboard'),
             1 => redirect()->route('instructor.dashboard'),
-            2 => redirect()->route('dashboard'),
+            2 => redirect()->route('students.dashboard'),
             default => redirect()->route('login'),
         };
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,16 +28,16 @@ class AuthenticatedSessionController extends Controller
     $request->authenticate();
     $request->session()->regenerate();
 
-    $authUserRole = Auth::user()->role;
-    
-    // Pastikan pengguna diarahkan ke dashboard yang sesuai dengan role mereka
-    if ($authUserRole === 0) {
+    // Periksa role pengguna langsung dari field role
+    if ($request->user()->role === 'admin') {
         return redirect()->route('admin.dashboard');
-    } elseif ($authUserRole === 1) {
+    } elseif ($request->user()->role === 'instructor') {
         return redirect()->route('instructor.dashboard');
-    } else {
-        return redirect()->route('dashboard');
+    } elseif ($request->user()->role === 'student') {
+        return redirect()->route('students.dashboard');
     }
+
+    return redirect()->intended('/');
 }
 
         
@@ -49,6 +50,8 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
+
+        $request->session()->flush(); 
 
         $request->session()->regenerateToken();
 

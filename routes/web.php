@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
 
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('students.dashboard');
 })->middleware(['auth', 'verified', 'role:student'])->name('dashboard');
 
 //admin
@@ -35,9 +36,6 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('levels',LevelController::class);
     Route::resource('students', StudentController::class);
     Route::resource('enrollments', EnrollmentController::class);
-    
-
-  
 });
 
 //instructor

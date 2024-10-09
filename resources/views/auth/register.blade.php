@@ -1,4 +1,4 @@
-@extends('layouts.front.navbarFront')
+@extends('layouts.front')
 
 @section('content')
 
