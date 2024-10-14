@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Mengirimkan kategori ke semua view layout yang memuat navbar
+    View::composer('layouts.front.navbar', function ($view) {
+        $categories = Category::all();
+        $view->with('categories', $categories);
+    });
     }
 }

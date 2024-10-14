@@ -37,72 +37,21 @@
                     class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                     <div class="p-4">
                         <!-- Course Links -->
+                        @foreach($categories as $category)
                         <div
                             class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
                             <div
                                 class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                <ion-icon class="w-7 h-7" name="logo-html5"></ion-icon>
+                                <img src="{{ Storage::url($category->icon) }}" class="w-7 h-7">
                             </div>
                             <div class="flex-auto">
-                                <a href=""
-                                    class="block font-semibold text-gray-900 hover:text-blue-500">HTML
-                                    & CSS<span class="absolute inset-0"></span></a>
+                                <a href="{{ route('frontend.categories', $category->slug) }}"
+                                    class="block font-semibold text-gray-900 hover:text-blue-500"> {{ $category->name }} 
+                                    <span   span class="absolute inset-0"></span></a>
                             </div>
                         </div>
-                        <div
-                            class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                            <div
-                                class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                <ion-icon class="w-7 h-7" name="logo-laravel"></ion-icon>
-                            </div>
-                            <div class="flex-auto">
-                                <a href=""
-                                    class="block font-semibold text-gray-900 hover:text-blue-500">Laravel<span
-                                        class="absolute inset-0"></span></a>
-                            </div>
-                        </div>
-                        <div
-                            class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                            <div
-                                class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                <ion-icon class="w-7 h-7" name="logo-python"></ion-icon>
-                            </div>
-                            <div class="flex-auto">
-                                <a href=""
-                                    class="block font-semibold text-gray-900 hover:text-blue-500">Python<span
-                                        class="absolute inset-0"></span></a>
-                            </div>
-                        </div>
-                        <div
-                            class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                            <div
-                                class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                <ion-icon class="w-7 h-7" name="logo-react"></ion-icon>
-                            </div>
-                            <div class="flex-auto">
-                                <a href=""
-                                    class="block font-semibold text-gray-900 hover:text-blue-500">React JS<span
-                                        class="absolute inset-0"></span></a>
-                            </div>
-                        </div>
-                        <div
-                            class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                            <div
-                                class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg"
-                                    enable-background="new 0 0 24 24" viewBox="0 0 24 24" id="flutter">
-                                    <polygon
-                                        points="14.329 11.072 14.328 11.073 7.857 17.53 14.327 24 21.7 24 15.24 17.531 21.7 11.072">
-                                    </polygon>
-                                    <polygon points="6 15.7 21.684 .012 14.327 .012 14.314 0 2.3 12"></polygon>
-                                </svg>
-                            </div>
-                            <div class="flex-auto">
-                                <a href=""
-                                    class="block font-semibold text-gray-900 hover:text-blue-500">Flutter<span
-                                        class="absolute inset-0"></span></a>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
@@ -166,18 +115,12 @@
                             </button>
                             <div x-show="open" @click.away="open = false" class="mt-2 space-y-2"
                                 id="disclosure-1">
+                                @foreach($categories as $category)
                                 <a href=""
-                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">HTML
-                                    & CSS</a>
-                                <a href=""
-                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">Laravel</a>
-                                <a href=""
-                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">Python</a>
-                                <a href=""
-                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">React
-                                    JS</a>
-                                <a href=""
-                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">Flutter</a>
+                                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">{{ $category->name }}
+                                </a>
+                                
+                                @endforeach
                             </div>
                         </div>
 

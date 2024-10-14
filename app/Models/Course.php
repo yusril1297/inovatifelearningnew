@@ -89,6 +89,11 @@ class Course extends Model
         return $this->hasMany(Enrollment::class, 'course_id');
     }
 
+    public function enrolledCount()
+    {
+        return $this->enrollments()->count();
+    }
+
     public function student(){
         return $this->hasMany(User::class, 'course_id', 'enrollments', 'user_id');
 

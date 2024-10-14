@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
 
+Route::get('/categories/{slug}', [FrontController::class, 'showCategory'])->name('frontend.categories');
 
 Route::get('/dashboard', function () {
     return view('students.dashboard');

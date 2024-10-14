@@ -143,6 +143,49 @@
             </button>
             <div id="course-slider" class="w-full">
                 <div class="course-card w-1/3 px-3 pb-[70px] mt-[2px]">
+                    @foreach($courses as $course)
+                    <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
+                        <a href="" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
+                            @if($course->youtube_thumbnail_url)
+                                <iframe width="100%" height="100%" src="{{ $course->youtube_thumbnail_url }}?autoplay=0&mute=1" 
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                            @else
+                                <img src="path/to/placeholder-image.jpg" class="w-full h-full object-cover" alt="Placeholder Image">
+                            @endif
+                        </a>
+                        <div class="flex flex-col px-4 gap-[10px]">
+                            <a href="" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->title }}</a>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-[2px]">
+                                    <!-- Bintang Rating (Contoh, bisa disesuaikan) -->
+                                    @for($i = 0; $i < 5; $i++)
+                                        <div>
+                                            <img src="assets/icon/star.svg" alt="star">
+                                        </div>
+                                    @endfor
+                                </div>
+                                <p class="text-right text-[#6D7786]">{{ $course->enrollments->count() }} students</p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p> <!-- Harga -->
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
+                                    <img src="assets/photo/photo1.png" class="w-full h-full object-cover" alt="icon">
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="font-semibold">{{ $course->instructor->name }}</p>
+                                    <p class="text-[#6D7786]">{{ $course->category->name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+
+
+                {{-- <div class="course-card w-1/3 px-3 pb-[70px] mt-[2px]">
                     <div
                         class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
@@ -189,7 +232,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                
                 
                 
