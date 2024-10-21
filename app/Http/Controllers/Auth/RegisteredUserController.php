@@ -34,13 +34,21 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8'],
             'role' => ['required', 'integer'],
+            // 'avatar' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
+
+        // $avatarPath = null;
+        // if ($request->hasFile('avatar')) {
+        //     $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        // }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role, // Simpan role yang dipilih
+            // 'avatar' => $avatarPath,
+            
         ]);
 
         event(new Registered($user));

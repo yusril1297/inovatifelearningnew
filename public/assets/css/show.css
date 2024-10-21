@@ -21,3 +21,17 @@ iframe, video {
     font-size: 0.875rem;
     padding: 8px 12px;
 }
+
+#course-slider {
+    display: flex;
+    overflow-x: auto;
+    min-height: 400px; /* Misalnya tambahkan tinggi minimal untuk melihat item */
+}
+
+.course-card {
+    flex: 0 0 calc(33.333% - 20px); /* Menyediakan 3 card per baris sesuai dengan groupCells */
+    margin-right: 10px;
+    display: block; /* Pastikan card terlihat */
+    background-color: #fff; /* Hanya untuk memastikan warna background */
+    border: 1px solid #ccc; /* Batas untuk melihat card */
+}

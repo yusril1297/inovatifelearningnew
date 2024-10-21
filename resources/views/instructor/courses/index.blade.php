@@ -40,11 +40,16 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $course->title }}</td>
                 <td>{{ $course->category->name }}</td>
-                <td> @if($course->youtube_thumbnail_url)
-                    <iframe width="120" height="80" src="https://www.youtube.com/embed/{{ $course->youtube_thumbnail_url }}" frameborder="0" allowfullscreen></iframe>
-                @else
-                    No Thumbnail
-                @endif</td>
+                <td>
+                    @if($course->youtube_thumbnail_url)
+                    <iframe width="120" height="80" src="{{ $course->youtube_thumbnail_url }}" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    @else
+                        No Thumbnail
+                    @endif
+                </td>
                    
              
                 <td>{{ $course->enrollments_count }}</td>  <!-- Example for enrolled students count -->
@@ -56,15 +61,14 @@
                 </td>
 
                 <td>
-                    
-                        
-                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-sm btn-info"><i class="ti ti-eye"></i></a>
-                    
-                    <a href="{{ route('instructor.courses.edit', $course->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
-                    <form action="{{ route('instructor.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
+                    <a href="{{ route('instructor.courses.show', $course->id) }}" class="btn btn-sm btn-info"><i class="ti ti-eye"></i></a>
+                    <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
+                    <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-danger  " onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
+                        <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                            <i class="ti ti-trash"></i>
+                        </button>
                     </form>
                 </td>
             </tr>

@@ -12,10 +12,13 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="{{ asset('css/output.css') }}" rel="stylesheet">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link href="{{ asset('assets/css/output.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <!-- CSS -->
+    @yield('show')
+    <!-- Flickity CSS -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
@@ -62,6 +65,9 @@
 
 
     @yield('content')
+
+
+    
 </body>
 
 {{-- footer --}}
@@ -70,5 +76,8 @@
     
 
 {{-- @include('layouts.front.footer') --}}
+
+
+
 
 </html>

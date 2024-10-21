@@ -19,7 +19,7 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12 z-20" x-data="{ open: false }">
-            <a href=""
+            <a href="{{ route('frontend.allCourses') }}"
                 class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">All Courses</a>
             <div class="relative">
                 <button @click="open = ! open" type="button"
@@ -57,22 +57,29 @@
             </div>
             <a href="" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Instructor</a>
         </div>
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            @guest
+                <!-- Tampilkan tombol Login jika belum login -->
                 <a href="{{ route('login') }}"
-                class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+                   class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Log in <span aria-hidden="true">&rarr;</span>
+                </a>
+            @else
+                <!-- Tampilkan tombol Dashboard atau Profil jika sudah login -->
+                <a href="{{ route('dashboard') }}"
+                   class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Dashboard <span aria-hidden="true">&rarr;</span>
+                </a>
+            @endguest
+        </div>
 
-                <form method="POST" action="{{ route('logout') }}">
+            {{-- <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700"
                     onclick="event.preventDefault(); this.closest('form').submit();">
                     Logout
                     </a>
-                </form>
-                
-            </div>
+                </form> --}}
     </nav>
 
     <!-- Mobile menu, show/hide based on menu open state. -->

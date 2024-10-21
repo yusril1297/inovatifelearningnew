@@ -15,24 +15,29 @@ class FrontController extends Controller
         return view('frontend.home ', compact('courses')); ;
     }
 
+    public function allCourses() {
 
-    // public function showCategories() {
-    //     // Ambil data dari tabel categories
-    //     $categories = Category::all();
-    //     // Kirim data ke view
-    //     return view('frontend.categories', compact('categories'));
-    // }
+        $courses = Course::with(['category', 'enrollments'])->get();
+        return view('frontend.allCourses', compact('courses'));
+    }
 
-    public function showCategory($slug)
-{
+
    
-    $categories = Category::with('courses')->where('slug', $slug)->firstOrFail();
 
- // Debugging untuk memastikan $categories bukan null atau kosong
- if ($categories->isEmpty()) {
-    return "No categories found."; // atau bisa redirect ke halaman lain
-}
-    return view('frontend.categories', compact('categories'));
-}
+    public function showCategories($slug)
+    {
+   
+        $categories = Category::with('courses')->where('slug', $slug)->firstOrFail();
+        return view('frontend.categories', compact('categories'));
+    }
 
+    public function details($slug) {
+        $course = Course::where('slug', $slug)->firstOrFail();
+        return view('frontend.details', compact('course'));
+    }
+
+    // public function details(Course $course) {
+        
+    //     return view('frontend.details', compact('course'));
+    // }
 }
