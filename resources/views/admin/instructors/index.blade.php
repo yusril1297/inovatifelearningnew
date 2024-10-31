@@ -3,8 +3,9 @@
 @section('title', 'Instructor')
 
 @section('content')
-<div class="container">
-    <h1>Instructor</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+    <div class=" bg-white rounded-xl shadow-lg p-4 flex flex-col ">
+    <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Instructor</h1>
 
      <!-- Menampilkan pesan sukses -->
      @if(session('success'))
@@ -13,9 +14,10 @@
      </div>
     @endif
     
-    
-    <table id="dataTable" class="table mt-3">
-        <thead>
+    <div class="card-body bg-white rounded-xl shadow-lg p-4 ">
+        <div class="table-responsive">
+    <table id="dataTable" class="table table-striped align-middle mb-0">
+        <thead class="table-light">
             <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -45,9 +47,13 @@
             @endforeach
         </tbody>
     </table>
+    </div>
+    </div>
+    </div>
+</div>
 
 @endsection
 
-@section('editstyles')
-    <link href="{{ asset('assets/css/edit.css') }}" rel="stylesheet">
-@endsection 
+@section('styles')
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+@endsection  

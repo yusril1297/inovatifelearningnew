@@ -1,5 +1,5 @@
 
-<header class="app-header" style="background-color: #F3FFD3;">
+<header class="app-header">
     <nav class="navbar navbar-expand-lg navbar-light " >
       <ul class="navbar-nav">
         <li class="nav-item d-block d-xl-none">

@@ -3,9 +3,9 @@
 @section('title', 'Categories')
 
 @section('content')
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="mb-3">Category List</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+    <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
+        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Category List</h1>
 
      <!-- Menampilkan pesan sukses -->
         @if(session('success'))
@@ -22,7 +22,7 @@
     <p>No categories available.</p>
     @endif    
 
-    <div class="card card-body ">
+    <div class="card-body bg-white rounded-xl shadow-lg p-4">
         <div class="table-responsive">
             <table id="dataTable" class="table table-striped align-middle mb-0" >
                 <thead class="table-light">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LevelController;
@@ -18,8 +19,12 @@ Route::get('/all-courses', [FrontController::class, 'allCourses'])->name('fronte
 
 
 Route::get('/categories{slug}', [FrontController::class, 'showCategories'])->name('frontend.categories');
-
 Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('frontend.details');
+
+Route::get('/learning/{course}/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
+
+Route::get('/checkout/{course}', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('frontend.checkout');
+
 
 Route::get('/dashboard', function () {
     return view('students.dashboard');
@@ -27,9 +32,7 @@ Route::get('/dashboard', function () {
 
 //admin
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); // Ini mengarahkan ke DashboardController
 
     Route::resource('categories', CategoryController::class);
     Route::resource('instructors', InstructorController::class);
@@ -38,7 +41,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::post('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'uploadVideo'])->name('courses.uploadVideo');
     Route::delete('courses/{course}/video/{video}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteVideo'])->name('courses.deleteVideo');
     Route::resource('tags', TagController::class);
-    Route::resource('levels',LevelController::class);
+    Route::resource('levels', LevelController::class);
     Route::resource('students', StudentController::class);
     Route::resource('enrollments', EnrollmentController::class);
 });

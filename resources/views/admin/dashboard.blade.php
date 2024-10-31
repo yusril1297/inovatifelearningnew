@@ -1,8 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <h1>Admin Dashboard</h1>
-    <!-- Konten lainnya -->
-</div>
+<h1>hallooos</h1>
 @endsection

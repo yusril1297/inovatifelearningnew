@@ -33,7 +33,7 @@
     @include('layouts.admin.sidebar')
     <!--  Sidebar End -->
     <!--  Main wrapper -->
-    <div class="body-wrapper">
+    <div class="body-wrapper" style="background-color: #F3FFD3;">
       <!--  Header Start -->
       @include('layouts.admin.navbar')
       <!--  Header End -->
@@ -79,6 +79,8 @@
       $('#dataTable').DataTable(); 
   });
 </script>
+
+
 
 </body>
 

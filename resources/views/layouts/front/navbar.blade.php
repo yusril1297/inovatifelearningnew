@@ -71,15 +71,16 @@
                     Dashboard <span aria-hidden="true">&rarr;</span>
                 </a>
             @endguest
+
         </div>
 
-            {{-- <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700"
                     onclick="event.preventDefault(); this.closest('form').submit();">
                     Logout
                     </a>
-                </form> --}}
+                </form>
     </nav>
 
     <!-- Mobile menu, show/hide based on menu open state. -->

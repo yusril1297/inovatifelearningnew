@@ -28,10 +28,4 @@ class AppServiceProvider extends ServiceProvider
     });
     }
 
-    public function showCategories() {
-        // Ambil data dari tabel categories
-        $categories = Category::all();
-        // Kirim data ke view
-        return view('frontend.categories', compact('categories'));
-    }
 }

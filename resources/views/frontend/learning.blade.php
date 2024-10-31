@@ -8,12 +8,11 @@
         <div class="video-player relative flex flex-nowrap gap-5">
             <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
                 <iframe
-                    src="{{ $courses->youtube_thumbnail_url }}"
-                    allowfullscreen allowtransparency allow="autoplay"></iframe>
+                    src="https://www.youtube.com/embed/{{ \Str::afterLast($video->url, 'v=') }}" allowfullscreen allowtransparency allow="autoplay"></iframe>
             </div>
             <div
                 class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
-                <p class="font-bold text-lg text-black">{{ $courses->videos->count()}}</p>
+                <p class="font-bold text-lg text-black">{{ $course->videos->count()}}</p>
                 <div class="flex flex-col gap-3">
                     <div
                         class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
@@ -25,13 +24,13 @@
                                     fill="currentColor" />
                             </svg>
                         </div>
-                        <a href="{{ route('frontend.details', $courses->slug)}}">
+                        <a href="{{ route('frontend.details', $course->slug)}}">
                         <p class="font-semibold group-hover:text-white transition-all duration-300">Course Trailer
                         </p>
                         </a>
                     </div>
 
-                    @forelse ($courses->videos as $video)
+                    @forelse ($course->videos as $video)
                     <div
                         class="group p-[12px_16px] flex items-center gap-[10px] bg-[#3525B3]  rounded-full hover:bg-[#3525B3] transition-all duration-300">
                         <div class="text-white group-hover:text-white transition-all duration-300">
@@ -42,7 +41,7 @@
                                     fill="currentColor" />
                             </svg>
                         </div>
-                        <a href="{{ route('frontend.learning',['course' => $courses->slug, 'video' => $video->id])}}">
+                        <a href="{{ route('frontend.learning',['course' => $course->slug, 'video' => $video->id])}}">
                         <p class="font-semibold group-hover:text-white transition-all duration-300 text-white">
                         {{$video->title}}</p>
                         </a>
@@ -56,13 +55,13 @@
     </section>
     <section id="Video-Resources" class="flex flex-col mt-5">
         <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
-            <h1 class="title font-extrabold text-[30px] leading-[45px]">{{$courses->title}}</h1>
+            <h1 class="title font-extrabold text-[30px] leading-[45px]">{{$course->title}}</h1>
             <div class="flex items-center gap-5">
                 <div class="flex items-center gap-[6px]">
                     <div>
                         <img src="{{ asset('assets/icon/crown.svg') }}" alt="icon">
                     </div>
-                    <p class="font-semibold">{{ $courses->category->name}}</p>
+                    <p class="font-semibold">{{ $course->category->name}}</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
@@ -74,7 +73,7 @@
                     <div>
                         <img src="{{ asset('assets/icon/profile-2user.svg') }}" alt="icon">
                     </div>
-                    <p class="font-semibold">{{ $courses->enrollments->count() }}</p>
+                    <p class="font-semibold">{{ $course->enrollments->count() }}</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
@@ -114,7 +113,7 @@
                             <div class="flex flex-col gap-5 w-[700px] shrink-0">
                                 <h3 class="font-bold text-2xl">Grow Your Career</h3>
                                 <p class="font-medium leading-[30px]">
-                                  {!! $courses->description !!}
+                                  {!!$course->description!!}
                                 </p>
                                
                                 
@@ -172,7 +171,7 @@
                                             class="w-full h-full object-cover" alt="photo">
                                     </a>
                                     <div class="flex flex-col gap-[2px]">
-                                        <a href="" class="font-semibold">{{ $courses->instructor->name}}</a>
+                                        <a href="" class="font-semibold">{{ $course->instructor->name}}</a>
                                         <p class="text-sm text-[#6D7786]">Product Manager</p>
                                     </div>
                                 </div>

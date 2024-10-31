@@ -9,7 +9,10 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table">
+
+    <div class="card card-body ">
+        <div class="table-responsive">
+    <table id="dataTable" class="table table-striped align-middle mb-0">
         <thead>
             <tr>
                 <th>#</th>
@@ -23,16 +26,18 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $level->name }}</td>
                     <td>
-                        <a href="{{ route('admin.levels.edit', $level->id) }}" class="btn btn-warning"><i class="ti ti-pencil"></i></a>
+                        <a href="{{ route('admin.levels.edit', $level->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
                         <form action="{{ route('admin.levels.destroy', $level->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
+    </div>
 </div>
 @endsection

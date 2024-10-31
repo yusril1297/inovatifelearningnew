@@ -1066,6 +1066,4 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 @endsection
 
-@section('show')
-    <link href="{{ asset('assets/css/show.css') }}" rel="stylesheet">
-@endsection
+
