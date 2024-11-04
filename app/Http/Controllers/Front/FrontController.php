@@ -38,6 +38,12 @@ class FrontController extends Controller
         return view('frontend.details', compact('courses'));
     }
 
+    public function instructor() {
+
+        $instructors = User::where('role', 'instructor')->get();
+        return view('frontend.instructor', compact('instructors'));
+    }
+
     public function learning($courses, $video, ) {
 
        

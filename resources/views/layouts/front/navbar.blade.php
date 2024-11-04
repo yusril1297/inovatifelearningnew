@@ -55,32 +55,58 @@
                     </div>
                 </div>
             </div>
-            <a href="" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Instructor</a>
+            <a href="{{ route('frontend.instructor') }}" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Instructor</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
             @guest
-                <!-- Tampilkan tombol Login jika belum login -->
+                <!-- Show Login button if not logged in -->
                 <a href="{{ route('login') }}"
                    class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </a>
             @else
-                <!-- Tampilkan tombol Dashboard atau Profil jika sudah login -->
-                <a href="{{ route('dashboard') }}"
-                   class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:bg-green-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Dashboard <span aria-hidden="true">&rarr;</span>
-                </a>
+        
+                <!-- Profile Dropdown Trigger with Name and Picture -->
+                <div class="relative">
+                    <button type="button" class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none"
+                            onclick="toggleDropdown()">
+                        <span class="mr-2">{{ Auth::user()->name }}</span> <!-- User's Name -->
+                        <img src="{{ Auth::user()->profile_picture_url ?? 'path/to/default/avatar.jpg' }}" 
+                             alt="Profile Picture" 
+                             class="w-10 h-10 rounded-full">
+                    </button>
+        
+                    <!-- Dropdown Menu -->
+                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Courses</a>
+                        <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Log Out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
             @endguest
-
         </div>
 
-            <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700"
-                    onclick="event.preventDefault(); this.closest('form').submit();">
-                    Logout
-                    </a>
-                </form>
+        <script>
+            function toggleDropdown() {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('hidden');
+            }
+        
+            document.addEventListener('click', function(event) {
+                const dropdown = document.getElementById('profileDropdown');
+                const isDropdownButton = event.target.closest('button[onclick="toggleDropdown()"]');
+                if (!isDropdownButton && !dropdown.classList.contains('hidden')) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        </script>
+
     </nav>
 
     <!-- Mobile menu, show/hide based on menu open state. -->
