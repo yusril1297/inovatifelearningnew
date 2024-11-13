@@ -55,9 +55,20 @@ class User extends Authenticatable
 
     public function enrollments()
     {
-        return $this->hasMany(Enrollment::class, 'user_id');
+        return $this->hasMany(Enrollment::class);
     }
 
+    public function getProfilePictureUrlAttribute()
+    {
+    return $this->avatar 
+        ? asset('storage/' . $this->avatar) 
+        : asset('path/to/default/avatar.jpg'); // Ganti dengan path avatar default
+    }
+
+    public function enrolledCourses()
+    {
+        return $this->belongsToMany(Course::class, 'enrollments')->withTimestamps();
+    }
    
 
 }

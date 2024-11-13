@@ -2,7 +2,72 @@
 
 @section('content')
 
-<div class="flex flex-col gap-[10px] items-center">
+<div class="container">
+    @if ($enrollment && $enrollment->course)
+        <h2>Checkout - {{ $enrollment->course->title }}</h2>
+        <p>Amount: Rp{{ number_format($enrollment->course->price, 2) }}</p>
+
+        <button id="pay-button" class="btn btn-primary">Pay Now</button>
+    @else
+        <p>Enrollment information is missing or invalid. Please try enrolling again.</p>
+    @endif
+</div>
+
+
+<script type="text/javascript">
+    document.getElementById('pay-button').onclick = function () {
+        // Request the snap token for payment
+        fetch(`/payment/{{ $enrollment->id }}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to get snap token");
+            return response.json();
+        })
+        .then(data => {
+            if (!data.snap_token) throw new Error("Snap token not received");
+
+            // Trigger Snap UI for payment
+            window.snap.pay(data.snap_token, {
+                onSuccess: function(result){
+                    alert("Payment successful!");
+                    window.location.href = '/my-courses';
+                },
+                onPending: function(result){
+                    alert("Payment pending!");
+                },
+                onError: function(result){
+                    alert("Payment failed!");
+                },
+                onClose: function(){
+                    alert('You closed the payment popup without completing the payment');
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error.message));
+    };
+</script>
+
+
+
+
+{{-- 
+<script src="{{ asset('assets/js/main.js') }}"></script>  --}}
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('SB-Mid-client-7_tlUCmS2epo4gT-') }}"></script>
+
+@endsection
+
+
+
+
+
+
+
+{{-- <div class="flex flex-col gap-[10px] items-center">
     <div class="bg-gradient-to-r from-sky-100 to-blue-200 w-fit p-[8px_16px] rounded-full border border-[#adc7fe] flex items-center gap-[6px]">
         <div>
             <img src="{{ asset('assets/icon/medal-star.svg') }}" alt="icon">
@@ -116,7 +181,3 @@
     <img src="{{ asset('assets/background/alqowy.svg') }}" alt="background">
 </div>
 {{-- End Checkout --}}
-
-<script src="{{ asset('assets/js/main.js') }}"></script>
-
-@endsection

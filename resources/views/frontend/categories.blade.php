@@ -51,6 +51,21 @@
                                 </div>
                                 <p class="text-right text-[#6D7786]">{{ $course->students_count }} students</p>
                             </div>
+
+                            <div class="flex justify-between items-center">
+                                @auth
+                                    @if($course->enrollments->contains('user_id', auth()->id()))
+                                        <!-- Menampilkan "Joined" jika user sudah terdaftar -->
+                                        <p class="font-bold text-lg text-green-600">Joined</p>
+                                    @else
+                                        <!-- Menampilkan harga jika user belum terdaftar -->
+                                        <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p>
+                                    @endif
+                                @else
+                                    <!-- Menampilkan harga jika user belum login -->
+                                    <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p>
+                                @endauth
+                            </div>
                         </div>
                         <div class="flex items-center gap-2">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">

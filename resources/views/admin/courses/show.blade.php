@@ -31,7 +31,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('courses.uploadVideoForm', $course->id) }}" class="btn btn-sm btn-primary">Upload Video</a>
-                            <form action="{{ route('instructor.courses.deleteVideo', ['course' => $course->id, 'video' => $video->id]) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus video ini?');">
+                            <form action="{{ route('courses.deleteVideo', ['course' => $course->id, 'video' => $video->id]) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus video ini?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">Hapus Video</button>

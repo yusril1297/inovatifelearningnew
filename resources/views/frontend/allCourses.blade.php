@@ -45,11 +45,22 @@
                                     </div>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p> <!-- Harga -->
+                                    @auth
+                                        @if($course->enrollments->contains('user_id', auth()->id()))
+                                            <!-- Menampilkan "Joined" jika user sudah terdaftar -->
+                                            <p class="font-bold text-lg text-green-600">Joined</p>
+                                        @else
+                                            <!-- Menampilkan harga jika user belum terdaftar -->
+                                            <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p>
+                                        @endif
+                                    @else
+                                        <!-- Menampilkan harga jika user belum login -->
+                                        <p class="font-bold text-lg text-[#1F2937]">Rp {{ number_format($course->price, 0, ',', '.') }}</p>
+                                    @endauth
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/photo/photo1.png') }}" class="w-full h-full object-cover"
+                                        <img src="{{ asset('storage/' . $course->instructor->avatar) }}" class="w-full h-full object-cover"
                                             alt="icon">
                                     </div>
                                     <div class="flex flex-col">

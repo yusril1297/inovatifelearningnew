@@ -31,9 +31,16 @@
                     </div>
 
                     @forelse ($course->videos as $video)
-                    <div
-                        class="group p-[12px_16px] flex items-center gap-[10px] bg-[#3525B3]  rounded-full hover:bg-[#3525B3] transition-all duration-300">
-                        <div class="text-white group-hover:text-white transition-all duration-300">
+
+                    @php
+                        $videoId = Route::current()->parameter('video');
+                        $isActive = $videoId == $video->id;
+                    @endphp
+                        
+                  
+                        <div
+                        class="group p-[12px_16px] flex items-center gap-[10px] {{$isActive ? 'bg-[#3525B3]' : 'bg-[#E9EFF3]'}} rounded-full hover:bg-[#3525B3] transition-all duration-300">
+                        <div class="group-hover:text-white transition-all duration-300 {{$isActive ? 'text-white' : 'text-black'}}">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -41,9 +48,10 @@
                                     fill="currentColor" />
                             </svg>
                         </div>
-                        <a href="{{ route('frontend.learning',['course' => $course->slug, 'video' => $video->id])}}">
-                        <p class="font-semibold group-hover:text-white transition-all duration-300 text-white">
-                        {{$video->title}}</p>
+                        <a href="{{ route('frontend.learning',['course' => $course->slug, 'video' => $video->id]) }}">
+                            <p class="font-semibold group-hover:text-white transition-all duration-300 {{$isActive ? 'text-white' : 'text-black'}}">
+                                {{$video->title}}
+                            </p>
                         </a>
                     </div>
                     @empty
@@ -84,12 +92,7 @@
                 
             </div>
         </div>
-        <div class="max-w-[1100px] w-full mx-auto flex mt-5">
-            <a href=""
-                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                Buy Class
-            </a>
-        </div>
+       
         <div
             class="max-w-[1100px] w-full mx-auto mt-10 tablink-container flex gap-3 px-4 sm:p-0 no-scrollbar overflow-x-scroll">
             <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-blue-500"
@@ -167,7 +170,7 @@
                                 <div class="flex items-center gap-3">
                                     <a href=""
                                         class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/photo/photo1.png') }}"
+                                        <img src="{{ $course->instructor->profile_picture_url }}"
                                             class="w-full h-full object-cover" alt="photo">
                                     </a>
                                     <div class="flex flex-col gap-[2px]">

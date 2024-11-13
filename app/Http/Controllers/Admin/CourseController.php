@@ -197,20 +197,22 @@ class CourseController extends Controller
     {
         $this->authorizeAccess($course);
 
-        // Memastikan bahwa video yang dihapus benar-benar terkait dengan course yang diberikan
+        // Pastikan video terkait dengan course yang diberikan
         if ($video->course_id != $course->id) {
             abort(403, 'This video is not related to the course.');
         }
-
-        // Hapus file video jika ada
-        if ($video->filename && Storage::exists('public/videos/' . $video->filename)) {
-            Storage::delete('public/videos/' . $video->filename);
+    
+        // Periksa apakah file video ada dan hapus dari storage
+        if (!empty($video->filename) && Storage::exists('public/videos/' . $video->filename)) {
+            $deleted = Storage::delete('public/videos/' . $video->filename);
+            if (!$deleted) {
+                return redirect()->back()->withErrors(['msg' => 'Failed to delete video file.']);
+            }
         }
-
-        // Hapus data video dari database
+    
+        // Hapus video dari database
         $video->delete();
-
-        // Redirect kembali dengan pesan sukses
+    
         return redirect()->back()->with('success', 'Video deleted successfully.');
     }
 

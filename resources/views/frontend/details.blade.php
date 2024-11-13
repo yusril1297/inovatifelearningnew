@@ -16,8 +16,8 @@
                 <p class="font-bold text-lg text-black">{{ $courses->videos->count()}}</p>
                 <div class="flex flex-col gap-3">
                     <div
-                        class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
-                        <div class="text-black group-hover:text-white transition-all duration-300">
+                        class="group p-[12px_16px] flex items-center gap-[10px] bg-[#3525B3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
+                        <div class="text-white group-hover:text-white transition-all duration-300">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -86,10 +86,32 @@
             </div>
         </div>
         <div class="max-w-[1100px] w-full mx-auto flex mt-5">
-            <a href=""
-                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                Buy Class
-            </a>
+
+
+            <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
+                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                 Buy Class
+             </a>
+
+            {{-- @if ($courses->is_free || ($enrollment && $enrollment->status === 'active'))
+                <!-- Akses tombol jika sudah mendaftar atau kursus gratis -->
+                <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
+                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                    Access Course
+                </a>
+            @elseif ($enrollment)
+                <!-- Tombol untuk checkout jika enrollment ada namun belum aktif -->
+                <a href="{{ route('frontend.checkout', ['enrollmentId' => $enrollment ? $enrollment->id : null, 'course' => $courses->slug]) }}"
+                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                    Buy Class
+                </a>
+            @else
+                <!-- Tombol untuk checkout jika belum ada enrollment -->
+                <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
+                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                    Buy Class
+                </a>
+            @endif --}}
         </div>
         <div
             class="max-w-[1100px] w-full mx-auto mt-10 tablink-container flex gap-3 px-4 sm:p-0 no-scrollbar overflow-x-scroll">
@@ -168,7 +190,7 @@
                                 <div class="flex items-center gap-3">
                                     <a href=""
                                         class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/photo/photo1.png') }}"
+                                        <img src="{{ $courses->instructor->profile_picture_url }}"
                                             class="w-full h-full object-cover" alt="photo">
                                     </a>
                                     <div class="flex flex-col gap-[2px]">

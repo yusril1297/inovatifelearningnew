@@ -33,56 +33,68 @@ class FrontController extends Controller
         return view('frontend.categories', compact('categories'));
     }
 
-    public function details($slug) {
+    public function details($slug)
+    {
         $courses = Course::where('slug', $slug)->firstOrFail();
-        return view('frontend.details', compact('courses'));
+    
+        $enrollment = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $enrollment = $user->enrollments()
+                ->where('course_id', $courses->id)
+                ->first();
+        }
+    
+        return view('frontend.details', compact('courses', 'enrollment'));
     }
 
-    public function instructor() {
+        public function instructor() {
 
-        $instructors = User::where('role', 'instructor')->get();
-        return view('frontend.instructor', compact('instructors'));
-    }
+            $instructors = User::where('role', 1)  // Mengambil role 1 (instruktur)
+                        ->orWhere('role', 0) // Menambahkan role 0 (admin)
+                        ->get();
+            
+            return view('frontend.instructor', compact('instructors'));
+        }
 
     public function learning($courses, $video, ) {
 
        
-        // Ambil course berdasarkan slug
-    $course = Course::where('slug', $courses)->firstOrFail();
-    // Ambil video berdasarkan ID
-    $video = $course->videos()->where('id', $video)->firstOrFail();
-
-    // Periksa apakah user sudah login
-    $user = Auth::user();
-
-    if ($user) {
-        // Periksa apakah course gratis atau berbayar
-        if ($course->is_free) {
-            // Jika gratis, enroll user secara otomatis
-            $enrollment = $user->enrollments()->where('course_id', $course->id)->first();
-            if (!$enrollment) {
-                $user->enrollments()->create([
-                    'course_id' => $course->id,
-                    'status' => 'active', // Set status menjadi aktif
-                ]);
-            }
-        } else {
-            // Jika berbayar, periksa apakah user sudah terdaftar
-            $enrollment = $user->enrollments()->where('course_id', $course->id)->first();
-            if (!$enrollment) {
-                // Redirect ke halaman pembayaran atau informasi untuk mendaftar
-                return redirect()->route('frontend.checkout', ['course' => $course->slug]);
-            }
+      // Cek jika pengguna sudah login
+        if (!Auth::check()) {
+            return redirect('/login');
         }
 
-        return view('frontend.learning', compact('course', 'video'));
-    } else {
-        // Jika belum login, redirect ke halaman login
-        return redirect('/login');
+        $user = Auth::user();
+        $course = Course::where('slug', $courses)->firstOrFail();
+        $video = $course->videos()->where('id', $video)->firstOrFail();
+
+        // Cek apakah pengguna sudah terdaftar di course
+        $enrollment = $user->enrollments()->where('course_id', $course->id)->first();
+
+        // Jika course gratis dan pengguna belum terdaftar, enroll otomatis
+        if ($course->is_free && !$enrollment) {
+            $enrollment = $user->enrollments()->create([
+            'course_id' => $course->id,
+            'enrollment_date' => now(),
+            'status' => 'active',  // Automatically set status to active
+            'payment_method' => 'free',
+            'payable_amount' => 0,
+        ]);
+            return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $video->id]);
+        }
+
+        // Pastikan pengguna memiliki akses
+        if (!$course->is_free && (!$enrollment || $enrollment->status !== 'active')) {
+        // Redirect ke checkout
+            if (!$enrollment) {
+                return redirect()->route('frontend.checkout', ['course' => $course->slug]);
+            } else {
+                return redirect()->route('frontend.checkout', ['enrollmentId' => $enrollment->id]);
+        }
     }
 
-
-    }
-
+            return view('frontend.learning', compact('course', 'video', 'enrollment'));
     
+}
 }

@@ -1,9 +1,9 @@
 <header class="bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-            <a href="" class="-m-1.5 p-1.5">
+            <a href="{{ route('frontend.home') }}" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                <img class="h-8 w-auto" src="{{ asset('assets/photo/photo1.png') }}"
                     alt="">
             </a>
         </div>
@@ -71,23 +71,29 @@
                     <button type="button" class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none"
                             onclick="toggleDropdown()">
                         <span class="mr-2">{{ Auth::user()->name }}</span> <!-- User's Name -->
-                        <img src="{{ Auth::user()->profile_picture_url ?? 'path/to/default/avatar.jpg' }}" 
-                             alt="Profile Picture" 
-                             class="w-10 h-10 rounded-full">
+                        <img src="{{ Auth::user()->profile_picture_url }}" 
+                        alt="Profile Picture" 
+                        class="w-10 h-10 rounded-full">
                     </button>
         
                     <!-- Dropdown Menu -->
-                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
-                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Courses</a>
-                        <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
-                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Log Out
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            @csrf
-                        </form>
-                    </div>
+    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+        @if(Auth::user()->role == 0) <!-- Admin -->
+            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+        @elseif(Auth::user()->role == 1) <!-- Instructor -->
+            <a href="{{ route('instructor.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+        @else <!-- Student -->
+            <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Courses</a>
+        @endif
+        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Log Out
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+            @csrf
+        </form>
+    </div>
                 </div>
             @endguest
         </div>

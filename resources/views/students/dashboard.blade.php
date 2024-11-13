@@ -30,11 +30,11 @@
                             <li>
                                 <div class="text-center">
                                     <img class="rounded-full size-24 mx-auto"
-                                        src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                                        src="{{ Auth::user()->profile_picture_url }}"
                                         alt="Avatar">
                                     <div class="mt-2 sm:mt-4">
                                         <h3 class="font-medium text-gray-900">
-                                            David Forren
+                                            {{ Auth::user()->name }}
                                         </h3>
                                         <p class="text-sm text-gray-500">
                                             Student
@@ -44,99 +44,43 @@
                         </ul>
                     </form>
                     <!-- Product grid -->
+                    @foreach ($courses as $course)
                     <div class="course-card">
-                        <div
-                            class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
-                            <a href="" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                                <img src="{{ asset('assets/thumbnail/image.png') }}" class="w-full h-full object-cover"
-                                    alt="thumbnail">
+                        <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
+                            <a href="{{ route('frontend.details', $course->slug) }}" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
+                                @if($course->youtube_thumbnail_url)
+                                <iframe width="100%" height="100%" src="{{ $course->youtube_thumbnail_url }}?autoplay=0&mute=1" 
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                            @endif
                             </a>
                             <div class="flex flex-col px-4 gap-[32px]">
                                 <div class="flex flex-col gap-[10px]">
-                                    <a href=""
-                                        class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">Modern
-                                        JavaScript: Bikin Projek Website Seperti Twitter</a>
+                                    <a href="{{ route('frontend.details', $course->slug) }}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->title }}</a>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-[2px]">
+                                            @for($i = 0; $i < 5; $i++)
                                             <div>
                                                 <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
                                             </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
+                                            @endfor
                                         </div>
-                                        <p class="text-right text-[#6D7786]">41 students</p>
+                                        <p class="text-right text-[#6D7786]">{{ $course->enrollments->count() }} students</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/photo/photo1.png') }}" class="w-full h-full object-cover"
-                                            alt="icon">
+                                        <img src="{{ $course->instructor->profile_picture_url }}" class="w-full h-full object-cover" alt="instructor-avatar">
                                     </div>
                                     <div class="flex flex-col">
-                                        <p class="font-semibold">Angga Risky</p>
-                                        <p class="text-[#6D7786]">Full-Stack Developer</p>
+                                        <p class="font-semibold">{{ $course->instructor->name }}</p>
+                                        <p class="text-[#6D7786]">{{ $course->category->name }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="course-card">
-                        <div
-                            class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
-                            <a href="" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                                <img src="{{ asset('assets/thumbnail/image.png') }}" class="w-full h-full object-cover"
-                                    alt="thumbnail">
-                            </a>
-                            <div class="flex flex-col px-4 gap-[32px]">
-                                <div class="flex flex-col gap-[10px]">
-                                    <a href=""
-                                        class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">Modern
-                                        JavaScript: Bikin Projek Website Seperti Twitter</a>
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-[2px]">
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/icon/star.svg') }}" alt="star">
-                                            </div>
-                                        </div>
-                                        <p class="text-right text-[#6D7786]">41 students</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="{{ asset('assets/photo/photo1.png') }}" class="w-full h-full object-cover"
-                                            alt="icon">
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <p class="font-semibold">Angga Risky</p>
-                                        <p class="text-[#6D7786]">Full-Stack Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </section>
         </main>

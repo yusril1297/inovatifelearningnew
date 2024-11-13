@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\StudentDashboardController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,10 @@ Route::get('/categories{slug}', [FrontController::class, 'showCategories'])->nam
 Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('frontend.details');
 Route::get('/instructor', [FrontController::class, 'instructor'])->name('frontend.instructor');
 
-Route::get('/learning/{course}/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
+Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
+Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
+Route::post('/payment/notification', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
 
-Route::get('/checkout/{course}', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('frontend.checkout');
 
 
 // Route::get('/dashboard', function () {
@@ -81,6 +83,7 @@ Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.update.avatar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
