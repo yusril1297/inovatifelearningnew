@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,11 +22,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Mengirimkan kategori ke semua view layout yang memuat navbar
+       // View Composer untuk navbar
     View::composer('layouts.front.navbar', function ($view) {
         $categories = Category::all();
         $view->with('categories', $categories);
     });
+
+    // View Composer untuk footer
+    View::composer('layouts.front.footer', function ($view) {
+        $categories = Cache::rememberForever('categories', function () {
+            return Category::all();
+        });
+        $view->with('categories', $categories);
+    });
     }
+
+   
 
 }

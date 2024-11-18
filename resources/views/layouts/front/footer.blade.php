@@ -9,22 +9,13 @@
         <div class="flex flex-col gap-5">
             <p class="font-semibold text-lg text-white">Courses</p>
             <ul class="flex flex-col gap-[14px]">
+                @foreach ($categories as $category)
                 <li>
-                    <a href="" class="text-white hover:text-blue-500">HTML & CSS</a>
+                    <a href="{{ route('frontend.categories', $category->slug) }}" class="text-white hover:text-blue-500">{{ $category->name }}</a>
                 </li>
-                <li>
-                    <a href="" class="text-white hover:text-blue-500">Laravel</a>
-                </li>
-                <li>
-                    <a href="" class="text-white hover:text-blue-500">Python</a>
-                </li>
-                <li>
-                    <a href="" class="text-white hover:text-blue-500">React Js</a>
-                </li>
-                <li>
-                    <a href="" class="text-white hover:text-blue-500">Flutter</a>
-                </li>
+                @endforeach
             </ul>
+           
         </div>
         <div class="flex flex-col gap-5">
             <p class="font-semibold text-lg text-white">Company</p>

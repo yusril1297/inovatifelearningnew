@@ -25,9 +25,7 @@ Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('fronte
 Route::get('/instructor', [FrontController::class, 'instructor'])->name('frontend.instructor');
 Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetails'])->name('frontend.instructorDetails');
 
-Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
-Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
-Route::post('/payment/notification', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
+
 
 
 
@@ -37,6 +35,11 @@ Route::post('/payment/notification', [PaymentController::class, 'notificationHan
 
 Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
+
+    
+    Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
+    Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
+    Route::post('/payment/notification', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
 });
 
 //admin

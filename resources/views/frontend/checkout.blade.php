@@ -11,53 +11,59 @@
     @else
         <p>Enrollment information is missing or invalid. Please try enrolling again.</p>
     @endif
+   
 </div>
 
 
 <script type="text/javascript">
-    document.getElementById('pay-button').onclick = function () {
-        // Request the snap token for payment
-        fetch(`/payment/{{ $enrollment->id }}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        })
-        .then(response => {
-            if (!response.ok) throw new Error("Failed to get snap token");
-            return response.json();
-        })
-        .then(data => {
-            if (!data.snap_token) throw new Error("Snap token not received");
+  document.getElementById('pay-button').onclick = function () {
+    fetch(`/payment/{{ $enrollment->id }}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Failed to get snap token");
+        return response.json();
+    })
+    .then(data => {
+        if (!data.snap_token) {
+            alert("Snap token not received");
+            return;
+        }
 
-            // Trigger Snap UI for payment
-            window.snap.pay(data.snap_token, {
-                onSuccess: function(result){
-                    alert("Payment successful!");
-                    window.location.href = '/my-courses';
-                },
-                onPending: function(result){
-                    alert("Payment pending!");
-                },
-                onError: function(result){
-                    alert("Payment failed!");
-                },
-                onClose: function(){
-                    alert('You closed the payment popup without completing the payment');
-                }
-            });
-        })
-        .catch(error => console.error('Error:', error.message));
-    };
-</script>
+        window.snap.pay(data.snap_token, {
+            onSuccess: function(result){
+                alert("Payment successful!");
+                window.location.href = '/my-courses';
+            },
+            onPending: function(result){
+                alert("Payment pending!");
+            },
+            onError: function(result){
+                alert("Payment failed!");
+            },
+            onClose: function(){
+                alert('You closed the payment popup without completing the payment');
+            }
+        });
+    })
+    .catch(error => {
+        alert('Error: ' + error.message); // Berikan pesan jika error terjadi
+        console.error('Error:', error.message);
+    });
+};
+  </script>
 
 
 
 
 {{-- 
 <script src="{{ asset('assets/js/main.js') }}"></script>  --}}
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('SB-Mid-client-7_tlUCmS2epo4gT-') }}"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+
 
 @endsection
 

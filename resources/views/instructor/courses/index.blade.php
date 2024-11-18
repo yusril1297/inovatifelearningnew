@@ -62,7 +62,7 @@
 
                 <td>
                     <a href="{{ route('instructor.courses.show', $course->id) }}" class="btn btn-sm btn-info"><i class="ti ti-eye"></i></a>
-                    <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
+                    <a href="{{ route('instructor.courses.edit', $course->id) }}" class="btn btn-sm btn-warning"><i class="ti ti-pencil"></i></a>
                     <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')

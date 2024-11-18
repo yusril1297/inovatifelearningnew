@@ -11,8 +11,8 @@ use Midtrans\Config;
 use Midtrans\Notification;
 use App\Models\User;
 use App\Models\Course;
+use Exception;
 use Illuminate\Support\Facades\Auth;
-
 
 
 
@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
-    public function checkout(Request $request, Course $course)
+    public function checkout(Request $request, Course $course , Enrollment $enrollment)
     {
+
         // Validasi bahwa pengguna belum terdaftar pada course yang sama
         $enrollment = Enrollment::firstOrCreate([
             'user_id' => Auth::id(),
@@ -32,11 +33,12 @@ class PaymentController extends Controller
         ]);
     
         // Konfigurasi Midtrans
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        \Midtrans\Config::$isProduction = config('midtrans.is_production');
+        \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
         \Midtrans\Config::$clientKey = config('services.midtrans.client_key');
+        \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
+        
     
         // Parameter transaksi
         $transactionDetails = [
@@ -51,11 +53,15 @@ class PaymentController extends Controller
             'transaction_details' => $transactionDetails,
             'customer_details' => $customerDetails,
         ];
+        
+        
+       
+            $snapToken = Snap::getSnapToken($transaction);
+         
+        
+        
     
-        // Redirect ke halaman pembayaran Midtrans
-        $snapToken = \Midtrans\Snap::getSnapToken($transaction);
-    
-        return view('frontend.checkout', compact('snapToken', 'course'));
+        return view('frontend.checkout', compact('snapToken', 'course', 'enrollment'));
     }
 
     public function notificationHandler(Request $request)
