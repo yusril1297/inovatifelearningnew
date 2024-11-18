@@ -103,6 +103,7 @@ class Course extends Model
         return $this->hasMany(User::class, 'course_id', 'enrollments', 'user_id');
 
     }
+    
 
 
  

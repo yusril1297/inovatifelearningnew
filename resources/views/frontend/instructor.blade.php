@@ -20,7 +20,9 @@
             <div class="grow">
                 
                 <div>
+                    <a href="{{ route('frontend.instructorDetails', $instructor->id)}}">
                     <h3 class="font-medium text-gray-800 dark:text-neutral-600"> {{ $instructor->name}}</h3>
+                    </a>
                     <p class="mt-1 text-xs uppercase text-gray-500 dark:text-neutral-500">
                         Founder / CEO
                     </p>

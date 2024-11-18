@@ -23,6 +23,7 @@ Route::get('/all-courses', [FrontController::class, 'allCourses'])->name('fronte
 Route::get('/categories{slug}', [FrontController::class, 'showCategories'])->name('frontend.categories');
 Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('frontend.details');
 Route::get('/instructor', [FrontController::class, 'instructor'])->name('frontend.instructor');
+Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetails'])->name('frontend.instructorDetails');
 
 Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
 Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');

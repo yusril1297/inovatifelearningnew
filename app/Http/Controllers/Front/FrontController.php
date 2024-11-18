@@ -15,13 +15,13 @@ class FrontController extends Controller
 {
     public function index() {
 
-        $courses = Course::with(['category', 'enrollments'])->get();
+        $courses = Course::published()->with(['category', 'enrollments'])->get();
         return view('frontend.home ', compact('courses')); ;
     }
 
     public function allCourses() {
 
-        $courses = Course::with(['category', 'enrollments'])->get();
+        $courses = Course::published()->with(['category', 'enrollments'])->get();
         return view('frontend.allCourses', compact('courses'));
     }
 
@@ -29,8 +29,27 @@ class FrontController extends Controller
     public function showCategories($slug)
     {
    
-        $categories = Category::with('courses')->where('slug', $slug)->firstOrFail();
+        $categories = Category::where('slug', $slug)
+        ->with(['courses' => function ($query) {
+            $query->where('status', 'published');
+        }])
+        ->firstOrFail();
         return view('frontend.categories', compact('categories'));
+    }
+
+    public function instructorDetails($id, Course $courses){
+
+        
+         // Temukan instruktur berdasarkan ID
+         $instructor = User::with('courses')->findOrFail($id);
+
+        // Ambil kursus yang dibuat oleh instruktur dan berstatus published
+        $courses = Course::where('instructor_id', $instructor->id)
+                     ->where('status', 'published')
+                     ->with('category') // jika ingin memuat relasi kategori
+                     ->get();
+
+        return view('frontend.instructorDetails', compact('instructor', 'courses'));
     }
 
     public function details($slug)

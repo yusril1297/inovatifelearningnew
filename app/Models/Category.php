@@ -49,4 +49,6 @@ class Category extends Model
        return $query->where('slug', $slug);
    }
 
+ 
+
 }
