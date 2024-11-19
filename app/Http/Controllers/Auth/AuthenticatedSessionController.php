@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\setting;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,30 +18,31 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $settings = setting::first();
+        return view('auth.login', compact('settings'));
     }
 
     /**
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
-{
-    $request->authenticate();
-    $request->session()->regenerate();
+    {
+        $request->authenticate();
+        $request->session()->regenerate();
 
-    // Periksa role pengguna langsung dari field role
-    if ($request->user()->role === 'admin') {
-        return redirect()->route('admin.dashboard');
-    } elseif ($request->user()->role === 'instructor') {
-        return redirect()->route('instructor.dashboard');
-    } elseif ($request->user()->role === 'student') {
-        return redirect()->route('frontend.home');
+        // Periksa role pengguna langsung dari field role
+        if ($request->user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($request->user()->role === 'instructor') {
+            return redirect()->route('instructor.dashboard');
+        } elseif ($request->user()->role === 'student') {
+            return redirect()->route('frontend.home');
+        }
+
+        return redirect()->intended('/');
     }
 
-    return redirect()->intended('/');
-}
 
-        
 
     /**
      * Destroy an authenticated session.
@@ -51,7 +53,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->invalidate();
 
-        $request->session()->flush(); 
+        $request->session()->flush();
 
         $request->session()->regenerateToken();
 

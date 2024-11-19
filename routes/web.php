@@ -36,7 +36,7 @@ Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetai
 Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
 
-    
+
     Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
     Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
     Route::post('/payment/notification', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
@@ -56,6 +56,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('levels', LevelController::class);
     Route::resource('students', StudentController::class);
     Route::resource('enrollments', EnrollmentController::class);
+    Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'settings'])->name('settings');
+    Route::post('settings/update', [\App\Http\Controllers\Admin\SettingController::class, 'settingUpdate'])->name('settings.update');
 });
 
 //instructor
@@ -91,4 +93,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
