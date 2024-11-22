@@ -88,10 +88,12 @@
         <div class="max-w-[1100px] w-full mx-auto flex mt-5">
 
 
-            <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
-                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                 Buy Class
-             </a>
+            <a href="{{ $enrollment 
+            ? route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) 
+            : route('frontend.checkout', ['course' => $courses->slug]) }}"
+            class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+            {{ $enrollment ? 'Go to Class' : 'Buy Class' }}
+        </a>
 
             {{-- @if ($courses->is_free || ($enrollment && $enrollment->status === 'active'))
                 <!-- Akses tombol jika sudah mendaftar atau kursus gratis -->
