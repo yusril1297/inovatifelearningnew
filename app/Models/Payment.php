@@ -28,7 +28,7 @@ class Payment extends Model
 
     public function enrollment()
     {
-        return $this->belongsTo(Enrollment::class);
+        return $this->belongsTo(Enrollment::class, 'enrollment_id');
     }
 
     public function course()

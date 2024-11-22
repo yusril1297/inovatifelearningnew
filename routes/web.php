@@ -26,9 +26,6 @@ Route::get('/instructor', [FrontController::class, 'instructor'])->name('fronten
 Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetails'])->name('frontend.instructorDetails');
 
 
-
-
-
 // Route::get('/dashboard', function () {
 //     return view('students.dashboard');
 // })->middleware(['auth', 'verified', 'role:student'])->name('dashboard');
@@ -38,8 +35,7 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->gro
 
     
     Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
-    Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
-    Route::post('/payment/notification', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
+    
 });
 
 //admin
@@ -89,6 +85,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.update.avatar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
+        Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
 });
 
 require __DIR__.'/auth.php';

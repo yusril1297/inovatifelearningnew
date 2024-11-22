@@ -16,45 +16,32 @@
 
 
 <script type="text/javascript">
-  document.getElementById('pay-button').onclick = function () {
-    fetch(`/payment/{{ $enrollment->id }}`, {
-        method: 'POST',
-        headers: {
+ document.addEventListener('DOMContentLoaded', function () {
+    var payButton = document.getElementById('pay-button');
+    if (payButton) {
+        payButton.onclick = function () {
+            fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
+            method: 'POST',
+            headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
-    })
-    .then(response => {
-        if (!response.ok) throw new Error("Failed to get snap token");
-        return response.json();
-    })
-    .then(data => {
-        if (!data.snap_token) {
-            alert("Snap token not received");
-            return;
-        }
-
-        window.snap.pay(data.snap_token, {
-            onSuccess: function(result){
-                alert("Payment successful!");
-                window.location.href = '/my-courses';
-            },
-            onPending: function(result){
-                alert("Payment pending!");
-            },
-            onError: function(result){
-                alert("Payment failed!");
-            },
-            onClose: function(){
-                alert('You closed the payment popup without completing the payment');
             }
-        });
-    })
-    .catch(error => {
-        alert('Error: ' + error.message); // Berikan pesan jika error terjadi
-        console.error('Error:', error.message);
-    });
-};
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to get snap token');
+                }
+                return response.json();
+            })
+            .then(data => {
+                snap.pay(data.snapToken); // Gunakan snapToken untuk membuka popup Midtrans
+            })
+            .catch(error => {
+                console.error(error.message);
+            });
+        };
+    }
+});
   </script>
 
 

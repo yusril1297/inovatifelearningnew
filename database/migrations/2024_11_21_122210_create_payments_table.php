@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('enrollment_id')->constrained()->onDelete('cascade'); // Menghubungkan ke tabel enrollments
             $table->string('transaction_id')->unique(); 
             $table->string('order_id')->unique();
-            $table->string('payment_method'); 
+            $table->string('payment_method')->nullable(); 
             $table->decimal('amount', 10, 2); // Jumlah pembayaran
             $table->enum('status', ['pending', 'completed', 'failed', 'expired'])->default('pending'); 
             $table->timestamp('payment_date')->nullable(); 

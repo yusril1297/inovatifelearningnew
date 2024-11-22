@@ -10,6 +10,7 @@ class Enrollment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'order_id',
         'user_id',
         'course_id',
         'enrollment_date',
@@ -18,6 +19,9 @@ class Enrollment extends Model
         'status',
        
     ];
+
+    protected $table = 'enrollments';
+    protected $primaryKey = 'id'; 
 
     protected $casts = [
         'enrollment_date' => 'datetime', // Pastikan kolom ini di-cast sebagai datetime
@@ -35,6 +39,6 @@ class Enrollment extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasOne(Payment::class);
     }
 }
