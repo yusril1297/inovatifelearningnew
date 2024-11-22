@@ -10,52 +10,57 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
 use App\Models\User;
 use App\Models\Enrollment;
+use App\Models\setting;
 
 class FrontController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         $courses = Course::published()->with(['category', 'enrollments'])->get();
-        return view('frontend.home ', compact('courses')); ;
+        $settings = setting::first();
+        return view('frontend.home ', compact('courses', 'settings'));;
     }
 
-    public function allCourses() {
-
+    public function allCourses()
+    {
+        $settings = setting::first();
         $courses = Course::published()->with(['category', 'enrollments'])->get();
-        return view('frontend.allCourses', compact('courses'));
+        return view('frontend.allCourses', compact('courses', 'settings'));
     }
 
 
     public function showCategories($slug)
     {
-   
+        $settings = setting::first();
         $categories = Category::where('slug', $slug)
-        ->with(['courses' => function ($query) {
-            $query->where('status', 'published');
-        }])
-        ->firstOrFail();
-        return view('frontend.categories', compact('categories'));
+            ->with(['courses' => function ($query) {
+                $query->where('status', 'published');
+            }])
+            ->firstOrFail();
+        return view('frontend.categories', compact('categories', 'settings'));
     }
 
-    public function instructorDetails($id, Course $courses){
+    public function instructorDetails($id, Course $courses)
+    {
 
-        
-         // Temukan instruktur berdasarkan ID
-         $instructor = User::with('courses')->findOrFail($id);
+        $settings = setting::first();
+        // Temukan instruktur berdasarkan ID
+        $instructor = User::with('courses')->findOrFail($id);
 
         // Ambil kursus yang dibuat oleh instruktur dan berstatus published
         $courses = Course::where('instructor_id', $instructor->id)
-                     ->where('status', 'published')
-                     ->with('category') // jika ingin memuat relasi kategori
-                     ->get();
+            ->where('status', 'published')
+            ->with('category') // jika ingin memuat relasi kategori
+            ->get();
 
-        return view('frontend.instructorDetails', compact('instructor', 'courses'));
+        return view('frontend.instructorDetails', compact('instructor', 'courses', 'settings'));
     }
 
     public function details($slug)
     {
         $courses = Course::where('slug', $slug)->firstOrFail();
-    
+        $settings = setting::first();
         $enrollment = null;
         if (Auth::check()) {
             $user = Auth::user();
@@ -63,23 +68,25 @@ class FrontController extends Controller
                 ->where('course_id', $courses->id)
                 ->first();
         }
-    
-        return view('frontend.details', compact('courses', 'enrollment'));
+
+        return view('frontend.details', compact('courses', 'enrollment', 'settings'));
     }
 
-        public function instructor() {
+    public function instructor()
+    {
+        $settings = setting::first();
+        $instructors = User::where('role', 1)  // Mengambil role 1 (instruktur)
+            ->orWhere('role', 0) // Menambahkan role 0 (admin)
+            ->get();
 
-            $instructors = User::where('role', 1)  // Mengambil role 1 (instruktur)
-                        ->orWhere('role', 0) // Menambahkan role 0 (admin)
-                        ->get();
-            
-            return view('frontend.instructor', compact('instructors'));
-        }
+        return view('frontend.instructor', compact('instructors', 'settings'));
+    }
 
-    public function learning($courses, $video, ) {
+    public function learning($courses, $video,)
+    {
+        $settings = setting::first();
 
-       
-      // Cek jika pengguna sudah login
+        // Cek jika pengguna sudah login
         if (!Auth::check()) {
             return redirect('/login');
         }
@@ -94,26 +101,25 @@ class FrontController extends Controller
         // Jika course gratis dan pengguna belum terdaftar, enroll otomatis
         if ($course->is_free && !$enrollment) {
             $enrollment = $user->enrollments()->create([
-            'course_id' => $course->id,
-            'enrollment_date' => now(),
-            'status' => 'active',  // Automatically set status to active
-            'payment_method' => 'free',
-            'payable_amount' => 0,
-        ]);
-            return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $video->id]);
+                'course_id' => $course->id,
+                'enrollment_date' => now(),
+                'status' => 'active',  // Automatically set status to active
+                'payment_method' => 'free',
+                'payable_amount' => 0,
+            ]);
+            return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $video->id,]);
         }
 
         // Pastikan pengguna memiliki akses
         if (!$course->is_free && (!$enrollment || $enrollment->status !== 'active')) {
-        // Redirect ke checkout
+            // Redirect ke checkout
             if (!$enrollment) {
                 return redirect()->route('frontend.checkout', ['course' => $course->slug]);
             } else {
                 return redirect()->route('frontend.checkout', ['enrollmentId' => $enrollment->id]);
+            }
         }
-    }
 
-            return view('frontend.learning', compact('course', 'video', 'enrollment'));
-    
-}
+        return view('frontend.learning', compact('course', 'video', 'enrollment', 'settings'));
+    }
 }

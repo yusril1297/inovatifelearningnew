@@ -33,7 +33,7 @@ Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetai
 Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
 
-    
+
     Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
     
 });
@@ -52,6 +52,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('levels', LevelController::class);
     Route::resource('students', StudentController::class);
     Route::resource('enrollments', EnrollmentController::class);
+    Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'settings'])->name('settings');
+    Route::post('settings/update', [\App\Http\Controllers\Admin\SettingController::class, 'settingUpdate'])->name('settings.update');
 });
 
 //instructor
@@ -90,4 +92,4 @@ Route::middleware('auth')->group(function () {
         Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
