@@ -22,7 +22,17 @@ class DashboardController extends Controller
         $courses_count = DB::table('courses')->count();
         $enrollments_count = DB::table('enrollments')->count();
 
-        return view('admin.dashboard', compact('users', 'categories', 'courses', 'enrollments', 'users_count', 'courses_count', 'enrollments_count'));
+        $enrollmentsByMonth = DB::table('enrollments')
+        ->select(
+            DB::raw("DATE_FORMAT(enrollment_date, '%M') as month"),
+            DB::raw('COUNT(*) as total')
+        )
+        ->groupBy('month')
+        ->orderByRaw("MONTH(STR_TO_DATE(month, '%M'))")
+        ->get();
+
+
+        return view('admin.dashboard', compact('users', 'categories', 'courses', 'enrollments', 'users_count', 'courses_count', 'enrollments_count', 'enrollmentsByMonth'));
 }
 }
 
