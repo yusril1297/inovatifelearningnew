@@ -16,16 +16,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        //     'password' => bcrypt('12345678'),
-        // ]);
-
-        setting::create([
-            'name_cors' => 'SocioEdu',
-            'logo' => 'logo.png',
-            'path_logo' => 'uploads/logo.png',
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'role' => 1,
+            'password' => bcrypt('12345678'),
         ]);
+
+        // setting::create([
+        //     'name_cors' => 'SocioEdu',
+        //     'logo' => 'logo.png',
+        //     'path_logo' => 'uploads/logo.png',
+        // ]);
     }
 }
