@@ -18,14 +18,18 @@
                 </svg>
             </button>
         </div>
-        <div class="hidden lg:flex lg:gap-x-12 z-20" x-data="{ open: false }">
+    </div>
+    <a href="{{ route('frontend.instructor') }}"
+        class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 ml-4">Tentang Kami</a>
+</div>
+        <div class="hidden lg:flex lg:gap-x-16 z-20 ml-4" x-data="{ open: false }">
             <a href="{{ route('frontend.allCourses') }}"
-                class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">All Courses</a>
+                class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Semua Kelas</a>
             <div class="relative">
                 <button @click="open = ! open" type="button"
                     class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500"
                     aria-expanded="false">
-                    Courses
+                    Kelas
                     <svg class="h-5 w-5 flex-none text-gray-900" viewBox="0 0 20 20" fill="currentColor"
                         aria-hidden="true">
                         <path fill-rule="evenodd"

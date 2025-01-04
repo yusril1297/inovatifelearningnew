@@ -4,9 +4,9 @@
 
 <div class="font-[sans-serif] bg-gray-100">
     <div class="p-4 mx-auto lg:max-w-7xl sm:max-w-full">
-        <h2 class="flex items-center justify-center text-4xl font-extrabold mb-6 text-gray-800 dark:text-neutral-500">All
-            Course</h2>
-        <h3 class="flex items-center justify-center">Gain knowledge from experienced mentors with a budget-friendly cost.
+        <h2 class="flex items-center justify-center text-4xl font-extrabold mb-6 text-gray-800 dark:text-neutral-500">Semua
+            Kursus</h2>
+        <h3 class="flex items-center justify-center">Dapatkan pengetahuan dari mentor berpengalaman dengan biaya yang terjangkau.
         </h3>
 
         <!-- Product -->
