@@ -1,38 +1,50 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <h1>Manage Tags</h1>
-    <a href="{{ route('admin.tags.create') }}" class="btn btn-primary mb-3">Create New Tag</a>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+        <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
+            <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Tag List</h1>
+            <!-- Menampilkan pesan sukses -->
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
+                + Add New Tag
+            </a>
+        </div>
 
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($tags as $tag)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $tag->name }}</td>
-                    <td>
-                        <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.tags.destroy', $tag->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+        <div class="card-body bg-white rounded-xl shadow-lg p-4">
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-striped align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tags as $tag)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $tag->name }}</td>
+                                <td>
+                                    <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('admin.tags.destroy', $tag->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection

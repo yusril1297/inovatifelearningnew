@@ -1,58 +1,68 @@
 @extends('layouts.front')
 
 @section('content')
+    <div class="container mx-auto mt-10 max-w-lg">
+        @if ($enrollment && $enrollment->course)
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                    Checkout - {{ $enrollment->course->title }}
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Amount: <span
+                        class="font-semibold text-gray-900">Rp{{ number_format($enrollment->course->price, 2) }}</span>
+                </p>
 
-<div class="container">
-    @if ($enrollment && $enrollment->course)
-        <h2>Checkout - {{ $enrollment->course->title }}</h2>
-        <p>Amount: Rp{{ number_format($enrollment->course->price, 2) }}</p>
+                <button id="pay-button"
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md transition duration-300">
+                    Pay Now
+                </button>
+            </div>
+        @else
+            <div class="bg-red-100 text-red-800 p-4 rounded-lg shadow-md">
+                <p>Enrollment information is missing or invalid. Please try enrolling again.</p>
+            </div>
+        @endif
+    </div>
 
-        <button id="pay-button" class="btn btn-primary">Pay Now</button>
-    @else
-        <p>Enrollment information is missing or invalid. Please try enrolling again.</p>
-    @endif
-   
-</div>
 
-
-<script type="text/javascript">
- document.addEventListener('DOMContentLoaded', function () {
-    var payButton = document.getElementById('pay-button');
-    if (payButton) {
-        payButton.onclick = function () {
-            fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var payButton = document.getElementById('pay-button');
+            if (payButton) {
+                payButton.onclick = function() {
+                    fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to get snap token');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            snap.pay(data.snapToken); // Gunakan snapToken untuk membuka popup Midtrans
+                        })
+                        .catch(error => {
+                            console.error(error.message);
+                        });
+                };
             }
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to get snap token');
-                }
-                return response.json();
-            })
-            .then(data => {
-                snap.pay(data.snapToken); // Gunakan snapToken untuk membuka popup Midtrans
-            })
-            .catch(error => {
-                console.error(error.message);
-            });
-        };
-    }
-});
-  </script>
+        });
+    </script>
 
 
 
 
-{{-- 
+    {{-- 
 <script src="{{ asset('assets/js/main.js') }}"></script>  --}}
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
-
-
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('services.midtrans.client_key') }}"></script>
 @endsection
+
 
 
 

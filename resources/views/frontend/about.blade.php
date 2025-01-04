@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <!-- Banner Section -->
-    <div class="relative bg-cover bg-center h-64 mb-10" style="background-image: url('/path/to/banner-image.jpg');">
+    <div class="relative bg-blue-500 h-64 mb-10">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="text-center text-white">
                 <h1 class="text-3xl font-bold">Tentang Kami</h1>
