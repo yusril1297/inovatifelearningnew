@@ -81,6 +81,11 @@ class FrontController extends Controller
 
         return view('frontend.instructor', compact('instructors', 'settings'));
     }
+    public function about()
+{
+    $settings = setting::first(); // Mengambil pengaturan situs jika diperlukan
+    return view('frontend.about', compact('settings'));
+}
 
     public function learning($courses, $video,)
     {
