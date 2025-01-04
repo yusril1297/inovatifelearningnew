@@ -6,15 +6,19 @@
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 mb-10">
             <div class="relative mx-auto max-w-4xl grid space-y-5 sm:space-y-10">
                 <!-- Title -->
-                <div class="text-center">
-                    <h1
-                        class="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight dark:text-neutral-600">
-                        Best Professional Development <span class="text-blue-500">Resource in Indonesia</span>
+                <div class="text-center lg:text-left lg:max-w-1/2 lg:ml-12">
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-5">
+                        Belajar Bersama Mentor Berpengalaman
                     </h1>
-                    <p class="text-lg font-semibold text-gray-800 mt-5 dark:text-neutral-600 text-balance">
-                        Master today’s digital skills with industry leaders, receive personalized mentorship, and join a
-                        community rich in career opportunities!
+                    <p class="text-lg sm:text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-neutral-600 mb-12">
+                        Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
                     </p>
+                    <a href="" class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-2xl rounded-full">
+                        Belajar Sekarang
+                    </a>
+                </div>
+                <div class="hidden lg:block lg:w-1/2">
+                    <img src="../../dist/assets/img/foto/foto5.png" alt="foto5" class="w-full h-auto rounded-none lg:mr-8">
                 </div>
                 <!-- End Title -->
 
@@ -49,7 +53,7 @@
 
                     <div class="pt-5 sm:pt-0 sm:ps-5">
                         <div class="text-lg font-semibold text-gray-800 dark:text-neutral-200">Trust pilot</div>
-                        <div class="text-sm text-gray-500 dark:text-neutral-500">Rated best over 37k reviews</div>
+                        <div class="text-sm text-gray-500 dark:text-neutral-500">Dinilai terbaik dari 37k ulasan</div>
                     </div>
                 </div>
                 <!-- End Avatar Group -->
@@ -126,12 +130,12 @@
                 <div>
                     <img src="assets/icon/medal-star.svg" alt="icon">
                 </div>
-                <p class="font-medium text-sm text-[#1E90FF]">Popular Courses</p>
+                <p class="font-medium text-sm text-[#1E90FF]">Kelas Terpopuler</p>
             </div>
             <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px]">Don’t Missed It, Learn Now</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career
-                    this year</p>
+                <h2 class="font-bold text-[40px] leading-[60px]">Rekomendasi Kelas</h2>
+                {{-- <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career
+                    this year</p> --}}
             </div>
         </div>
         <div class="relative">
