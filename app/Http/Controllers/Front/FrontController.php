@@ -68,7 +68,7 @@ class FrontController extends Controller
                 ->where('course_id', $courses->id)
                 ->first();
         }
-
+        // dd($courses->videos);
         return view('frontend.details', compact('courses', 'enrollment', 'settings'));
     }
 

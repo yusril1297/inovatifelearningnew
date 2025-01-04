@@ -73,9 +73,10 @@
                         class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none"
                         onclick="toggleDropdown()">
                         <span class="mr-2">{{ Auth::user()->name }}</span> <!-- User's Name -->
-                        <img src="{{ Auth::user()->profile_picture_url }}" alt="Profile Picture"
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile Picture"
                             class="w-10 h-10 rounded-full">
                     </button>
+                    {{-- @dd(Auth::user()->avatar) --}}
 
                     <!-- Dropdown Menu -->
                     <div id="profileDropdown"
