@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit Setting:</h1>
+    <h1>Edit Pengaturan:</h1>
 
     <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Judul CORS</label>
-            <textarea name="name_cors" id="title" class="form-control">{{ $data->name_cors ?? 'Default Name' }}</textarea>
+            <textarea name="name_cors" id="title" class="form-control">{{ $data->name_cors ?? 'Nama Default' }}</textarea>
             @error('name_cors')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
@@ -18,7 +18,7 @@
             <img src="{{ asset($data->path_logo ?? 'uploads/default-logo.png') }}" class="preview" style="width: 100px;">
             <div class="custom-file">
                 <input type="file" accept=".png, .jpg, .jpeg" name="logo" onchange="previewImg()" class="form-control">
-                <label class="custom-file-label" for="customFile">Choose file</label>
+                <label class="custom-file-label" for="customFile">Pilih file</label>
             </div>
             @error('logo')
                 <span class="text-danger">{{ $message }}</span>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="d-flex justify-content-end mt-4">
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Perbarui</button>
         </div>
     </form>
 </div>
@@ -45,5 +45,3 @@
     }
 </script>
 @endsection
-
-

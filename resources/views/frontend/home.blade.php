@@ -123,6 +123,44 @@
           }
           ```
         -->
+        {{--  --}}
+        <div class="container mx-auto py-10">
+            <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="/path/to/rating-icon.svg" alt="Rating Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Rating</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemonstrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="/path/to/satisfaction-icon.svg" alt="Kepuasan Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Kepuasan</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                    Kami selalu berusaha memberikan yang terbaik untuk memastikan kepuasan Anda. Dengan layanan yang berkualitas dan dukungan yang responsif, kami siap membantu Anda mencapai tujuan belajar Anda.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="/path/to/finance-icon.svg" alt="Finance Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Finance</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemonstrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        {{--  --}}
     <section id="Popular-Courses"
         class="max-w-[1200px] mx-auto flex flex-col p-[70px_82px_0px] gap-[30px] bg-[#f5f7fa] rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">

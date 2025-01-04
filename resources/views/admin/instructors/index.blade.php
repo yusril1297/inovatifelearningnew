@@ -1,11 +1,11 @@
 @extends('admin.dashboard')
 
-@section('title', 'Instructor')
+@section('title', 'Instruktur')
 
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class=" bg-white rounded-xl shadow-lg p-4 flex flex-col ">
-    <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Instructor</h1>
+    <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Instruktur</h1>
 
      <!-- Menampilkan pesan sukses -->
      @if(session('success'))
@@ -20,10 +20,10 @@
         <thead class="table-light">
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Nama</th>
                 <th>Email</th>
-                <th>Total Course</th>
-                <th>Action</th>
+                <th>Total Kursus</th>
+                <th>Aksi</th>
             </tr>
         </thead>
 
@@ -40,7 +40,7 @@
                         <form action="{{ route('admin.instructors.destroy', $instructor->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
+                            <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin?')"><i class="ti ti-trash"></i></button>
                         </form>
                     </td>
                 </tr>

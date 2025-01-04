@@ -1,10 +1,10 @@
 @extends('admin.dashboard')
 
-@section('title', 'Edit Category')
+@section('title', 'Edit Kategori')
 
 @section('content')
 <div class="container">
-    <h1 class=" text-end mb-5">Edit Category</h1>
+    <h1 class=" text-end mb-5">Edit Kategori</h1>
 
     <!-- Menampilkan pesan error jika validasi gagal -->
     @if ($errors->any())
@@ -23,7 +23,7 @@
             @method('PUT')
 
             <div class="form-group mb-3">
-                <label for="nama" class="form-label">Name</label>
+                <label for="nama" class="form-label">Nama</label>
                 <input type="text" class="form-control solid-input" id="nama" name="nama" value="{{ old('nama', $category->name) }}" required>
             </div>
 
@@ -33,7 +33,7 @@
             </div> --}}
 
             <div class="form-group mb-3">
-                <label for="icon" class="form-label">Icon (Optional)</label>
+                <label for="icon" class="form-label">Ikon (Opsional)</label>
                 @if ($category->icon)
                     <div class="mb-2">
                         <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px;">
@@ -43,8 +43,8 @@
             </div>
 
             <div class="d-flex justify-content-end mt-4">
-                <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary me-2">Back</a>
-                <button type="submit" class="btn btn-primary">Update Category</button>
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary me-2">Kembali</a>
+                <button type="submit" class="btn btn-primary">Update Kategori</button>
             </div>
         </form>
     </div>

@@ -24,7 +24,7 @@ Route::get('/categories{slug}', [FrontController::class, 'showCategories'])->nam
 Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('frontend.details');
 Route::get('/instructor', [FrontController::class, 'instructor'])->name('frontend.instructor');
 Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetails'])->name('frontend.instructorDetails');
-
+Route::get('/about', [FrontController::class, 'about'])->name('frontend.about');
 
 // Route::get('/dashboard', function () {
 //     return view('students.dashboard');

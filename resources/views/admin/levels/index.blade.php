@@ -2,13 +2,12 @@
 
 @section('content')
 <div class="container">
-    <h1>Manage Levels</h1>
-    <a href="{{ route('admin.levels.create') }}" class="btn btn-primary mb-3">Create New Level</a>
+    <h1>Kelola Tingkatan</h1>
+    <a href="{{ route('admin.levels.create') }}" class="btn btn-primary mb-3">Buat Tingkatan Baru</a>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
 
     <div class="card card-body ">
         <div class="table-responsive">
@@ -16,8 +15,8 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>Nama</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +29,7 @@
                         <form action="{{ route('admin.levels.destroy', $level->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="ti ti-trash"></i></button>
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin?')"><i class="ti ti-trash"></i></button>
                         </form>
                     </td>
                 </tr>

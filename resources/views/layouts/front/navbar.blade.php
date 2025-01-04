@@ -19,7 +19,7 @@
             </button>
         </div>
     </div>
-    <a href="{{ route('frontend.instructor') }}"
+    <a href="{{ route('frontend.about') }}"
         class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 ml-4">Tentang Kami</a>
 </div>
         <div class="hidden lg:flex lg:gap-x-16 z-20 ml-4" x-data="{ open: false }">

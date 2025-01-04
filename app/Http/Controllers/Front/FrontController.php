@@ -29,7 +29,11 @@ class FrontController extends Controller
         return view('frontend.allCourses', compact('courses', 'settings'));
     }
 
-
+    public function about()
+    {
+        $settings = setting::first(); // Mengambil pengaturan situs jika diperlukan
+        return view('frontend.about', compact('settings'));
+    }
     public function showCategories($slug)
     {
         $settings = setting::first();
