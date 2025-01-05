@@ -2,20 +2,21 @@
 
 @section('content')
   <!-- Hero -->
+<!-- Hero -->
 <div class="overflow-hidden">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div class="relative mx-auto max-w-5xl grid lg:grid-cols-2 gap-10 items-center">
+    <div class="max-w-[70rem] mx-auto px-4 sm:px-6 lg:px-8 py-28">
+      <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
         <!-- Text Content -->
         <div class="lg:ml-12">
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
             Belajar Bersama Mentor Berpengalaman
           </h1>
-          <p class="text-lg sm:text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
+          <p class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
             Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
           </p>
           <div class="flex items-center gap-4">
             <a href="#"
-              class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-2xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+              class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -25,9 +26,9 @@
         </div>
   
         <!-- Image -->
-        <div class="flex justify-center lg:justify-end">
-          <img src="https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg?t=st=1736071093~exp=1736074693~hmac=d2757ad01af80b027ae49059f98489fb5b33477a74d62e616f78cc5167af15be&w=996"
-            alt="Gambar Belajar" class="max-w-full h-auto rounded-lg shadow-lg">
+        <div class="justify-center lg:justify-end">
+          <img src="assets/icon/foto5.png"
+            alt="Gambar Belajar" class="max-w-full h-auto rounded-lg">
         </div>
       </div>
   
