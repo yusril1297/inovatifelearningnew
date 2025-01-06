@@ -35,7 +35,6 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->gro
 
 
     Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
-    
 });
 
 //admin
@@ -64,8 +63,11 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 
     Route::resource('courses', CourseController::class);
     Route::get('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadVideoForm'])->name('courses.uploadVideoForm');
+    Route::get('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadPdfForm'])->name('courses.uploadPdfForm');
     Route::post('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'uploadVideo'])->name('courses.uploadVideo');
+    Route::post('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'uploadPdf'])->name('courses.uploadPdf');
     Route::delete('courses/{course}/video/{video}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteVideo'])->name('courses.deleteVideo');
+    Route::delete('courses/{course}/pdf/{pdf}', [\App\Http\Controllers\Admin\CourseController::class, 'deletePdf'])->name('courses.deletePdf');
     Route::resource('students', StudentController::class);
 });
 
@@ -75,8 +77,11 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function () {
     Route::resource('courses', CourseController::class);
     Route::get('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadVideoForm'])->name('courses.uploadVideoForm');
+    Route::get('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadPdfForm'])->name('courses.uploadPdfForm');
     Route::post('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'uploadVideo'])->name('courses.uploadVideo');
+    Route::post('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'uploadPdf'])->name('courses.uploadPdf');
     Route::delete('courses/{course}/video/{video}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteVideo'])->name('courses.deleteVideo');
+    Route::delete('courses/{course}/pdf/{pdf}', [\App\Http\Controllers\Admin\CourseController::class, 'deletePdf'])->name('courses.deletePdf');
     Route::resource('students', StudentController::class);
 });
 
@@ -89,7 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
-        Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
+    Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
 });
 
 require __DIR__ . '/auth.php';
