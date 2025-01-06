@@ -1,113 +1,66 @@
 @extends('layouts.front')
 
 @section('content')
-    <!-- Hero -->
-    <div class="overflow-hidden">
-        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 mb-10">
-            <div class="relative mx-auto max-w-4xl grid space-y-5 sm:space-y-10">
-                <!-- Title -->
-                <div class="text-center lg:text-left lg:max-w-1/2 lg:ml-12">
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-5">
-                        Belajar Bersama Mentor Berpengalaman
-                    </h1>
-                    <p class="text-lg sm:text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-neutral-600 mb-12">
-                        Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
-                    </p>
-                    <a href="" class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-2xl rounded-full">
-                        Belajar Sekarang
-                    </a>
-                </div>
-                <div class="hidden lg:block lg:w-1/2">
-                    <img src="../../dist/assets/img/foto/foto5.png" alt="foto5" class="w-full h-auto rounded-none lg:mr-8">
-                </div>
-                <!-- End Title -->
-
-                <!-- Avatar Group -->
-                <div class="sm:flex sm:justify-center sm:items-center text-center sm:text-start">
-                    <div class="shrink-0 pb-5 sm:flex sm:pb-0 sm:pe-5">
-                        <!-- Avatar Group -->
-                        <div class="flex justify-center -space-x-3">
-                            <img class="inline-block size-8 rounded-full ring-2 ring-white dark:ring-neutral-900"
-                                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                alt="Avatar">
-                            <img class="inline-block size-8 rounded-full ring-2 ring-white dark:ring-neutral-900"
-                                src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                alt="Avatar">
-                            <img class="inline-block size-8 rounded-full ring-2 ring-white dark:ring-neutral-900"
-                                src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80"
-                                alt="Avatar">
-                            <img class="inline-block size-8 rounded-full ring-2 ring-white dark:ring-neutral-900"
-                                src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-                                alt="Avatar">
-                            <span
-                                class="inline-flex items-center justify-center size-8 rounded-full ring-2 ring-white bg-gray-800 dark:bg-neutral-900 dark:ring-neutral-900">
-                                <span class="text-xs font-medium leading-none text-white uppercase">7k+</span>
-                            </span>
-                        </div>
-                        <!-- End Avatar Group -->
-                    </div>
-
-                    <div
-                        class="border-t sm:border-t-0 sm:border-s border-gray-200 w-32 h-px sm:w-auto sm:h-full mx-auto sm:mx-0 dark:border-neutral-700">
-                    </div>
-
-                    <div class="pt-5 sm:pt-0 sm:ps-5">
-                        <div class="text-lg font-semibold text-gray-800 dark:text-neutral-200">Trust pilot</div>
-                        <div class="text-sm text-gray-500 dark:text-neutral-500">Dinilai terbaik dari 37k ulasan</div>
-                    </div>
-                </div>
-                <!-- End Avatar Group -->
-
-                <!-- Form -->
-                {{-- <form>
-                    <div class="flex items-center justify-center">
-                        <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                            href="#">
-                            Get started
-                        </a>
-                    </div>
-                </form> --}}
-                <!-- End Form -->
-
-                <!-- SVG Element -->
-                <div class="hidden absolute top-2/4 start-0 transform -translate-y-2/4 -translate-x-40 md:block lg:-translate-x-80"
-                    aria-hidden="true">
-                    <svg class="w-52 h-auto" width="717" height="653" viewBox="0 0 717 653" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M170.176 228.357C177.176 230.924 184.932 227.329 187.498 220.329C190.064 213.329 186.47 205.574 179.47 203.007L170.176 228.357ZM98.6819 71.4156L85.9724 66.8638L85.8472 67.2136L85.7413 67.5698L98.6819 71.4156ZM336.169 77.9736L328.106 88.801L328.288 88.9365L328.475 89.0659L336.169 77.9736ZM616.192 128.685C620.658 122.715 619.439 114.254 613.469 109.788L516.183 37.0035C510.213 32.5371 501.753 33.756 497.286 39.726C492.82 45.696 494.039 54.1563 500.009 58.6227L586.485 123.32L521.788 209.797C517.322 215.767 518.541 224.227 524.511 228.694C530.481 233.16 538.941 231.941 543.407 225.971L616.192 128.685ZM174.823 215.682C179.47 203.007 179.475 203.009 179.48 203.011C179.482 203.012 179.486 203.013 179.489 203.014C179.493 203.016 179.496 203.017 179.498 203.018C179.501 203.019 179.498 203.018 179.488 203.014C179.469 203.007 179.425 202.99 179.357 202.964C179.222 202.912 178.991 202.822 178.673 202.694C178.035 202.437 177.047 202.026 175.768 201.456C173.206 200.314 169.498 198.543 165.106 196.099C156.27 191.182 144.942 183.693 134.609 173.352C114.397 153.124 97.7311 122.004 111.623 75.2614L85.7413 67.5698C68.4512 125.748 89.856 166.762 115.51 192.436C128.11 205.047 141.663 213.953 151.976 219.692C157.158 222.575 161.591 224.698 164.777 226.118C166.371 226.828 167.659 227.365 168.578 227.736C169.038 227.921 169.406 228.065 169.675 228.168C169.809 228.22 169.919 228.261 170.002 228.293C170.044 228.309 170.08 228.322 170.109 228.333C170.123 228.338 170.136 228.343 170.147 228.347C170.153 228.349 170.16 228.352 170.163 228.353C170.17 228.355 170.176 228.357 174.823 215.682ZM111.391 75.9674C118.596 55.8511 137.372 33.9214 170.517 28.6833C204.135 23.3705 255.531 34.7533 328.106 88.801L344.233 67.1462C268.876 11.0269 210.14 -4.91361 166.303 2.01428C121.993 9.01681 95.9904 38.8917 85.9724 66.8638L111.391 75.9674ZM328.475 89.0659C398.364 137.549 474.018 153.163 607.307 133.96L603.457 107.236C474.34 125.837 406.316 110.204 343.864 66.8813L328.475 89.0659Z"
-                            fill="currentColor" class="fill-gray-800 dark:fill-white" />
-                        <path
-                            d="M17.863 238.22C10.4785 237.191 3.6581 242.344 2.62917 249.728C1.60024 257.113 6.75246 263.933 14.137 264.962L17.863 238.22ZM117.548 265.74L119.421 252.371L119.411 252.37L117.548 265.74ZM120.011 466.653L132.605 471.516L132.747 471.147L132.868 470.771L120.011 466.653ZM285.991 553.767C291.813 549.109 292.756 540.613 288.098 534.792L212.193 439.92C207.536 434.098 199.04 433.154 193.218 437.812C187.396 442.47 186.453 450.965 191.111 456.787L258.582 541.118L174.251 608.589C168.429 613.247 167.486 621.742 172.143 627.564C176.801 633.386 185.297 634.329 191.119 629.672L285.991 553.767ZM14.137 264.962L115.685 279.111L119.411 252.37L17.863 238.22L14.137 264.962ZM115.675 279.11C124.838 280.393 137.255 284.582 145.467 291.97C149.386 295.495 152.093 299.505 153.39 304.121C154.673 308.691 154.864 314.873 152.117 323.271L177.779 331.665C181.924 318.993 182.328 307.301 179.383 296.818C176.451 286.381 170.485 278.159 163.524 271.897C149.977 259.71 131.801 254.105 119.421 252.371L115.675 279.11ZM152.117 323.271C138.318 365.454 116.39 433.697 107.154 462.535L132.868 470.771C142.103 441.936 164.009 373.762 177.779 331.665L152.117 323.271ZM107.417 461.79C103.048 473.105 100.107 491.199 107.229 508.197C114.878 526.454 132.585 539.935 162.404 543.488L165.599 516.678C143.043 513.99 135.175 505.027 132.132 497.764C128.562 489.244 129.814 478.743 132.605 471.516L107.417 461.79ZM162.404 543.488C214.816 549.734 260.003 554.859 276.067 556.643L279.047 529.808C263.054 528.032 217.939 522.915 165.599 516.678L162.404 543.488Z"
-                            fill="currentColor" class="fill-orange-500" />
-                        <path
-                            d="M229.298 165.61C225.217 159.371 216.85 157.621 210.61 161.702C204.371 165.783 202.621 174.15 206.702 180.39L229.298 165.61ZM703.921 410.871C711.364 410.433 717.042 404.045 716.605 396.602L709.47 275.311C709.032 267.868 702.643 262.189 695.2 262.627C687.757 263.065 682.079 269.454 682.516 276.897L688.858 384.71L581.045 391.052C573.602 391.49 567.923 397.879 568.361 405.322C568.799 412.765 575.187 418.444 582.63 418.006L703.921 410.871ZM206.702 180.39C239.898 231.14 343.567 329.577 496.595 322.758L495.394 295.785C354.802 302.049 259.09 211.158 229.298 165.61L206.702 180.39ZM496.595 322.758C567.523 319.598 610.272 335.61 637.959 353.957C651.944 363.225 662.493 373.355 671.17 382.695C675.584 387.447 679.351 391.81 683.115 396.047C686.719 400.103 690.432 404.172 694.159 407.484L712.097 387.304C709.691 385.166 706.92 382.189 703.298 378.113C699.837 374.217 695.636 369.362 690.951 364.319C681.43 354.07 669.255 342.306 652.874 331.451C619.829 309.553 571.276 292.404 495.394 295.785L496.595 322.758Z"
-                            fill="currentColor" class="fill-cyan-500" />
-                    </svg>
-                </div>
-                <!-- End SVG Element -->
-
-                <!-- SVG Element -->
-                <div class="hidden absolute top-2/4 end-0 transform -translate-y-2/4 translate-x-40 md:block lg:translate-x-80"
-                    aria-hidden="true">
-                    <svg class="w-72 h-auto" width="1115" height="636" viewBox="0 0 1115 636" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0.990203 279.321C-1.11035 287.334 3.68307 295.534 11.6966 297.634L142.285 331.865C150.298 333.965 158.497 329.172 160.598 321.158C162.699 313.145 157.905 304.946 149.892 302.845L33.8132 272.418L64.2403 156.339C66.3409 148.326 61.5475 140.127 53.5339 138.026C45.5204 135.926 37.3213 140.719 35.2207 148.733L0.990203 279.321ZM424.31 252.289C431.581 256.26 440.694 253.585 444.664 246.314C448.635 239.044 445.961 229.931 438.69 225.96L424.31 252.289ZM23.0706 296.074C72.7581 267.025 123.056 230.059 187.043 212.864C249.583 196.057 325.63 198.393 424.31 252.289L438.69 225.96C333.77 168.656 249.817 164.929 179.257 183.892C110.144 202.465 54.2419 243.099 7.92943 270.175L23.0706 296.074Z"
-                            fill="currentColor" class="fill-orange-500" />
-                        <path
-                            d="M451.609 382.417C446.219 388.708 446.95 398.178 453.241 403.567L555.763 491.398C562.054 496.788 571.524 496.057 576.913 489.766C582.303 483.474 581.572 474.005 575.281 468.615L484.15 390.544L562.222 299.413C567.612 293.122 566.881 283.652 560.59 278.263C554.299 272.873 544.829 273.604 539.44 279.895L451.609 382.417ZM837.202 559.655C841.706 566.608 850.994 568.593 857.947 564.09C864.9 559.586 866.885 550.298 862.381 543.345L837.202 559.655ZM464.154 407.131C508.387 403.718 570.802 395.25 638.136 410.928C704.591 426.401 776.318 465.66 837.202 559.655L862.381 543.345C797.144 442.631 718.724 398.89 644.939 381.709C572.033 364.734 504.114 373.958 461.846 377.22L464.154 407.131Z"
-                            fill="currentColor" class="fill-cyan-500" />
-                        <path
-                            d="M447.448 0.194357C439.203 -0.605554 431.87 5.43034 431.07 13.6759L418.035 148.045C417.235 156.291 423.271 163.623 431.516 164.423C439.762 165.223 447.095 159.187 447.895 150.942L459.482 31.5025L578.921 43.0895C587.166 43.8894 594.499 37.8535 595.299 29.6079C596.099 21.3624 590.063 14.0296 581.818 13.2297L447.448 0.194357ZM1086.03 431.727C1089.68 439.166 1098.66 442.239 1106.1 438.593C1113.54 434.946 1116.62 425.96 1112.97 418.521L1086.03 431.727ZM434.419 24.6572C449.463 42.934 474.586 81.0463 521.375 116.908C568.556 153.07 637.546 187.063 742.018 200.993L745.982 171.256C646.454 157.985 582.444 125.917 539.625 93.0974C496.414 59.978 474.537 26.1903 457.581 5.59138L434.419 24.6572ZM742.018 200.993C939.862 227.372 1054.15 366.703 1086.03 431.727L1112.97 418.521C1077.85 346.879 956.138 199.277 745.982 171.256L742.018 200.993Z"
-                            fill="currentColor" class="fill-gray-800 dark:fill-white" />
-                    </svg>
-                </div>
-                <!-- End SVG Element -->
-            </div>
+  <!-- Hero -->
+<!-- Hero -->
+<div class="overflow-hidden">
+    <div class="max-w-[70rem] mx-auto px-4 sm:px-6 lg:px-8 py-28">
+      <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
+        <!-- Text Content -->
+        <div class="lg:ml-12">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+            Belajar Bersama Mentor Berpengalaman
+          </h1>
+          <p class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
+            Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="{{ route('frontend.allCourses') }}"
+              class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+              Belajar Sekarang
+            </a>
+          </div>
         </div>
+  
+        <!-- Image -->
+        <div class="justify-center lg:justify-end">
+          <img src="assets/icon/foto5.png"
+            alt="Gambar Belajar" class="max-w-full h-auto rounded-lg">
+        </div>
+      </div>
+  
+      <!-- Avatar Group -->
+      <div class="mt-16 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 text-center sm:text-left">
+        <div class="flex items-center -space-x-3 justify-center sm:justify-start">
+          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
+            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+            alt="Avatar">
+          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
+            src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+            alt="Avatar">
+          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
+            src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80"
+            alt="Avatar">
+          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
+            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+            alt="Avatar">
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full ring-2 ring-white bg-gray-800 dark:bg-neutral-900 dark:ring-neutral-900 text-white text-xs font-medium">
+            7k+
+          </span>
+        </div>
+        <div class="text-gray-800 dark:text-neutral-200">
+          <div class="font-semibold text-lg">Trust pilot</div>
+          <div class="text-sm text-gray-500 dark:text-neutral-500">Dinilai terbaik dari 37k ulasan</div>
+        </div>
+      </div>
     </div>
-    <!-- End Hero -->
+  </div>
+  <!-- End Hero -->
+  
 
     <!--
           This example requires some changes to your config:
@@ -123,20 +76,59 @@
           }
           ```
         -->
+        {{--  --}}
+        <div class="container mx-auto py-10">
+            <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn-icons-png.freepik.com/256/12377/12377209.png?semt=ais_hybrid" alt="Rating Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Rating</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemonstrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn-icons-png.flaticon.com/128/1165/1165771.png" alt="Kepuasan Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Kepuasan</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                    Kami selalu berusaha memberikan yang terbaik untuk memastikan kepuasan Anda. Dengan layanan yang berkualitas dan dukungan yang responsif, kami siap membantu Anda mencapai tujuan belajar Anda.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="border rounded-lg shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135727.png" alt="Finance Icon" class="w-12 h-12 mr-4">
+                        <h3 class="text-lg font-semibold">Finance</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                    Finance adalah aspek penting dalam kehidupan kita. Mengelola keuangan dengan baik dapat membantu mencapai tujuan finansial, seperti membeli rumah, pendidikan anak, atau pensiun yang nyaman. Dengan pemahaman yang baik tentang keuangan, kita dapat membuat keputusan yang lebih bijak, menghindari utang yang tidak perlu, dan memastikan masa depan yang lebih stabil dan aman.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        {{--  --}}
     <section id="Popular-Courses"
         class="max-w-[1200px] mx-auto flex flex-col p-[70px_82px_0px] gap-[30px] bg-[#f5f7fa] rounded-[32px]">
         <div class="flex flex-col gap-[30px] items-center text-center">
+            <div class="flex flex-col">
+                <h2 class="font-bold text-[40px] leading-[60px]">Rekomendasi Kelas</h2>
+                {{-- <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career
+                    this year</p> --}}
+            </div>
             <div class="bg-gradient-to-r from-sky-100 to-blue-200 w-fit p-[8px_16px] rounded-full border border-[#adc7fe] flex items-center gap-[6px]">
                 <div>
                     <img src="assets/icon/medal-star.svg" alt="icon">
                 </div>
                 <p class="font-medium text-sm text-[#1E90FF]">Kelas Terpopuler</p>
             </div>
-            <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px]">Rekomendasi Kelas</h2>
-                {{-- <p class="text-[#6D7786] text-lg -tracking-[2%]">Catching up the on demand skills and high paying career
-                    this year</p> --}}
-            </div>
+            
         </div>
         <div class="relative">
             <button class="btn-prev absolute rotate-180 -left-[52px] top-[216px]">
@@ -198,25 +190,65 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 @endforeach
             </div>
+            
         </div>
 
         @else
     <p>No courses available</p>
         @endif
+
     </section>
 
-
+    <div class="flex justify-center mt-10">
+        <a href="{{ route('frontend.allCourses') }}" class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-2xl rounded-full">
+            Semua Kelas
+        </a>
+    </div>
+{{-- Member --}}
+<div class="container mx-auto py-10">
+    <h1 class="text-4xl font-bold text-center mb-8">Karya Member</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 1" class="w-full">
+            <div class="p-4">
+                <p class="text-sm text-gray-600">ASMR LACI DARI 3D PRINT</p>
+                <p class="text-xs text-gray-500">7 Minggu Lalu</p>
+            </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 2" class="w-full">
+            <div class="p-4">
+                <p class="text-sm text-gray-600">CETAK LACI DARI 3D PRINT</p>
+                <p class="text-xs text-gray-500">7 Minggu Lalu</p>
+            </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
+            <div class="p-4">
+                <p class="text-sm text-gray-600">ASMR LACI DARI 3D PRINT</p>
+                <p class="text-xs text-gray-500">7 Minggu Lalu</p>
+            </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
+            <div class="p-4">
+                <p class="text-sm text-gray-600">CETAK LACI DARI 3D PRINT</p>
+                <p class="text-xs text-gray-500">7 Minggu Lalu</p>
+            </div>
+        </div>
+    </div>
+</div>
+{{--  --}}
     <!-- Clients -->
     <div class="relative overflow-hidden pt-4" id="testimonial">
         <div class="relative z-10">
             <div class="max-w-5xl px-4 xl:px-0 mx-auto">
                 <div class="mb-4">
-                    <h2 class="text-center text-neutral-800">We're Proud to Help Thousands of Our Students Land Jobs at Top
-                        Copanies
-                        Like These</h2>
+                    <h2 class="text-center text-neutral-800">Kami Bangga Membantu Ribuan Siswa Kami Mendapatkan Pekerjaan di Perusahaan Terbaik Seperti Ini</h2>
                 </div>
 
                 <div class="flex justify-between gap-6">
@@ -309,10 +341,9 @@
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:text-center">
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-800 dark:text-neutral-500 sm:text-4xl">Why Us?
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-800 dark:text-neutral-500 sm:text-4xl">Mengapa Kami?
                 </p>
-                <p class="mt-6 text-lg leading-8 text-gray-600">We offer a variety of interesting learning methods. Take a
-                    peek at how Cakap presents them effectively, interactively, and two-way.</p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Kami menawarkan berbagai metode pembelajaran yang menarik. Intip bagaimana Cakap menyajikannya secara efektif, interaktif, dan dua arah.</p>
             </div>
             <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
                 <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
@@ -322,10 +353,9 @@
                                 class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <ion-icon name="school-outline" class="text-white h-6 w-6"></ion-icon>
                             </div>
-                            Experienced Teachers
+                            Guru Berpengalaman
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Our teachers provide a progressive and effective
-                            learning experience.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Guru kami memberikan pengalaman belajar yang progresif dan efektif.</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -333,10 +363,9 @@
                                 class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <ion-icon name="ribbon-outline" class="text-white h-6 w-6"></ion-icon>
                             </div>
-                            Certified Trainer
+                            Pelatih Bersertifikat
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Our curriculums are designed by credible
-                            learning institutions.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Kurikulum kami dirancang oleh lembaga pembelajaran yang kredibel.</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -344,10 +373,9 @@
                                 class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
                                 <ion-icon name="book-outline" class="text-white h-6 w-6"></ion-icon>
                             </div>
-                            Learning Methods
+                            Metode Pembelajaran
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">We provide a variety of learning methods, from
-                            private to group!</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Kami menyediakan berbagai metode pembelajaran, dari privat hingga kelompok!</dd>
                     </div>
                     <div class="relative pl-16">
                         <dt class="text-base font-semibold leading-7 text-gray-900">
@@ -357,8 +385,7 @@
                             </div>
                             Multiplatform
                         </dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Enjoy online learning anywhere, via smartphone
-                            or desktop.</dd>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Nikmati pembelajaran online di mana saja, melalui smartphone atau desktop.</dd>
                     </div>
                 </dl>
             </div>
@@ -382,10 +409,10 @@
                     <!-- Title -->
                     <div class="space-y-2 md:space-y-4">
                         <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-neutral-500">
-                            Benefit
+                            Manfaat
                         </h2>
                         <p class="text-gray-500 dark:text-neutral-500">
-                            Enjoy a variety of benefits and exciting facilities in the SocioEdu learning community.
+                            Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar SocioEdu.
                         </p>
                     </div>
                     <!-- End Title -->
@@ -403,7 +430,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Expert Tutor
+                                    Tutor Ahli
                                 </span>
                             </div>
                         </li>
@@ -418,7 +445,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Portofolio Real Project
+                                    Portofolio Proyek Nyata
                                 </span>
                             </div>
                         </li>
@@ -433,7 +460,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Enhancing personal branding.
+                                    Meningkatkan personal branding.
                                 </span>
                             </div>
                         </li>
@@ -448,7 +475,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Professional Networking
+                                    Jaringan Profesional
                                 </span>
                             </div>
                         </li>
@@ -463,7 +490,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Get Freelance Project
+                                    Mendapatkan Proyek Freelance
                                 </span>
                             </div>
                         </li>
@@ -478,7 +505,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Video material
+                                    Materi Video
                                 </span>
                             </div>
                         </li>
@@ -493,7 +520,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    24/7 Learning Access
+                                    Akses Belajar 24/7
                                 </span>
                             </div>
                         </li>
@@ -508,7 +535,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Practical Assignments
+                                    Tugas Praktis
                                 </span>
                             </div>
                         </li>
@@ -523,7 +550,7 @@
                             </span>
                             <div class="grow">
                                 <span class="text-sm sm:text-base text-gray-500 dark:text-neutral-500">
-                                    Certificate
+                                    Sertifikat
                                 </span>
                             </div>
                         </li>
@@ -537,510 +564,30 @@
     </div>
     <!-- End Benefit -->
 
-    <!-- Review -->
-    <section id="Zero-to-Success"
-        class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[50px] gap-[30px] bg-[#F5F8FA] rounded-[32px]">
-        <div class="flex flex-col gap-[30px] items-center text-center">
-            <div
-                class="bg-gradient-to-r from-sky-100 to-blue-200 w-fit p-[8px_16px] rounded-full border border-[#adc7fe] flex items-center gap-[6px]">
-                <div>
-                    <img src="assets/icon/medal-star.svg" alt="icon">
-                </div>
-                <p class="font-medium text-sm text-[#1E90FF]">Zero to Success People</p>
-            </div>
-            <div class="flex flex-col">
-                <h2 class="font-bold text-[40px] leading-[60px]">Happy & Success Students</h2>
-                <p class="text-[#6D7786] text-lg -tracking-[2%]">Acquiring skills and new high paying career become much
-                    easier</p>
-            </div>
-        </div>
-        <div class="testi w-full overflow-hidden flex flex-col gap-6 relative">
-            <div class="fade-overlay absolute z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA] to-[#F5F8FA00]"></div>
-            <div class="fade-overlay absolute right-0 z-10 h-full w-[50px] bg-gradient-to-r from-[#F5F8FA00] to-[#F5F8FA]">
-            </div>
-            <div class="group/slider flex flex-nowrap w-max items-center">
-                <div
-                    class="testi-container animate-[slideToL_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="logo-container animate-[slideToL_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap ">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="group/slider flex flex-nowrap w-max items-center">
-                <div
-                    class="logo-container animate-[slideToR_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="logo-container animate-[slideToR_50s_linear_infinite] group-hover/slider:pause-animate flex gap-6 pl-6 items-center flex-nowrap ">
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
-                            </div>
-                            <p class="font-semibold">Shayna</p>
-                        </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank
-                            you!</p>
-                        <div class="flex gap-[2px]">
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                            <div>
-                                <img src="assets/icon/star.svg" alt="star">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Review -->
+    {{--  --}}
 
     <!-- FAQ -->
     <section id="FAQ" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[100px]">
-        <div class="flex justify-between items-center">
-            <div class="flex flex-col gap-[30px]">
-                <div class="bg-gradient-to-r from-sky-100 to-blue-200 w-fit p-[8px_16px] rounded-full border border-[#adc7fe] flex items-center gap-[6px]">
-                    <div>
-                        <img src="{{ asset('assets/icon/medal-star.svg') }}" alt="icon">
-                    </div>
-                    <p class="font-medium text-sm text-[#1E90FF]">Grow Your Career</p>
-                </div>
-                <div class="flex flex-col">
-                    <h2 class="font-bold text-[36px] leading-[52px]">Get Your Answers</h2>
-                    <p class="text-lg text-[#475466]">It’s time to upgrade skills without limits!</p>
-                </div>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#3c64ff] transition-all duration-300 hover:shadow-[0_10px_20px_0_#adc7fe] w-fit">Contact Our Sales</a>
-            </div>
+        <div class="flex flex-col items-center mb-10">
+            <h2 class="text-3xl font-bold text-center mb-4">Pertanyaan yang Sering Diajukan</h2>
+            <p class="text-lg text-center text-gray-600">Temukan jawaban atas beberapa pertanyaan yang paling umum di bawah ini.</p>
+        </div>
+        <div class="flex justify-center">
             <div class="flex flex-col gap-[30px] w-[552px] shrink-0">
                 <div class="flex flex-col p-5 rounded-2xl bg-[#F5F8FA] has-[.hide]:bg-transparent border-t-4 border-[#3c64ff] has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
-                        <span class="font-semibold text-lg text-left">Can beginner join the course?</span>
+                        <span class="font-semibold text-lg text-left">Apakah pemula bisa mengikuti kursus?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-1" class="accordion-content hide">
-                        <p class="leading-[30px] text-[#475466] pt-[10px]">Yes, we have provided a variety range of course from beginner to intermediate level to prepare your next big career,</p>
+                        <p class="leading-[30px] text-[#475466] pt-[10px]">Ya, kami telah menyediakan berbagai macam kursus dari tingkat pemula hingga menengah untuk mempersiapkan karir besar Anda berikutnya.</p>
                     </div>
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#F5F8FA] has-[.hide]:bg-transparent border-t-4 border-[#3c64ff] has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-2">
-                        <span class="font-semibold text-lg text-left">How long does the implementation take?</span>
+                        <span class="font-semibold text-lg text-left">Berapa lama waktu yang dibutuhkan untuk implementasi?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -1051,7 +598,7 @@
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#F5F8FA] has-[.hide]:bg-transparent border-t-4 border-[#3c64ff] has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-3">
-                        <span class="font-semibold text-lg text-left">Do you provide the job-guarantee program?</span>
+                        <span class="font-semibold text-lg text-left">Apakah Anda menyediakan program jaminan pekerjaan?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -1062,7 +609,7 @@
                 </div>
                 <div class="flex flex-col p-5 rounded-2xl bg-[#F5F8FA] has-[.hide]:bg-transparent border-t-4 border-[#3c64ff] has-[.hide]:border-0 w-full">
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-4">
-                        <span class="font-semibold text-lg text-left">How to issue all course certificates?</span>
+                        <span class="font-semibold text-lg text-left">Bagaimana cara mendapatkan sertifikat kursus?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
                             <img src="assets/icon/add.svg" alt="icon">
                         </div>
@@ -1075,7 +622,6 @@
         </div>
     </section>
     <!-- End FAQ -->
-
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

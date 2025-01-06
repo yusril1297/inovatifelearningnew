@@ -1,11 +1,11 @@
 @extends('admin.dashboard')
 
-@section('title', 'Categories')
+@section('title', 'Kategori')
 
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
-        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Category List</h1>
+        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Daftar Kategori</h1>
 
      <!-- Menampilkan pesan sukses -->
         @if(session('success'))
@@ -14,12 +14,12 @@
         </div>
         @endif
         <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
-            + Add New Category
+            + Tambah Kategori Baru
         </a>
     </div>
 
     @if($categories->isEmpty())
-    <p>No categories available.</p>
+    <p>Tidak ada kategori tersedia.</p>
     @endif    
 
     <div class="card-body bg-white rounded-xl shadow-lg p-4">
@@ -28,10 +28,10 @@
                 <thead class="table-light">
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Icon</th>
-                <th>Total Course</th>
-                <th>Action</th>
+                <th>Nama</th>
+                <th>Ikon</th>
+                <th>Total Kursus</th>
+                <th>Aksi</th>
             </tr>
                 </thead>
             <tbody>
@@ -45,7 +45,7 @@
                    
                     
                     @else
-                        <span>No Icon</span>
+                        <span>Tidak Ada Ikon</span>
                     @endif
                 </td>
                 <td>{{ $category->courses_count }}</td>

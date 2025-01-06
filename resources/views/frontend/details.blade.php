@@ -5,10 +5,14 @@
     <div class="text-black font-poppins pt-10 pb-[50px]">
         <section id="video-content" class="max-w-[1100px] w-full mx-auto mt-[130px]">
             <div class="video-player relative flex flex-nowrap gap-5">
+<<<<<<< HEAD
                 <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
                     <iframe src="{{ $courses->youtube_thumbnail_url }}" allowfullscreen allowtransparency
                         allow="autoplay"></iframe>
                 </div>
+=======
+                <!-- Sidebar (Course Trailer) -->
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
                 <div
                     class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
                     <p class="font-bold text-lg text-black">{{ $courses->videos->count() }}</p>
@@ -24,14 +28,22 @@
                                 </svg>
                             </div>
                             <a href="{{ route('frontend.details', $courses->slug) }}">
+<<<<<<< HEAD
                                 <p class="font-semibold group-hover:text-white transition-all duration-300">Course Trailer
                                 </p>
+=======
+                                <p class="font-semibold group-hover:text-white transition-all duration-300">Course Trailer</p>
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
                             </a>
                         </div>
 
                         @forelse ($courses->videos as $video)
                             <div
+<<<<<<< HEAD
                                 class="group p-[12px_16px] flex items-center gap-[10px] bg-[#3525B3]  rounded-full hover:bg-[#3525B3] transition-all duration-300">
+=======
+                                class="group p-[12px_16px] flex items-center gap-[10px] bg-[#3525B3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
                                 <div class="text-white group-hover:text-white transition-all duration-300">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -40,19 +52,37 @@
                                             fill="currentColor" />
                                     </svg>
                                 </div>
+<<<<<<< HEAD
                                 <a
                                     href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $video->id]) }}">
+=======
+                                <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $video->id]) }}">
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
                                     <p class="font-semibold group-hover:text-white transition-all duration-300 text-white">
                                         {{ $video->title }}</p>
                                 </a>
                             </div>
                         @empty
                         @endforelse
+<<<<<<< HEAD
 
                     </div>
                 </div>
             </div>
         </section>
+=======
+                    </div>
+                </div>
+                <!-- Video Thumbnail -->
+                <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
+                    <iframe src="{{ $courses->youtube_thumbnail_url }}" allowfullscreen allowtransparency
+                        allow="autoplay"></iframe>
+                </div>
+            </div>
+        </section>
+
+        {{-- Content below remains unchanged --}}
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
         <section id="Video-Resources" class="flex flex-col mt-5">
             <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
                 <h1 class="title font-extrabold text-[30px] leading-[45px]">{{ $courses->title }}</h1>
@@ -62,6 +92,7 @@
                             <img src="{{ asset('assets/icon/crown.svg') }}" alt="icon">
                         </div>
                         <p class="font-semibold">{{ $courses->category->name }}</p>
+<<<<<<< HEAD
                     </div>
                     <div class="flex items-center gap-[6px]">
                         <div>
@@ -86,11 +117,36 @@
             </div>
             <div class="max-w-[1100px] w-full mx-auto flex mt-5">
 
+=======
+                    </div>
+                    <div class="flex items-center gap-[6px]">
+                        <div>
+                            <img src="{{ asset('assets/icon/award-outline.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold">Certificate</p>
+                    </div>
+                    <div class="flex items-center gap-[6px]">
+                        <div>
+                            <img src="{{ asset('assets/icon/profile-2user.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold">{{ $courses->enrollments->count() }}</p>
+                    </div>
+                    <div class="flex items-center gap-[6px]">
+                        <div>
+                            <img src="{{ asset('assets/icon/brifecase-tick.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold">Job-Guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-[1100px] w-full mx-auto flex mt-5">
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
                 <a href="{{ $enrollment
                     ? route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id])
                     : route('frontend.checkout', ['course' => $courses->slug]) }}"
                     class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
                     {{ $enrollment ? 'Go to Class' : 'Buy Class' }}
+<<<<<<< HEAD
                 </a>
 
                 {{-- @if ($courses->is_free || ($enrollment && $enrollment->status === 'active'))
@@ -271,12 +327,16 @@
         </section>
     </div>
     {{-- End Detail Content --}}
+=======
+                </a>
+            </div>
+        </section>
+    </div>
+>>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 @endsection
