@@ -15,7 +15,7 @@
             Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
           </p>
           <div class="flex items-center gap-4">
-            <a href="#"
+            <a href="{{ route('frontend.allCourses') }}"
               class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
