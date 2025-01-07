@@ -50,8 +50,4 @@
             }
         }
     </script>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 39d06fc6b8b47c86cc6ccb11de76d9c55e2c740e

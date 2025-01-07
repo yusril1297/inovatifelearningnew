@@ -45,8 +45,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::resource('instructors', InstructorController::class);
     Route::resource('courses', CourseController::class);
     Route::get('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadVideoForm'])->name('courses.uploadVideoForm');
+    Route::get('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadPdfForm'])->name('courses.uploadPdfForm');
     Route::post('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'uploadVideo'])->name('courses.uploadVideo');
+    Route::post('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'uploadPdf'])->name('courses.uploadPdf');
     Route::delete('courses/{course}/video/{video}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteVideo'])->name('courses.deleteVideo');
+    Route::delete('courses/{course}/pdf/{pdf}', [\App\Http\Controllers\Admin\CourseController::class, 'deletePdf'])->name('courses.deletePdf');
     Route::resource('tags', TagController::class);
     Route::resource('levels', LevelController::class);
     Route::resource('students', StudentController::class);
