@@ -2,14 +2,13 @@
 
 @section('content')
     <div class="container mx-auto mt-10 max-w-lg">
-        @if ($enrollment && $enrollment->course)
+        @if ($course)
             <div class="bg-white shadow-md rounded-lg p-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    Checkout - {{ $enrollment->course->title }}
+                    Checkout - {{ $course->title }}
                 </h2>
                 <p class="text-lg text-gray-600 mb-6">
-                    Amount: <span
-                        class="font-semibold text-gray-900">Rp{{ number_format($enrollment->course->price, 2) }}</span>
+                    Amount: <span class="font-semibold text-gray-900">Rp{{ number_format($course->price, 2) }}</span>
                 </p>
 
                 <button id="pay-button"
@@ -25,7 +24,7 @@
     </div>
 
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var payButton = document.getElementById('pay-button');
             if (payButton) {
@@ -52,8 +51,58 @@
                 };
             }
         });
+    </script> --}}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var payButton = document.getElementById('pay-button');
+            if (payButton) {
+                payButton.onclick = function() {
+                    // SnapToken acquired from previous step
+                    fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to get snap token');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.snapToken) {
+                                snap.pay(data.snapToken, {
+                                    // Optional
+                                    onSuccess: function(result) {
+                                        /* Pembayaran berhasil, menunggu konfirmasi dari server */
+                                        alert('Pembayaran berhasil! Menunggu konfirmasi...');
+                                        window.location.href =
+                                            `{{ url('/payment/success') }}/${data.order_id}`;
+                                    },
+                                    // Optional
+                                    onPending: function(result) {
+                                        /* Pembayaran tertunda */
+                                        alert('Pembayaran tertunda! Menunggu konfirmasi...');
+                                    },
+                                    // Optional
+                                    onError: function(result) {
+                                        /* Terjadi kesalahan saat pembayaran */
+                                        alert('Pembayaran gagal! Silakan coba lagi.');
+                                    }
+                                });
+                            } else {
+                                throw new Error('Snap token is missing in the response');
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error.message);
+                        });
+                };
+            }
+        });
     </script>
-
 
 
 
