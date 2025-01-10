@@ -14,7 +14,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
-
+-
 
 
 Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
@@ -99,7 +99,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
     Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
+    Route::get('/payment/notice/{enrollmentId}', [PaymentController::class, 'notice'])->name('frontend.payment.notice');
+    Route::get('/payment/success/{order_id}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 });
+// Route::post('/midtrans/webhook', [PaymentController::class, 'handleWebhook'])->name('midtrans.webhook')->middleware('midtrans');
 
 Route::get('/download/{course}/{pdf}', [DownloadController::class, 'download'])->name('frontend.download');
 
