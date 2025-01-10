@@ -3,7 +3,7 @@
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
         <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
-            <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Edit Category</h1>
+            <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Edit Logo Website</h1>
         </div>
 
         <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">

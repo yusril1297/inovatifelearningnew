@@ -33,30 +33,7 @@
       </div>
   
       <!-- Avatar Group -->
-      <div class="mt-16 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 text-center sm:text-left">
-        <div class="flex items-center -space-x-3 justify-center sm:justify-start">
-          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
-            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-            alt="Avatar">
-          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
-            src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-            alt="Avatar">
-          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
-            src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80"
-            alt="Avatar">
-          <img class="inline-block w-10 h-10 rounded-full ring-2 ring-white dark:ring-neutral-900"
-            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-            alt="Avatar">
-          <span
-            class="inline-flex items-center justify-center w-10 h-10 rounded-full ring-2 ring-white bg-gray-800 dark:bg-neutral-900 dark:ring-neutral-900 text-white text-xs font-medium">
-            7k+
-          </span>
-        </div>
-        <div class="text-gray-800 dark:text-neutral-200">
-          <div class="font-semibold text-lg">Trust pilot</div>
-          <div class="text-sm text-gray-500 dark:text-neutral-500">Dinilai terbaik dari 37k ulasan</div>
-        </div>
-      </div>
+      
     </div>
   </div>
   <!-- End Hero -->
@@ -247,9 +224,9 @@
     <div class="relative overflow-hidden pt-4" id="testimonial">
         <div class="relative z-10">
             <div class="max-w-5xl px-4 xl:px-0 mx-auto">
-                <div class="mb-4">
-                    <h2 class="text-center text-neutral-800">Kami Bangga Membantu Ribuan Siswa Kami Mendapatkan Pekerjaan di Perusahaan Terbaik Seperti Ini</h2>
-                </div>
+            <div class="mb-4 text-center">
+                <h2 class="font-bold text-[40px] leading-[60px]">Patner Kami</h2>
+            </div>
 
                 <div class="flex justify-between gap-6">
                     <svg class="py-3 lg:py-5 w-16 h-auto md:w-20 lg:w-24 text-neutral-400"
@@ -398,10 +375,11 @@
         <!-- Grid -->
         <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
             <div>
-                <img class="rounded-xl"
-                    src="https://images.unsplash.com/photo-1648737963503-1a26da876aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=900&q=80"
-                    alt="Features Image">
+                <img src="../assets/images/logos/foto10.png"
+                    alt="Features Image"
+                    style="width: 800px; height: auto;">
             </div>
+
             <!-- End Col -->
 
             <div class="mt-5 sm:mt-10 lg:mt-0">
@@ -412,7 +390,7 @@
                             Manfaat
                         </h2>
                         <p class="text-gray-500 dark:text-neutral-500">
-                            Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar SocioEdu.
+                            Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar Innovative Elearning
                         </p>
                     </div>
                     <!-- End Title -->

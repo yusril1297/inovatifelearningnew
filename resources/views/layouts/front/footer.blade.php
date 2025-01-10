@@ -1,7 +1,7 @@
 <!-- ========== FOOTER ========== -->
 
 <footer
-    class="mx-auto flex flex-col pt-[70px] pb-[50px] px-[100px] gap-[50px] bg-gray-900 w-full dark:bg-neutral-950]">
+    class="mx-auto flex flex-col pt-[70px] pb-[50px] px-[100px] gap-[50px] bg-[#141E61] w-full">
     <div class="flex justify-between">
         <div class="flex flex-col gap-5">
             <p class="font-bold text-2xl text-white">Innovative Learning</p>
