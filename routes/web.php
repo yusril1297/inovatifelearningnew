@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\StudentDashboardController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -99,5 +100,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout/{course:slug}', [PaymentController::class, 'checkout'])->name('frontend.checkout');
     Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken'])->name('frontend.payment.token');
 });
+
+Route::get('/download/{course}/{pdf}', [DownloadController::class, 'download'])->name('frontend.download');
 
 require __DIR__ . '/auth.php';
