@@ -14,14 +14,20 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
--
+use App\Http\Controllers\CertificateController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/course/{course}/certificate', [CertificateController::class, 'generateCertificate'])->name('certificate.generate');
+    Route::get('/certificate/{certificate}/download', [CertificateController::class, 'downloadCertificate'])->name('certificate.download');
+});
+
 
 
 Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
 Route::get('/all-courses', [FrontController::class, 'allCourses'])->name('frontend.allCourses');
 
+Route::get('/categories/{slug}', [FrontController::class, 'showCategories'])->name('frontend.categories');
 
-Route::get('/categories{slug}', [FrontController::class, 'showCategories'])->name('frontend.categories');
 Route::get('/courses/{slug}', [FrontController::class, 'details'])->name('frontend.details');
 Route::get('/instructor', [FrontController::class, 'instructor'])->name('frontend.instructor');
 Route::get('/instructor/{id}/courses', [FrontController::class, 'instructorDetails'])->name('frontend.instructorDetails');

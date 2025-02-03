@@ -87,6 +87,9 @@
                         </div>
                         <p class="font-semibold">Certificate</p>
                     </div>
+                    @if(Auth::check())
+                        <a href="{{ route('certificate.generate', $courses->id) }}" class="btn btn-primary">Dapatkan Sertifikat</a>
+                    @endif
                     <div class="flex items-center gap-[6px]">
                         <div>
                             <img src="{{ asset('assets/icon/profile-2user.svg') }}" alt="icon">
