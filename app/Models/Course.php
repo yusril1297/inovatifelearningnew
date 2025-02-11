@@ -22,66 +22,71 @@ class Course extends Model
         'price',
         'youtube_thumbnail_url',
         'status',
-    ];  
+    ];
 
-     // Menyimpan slug secara otomatis saat menyimpan course
-     public static function boot()
-     {
-         parent::boot();
- 
-         static::creating(function ($course) {
-             $course->slug = Str::slug($course->title);
-         });
- 
-         static::updating(function ($course) {
-             $course->slug = Str::slug($course->title);
-         });
-     }
- 
-     // Relasi ke model Category
-     public function category()
-     {
-         return $this->belongsTo(Category::class);
-     }
+    // Menyimpan slug secara otomatis saat menyimpan course
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
+
+        static::updating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
+    }
+
+    // Relasi ke model Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
- 
-     // Relasi ke model User (Instructor)
-     public function instructor()
-     {
-         return $this->belongsTo(User::class, 'instructor_id');
-     }
- 
-     // Scope untuk mendapatkan kursus yang dipublikasikan
-     public function scopePublished($query)
-     {
-         return $query->where('status', 'published');
-     }
- 
-     // Scope untuk mendapatkan kursus gratis
-     public function scopeFree($query)
-     {
-         return $query->where('price', 0.00);
-     }
 
-     // Relasi one-to-many dengan model Tag
-     public function tags()
-     {
-         return $this->belongsToMany(Tag::class);
-     }
- 
-     // Relasi one-to-many dengan model Level
-     public function level()
-     {
-         return $this->belongsTo(Level::class);
-     }
+    // Relasi ke model User (Instructor)
+    public function instructor()
+    {
+        return $this->belongsTo(User::class, 'instructor_id');
+    }
 
-     public function videos()
+    // Scope untuk mendapatkan kursus yang dipublikasikan
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    // Scope untuk mendapatkan kursus gratis
+    public function scopeFree($query)
+    {
+        return $query->where('price', 0.00);
+    }
+
+    // Relasi one-to-many dengan model Tag
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    // Relasi one-to-many dengan model Level
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
+    public function videos()
     {
         return $this->hasMany(Video::class);
+    }
+
+    public function pdfs()
+    {
+        return $this->hasMany(pdf::class);
     }
 
     public function enrollments()
@@ -99,12 +104,8 @@ class Course extends Model
         return $this->enrollments()->count();
     }
 
-    public function student(){
+    public function student()
+    {
         return $this->hasMany(User::class, 'course_id', 'enrollments', 'user_id');
-
     }
-    
-
-
- 
 }

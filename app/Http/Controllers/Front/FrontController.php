@@ -26,7 +26,9 @@ class FrontController extends Controller
     {
         $settings = setting::first();
         $courses = Course::published()->with(['category', 'enrollments'])->get();
-        return view('frontend.allCourses', compact('courses', 'settings'));
+        $enrollments = Enrollment::where('user_id', Auth::id())->where('status', 'active')->get();
+
+        return view('frontend.allCourses', compact('courses', 'settings', 'enrollments'));
     }
 
 
@@ -60,6 +62,7 @@ class FrontController extends Controller
     public function details($slug)
     {
         $courses = Course::where('slug', $slug)->firstOrFail();
+        // dd($courses->slug);
         $settings = setting::first();
         $enrollment = null;
         if (Auth::check()) {
@@ -82,12 +85,12 @@ class FrontController extends Controller
         return view('frontend.instructor', compact('instructors', 'settings'));
     }
     public function about()
-{
-    $settings = setting::first(); // Mengambil pengaturan situs jika diperlukan
-    return view('frontend.about', compact('settings'));
-}
+    {
+        $settings = setting::first(); // Mengambil pengaturan situs jika diperlukan
+        return view('frontend.about', compact('settings'));
+    }
 
-    public function learning($courses, $video,)
+    public function learning($courses, $video)
     {
         $settings = setting::first();
 
@@ -112,7 +115,7 @@ class FrontController extends Controller
                 'payment_method' => 'free',
                 'payable_amount' => 0,
             ]);
-            return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $video->id,]);
+            return redirect()->route('frontend.learning', ['courses' => $course->slug, 'video' => $video->id]);
         }
 
         // Pastikan pengguna memiliki akses
@@ -121,7 +124,8 @@ class FrontController extends Controller
             if (!$enrollment) {
                 return redirect()->route('frontend.checkout', ['course' => $course->slug]);
             } else {
-                return redirect()->route('frontend.checkout', ['enrollmentId' => $enrollment->id]);
+                // dd($enrollment);
+                return redirect()->route('frontend.checkout', ['course' => $course->slug, 'enrollmentId' => $enrollment->id]);
             }
         }
 

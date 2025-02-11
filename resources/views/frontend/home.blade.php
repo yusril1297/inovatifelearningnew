@@ -64,9 +64,7 @@
                         <h3 class="text-lg font-semibold">Rating</h3>
                     </div>
                     <p class="text-gray-600 text-sm">
-                        Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemonstrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.
-                    </p>
-                </div>
+                    Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung                </div>
                 <!-- Card 2 -->
                 <div class="border rounded-lg shadow-md p-6">
                     <div class="flex items-center mb-4">
@@ -74,8 +72,7 @@
                         <h3 class="text-lg font-semibold">Kepuasan</h3>
                     </div>
                     <p class="text-gray-600 text-sm">
-                    Kami selalu berusaha memberikan yang terbaik untuk memastikan kepuasan Anda. Dengan layanan yang berkualitas dan dukungan yang responsif, kami siap membantu Anda mencapai tujuan belajar Anda.
-                    </p>
+                    Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.                    </p>
                 </div>
                 <!-- Card 3 -->
                 <div class="border rounded-lg shadow-md p-6">
@@ -84,8 +81,7 @@
                         <h3 class="text-lg font-semibold">Finance</h3>
                     </div>
                     <p class="text-gray-600 text-sm">
-                    Finance adalah aspek penting dalam kehidupan kita. Mengelola keuangan dengan baik dapat membantu mencapai tujuan finansial, seperti membeli rumah, pendidikan anak, atau pensiun yang nyaman. Dengan pemahaman yang baik tentang keuangan, kita dapat membuat keputusan yang lebih bijak, menghindari utang yang tidak perlu, dan memastikan masa depan yang lebih stabil dan aman.
-                    </p>
+                    Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.                    </p>
                 </div>
             </div>
         </div>
