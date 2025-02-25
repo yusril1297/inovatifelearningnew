@@ -54,37 +54,46 @@
           ```
         -->
         {{--  --}}
-        <div class="container mx-auto py-10">
-            <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="border rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <img src="https://cdn-icons-png.freepik.com/256/12377/12377209.png?semt=ais_hybrid" alt="Rating Icon" class="w-12 h-12 mr-4">
-                        <h3 class="text-lg font-semibold">Rating</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm">
-                    Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung                </div>
-                <!-- Card 2 -->
-                <div class="border rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <img src="https://cdn-icons-png.flaticon.com/128/1165/1165771.png" alt="Kepuasan Icon" class="w-12 h-12 mr-4">
-                        <h3 class="text-lg font-semibold">Kepuasan</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm">
-                    Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.                    </p>
-                </div>
-                <!-- Card 3 -->
-                <div class="border rounded-lg shadow-md p-6">
-                    <div class="flex items-center mb-4">
-                        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135727.png" alt="Finance Icon" class="w-12 h-12 mr-4">
-                        <h3 class="text-lg font-semibold">Finance</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm">
-                    Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.                    </p>
-                </div>
-            </div>
+ <div class="container mx-auto py-20">
+    <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
+   <!-- Card 1 -->
+    <div class="border rounded-lg shadow-md p-6">
+        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
+            <img src="https://img.freepik.com/free-vector/check-mark-with-review-stars_78370-1123.jpg?t=st=1739341583~exp=1739345183~hmac=3679dd1586a6e5a69a73194291de46a31fa1d8b1212ada7d25505dda2290793e&w=1380" alt="Rating Icon" class="w-30 h-40 mb-3">
+            <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
         </div>
+        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
+            Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
+        </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="border rounded-lg shadow-md p-6">
+        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
+            <img src="https://cdn-icons-png.flaticon.com/128/1165/1165771.png" alt="Rating Icon" class="w-30 h-40 mb-3">
+            <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
+        </div>
+        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
+        Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
+        </p>
+    </div>
+    
+    <!-- Card 3 -->
+
+    <div class="border rounded-lg shadow-md p-6">
+        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
+            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135727.png" alt="Rating Icon" class="w-30 h-40 mb-3">
+            <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
+        </div>
+        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
+        Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
+        </p>
+    </div>
+
+    </div>
+</div>
+
         
         {{--  --}}
     <section id="Popular-Courses"
