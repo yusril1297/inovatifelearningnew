@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
 use App\Models\User;
 use App\Models\Enrollment;
-use App\Models\setting;
+use App\Models\Setting;
 
 class FrontController extends Controller
 {
@@ -19,7 +19,13 @@ class FrontController extends Controller
 
         $courses = Course::published()->with(['category', 'enrollments'])->get();
         $settings = setting::first();
-        return view('frontend.home ', compact('courses', 'settings'));;
+        $instructors = User::where('role', 1)  // Mengambil role 1 (instruktur)
+        ->orWhere('role', 0) // Menambahkan role 0 (admin)
+        ->get();
+
+
+        return view('frontend.home ', compact('courses', 'settings', 'instructors'));;
+        
     }
 
     public function allCourses()

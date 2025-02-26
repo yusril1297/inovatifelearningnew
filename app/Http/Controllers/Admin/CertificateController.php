@@ -47,7 +47,7 @@ class CertificateController extends Controller
         Storage::put('public/' . $fileName, $pdf->output());
 
         // Simpan ke database
-        $certificate = Certificate::create([
+        Certificate::create([
             'course_id' => $course->id,
             'user_id' => $user->id,
             'certificate_code' => $certificateCode,
@@ -59,6 +59,45 @@ class CertificateController extends Controller
     }
 
     /**
+     * Mentor uploads a custom certificate
+     */
+    public function uploadCertificate(Request $request, Course $course)
+    {
+        $request->validate([
+            'certificate' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        // Periksa apakah sertifikat sudah ada
+        $existingCertificate = Certificate::where('course_id', $course->id)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if ($existingCertificate) {
+            return redirect()->route('course.show', $course->id)
+                ->with('error', 'Sertifikat sudah ada.');
+        }
+
+        // Simpan file sertifikat yang diunggah
+        $file = $request->file('certificate');
+        $certificateCode = strtoupper(Str::random(10));
+        $fileName = 'certificates/' . $certificateCode . '.' . $file->getClientOriginalExtension();
+        $filePath = $file->storeAs('public/' . $fileName);
+
+        // Simpan data ke database
+        Certificate::create([
+            'course_id' => $course->id,
+            'user_id' => $user->id,
+            'certificate_code' => $certificateCode,
+            'certificate_url' => Storage::url($fileName)
+        ]);
+
+        return redirect()->route('course.show', $course->id)
+            ->with('success', 'Sertifikat berhasil diunggah!');
+    }
+
+    /**
      * Download the certificate
      */
     public function downloadCertificate(Certificate $certificate)
@@ -66,4 +105,3 @@ class CertificateController extends Controller
         return response()->download(storage_path('app/public/' . $certificate->certificate_url));
     }
 }
-

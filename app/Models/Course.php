@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-
 class Course extends Model
 {
     use HasFactory;
@@ -22,6 +21,8 @@ class Course extends Model
         'price',
         'youtube_thumbnail_url',
         'status',
+        'certificate_url',
+        'meeting_limit', // Tambahkan meeting_limit ke fillable
     ];
 
     // Menyimpan slug secara otomatis saat menyimpan course
@@ -48,6 +49,12 @@ class Course extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
+    }
+    
+    
 
     // Relasi ke model User (Instructor)
     public function instructor()
@@ -86,7 +93,7 @@ class Course extends Model
 
     public function pdfs()
     {
-        return $this->hasMany(pdf::class);
+        return $this->hasMany(Pdf::class);
     }
 
     public function enrollments()
@@ -99,13 +106,27 @@ class Course extends Model
         return $this->hasMany(Payment::class, 'enrollment_id');
     }
 
+    // Relasi ke Meetings (one-to-many)
+    public function meetings()
+    {
+        return $this->hasMany(Meeting::class);
+    }
+
+    // Menghitung jumlah student yang sudah mendaftar di kursus ini
     public function enrolledCount()
     {
         return $this->enrollments()->count();
     }
 
-    public function student()
+    // Relasi ke Student melalui enrollments
+    public function students()
     {
-        return $this->hasMany(User::class, 'course_id', 'enrollments', 'user_id');
+        return $this->belongsToMany(User::class, 'enrollments', 'course_id', 'user_id');
+    }
+
+    // Mengecek apakah batas meeting sudah tercapai
+    public function isMeetingLimitReached()
+    {
+        return $this->meeting_limit !== null && $this->meetings()->count() >= $this->meeting_limit;
     }
 }

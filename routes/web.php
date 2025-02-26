@@ -16,11 +16,13 @@ use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CertificateController;
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/course/{course}/certificate', [CertificateController::class, 'generateCertificate'])->name('certificate.generate');
-    Route::get('/certificate/{certificate}/download', [CertificateController::class, 'downloadCertificate'])->name('certificate.download');
-});
 
+
+
+Route::middleware(['auth'])->prefix('certificate')->name('certificate.')->group(function () {
+    Route::get('/course/{course}/generate', [CertificateController::class, 'generateCertificate'])->name('generate');
+    Route::get('/{certificate}/download', [CertificateController::class, 'downloadCertificate'])->name('download');
+});
 
 
 Route::get('/', [FrontController::class, 'index'])->name('frontend.home');
@@ -36,6 +38,12 @@ Route::get('/about', [FrontController::class, 'about'])->name('frontend.about');
 // Route::get('/dashboard', function () {
 //     return view('students.dashboard');
 // })->middleware(['auth', 'verified', 'role:student'])->name('dashboard');
+Route::post('/courses/{course}/certificate/upload', [CourseController::class, 'uploadCertificate'])
+    ->name('courses.uploadCertificate');
+    Route::post('/courses/{course}/certificate/upload', [CourseController::class, 'uploadCertificate'])
+    ->name('courses.uploadCertificate');
+    Route::post('/courses/{course}/certificate/upload', [CourseController::class, 'uploadCertificate'])
+    ->withoutMiddleware(['auth']);
 
 Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
@@ -86,12 +94,22 @@ Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')
 //admin dan instructor
 Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function () {
     Route::resource('courses', CourseController::class);
+
+    // Route untuk upload video
     Route::get('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadVideoForm'])->name('courses.uploadVideoForm');
-    Route::get('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadPdfForm'])->name('courses.uploadPdfForm');
     Route::post('courses/{course}/upload-video', [\App\Http\Controllers\Admin\CourseController::class, 'uploadVideo'])->name('courses.uploadVideo');
-    Route::post('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'uploadPdf'])->name('courses.uploadPdf');
     Route::delete('courses/{course}/video/{video}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteVideo'])->name('courses.deleteVideo');
+
+    // Route untuk upload PDF
+    Route::get('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadPdfForm'])->name('courses.uploadPdfForm');
+    Route::post('courses/{course}/upload-pdf', [\App\Http\Controllers\Admin\CourseController::class, 'uploadPdf'])->name('courses.uploadPdf');
     Route::delete('courses/{course}/pdf/{pdf}', [\App\Http\Controllers\Admin\CourseController::class, 'deletePdf'])->name('courses.deletePdf');
+
+    // Route untuk upload sertifikat
+    Route::get('courses/{course}/upload-certificate', [\App\Http\Controllers\Admin\CourseController::class, 'showUploadCertificateForm'])->name('courses.uploadCertificateForm');
+    Route::post('courses/{course}/upload-certificate', [\App\Http\Controllers\Admin\CourseController::class, 'uploadCertificate'])->name('courses.uploadCertificate');
+    Route::delete('courses/{course}/certificate/{certificate}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteCertificate'])->name('courses.deleteCertificate');
+
     Route::resource('students', StudentController::class);
 });
 

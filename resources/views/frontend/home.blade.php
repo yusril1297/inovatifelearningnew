@@ -208,6 +208,74 @@
             Semua Kelas
         </a>
     </div>
+{{--     
+   <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <!-- Title -->
+    <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+        <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-gray-800 dark:text-white">Mentor Kami</h2>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">Temui para pengajar profesional kami</p>
+    </div>
+    <!-- End Title -->
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @forelse ($instructors as $instructor)
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+                <img class="rounded-full size-24 mb-4 border-4 border-gray-200 dark:border-gray-700"
+                     src="{{ asset($instructor->profile_picture_url) }}"
+                     alt="{{ $instructor->name }}">
+                
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $instructor->name }}</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Pengajar</p>
+                
+                <a href="{{ route('frontend.instructorDetails', $instructor->id) }}" 
+                   class="mt-3 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                    Lihat Profil
+                </a>
+            </div>
+        @empty
+            <p class="text-center text-gray-600 dark:text-gray-400">Belum ada mentor yang tersedia.</p>
+        @endforelse
+    </div>
+    <!-- End Grid -->
+</div> --}}
+
+
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <!-- Title -->
+    <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+        <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-neutral-700">Mentor Kami</h2>
+        <p class="mt-1 text-gray-600 dark:text-neutral-500">Creative people</p>
+    </div>
+    <!-- End Title -->
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @foreach ($instructors as $instructor)
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+            <img class="rounded-full size-24 mb-4 border-4 border-gray-200 dark:border-gray-700"
+                 src="{{ $instructor->profile_picture_url }}"
+                 alt="{{ $instructor->name }}">
+            
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $instructor->name }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Pengajar</p>
+            
+            <div class="mt-3 flex space-x-3">
+                <a href="#" class="text-gray-500 hover:text-gray-800 dark:hover:text-white">
+                    <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.88 8.82 8.69 9.8v-6.93H8.08v-2.87h2.61V9.28c0-2.61 1.57-4.06 3.95-4.06 1.14 0 2.34.2 2.34.2v2.56h-1.32c-1.3 0-1.7.81-1.7 1.64v1.99h2.89l-.46 2.87h-2.43v6.93C18.12 20.82 22 16.84 22 12c0-5.52-4.48-10-10-10z" />
+                    </svg>
+                </a>
+            </div>
+            
+            <a href="{{ route('frontend.instructorDetails', $instructor->id) }}" 
+               class="mt-4 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                Lihat Profil
+            </a>
+        </div>
+        @endforeach
+    </div>
+    
+</div>
 {{-- Member --}}
 <div class="container mx-auto py-10">
     <h1 class="text-4xl font-bold text-center mb-8">Karya Member</h1>

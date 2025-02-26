@@ -122,25 +122,7 @@
                         Class</a>
                 @endif
 
-                {{-- @if ($courses->is_free || ($enrollment && $enrollment->status === 'active'))
-                <!-- Akses tombol jika sudah mendaftar atau kursus gratis -->
-                <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
-                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                    Access Course
-                </a>
-            @elseif ($enrollment)
-                <!-- Tombol untuk checkout jika enrollment ada namun belum aktif -->
-                <a href="{{ route('frontend.checkout', ['enrollmentId' => $enrollment ? $enrollment->id : null, 'course' => $courses->slug]) }}"
-                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                    Buy Class
-                </a>
-            @else
-                <!-- Tombol untuk checkout jika belum ada enrollment -->
-                <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
-                   class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                    Buy Class
-                </a>
-            @endif --}}
+        
             </div>
             <div
                 class="max-w-[1100px] w-full mx-auto mt-10 tablink-container flex gap-3 px-4 sm:p-0 no-scrollbar overflow-x-scroll">
@@ -154,7 +136,17 @@
                     onclick="openPage('Discussions', this)">Discussions</div>
                 <div class="tablink font-semibold text-lg h-[47px] transition-all duration-300 cursor-pointer hover:text-blue-500"
                     onclick="openPage('Rewards', this)">Rewards</div>
-
+                    @if ($enrollment?->status === 'completed' && $course->certificate_url)
+                    <div class="flex items-center gap-[6px] mt-5">
+                        <img src="{{ asset('assets/icon/award-outline.svg') }}" alt="Certificate Icon">
+                        <p class="font-semibold">Sertifikat Tersedia</p>
+                    </div>
+                    <p>Sertifikat yang diunggah: 
+                        <a href="{{ asset($course->certificate_url) }}" target="_blank">Lihat Sertifikat</a>
+                    </p>
+                @endif
+                
+                
 
             </div>
             <div class="bg-[#F5F8FA] py-[50px]">
