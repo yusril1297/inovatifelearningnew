@@ -12,6 +12,9 @@ use App\Models\pdf;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Certificate;
+
 use App\Models\Video;
 
 
@@ -70,11 +73,11 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi inputan berdasarkan role
-        if (Auth::user()->role != 0 && Auth::user()->role != 1) {
+        // Validasi role user (hanya Admin dan Instructor)
+        if (!in_array(Auth::user()->role, [0, 1])) {
             abort(403); // Role tidak diizinkan
         }
-
+    
         // Validasi data input
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -86,63 +89,83 @@ class CourseController extends Controller
             'youtube_thumbnail_url' => 'nullable|url',
             'price' => 'required|numeric|min:0',
             'status' => 'required|in:published,draft',
+            'meeting_limit' => 'nullable|integer|min:1', // Validasi meeting limit
         ]);
-
+    
+        // Membuat slug unik
+        $title = $validated['title'];
+        $slug = Str::slug($title);
+        
+        // Cek apakah slug sudah ada, jika iya tambahkan angka unik
+        $counter = 1;
+        $originalSlug = $slug;
+        while (DB::table('courses')->where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter;
+            $counter++;
+        }
+    
         // Buat objek Course baru dan set data dari input
         $course = new Course();
-        $course->title = $validated['title'];
-        $course->slug = Str::slug($validated['title']);
+        $course->title = $title;
+        $course->slug = $slug; // Gunakan slug unik
         $course->description = $validated['description'];
         $course->category_id = $validated['category_id'];
         $course->level_id = $validated['level_id'];
         $course->price = $validated['price'];
         $course->status = $validated['status'];
-        $course->instructor_id = Auth::id(); // Set instructor_id sesuai dengan user yang login
-
+        $course->meeting_limit = $validated['meeting_limit'] ?? null;
+        $course->instructor_id = Auth::id();
+    
         // Mengambil ID video dari URL YouTube
         if (!empty($validated['youtube_thumbnail_url'])) {
-            $youtubeUrl = $validated['youtube_thumbnail_url'];
-            parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);
-
-            // Jika URL dalam format `https://www.youtube.com/watch?v=VIDEO_ID`
-            if (isset($queryParams['v'])) {
-                $videoId = $queryParams['v'];
-            } else {
-                // Jika URL dalam format `https://youtu.be/VIDEO_ID`
-                $videoId = basename(parse_url($youtubeUrl, PHP_URL_PATH));
-            }
-
-            // Simpan URL dalam format embed
-            $course->youtube_thumbnail_url = 'https://www.youtube.com/embed/' . $videoId;
+            $course->youtube_thumbnail_url = $this->convertYouTubeUrl($validated['youtube_thumbnail_url']);
         }
-
-
-
-
+    
         // Simpan course ke database
         $course->save();
-
-        // Redirect ke halaman index course sesuai role dengan pesan sukses
+    
+        // Redirect ke halaman index sesuai role user
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.index' : 'instructor.courses.index')
             ->with('success', 'Course created successfully.');
     }
+    
+    /**
+ * Fungsi untuk mengonversi URL YouTube menjadi format embed.
+ */
+private function convertYouTubeUrl($url)
+{
+    parse_str(parse_url($url, PHP_URL_QUERY), $queryParams);
 
+    // Jika URL dalam format https://www.youtube.com/watch?v=VIDEO_ID
+    if (isset($queryParams['v'])) {
+        $videoId = $queryParams['v'];
+    } else {
+        // Jika URL dalam format https://youtu.be/VIDEO_ID
+        $videoId = basename(parse_url($url, PHP_URL_PATH));
+    }
+
+    return 'https://www.youtube.com/embed/' . $videoId;
+}
     /**
      * Display the specified resource.
      * Menampilkan detail kursus berdasarkan role user
      */
     public function show(Course $course)
-    {
-        $this->authorizeAccess($course);
+{
+    $this->authorizeAccess($course);
+    
+    // Ambil semua video, PDF, dan sertifikat terkait dengan course ini
+    $videos = $course->videos;
+    $pdfs = Pdf::where('course_id', $course->id)->get(); // Pastikan model menggunakan Pdf
+    $certificates = Certificate::where('course_id', $course->id)->get(); // Ambil semua sertifikat
+    
+    // Tentukan tampilan berdasarkan role user
+    $view = Auth::user()->role == 0 ? 'admin.courses.show' : 'instructor.courses.show';
+    
+    return view($view, compact('course', 'videos', 'pdfs', 'certificates')); // Kirim ke view
+}
 
-        // Ambil semua video yang terkait dengan course ini
-        $videos = $course->videos;
-        $pdfs = pdf::where('course_id', $course->id)->get();
-        // dd($pdfs);
-        $view = Auth::user()->role == 0 ? 'admin.courses.show' : 'instructor.courses.show';
-
-        return view($view, compact('course', 'videos', 'pdfs'));
-    }
+    
 
     /**
      * Show the form for uploading a video.
@@ -166,7 +189,19 @@ class CourseController extends Controller
         $view = Auth::user()->role == 0 ? 'admin.courses.upload-pdf' : 'instructor.courses.upload-pdf';
         return view($view, compact('course'));
     }
+   /**
+     * Show the form for uploading a certificate.
+     */
+    public function showUploadCertificateForm(Course $course)
+    {
+        // Pastikan user memiliki akses
+        $this->authorizeAccess($course);
 
+        // Tentukan tampilan berdasarkan role
+        $view = Auth::user()->role == 0 ? 'admin.courses.upload-certificate' : 'instructor.courses.upload-certificate';
+        
+        return view($view, compact('course'));
+    }
     /**
      * Upload a video to the specified course.
      * Menyimpan video yang diupload ke kursus tertentu
@@ -287,6 +322,60 @@ class CourseController extends Controller
         return redirect()->back()->with('success', 'Video deleted successfully.');
     }
 
+
+    // SERTIFIKAT UPLOAD
+    public function uploadCertificate(Request $request, $courseId)
+    {
+        $course = Course::findOrFail($courseId);
+    
+        // Validasi file sertifikat
+        $request->validate([
+            'certificate' => 'required|mimes:pdf,png,jpg,jpeg|max:2048',
+        ]);
+    
+        $file = $request->file('certificate');
+        $filename = 'certificate_' . $course->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/certificates'), $filename);
+    
+        // Cek apakah sertifikat sudah ada, jika ada update, jika belum buat baru
+        $certificate = Certificate::updateOrCreate(
+            ['course_id' => $course->id],
+            [
+                'user_id' => Auth::id(),
+                'certificate_url' => 'uploads/certificates/' . $filename,
+                'certificate_code' => strtoupper(Str::random(10)) // Membuat kode sertifikat acak
+            ]
+        );
+    
+        return back()->with('success', 'Sertifikat berhasil diunggah.');
+    }
+    public function deleteCertificate(Course $course)
+{
+    // Pastikan pengguna memiliki akses ke kursus ini
+    $this->authorizeAccess($course);
+
+    // Pastikan ada file sertifikat yang perlu dihapus
+    if (!empty($course->certificate_url) && file_exists(public_path($course->certificate_url))) {
+        // Coba hapus file sertifikat dan tangani jika gagal
+        try {
+            unlink(public_path($course->certificate_url));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus file sertifikat.')->with('exception', $e->getMessage());
+        }
+    }
+
+    // Hapus data URL sertifikat dari kursus
+    $course->certificate_url = null;
+    $course->save();
+
+    // Hapus data sertifikat dari database (optional, jika Anda ingin menghapus entri sertifikat)
+    $course->certificate()->delete();
+
+    // Redirect kembali dengan pesan sukses
+    return redirect()->back()->with('success', 'Certificate deleted successfully.');
+}
+
+    //
     /**
      * Authorize access to a course.
      * Memastikan bahwa instructor hanya bisa mengakses kursus miliknya
@@ -323,12 +412,13 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  Course $course)
+    public function update(Request $request, Course $course)
     {
+        // Pastikan instructor hanya bisa mengupdate kursus miliknya
         if (Auth::user()->role == 1 && $course->instructor_id != Auth::id()) {
-            abort(403); // Instructor hanya bisa mengupdate kursus miliknya
+            abort(403);
         }
-
+    
         // Validasi data input
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -340,9 +430,10 @@ class CourseController extends Controller
             'youtube_thumbnail_url' => 'nullable|url',
             'price' => 'required|numeric|min:0',
             'status' => 'required|in:published,draft',
+            'meeting_limit' => 'nullable|integer|min:1', // Validasi untuk meeting_limit
         ]);
-
-
+    
+        // Update data course
         $course->title = $validated['title'];
         $course->slug = Str::slug($validated['title']);
         $course->description = $validated['description'];
@@ -350,12 +441,13 @@ class CourseController extends Controller
         $course->level_id = $validated['level_id'];
         $course->price = $validated['price'];
         $course->status = $validated['status'];
-
+        $course->meeting_limit = $validated['meeting_limit'] ?? null; // Simpan meeting limit jika ada
+    
         // Mengambil ID video dari URL YouTube
         if (!empty($validated['youtube_thumbnail_url'])) {
             $youtubeUrl = $validated['youtube_thumbnail_url'];
             parse_str(parse_url($youtubeUrl, PHP_URL_QUERY), $queryParams);
-
+    
             // Jika URL dalam format `https://www.youtube.com/watch?v=VIDEO_ID`
             if (isset($queryParams['v'])) {
                 $videoId = $queryParams['v'];
@@ -363,25 +455,25 @@ class CourseController extends Controller
                 // Jika URL dalam format `https://youtu.be/VIDEO_ID`
                 $videoId = basename(parse_url($youtubeUrl, PHP_URL_PATH));
             }
-
+    
             // Simpan URL dalam format embed
             $course->youtube_thumbnail_url = 'https://www.youtube.com/embed/' . $videoId;
         }
-
-
+    
+        // Simpan perubahan ke database
         $course->save();
-
+    
         // Menyimpan tags
         if (isset($validated['tags'])) {
             $course->tags()->sync($validated['tags']);
         } else {
             $course->tags()->detach();
         }
-
+    
         return redirect()->route(Auth::user()->role == 0 ? 'admin.courses.index' : 'instructor.courses.index')
             ->with('success', 'Course updated successfully.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */

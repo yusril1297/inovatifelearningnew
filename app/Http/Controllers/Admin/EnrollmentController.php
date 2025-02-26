@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
         // Ambil semua kursus yang tersedia
         $courses = Course::all();
 
-            return view('admin.enrollments.create', compact('students', 'courses'));
+        return view('admin.enrollments.create', compact('students', 'courses'));
     }
 
     /**
@@ -44,25 +44,32 @@ class EnrollmentController extends Controller
     {
         // Validasi input
         $request->validate([
-        
-        'user_id' => 'required|exists:users,id',
-        'course_id' => 'required|exists:courses,id',
-    ]);
+            'user_id' => 'required|exists:users,id',
+            'course_id' => 'required|exists:courses,id',
+        ]);
+
+        // Ambil data kursus berdasarkan ID yang dipilih
+        $course = Course::findOrFail($request->course_id);
+
+        // Cek apakah jumlah pertemuan sudah mencapai batas
+        if ($course->meeting_limit !== null && $course->meetings()->count() >= $course->meeting_limit) {
+            return redirect()->back()->with('error', 'Enrollment is closed because the course has reached its meeting limit.');
+        }
 
         // Cek apakah siswa sudah terdaftar di kursus tersebut
         $existingEnrollment = Enrollment::where('course_id', $request->course_id)
-                                    ->where('user_id', $request->user_id)
-                                    ->first();
+                                        ->where('user_id', $request->user_id)
+                                        ->first();
         if ($existingEnrollment) {
-        return redirect()->back()->with('error', 'Student is already enrolled in this course.');
-    }
+            return redirect()->back()->with('error', 'Student is already enrolled in this course.');
+        }
 
         // Simpan pendaftaran siswa
         Enrollment::create([
-        'user_id' => $request->user_id,
-        'course_id' => $request->course_id,
-        'enrollment_date' => now(),
-        'status' => 'active',
+            'user_id' => $request->user_id,
+            'course_id' => $request->course_id,
+            'enrollment_date' => now(),
+            'status' => 'active',
         ]);
 
         return redirect()->route('admin.enrollments.index')->with('success', 'Student has been successfully enrolled in the course.');
@@ -78,22 +85,6 @@ class EnrollmentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
-    {
-     
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-    {
-        
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
@@ -104,4 +95,3 @@ class EnrollmentController extends Controller
         return redirect()->route('admin.enrollments.index')->with('success', 'Enrollment deleted successfully.');
     }
 }
-
