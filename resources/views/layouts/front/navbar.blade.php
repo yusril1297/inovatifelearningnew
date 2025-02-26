@@ -1,106 +1,232 @@
-<header class="bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1">
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <!-- Include Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS Styling -->
+    <style>
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 100px;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+        }
+
+        /* Center Menu */
+        .navbar .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        /* Menu item styling */
+        .navbar .menu a,
+        .navbar .menu button {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        /* Button hover effect */
+        .navbar .menu a:hover,
+        .navbar .menu button:hover {
+            color: #007bff;
+        }
+
+        /* Button Category Dropdown */
+        .navbar .menu .relative {
+            position: relative;
+        }
+
+        .navbar .menu button {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu button:hover {
+            color: #007bff;
+        }
+
+        .navbar .menu button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .menu button[aria-expanded="true"] svg {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .navbar .menu .absolute {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: none;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .navbar .menu .absolute a {
+            padding: 10px 15px;
+            display: block;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .menu .absolute a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Show dropdown when active */
+        .navbar .menu .relative.open .absolute {
+            display: block;
+        }
+
+        /* Mobile Navbar (Responsive) */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .navbar .logo {
+                position: absolute;
+                left: 10px;
+            }
+        }
+
+        /* Login Button Styling */
+        .navbar .login {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-right: 100px; /* Margin Right 100px */
+        }
+
+        .navbar .login a {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .login a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar" x-data="{ open: false }">
+        <div class="flex lg:flex-1" style="margin-left: 100px;">
             <a href="{{ route('frontend.home') }}" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
                 <img class="h-8 w-auto" src="{{ asset($settings->path_logo ?? 'default-logo.png') }}" alt="">
-
             </a>
         </div>
-        <div class="flex lg:hidden">
-            <button onclick="openNav()" type="button"
-                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                <span class="sr-only">Open main menu</span>
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
-        </div>
-    </div>
-    <a href="{{ route('frontend.about') }}"
-        class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500 ml-4">Tentang Kami</a>
-</div>
-        <div class="hidden lg:flex lg:gap-x-16 z-20 ml-4" x-data="{ open: false }">
-            <a href="{{ route('frontend.allCourses') }}"
-                class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Semua Kelas</a>
-            <div class="relative">
-                <button @click="open = ! open" type="button"
-                    class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500"
-                    aria-expanded="false">
+
+        <div class="menu">
+            <a href="{{ route('frontend.home') }}">Home</a>
+            <a href="{{ route('frontend.allCourses') }}">Semua Kursus</a>
+            <a href="{{ route('frontend.about') }}">Tentang Kami</a>
+            <div class="relative" :class="{ 'open': open }">
+                <button @click="open = !open" type="button" aria-expanded="false">
                     Category
-                    <svg class="h-5 w-5 flex-none text-gray-900" viewBox="0 0 20 20" fill="currentColor"
-                        aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                            clip-rule="evenodd" />
+                    <svg class="h-5 w-5 flex-none text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                     </svg>
                 </button>
-                <div x-show="open" @click.away="open = false"
-                    class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div x-show="open" @click.away="open = false" class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                     <div class="p-4">
                         <!-- Course Links -->
                         @foreach ($categories as $category)
-                            <div
-                                class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                <div
-                                    class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                <div class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                     <img src="{{ Storage::url($category->icon) }}" class="w-7 h-7">
                                 </div>
                                 <div class="flex-auto">
-                                    <a href="{{ route('frontend.categories', $category->slug) }}"
-                                        class="block font-semibold text-gray-900 hover:text-blue-500">
+                                    <a href="{{ route('frontend.categories', $category->slug) }}" class="block font-semibold text-gray-900 hover:text-blue-500">
                                         {{ $category->name }}
-                                        <span span class="absolute inset-0"></span></a>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
-            <a href="{{ route('frontend.instructor') }}"
-                class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-500">Instructor</a>
+            <a href="{{ route('frontend.instructor') }}">Instructor</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
+        <div class="login">
             @guest
                 <!-- Show Login button if not logged in -->
-                <a href="{{ route('login') }}"
-                    class="py-1.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Log in <span aria-hidden="true">&rarr;</span>
-                </a>
+                <a href="{{ route('login') }}">Log in</a>
             @else
                 <!-- Profile Dropdown Trigger with Name and Picture -->
                 <div class="relative">
-                    <button type="button"
-                        class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none"
-                        onclick="toggleDropdown()">
-                        <span class="mr-2">{{ Auth::user()->name }}</span> <!-- User's Name -->
-                        <img src="{{ Auth::user()->profile_picture_url }}" alt="Profile Picture"
-                            class="w-10 h-10 rounded-full">
+                    <button type="button" class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none" onclick="toggleDropdown()">
+                        <span class="mr-2">{{ Auth::user()->name }}</span>
+                        <img src="{{ Auth::user()->profile_picture_url }}" alt="Profile Picture" class="w-10 h-10 rounded-full">
                     </button>
 
                     <!-- Dropdown Menu -->
-                    <div id="profileDropdown"
-                        class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
                         @if (Auth::user()->role == 0)
                             <!-- Admin -->
-                            <a href="{{ route('admin.dashboard') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
                         @elseif(Auth::user()->role == 1)
                             <!-- Instructor -->
-                            <a href="{{ route('instructor.dashboard') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                            <a href="{{ route('instructor.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
                         @else
                             <!-- Student -->
-                            <a href="{{ route('dashboard') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Courses</a>
+                            <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Courses</a>
                         @endif
-                        <a href="{{ route('profile.edit') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
-                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Log Out
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
@@ -110,81 +236,17 @@
                 </div>
             @endguest
         </div>
-
-        <script>
-            function toggleDropdown() {
-                const dropdown = document.getElementById('profileDropdown');
-                dropdown.classList.toggle('hidden');
-            }
-
-            document.addEventListener('click', function(event) {
-                const dropdown = document.getElementById('profileDropdown');
-                const isDropdownButton = event.target.closest('button[onclick="toggleDropdown()"]');
-                if (!isDropdownButton && !dropdown.classList.contains('hidden')) {
-                    dropdown.classList.add('hidden');
-                }
-            });
-        </script>
-
-    </nav>
-
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <div id="mobileMenu" class="lg:hidden" role="dialog" aria-modal="true">
-        <!-- Background backdrop, show/hide based on slide-over state. -->
-        <div class="fixed inset-0 z-10"></div>
-        <div
-            class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div class="flex items-center justify-between">
-                <a href="" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="">
-                </a>
-                <button onclick="closeNav()" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                    <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="mt-6 flow-root" x-data="{ open: false }">
-                <div class="-my-6 divide-y divide-gray-500/10">
-                    <div class="space-y-2 py-6">
-                        <a href=""
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">All
-                            Courses</a>
-                        <div class="-mx-3">
-                            <button @click="open = ! open" type="button"
-                                class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500"
-                                aria-controls="disclosure-1" aria-expanded="false">
-                                Courses
-                                <svg class="h-5 w-5 flex-none4l55" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div x-show="open" @click.away="open = false" class="mt-2 space-y-2" id="disclosure-1">
-                                @foreach ($categories as $category)
-                                    <a href=""
-                                        class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">{{ $category->name }}
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-
-                        <a href=""
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">Instructor</a>
-                    </div>
-                    <div class="py-6">
-                        <a href="{{ route('login') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-500">Log
-                            in</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</header>
+
+    <!-- Include AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>
