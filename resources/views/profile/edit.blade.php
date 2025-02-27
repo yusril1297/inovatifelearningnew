@@ -6,24 +6,15 @@
     </x-slot>
     <h2>Sertifikat Saya</h2>
     <ul>
-<<<<<<< HEAD
+
     @foreach(Auth::user()->certificates ?? [] as $certificate)
         <li>
             {{ $certificate->course->title }} - 
             <a href="{{ route('certificate.download', $certificate->id) }}">Unduh</a>
         </li>
     @endforeach
-</ul>
 
-=======
-        @foreach(optional(Auth::user())->certificates ?? [] as $certificate)
-            <li>
-                {{ $certificate->course->title }} - 
-                <a href="{{ route('certificate.download', $certificate->id) }}">Unduh</a>
-            </li>
-        @endforeach
-    </ul>
->>>>>>> 086c90eefae4b510cfc1bce95c6e7963d84b65cf
+
     
     
     <div class="py-12">
