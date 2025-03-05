@@ -1,24 +1,17 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-    <h2>Sertifikat Saya</h2>
-    <ul>
+@extends('layouts.front')
 
-    @foreach(Auth::user()->certificates ?? [] as $certificate)
-        <li>
-            {{ $certificate->course->title }} - 
-            <a href="{{ route('certificate.download', $certificate->id) }}">Unduh</a>
-        </li>
-    @endforeach
+@section('content')
 
-
-    
-    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
+        <!-- Avatar Section -->
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.update-avatar-form')
+                </div>
+            </div>
+
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     @include('profile.partials.update-profile-information-form')
@@ -31,15 +24,6 @@
                 </div>
             </div>
 
-            <!-- Avatar Section -->
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-avatar-form')
-                    
-                </div>
-            </div>
-
-
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     @include('profile.partials.delete-user-form')
@@ -48,4 +32,5 @@
             
         </div>
     </div>
-</x-app-layout>
+
+@endsection

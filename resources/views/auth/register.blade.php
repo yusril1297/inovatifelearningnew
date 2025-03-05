@@ -2,14 +2,16 @@
 
 @section('content')
 
-
 <div class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:w-screen lg:py-0">
+    <!-- Section for the heading with margin-bottom added -->
+    <div class="bg-[rgb(59_130_246_/_0.5)] text-black text-center py-12 mb-12"> <!-- Add mb-12 here -->
+        <h2 class="text-3xl font-bold"> Buat Akun Anda</h2>
+    </div>
+
+    <!-- Form container with padding and margin -->
+    <div class="flex flex-col items-center justify-center px-600 py-800 md:w-full lg:w-100/300 xl:w-100/200 lg:py-0 pt-12 pb-12 mb-12"> <!-- Increased width here -->
         <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Buat akun
-                </h1>
 
                 <!-- Register Form Start -->
                 <form method="POST" action="{{ route('register') }}" class="space-y-4 md:space-y-6">
@@ -21,7 +23,6 @@
                         <input type="text" name="name" id="name" 
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Nama Anda" required value="{{ old('name') }}">
-                        <!-- Display errors for name -->
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
 
@@ -31,7 +32,6 @@
                         <input type="email" name="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="nama@gmail.com" required value="{{ old('email') }}">
-                        <!-- Display errors for email -->
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
@@ -41,7 +41,6 @@
                         <input type="password" name="password" id="password" 
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
-                        <!-- Display errors for password -->
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
@@ -51,7 +50,6 @@
                         <input type="password" name="password_confirmation" id="password_confirmation" 
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
-                        <!-- Display errors for confirm password -->
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
@@ -72,7 +70,6 @@
                             </button>
                         </div>
                     
-                        <!-- Hidden Input to Store Role -->
                         <input type="hidden" name="role" id="role-input" value="2"> <!-- Default: Student -->
                         <x-input-error :messages="$errors->get('role')" class="mt-2" />
                     </div>
@@ -98,7 +95,7 @@
                     </button>
 
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Sudah punya akun? <a href="{{ route('login') }}"
+                        Sudah punya akun? <a href="{{ route('login') }} "
                             class="font-medium text-primary-600 hover:underline dark:text-primary-500 text-blue-500">Masuk di sini</a>
                     </p>
 
@@ -106,27 +103,22 @@
                 <!-- Register Form End -->
 
                 <script>
-                    // JavaScript to toggle active state between instructor and student buttons
                     const teacherBtn = document.getElementById('teacher-btn');
                     const studentBtn = document.getElementById('student-btn');
                     const roleInput = document.getElementById('role-input');
                 
-                    // Set the role when the "Instructor" button is clicked
                     teacherBtn.addEventListener('click', () => {
-                        roleInput.value = "1"; // Instructor value
+                        roleInput.value = "1"; 
                         teacherBtn.classList.add('bg-blue-500', 'text-white');
                         teacherBtn.classList.remove('bg-gray-200', 'text-gray-800');
-                
                         studentBtn.classList.add('bg-gray-200', 'text-gray-800');
                         studentBtn.classList.remove('bg-blue-500', 'text-white');
                     });
                 
-                    // Set the role when the "Student" button is clicked
                     studentBtn.addEventListener('click', () => {
-                        roleInput.value = "2"; // Student value
+                        roleInput.value = "2"; 
                         studentBtn.classList.add('bg-blue-500', 'text-white');
                         studentBtn.classList.remove('bg-gray-200', 'text-gray-800');
-                
                         teacherBtn.classList.add('bg-gray-200', 'text-gray-800');
                         teacherBtn.classList.remove('bg-blue-500', 'text-white');
                     });

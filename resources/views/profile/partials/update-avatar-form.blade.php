@@ -1,12 +1,15 @@
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Update Avatar') }}
-        </h2>
+    <header class="relative flex justify-between items-center">
+        <div>
+            <h2 class="text-lg font-medium text-gray-900">
+                {{ __('Update Avatar') }}
+            </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Update your account avatar to personalize your profile.') }}
-        </p>
+            <p class="mt-1 text-sm text-gray-600">
+                {{ __('Update your account avatar to personalize your profile.') }}
+            </p>
+        </div>
+        
     </header>
 
     <form method="post" action="{{ route('profile.update.avatar') }}" enctype="multipart/form-data" class="mt-6 space-y-6">

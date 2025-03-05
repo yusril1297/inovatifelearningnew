@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-white">
+<div class="bg-white"> 
     <div>
         <!--
                     Mobile filter dialog
@@ -77,7 +77,7 @@
                                         <p class="text-[#6D7786]">{{ $course->category->name }}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                     @endforeach

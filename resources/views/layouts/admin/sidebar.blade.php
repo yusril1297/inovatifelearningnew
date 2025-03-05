@@ -3,7 +3,6 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./index.html" class="text-nowrap logo-img">
-                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -71,12 +70,7 @@
                                 <span class="hide-menu">Course List</span>
                             </a>
                         </li>
-                        <!-- Tags -->
-                        <li class="sidebar-item">
-                            <a href="{{ route('admin.tags.index') }}" class="sidebar-link">
-                                <span class="hide-menu">Tags</span>
-                            </a>
-                        </li>
+                       
                         <!-- Levels -->
                         <li class="sidebar-item">
                             <a href="{{ route('admin.levels.index') }}" class="sidebar-link">

@@ -47,7 +47,7 @@ class CertificateController extends Controller
         // $fileName = 'certificates/' . $certificateCode . '.pdf';
         // Storage::put('public/' . $fileName, $pdf->output());
 
-<<<<<<< HEAD:app/Http/Controllers/CertificateController.php
+
         // // Simpan ke database
         // $certificate = Certificate::create([
         //     'course_id' => $course->id,
@@ -55,15 +55,16 @@ class CertificateController extends Controller
         //     'certificate_code' => $certificateCode,
         //     'certificate_url' => Storage::url($fileName)
         // ]);
-=======
+
         // Simpan ke database
+        
         Certificate::create([
             'course_id' => $course->id,
             'user_id' => $user->id,
             'certificate_code' => $certificateCode,
             'certificate_url' => Storage::url($fileName)
         ]);
->>>>>>> 086c90eefae4b510cfc1bce95c6e7963d84b65cf:app/Http/Controllers/Admin/CertificateController.php
+
 
         // return redirect()->route('course.show', $course->id)
         //     ->with('success', 'Sertifikat berhasil dibuat! Anda bisa mengunduhnya.');
