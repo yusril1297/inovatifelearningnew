@@ -7,12 +7,28 @@
 <div class="w-1/4 pr-8 mt-[200px]">
     <h3 class="text-2xl font-semibold mb-4">Categori</h3>
     <ul class="space-y-3">
-        <li><a href="#" class="text-lg hover:text-blue-500">UI/UX</a></li>
-        <li><a href="#" class="text-lg hover:text-blue-500">Desain</a></li>
-        <li><a href="#" class="text-lg hover:text-blue-500">Photografi</a></li>
-        <li><a href="#" class="text-lg hover:text-blue-500">Animasi</a></li>
-        <li><a href="#" class="text-lg hover:text-blue-500">Menggambar</a></li>
-    </ul>
+    <li class="flex items-center space-x-2">
+        <input type="checkbox" id="ui-ux" class="h-5 w-5" />
+        <label for="ui-ux" class="text-lg hover:text-blue-500">UI/UX</label>
+    </li>
+    <li class="flex items-center space-x-2">
+        <input type="checkbox" id="desain" class="h-5 w-5" />
+        <label for="desain" class="text-lg hover:text-blue-500">Desain</label>
+    </li>
+    <li class="flex items-center space-x-2">
+        <input type="checkbox" id="photografi" class="h-5 w-5" />
+        <label for="photografi" class="text-lg hover:text-blue-500">Photografi</label>
+    </li>
+    <li class="flex items-center space-x-2">
+        <input type="checkbox" id="animasi" class="h-5 w-5" />
+        <label for="animasi" class="text-lg hover:text-blue-500">Animasi</label>
+    </li>
+    <li class="flex items-center space-x-2">
+        <input type="checkbox" id="menggambar" class="h-5 w-5" />
+        <label for="menggambar" class="text-lg hover:text-blue-500">Menggambar</label>
+    </li>
+</ul>
+
 
     <!-- Filter Section -->
     <div class="mt-8">
@@ -31,9 +47,9 @@
 
             <label for="rating" class="block text-lg mb-2">Level</label>
             <select id="rating" name="rating" class="w-full p-2 mb-4 border rounded-md">
-                <option value="1">1 Star</option>
-                <option value="2">2 Stars</option>
-                <option value="3">3 Stars</option>
+                <option value="1">Beginner</option>
+                <option value="2">Intermediate</option>
+                <option value="3">Advanced</option>
             </select>
 
             <button type="submit" class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Terapkan Filter</button>
