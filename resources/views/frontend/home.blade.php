@@ -1,13 +1,9 @@
 @extends('layouts.front')
 
 @section('content')
-  <!-- Hero -->
-<!-- Hero -->
+ 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Bersama Mentor Berpengalaman</title>
+
     <!-- Link ke Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -75,46 +71,80 @@
           }
           ```
         -->
-        {{--  --}}
- <div class="container mx-auto py-20">
-    <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
-   <!-- Card 1 -->
-    <div class="border rounded-lg shadow-md p-6">
-        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
-            <img src="https://img.freepik.com/free-vector/check-mark-with-review-stars_78370-1123.jpg?t=st=1739341583~exp=1739345183~hmac=3679dd1586a6e5a69a73194291de46a31fa1d8b1212ada7d25505dda2290793e&w=1380" alt="Rating Icon" class="w-30 h-40 mb-3">
-            <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
+        <!DOCTYPE html>
+
+    <div class="container mx-auto py-20">
+        <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
+            <!-- Card 1 -->
+            <div class="border rounded-lg shadow-md p-6">
+                <div class="flex flex-col items-center mb-4">
+                    <img src="https://img.freepik.com/free-vector/check-mark-with-review-stars_78370-1123.jpg?t=st=1739341583~exp=1739345183~hmac=3679dd1586a6e5a69a73194291de46a31fa1d8b1212ada7d25505dda2290793e&w=1380" alt="Rating Icon" class="w-30 h-40 mb-3">
+                    <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
+                </div>
+                <div class="text-center">
+                    <span id="ratingCounter" class="text-5xl font-bold">0</span>
+                </div>
+                <p class="text-gray-600 text-xl text-center pt-6">
+                    Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="border rounded-lg shadow-md p-6">
+                <div class="flex flex-col items-center mb-4">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1165/1165771.png" alt="Rating Icon" class="w-30 h-40 mb-3">
+                    <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
+                </div>
+                <div class="text-center">
+                    <span id="satisfactionCounter" class="text-5xl font-bold">0</span>
+                </div>
+                <p class="text-gray-600 text-xl text-center pt-6">
+                    Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
+                </p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="border rounded-lg shadow-md p-6">
+                <div class="flex flex-col items-center mb-4">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135727.png" alt="Rating Icon" class="w-30 h-40 mb-3">
+                    <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
+                </div>
+                <div class="text-center">
+                    <span id="financeCounter" class="text-5xl font-bold">0</span>
+                </div>
+                <p class="text-gray-600 text-xl text-center pt-6">
+                    Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
+                </p>
+            </div>
         </div>
-        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
-            Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
-        </p>
     </div>
 
-    <!-- Card 2 -->
-    <div class="border rounded-lg shadow-md p-6">
-        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
-            <img src="https://cdn-icons-png.flaticon.com/128/1165/1165771.png" alt="Rating Icon" class="w-30 h-40 mb-3">
-            <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
-        </div>
-        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
-        Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
-        </p>
-    </div>
-    
-    <!-- Card 3 -->
+    <script>
+        // Function to increment the counter
+        function startCounter(elementId, targetValue, duration) {
+            let startValue = 0;
+            const increment = targetValue / (duration / 50);  // Increment per interval
+            const counterElement = document.getElementById(elementId);
 
-    <div class="border rounded-lg shadow-md p-6">
-        <div class="flex flex-col items-center mb-4"> <!-- Mengubah flex menjadi kolom -->
-            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135727.png" alt="Rating Icon" class="w-30 h-40 mb-3">
-            <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
-        </div>
-        <p class="text-gray-600 text-xl text-center pt-6"> <!-- Menambahkan ukuran teks xl pada deskripsi -->
-        Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
-        </p>
-    </div>
+            const interval = setInterval(() => {
+                startValue += increment;
+                counterElement.textContent = Math.min(startValue, targetValue).toFixed(0);
 
-    </div>
-</div>
+                if (startValue >= targetValue) {
+                    clearInterval(interval);
+                }
+            }, 50);
+        }
+
+        // Call the function on page load to animate the counters
+        window.onload = function() {
+            startCounter('ratingCounter', 500, 2000); // Example: Rating counter reaches 500 in 2 seconds
+            startCounter('satisfactionCounter', 750, 2500); // Satisfaction counter reaches 750 in 2.5 seconds
+            startCounter('financeCounter', 1000, 3000); // Finance counter reaches 1000 in 3 seconds
+        }
+    </script>
+
 
         
         {{--  --}}
