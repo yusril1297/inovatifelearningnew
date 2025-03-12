@@ -272,6 +272,7 @@ class PaymentController extends Controller
         $enrollment->save();
         // Pastikan pembayaran sudah berhasil dan status enrollment sudah aktif
         if ($enrollment->status == 'active') {
+            dd($enrollment);
             // Redirect pengguna ke halaman frontend.learning
             return redirect()->route('frontend.learning', ['course' => $enrollment->course->slug, 'video' => $enrollment->course->videos->first()->id]);
         } else {
