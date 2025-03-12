@@ -640,22 +640,7 @@
 
 
 
-    <!-- Contact Me (Tengah & Bawah FAQ) -->
-    <div class="flex justify-center mt-19 mb-16 mx-[80px]">
-        <div class="border-2 border-blue-500 rounded-lg p-6 bg-white flex items-center justify-between w-full max-w-full shadow-md">
-            <div>
-                <p class="text-sm text-gray-600">Punya Pertanyaan?</p>
-                <h2 class="text-xl font-bold text-blue-900">Ajukan Pertanyaan Jika masih bingung</h2>
-            </div>
-            <button class="bg-yellow-400 text-blue-900 font-bold px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500">
-                Contact Me
-            </button>
-        </div>
-    </div>
-
-</body>
-</html>
-
+    
 
 
     <!-- End FAQ -->
