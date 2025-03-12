@@ -47,6 +47,12 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="biodata" :value="__('Biodata')" />
+            <x-text-input id="biodata" name="biodata" type="text" class="mt-1 block w-full" :value="old('biodata', $user->biodata)" required autocomplete="biodata" />
+            <x-input-error class="mt-2" :messages="$errors->get('biodata')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
