@@ -7,55 +7,48 @@
 <div class="w-1/4 pr-8 mt-[200px]">
     <h3 class="text-2xl font-semibold mb-4">Categori</h3>
     <ul class="space-y-3">
-    <li class="flex items-center space-x-2">
-        <input type="checkbox" id="ui-ux" class="h-5 w-5" />
-        <label for="ui-ux" class="text-lg hover:text-blue-500">UI/UX</label>
-    </li>
-    <li class="flex items-center space-x-2">
-        <input type="checkbox" id="desain" class="h-5 w-5" />
-        <label for="desain" class="text-lg hover:text-blue-500">Desain</label>
-    </li>
-    <li class="flex items-center space-x-2">
-        <input type="checkbox" id="photografi" class="h-5 w-5" />
-        <label for="photografi" class="text-lg hover:text-blue-500">Photografi</label>
-    </li>
-    <li class="flex items-center space-x-2">
-        <input type="checkbox" id="animasi" class="h-5 w-5" />
-        <label for="animasi" class="text-lg hover:text-blue-500">Animasi</label>
-    </li>
-    <li class="flex items-center space-x-2">
-        <input type="checkbox" id="menggambar" class="h-5 w-5" />
-        <label for="menggambar" class="text-lg hover:text-blue-500">Menggambar</label>
-    </li>
-</ul>
+    <form action="{{ route('frontend.allCourses') }}" method="GET">
+    @forelse ($categories as $category)
+        <li class="flex items
+        -center space-x-2">
+            <input type="checkbox" id="{{ $category->id }}" name="categories[]" value="{{ $category->id }}" class="h-5 w-5"  {{ in_array($category->id, request()->get('categories', [])) ? 'checked' : '' }} />
+            <label for="{{ $category->name }}" class="text-lg hover:text-blue-500">{{ $category->name }}</label>
+        </li>
+    @empty
+        <p class="text-lg">Belum ada data category</p>
+    @endforelse
 
-
+    
+    </ul>
     <!-- Filter Section -->
     <div class="mt-8">
         <h3 class="text-2xl font-semibold mb-4">Filter</h3>
-        <form action="#" method="GET">
         <label for="price">Harga: Rp <span id="priceDisplay">0</span></label>
-<input type="range" id="price" name="price" min="1" max="10" step="1" class="w-full mb-4" oninput="updatePrice()">
-
-<script>
-    function updatePrice() {
-        const price = document.getElementById('price').value * 100000; // Mengalikan dengan 100.000 untuk harga mulai dari Rp 100.000
-        document.getElementById('priceDisplay').textContent = price.toLocaleString(); // Memformat angka menjadi ribuan
-    }
-</script>
-
-
-            <label for="rating" class="block text-lg mb-2">Level</label>
-            <select id="rating" name="rating" class="w-full p-2 mb-4 border rounded-md">
-                <option value="1">Beginner</option>
-                <option value="2">Intermediate</option>
-                <option value="3">Advanced</option>
+        <input type="range" id="price" name="price" min="1" max="10" step="1" class="w-full mb-4" oninput="updatePrice()" value="{{ request('price', 1) }}" />
+    
+        <label for="rating" class="block text-lg mb-2">Level</label>
+        <select id="rating" name="level" class="w-full p-2 mb-4 border rounded-md">
+                @forelse ($levels as $level)
+                    <option value="{{ $level->id }}" {{ request('level') ==$level->id ? 'selected':'' }}>{{ $level->name }}</option> 
+                @empty
+                    <option value="">Belum ada data level</option>
+                @endforelse
             </select>
 
             <button type="submit" class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Terapkan Filter</button>
         </form>
     </div>
 </div>
+                <script>
+                    function updatePrice() {
+                        const price = document.getElementById('price').value * 100000; // Mengalikan dengan 100.000 untuk harga mulai dari Rp 100.000
+                        document.getElementById('priceDisplay').textContent = price.toLocaleString(); // Memformat angka menjadi ribuan
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        updatePrice();
+                    });
+                </script>
 
 
             <!-- Main Content: Product Listing -->
@@ -69,10 +62,16 @@
 
                 <!-- Search Bar -->
                 <div class="mb-8 flex justify-end">
-                    <form action="#" method="GET" class="flex items-center border border-gray-200 rounded-full w-full max-w-[500px] relative">
-                        <input type="text" name="query" placeholder="Cari Kursus..." class="w-full p-3 rounded-full text-lg pr-10" />
-                        <i class="fas fa-search absolute right-3 text-gray-500 text-xl"></i>
+                    <form action="{{ route('frontend.allCourses') }}" method="GET" class="flex items-center border border-gray-300 rounded-full w-full max-w-[500px] px-4 py-2 bg-white shadow-md">
+                        <div class="relative w-full">
+                            <input type="text" name="search" placeholder="Cari Kursus..." class="w-full p-3 pl-4 pr-10 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg"></i>
+                        </div>
+                        <button type="submit" class="ml-2 px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-200">
+                            Cari
+                        </button>
                     </form>
+                    
                 </div>
 
                 <!-- Course List -->
