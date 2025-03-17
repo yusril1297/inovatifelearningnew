@@ -67,7 +67,7 @@ class PaymentController extends Controller
             ]);
         } elseif ($enrollment->status === 'active' && ($enrollment->is_lifetime || Carbon::parse($enrollment->exp_time)->gt(Carbon::now()))) {
             // Jika status sudah active, arahkan ke halaman pembelajaran
-            return redirect()->route('frontend.learning', ['courses' => $course->slug, 'video' => $course->videos()->first()->id]);
+            return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $course->videos()->first()->id]);
         }
         // dd($enrollment);
         // Tampilkan halaman checkout
@@ -303,7 +303,7 @@ class PaymentController extends Controller
         $enrollment->save();
         // Pastikan pembayaran sudah berhasil dan status enrollment sudah aktif
         if ($enrollment->status == 'active') {
-            dd($enrollment);
+            // dd($enrollment);
             // Redirect pengguna ke halaman frontend.learning
             return redirect()->route('frontend.learning', ['course' => $enrollment->course->slug, 'video' => $enrollment->course->videos->first()->id]);
         } else {
