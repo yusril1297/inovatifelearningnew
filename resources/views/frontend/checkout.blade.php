@@ -1,19 +1,44 @@
 @extends('layouts.front')
 
 @section('content')
-    <div class="container mx-auto mt-10 max-w-lg">
+    <div class="container mx-auto mt-10 max-w-3xl">
         @if ($course)
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    Checkout - {{ $course->title }}
-                </h2>
-                <p class="text-lg text-gray-600 mb-6">
-                    Amount: <span class="font-semibold text-gray-900">Rp{{ number_format($course->price, 2) }}</span>
-                </p>
-
-                <button id="pay-button"
-                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-md shadow-md transition duration-300">
-                    Pay Now
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Bayar Sekarang</h2>
+                <table class="w-full border rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-3 text-left">Produk</th>
+                            <th class="p-3">Harga</th>
+                            <th class="p-3">Jumlah</th>
+                            <th class="p-3">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="p-3 flex items-center">
+                                <img src="{{ asset('path_to_course_image.jpg') }}" class="w-16 h-16 mr-3 rounded" alt="Course Image">
+                                <a href="#" class="text-blue-600 hover:underline">{{ $course->title }}</a>
+                            </td>
+                            <td class="p-3">Rp{{ number_format($course->price, 0, ',', '.') }}</td>
+                            <td class="p-3 text-center">1</td>
+                            <td class="p-3">Rp{{ number_format($course->price, 0, ',', '.') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-between items-center mt-4">
+                    <input type="text" placeholder="Masukkan Kupon" class="border p-2 rounded w-1/2">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Terapkan Kupon</button>
+                </div>
+            </div>
+            <div class="bg-gray-100 p-4 mt-4 rounded-lg">
+                <h3 class="text-lg font-semibold">Total Keranjang Belanja</h3>
+                <div class="flex justify-between mt-2">
+                    <span>Subtotal</span>
+                    <span class="font-bold">Rp{{ number_format($course->price, 0, ',', '.') }}</span>
+                </div>
+                <button id="pay-button" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md mt-4">
+                    Lanjutkan untuk Membayar
                 </button>
             </div>
         @else
@@ -23,41 +48,11 @@
         @endif
     </div>
 
-
-    {{-- <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            var payButton = document.getElementById('pay-button');
-            if (payButton) {
-                payButton.onclick = function() {
-                    fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Failed to get snap token');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            snap.pay(data.snapToken); // Gunakan snapToken untuk membuka popup Midtrans
-                        })
-                        .catch(error => {
-                            console.error(error.message);
-                        });
-                };
-            }
-        });
-    </script> --}}
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var payButton = document.getElementById('pay-button');
             if (payButton) {
                 payButton.onclick = function() {
-                    // SnapToken acquired from previous step
                     fetch(`{{ url('/payment/' . $enrollment->id) }}`, {
                             method: 'POST',
                             headers: {
@@ -74,21 +69,14 @@
                         .then(data => {
                             if (data.snapToken) {
                                 snap.pay(data.snapToken, {
-                                    // Optional
                                     onSuccess: function(result) {
-                                        /* Pembayaran berhasil, menunggu konfirmasi dari server */
                                         alert('Pembayaran berhasil! Menunggu konfirmasi...');
-                                        window.location.href =
-                                            `{{ url('/payment/success') }}/${data.order_id}`;
+                                        window.location.href = `{{ url('/payment/success') }}/${data.order_id}`;
                                     },
-                                    // Optional
                                     onPending: function(result) {
-                                        /* Pembayaran tertunda */
                                         alert('Pembayaran tertunda! Menunggu konfirmasi...');
                                     },
-                                    // Optional
                                     onError: function(result) {
-                                        /* Terjadi kesalahan saat pembayaran */
                                         alert('Pembayaran gagal! Silakan coba lagi.');
                                     }
                                 });
@@ -104,132 +92,6 @@
         });
     </script>
 
-
-
-    {{-- 
-<script src="{{ asset('assets/js/main.js') }}"></script>  --}}
     <script src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('services.midtrans.client_key') }}"></script>
 @endsection
-
-
-
-
-
-
-
-
-{{-- <div class="flex flex-col gap-[10px] items-center">
-    <div class="bg-gradient-to-r from-sky-100 to-blue-200 w-fit p-[8px_16px] rounded-full border border-[#adc7fe] flex items-center gap-[6px]">
-        <div>
-            <img src="{{ asset('assets/icon/medal-star.svg') }}" alt="icon">
-        </div>
-        <p class="font-medium text-sm text-[#1E90FF]">Invest In Yourself Today</p>
-    </div>
-    <h2 class="font-bold text-[40px] leading-[60px] text-neutral-800">Checkout Subscription</h2>
-</div>
-<div class="flex gap-10 px-[100px] relative z-10">
-    <div class="w-[400px] flex shrink-0 flex-col bg-[#F5F8FA] rounded-2xl p-5 gap-4 h-fit">
-        <p class="font-bold text-lg">Package</p>
-        <div class="flex items-center justify-between w-full">
-            <div class="flex items-center gap-3">
-                <div class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/icon/Web Development 1.svg') }}" class="w-full h-full object-cover" alt="photo">
-                </div>
-                <div class="flex flex-col gap-[2px]">
-                    <p class="font-semibold">Premium</p>
-                    <p class="text-sm text-[#6D7786]">30 days access</p>
-                </div>
-            </div>
-            <p class="p-[4px_12px] rounded-full bg-[#1E90FF] font-semibold text-xs text-white text-center">Popular
-            </p>
-        </div>
-        <hr>
-        <div class="flex flex-col gap-5">
-            <div class="flex gap-3">
-                <div class="w-6 h-6 flex shrink-0">
-                    <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                </div>
-                <p class="text-[#475466]">Access all course materials</p>
-            </div>
-            <div class="flex gap-3">
-                <div class="w-6 h-6 flex shrink-0">
-                    <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                </div>
-                <p class="text-[#475466]">Unlock all course badges for jobs</p>
-            </div>
-            <div class="flex gap-3">
-                <div class="w-6 h-6 flex shrink-0">
-                    <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                </div>
-                <p class="text-[#475466]">Receive premium rewards</p>
-            </div>
-        </div>
-        <p class="font-semibold text-[28px] leading-[42px]">Rp 429000</p>
-    </div>
-    <form class="w-full flex flex-col bg-[#F5F8FA] rounded-2xl p-5 gap-5">
-        <p class="font-bold text-lg">Send Payment</p>
-        <div class="flex flex-col gap-5">
-            <div class="flex items-center justify-between">
-                <div class="flex gap-3">
-                    <div class="w-6 h-6 flex shrink-0">
-                        <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                    </div>
-                    <p class="text-[#475466]">Bank Name</p>
-                </div>
-                <p class="font-semibold">Angga Capital</p>
-                <input type="hidden" name="bankName" value="Angga Capital">
-            </div>
-            <div class="flex items-center justify-between">
-                <div class="flex gap-3">
-                    <div class="w-6 h-6 flex shrink-0">
-                        <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                    </div>
-                    <p class="text-[#475466]">Account Number</p>
-                </div>
-                <p class="font-semibold">22081996202191404</p>
-                <input type="hidden" name="accountNumber" value="22081996202191404">
-            </div>
-            <div class="flex items-center justify-between">
-                <div class="flex gap-3">
-                    <div class="w-6 h-6 flex shrink-0">
-                        <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                    </div>
-                    <p class="text-[#475466]">Account Name</p>
-                </div>
-                <p class="font-semibold">Alqowy Education First</p>
-                <input type="hidden" name="accountName" value="Alqowy Education First">
-            </div>
-            <div class="flex items-center justify-between">
-                <div class="flex gap-3">
-                    <div class="w-6 h-6 flex shrink-0">
-                        <img src="{{ asset('assets/icon/tick-circle.svg') }}" class="w-full h-full object-cover" alt="icon">
-                    </div>
-                    <p class="text-[#475466]">Code Swift</p>
-                </div>
-                <p class="font-semibold">ACEFIRSTBANK</p>
-                <input type="hidden" name="swift" value="ACEFIRSTBANK">
-            </div>
-        </div>
-        <hr>
-        <p class="font-bold text-lg">Confirm Your Payment</p>
-        <div class="relative">
-            <button type="button"
-                class="p-4 rounded-full flex gap-3 w-full ring-1 ring-black transition-all duration-300 hover:ring-2 hover:ring-[#1E90FF]"
-                onclick="document.getElementById('file').click()">
-                <div class="w-6 h-6 flex shrink-0">
-                    <img src="{{ asset('assets/icon/note-add.svg') }}" alt="icon">
-                </div>
-                <p id="fileLabel">Add a file attachment</p>
-            </button>
-            <input id="file" type="file" name="file" class="hidden" onchange="updateFileName(this)">
-        </div>
-        <button
-            class="p-[20px_32px] bg-[#1E90FF] text-white rounded-full text-center font-semibold transition-all duration-300 hover:shadow-[0_10px_20px_0_#adc7fe]">I've
-            Made The Payment</button>
-    </form>
-</div>
-<div class="flex justify-center absolute transform -translate-x-1/2 left-1/2 bottom-0 w-full">
-    <img src="{{ asset('assets/background/alqowy.svg') }}" alt="background">
-</div>
-{{-- End Checkout --}}

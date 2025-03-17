@@ -94,13 +94,24 @@
 
   <footer>
     <div class="footer-content">
-      <div class="newsletter">
-        <h2>Ajukan Pertanyaan Jika masih bingung</h2>
-        <input type="email" placeholder="Email Address" />
-        <button>Sign me up</button>
-        <p> <a href="#"></a></p>
-      
-      </div>
+    <div class="newsletter">
+    <h2>Ajukan Pertanyaan Jika Masih Bingung</h2>
+    <input type="email" id="emailInput" placeholder="Email Address" />
+    <button onclick="sendEmail()">Sign me up</button>
+    <p><a href="mailto:yusrilsaiful97@gmail.com">Hubungi via Email</a></p>
+</div>
+
+<script>
+    function sendEmail() {
+        let userEmail = document.getElementById("emailInput").value;
+        if (userEmail) {
+            window.location.href = `mailto:yusrilsaiful97@gmail.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
+        } else {
+            alert("Silakan masukkan alamat email Anda terlebih dahulu.");
+        }
+    }
+</script>
+
       <div class="company-info">
         <div class="b-corp">
           <img src="assets/images/logos/logommi.png" alt="B Corporation Logo" />

@@ -10,7 +10,7 @@
     <!-- End Title -->
 
     <!-- Grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+    <div class="grid grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
         @foreach ($instructors as $instructor)
         <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <img class="rounded-lg size-20"
@@ -22,6 +22,8 @@
                 <div>
                     <a href="{{ route('frontend.instructorDetails', $instructor->id)}}">
                     <h3 class="font-medium text-gray-800 dark:text-neutral-600"> {{ $instructor->name}}</h3>
+                    <h3 class="font-medium text-gray-800 dark:text-neutral-600"> {{ $instructor->biodata}}</h3>
+
                     </a>
                     <p class="mt-1 text-xs uppercase text-gray-500 dark:text-neutral-500">
                         Pengajar
