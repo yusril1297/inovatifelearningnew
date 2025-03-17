@@ -23,6 +23,8 @@ class Course extends Model
         'status',
         'certificate_url',
         'meeting_limit', // Tambahkan meeting_limit ke fillable
+        'subscription_periods',
+        'subscription_duration',
     ];
 
     // Menyimpan slug secara otomatis saat menyimpan course

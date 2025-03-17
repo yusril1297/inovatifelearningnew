@@ -17,7 +17,8 @@ class Enrollment extends Model
         'payment_method',
         'payable_amount',
         'status',
-       
+        'exp_time',
+        'is_lifetime',
     ];
 
     protected $table = 'enrollments';
