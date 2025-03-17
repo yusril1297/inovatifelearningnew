@@ -45,9 +45,19 @@
               <span class="hide-menu">Courses</span>
             </a>
           </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('profile.edit') }}" aria-expanded="false">
+              <span>
+                <i class="ti ti-cards"></i>
+              </span>
+              <span class="hide-menu">Profile</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->
   </aside>
+
+  

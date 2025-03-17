@@ -90,6 +90,8 @@ class CourseController extends Controller
             'price' => 'required|numeric|min:0',
             'status' => 'required|in:published,draft',
             'meeting_limit' => 'nullable|integer|min:1', // Validasi meeting limit
+            "subscription_periods" => "required|in:month,week,year,lifetime",
+            "subscription_duration" => "nullable|integer|min:1",
         ]);
     
         // Membuat slug unik

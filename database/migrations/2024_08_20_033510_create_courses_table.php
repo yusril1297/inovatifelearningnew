@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade'); // Foreign key to categories
             $table->string('thumbnail')->nullable(); // URL or path to course thumbnail image
             $table->decimal('price', 8, 2)->default(0.00); // Price of the course
+            $table->enum('subscription_periods', ['month', 'week','year' ,'lifetime']); // Subscription type
+            $table->integer('subscription_duration')->nullable(); // Subscription period count
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
             $table->timestamps();
         });

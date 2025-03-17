@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('payment_method')->nullable(); // Payment method (optional)
             $table->decimal('payable_amount', 10, 2)->nullable(); // Amount to be paid (optional)
             $table->enum('status', ['pending', 'active', 'canceled'])->default('pending'); // Enrollment status
+            $table->dateTime('exp_time')->nullable(); // Cancellation time (optional)
+            $table->boolean('is_lifetime')->default(false); // Lifetime access
             $table->timestamps(); // created_at and updated_at
         });
     }

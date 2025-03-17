@@ -57,6 +57,19 @@
             <label for="price">Harga</label>
             <input type="number" name="price" id="price" class="form-control" required>
         </div>
+        <div class="form-group">
+            <label for="subscription">Type Subcription</label>
+            <select name="subscription_periods" id="subcription_periods" class="form-control" required>
+                <option value="week">Minggu</option>
+                <option value="month">Bulan</option>
+                <option value="year">Tahun</option>
+                <option value="lifetime">Selamanya</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subscription_duration">Durasi Subscription</label>
+            <input type="number" name="subscription_duration" id="subscription_duration" class="form-control" required>
+        </div>
 
         <div class="form-group">
             <label for="status">Status</label>
@@ -72,5 +85,32 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const periodSelect = document.getElementById("subcription_periods");
+        const durationInput = document.getElementById("subscription_duration");
+
+        console.log(periodSelect.value);
+
+        function toggleDurationInput() {
+            if (periodSelect.value === "lifetime") {
+                durationInput.disabled = true;
+                durationInput.value = ""; // Kosongkan input jika dinonaktifkan
+            } else {
+                durationInput.disabled = false;
+            }
+        }
+
+        // Panggil fungsi saat pertama kali dimuat
+        toggleDurationInput();
+
+        // Tambahkan event listener untuk perubahan
+        periodSelect.addEventListener("change", toggleDurationInput);
+    });
+</script>
+
 @endsection
+
+
 
