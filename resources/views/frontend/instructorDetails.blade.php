@@ -36,6 +36,9 @@
                                         <h3 class="font-medium text-gray-900">
                                            {{ $instructor->name}}
                                         </h3>
+                                        <h4 class="text-sm text-gray-500">
+                                            {{ $instructor->biodata }}
+                                        </h4>
                                         <p class="text-sm text-gray-500">
                                            Instructor
                                         </p>

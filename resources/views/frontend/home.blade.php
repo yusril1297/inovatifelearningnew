@@ -338,6 +338,7 @@
                         src="{{ asset($instructor->profile_picture_url) }}"
                         alt="{{ $instructor->name }}">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $instructor->name }}</h3>
+                    <h4 class="text-sm text-gray-500 dark:text-gray-400">{{ $instructor->biodata }}</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400">Pengajar</p>
                     <a href="{{ route('frontend.instructorDetails', $instructor->id) }}"
                         class="mt-3 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">

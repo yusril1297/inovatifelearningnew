@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Front;
 use  App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
 use App\Models\User;
 use App\Models\Enrollment;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Log;
 
 class FrontController extends Controller
 {
@@ -30,11 +32,31 @@ class FrontController extends Controller
 
     public function allCourses()
     {
-        $settings = setting::first();
-        $courses = Course::published()->with(['category', 'enrollments'])->get();
-        $enrollments = Enrollment::where('user_id', Auth::id())->where('status', 'active')->get();
+        $search = request()->query('search');
+        $price = request()->query('price') * 100000;
+        $categories = request()->query('categories',[]);
+        $level = request()->query('level');
+        
 
-        return view('frontend.allCourses', compact('courses', 'settings', 'enrollments'));
+        // dd($categories);
+
+        $courses = Course::when($search, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%');
+        })->when($price, function ($query, $price) {
+            return $query->where('price', '=', $price);
+        })->when($categories, function ($query, $categories) {
+            return $query->whereIn('category_id', $categories);
+        })->when($level, function ($query, $level) {
+            return $query->where('level_id', $level);
+        })
+        ->where('status', 'published')->get();
+
+        $settings = setting::first();
+        $enrollments = Enrollment::where('user_id', Auth::id())->where('status', 'active')->get();
+        $categories = Category::all();
+        $levels = Level::all();
+
+        return view('frontend.allCourses', compact('courses', 'settings', 'enrollments','categories','levels'));
     }
 
 
