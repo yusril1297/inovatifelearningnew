@@ -8,7 +8,6 @@ use App\Models\Payment;
 use Carbon\Carbon;
 use Midtrans\Snap;
 use Midtrans\Config;
-use Midtrans\Notification;
 use App\Models\User;
 use App\Models\Course;
 use Exception;
@@ -184,6 +183,7 @@ class PaymentController extends Controller
             // Dapatkan Snap Token
             $snapToken = \Midtrans\Snap::getSnapToken($transaction);
             return response()->json(['snapToken' => $snapToken, 'order_id' => $orderId]);
+            
         } catch (\Exception $e) {
             Log::error('Failed to get snap token: ' . $e->getMessage());
             return response()->json(['message' => 'Failed to get snap token', 'error' => $e->getMessage()], 500);
@@ -274,7 +274,14 @@ class PaymentController extends Controller
                     'payment_details' => json_encode($payload),
                 ]
             );
-
+            
+            $course = Course::find($enrollment->course_id);
+            \App\Models\Notification::create([
+                'user_id' => $course->instructor_id,
+                'title'=> 'Subscription Baru Berhasil',
+                'body' => 'Pengguna baru telah berlangganan kursus Anda',
+                'course_id' => $course->id,
+            ]);
             $enrollment->save();
             
             Log::info('Webhook processed successfully for order_id: ' . $validated['order_id']);
