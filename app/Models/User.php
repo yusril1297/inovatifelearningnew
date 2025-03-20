@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role',
         'password',
         'biodata',
+        'cv'
     ];
 
     /**
@@ -64,7 +65,14 @@ class User extends Authenticatable
     return $this->avatar 
         ? asset('storage/' . $this->avatar) 
         : asset('path/to/default/avatar.jpg'); // Ganti dengan path avatar default
+    
     }
+    public function getCvPictureUrlAttribute()
+    {
+        return $this->cv 
+            ? asset('storage/' . $this->cv) 
+            : asset('path/to/default/avatar.jpg'); // Ganti dengan path avatar default
+        }
 
     public function enrolledCourses()
     {

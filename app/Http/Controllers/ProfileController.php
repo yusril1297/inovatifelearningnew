@@ -44,7 +44,7 @@ class ProfileController extends Controller
     public function updateAvatar(Request $request)
     {
         $request->validate([
-            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,pngr',
         ]);
     
         $user = $request->user();
@@ -85,4 +85,31 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function updateCv(Request $request)
+    {
+        $request->validate([
+            'cv' => 'nullable|image|mimes:jpg,jpeg,png',
+        ]);
+    
+        $user = $request->user();
+    
+        if ($request->hasFile('cv')) {
+            // Hapus avatar lama jika ada
+            if ($user->cv) {
+                Storage::delete('public/' . $user->cv);
+            }
+    
+            // Simpan avatar baru
+            $path = $request->file('cv')->store('cv', 'public');
+            $user->cv = $path;
+        }
+    
+        $user->save();
+    
+        return redirect()->back()->with('status', 'cv-updated');
+    }
+    
+
+    
 }

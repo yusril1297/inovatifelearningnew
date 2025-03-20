@@ -73,78 +73,82 @@
         -->
         <!DOCTYPE html>
 
-    <div class="container mx-auto py-20">
-        <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
-            <!-- Card 1 -->
-            <div class="border rounded-lg shadow-md p-6">
-                <div class="flex flex-col items-center mb-4">
-                    <img src="" alt="Rating Icon" class="w-30 h-40 mb-3">
-                    <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
-                </div>
-                <div class="text-center">
-                    <span id="ratingCounter" class="text-5xl font-bold">0</span>
-                </div>
-                <p class="text-gray-600 text-xl text-center pt-6">
-                    Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
-                </p>
-            </div>
+        <head>
+    <!-- Add Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
 
-            <!-- Card 2 -->
-            <div class="border rounded-lg shadow-md p-6">
-                <div class="flex flex-col items-center mb-4">
-                    <img src="" alt="Rating Icon" class="w-30 h-40 mb-3">
-                    <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
-                </div>
-                <div class="text-center">
-                    <span id="satisfactionCounter" class="text-5xl font-bold">0</span>
-                </div>
-                <p class="text-gray-600 text-xl text-center pt-6">
-                    Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
-                </p>
+<div class="container mx-auto py-20">
+    <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
+        <!-- Card 1 -->
+        <div class="border rounded-lg shadow-md p-6">
+            <div class="flex flex-col items-center mb-4">
+                <i class="fas fa-star text-5xl mb-3"></i> <!-- Rating Icon -->
+                <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
             </div>
-            
-            <!-- Card 3 -->
-            <div class="border rounded-lg shadow-md p-6">
-                <div class="flex flex-col items-center mb-4">
-                    <img src="" alt="Rating Icon" class="w-30 h-40 mb-3">
-                    <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
-                </div>
-                <div class="text-center">
-                    <span id="financeCounter" class="text-5xl font-bold">0</span>
-                </div>
-                <p class="text-gray-600 text-xl text-center pt-6">
-                    Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
-                </p>
+            <div class="text-center">
+                <span id="ratingCounter" class="text-5xl font-bold">0</span>
             </div>
+            <p class="text-gray-600 text-xl text-center pt-6">
+                Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="border rounded-lg shadow-md p-6">
+            <div class="flex flex-col items-center mb-4">
+                <i class="fas fa-smile-beam text-5xl mb-3"></i> <!-- Satisfaction Icon -->
+                <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
+            </div>
+            <div class="text-center">
+                <span id="satisfactionCounter" class="text-5xl font-bold">0</span>
+            </div>
+            <p class="text-gray-600 text-xl text-center pt-6">
+                Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
+            </p>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="border rounded-lg shadow-md p-6">
+            <div class="flex flex-col items-center mb-4">
+                <i class="fas fa-wallet text-5xl mb-3"></i> <!-- Finance Icon -->
+                <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
+            </div>
+            <div class="text-center">
+                <span id="financeCounter" class="text-5xl font-bold">0</span>
+            </div>
+            <p class="text-gray-600 text-xl text-center pt-6">
+                Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
+            </p>
         </div>
     </div>
+</div>
 
-    <script>
-        // Function to increment the counter
-        function startCounter(elementId, targetValue, duration) {
-            let startValue = 0;
-            const increment = targetValue / (duration / 50);  // Increment per interval
-            const counterElement = document.getElementById(elementId);
+<script>
+    // Function to increment the counter
+    function startCounter(elementId, targetValue, duration) {
+        let startValue = 0;
+        const increment = targetValue / (duration / 50);  // Increment per interval
+        const counterElement = document.getElementById(elementId);
 
-            const interval = setInterval(() => {
-                startValue += increment;
-                counterElement.textContent = Math.min(startValue, targetValue).toFixed(0);
+        const interval = setInterval(() => {
+            startValue += increment;
+            counterElement.textContent = Math.min(startValue, targetValue).toFixed(0);
 
-                if (startValue >= targetValue) {
-                    clearInterval(interval);
-                }
-            }, 50);
-        }
+            if (startValue >= targetValue) {
+                clearInterval(interval);
+            }
+        }, 50);
+    }
 
-        // Call the function on page load to animate the counters
-        window.onload = function() {
-            startCounter('ratingCounter', 500, 2000); // Example: Rating counter reaches 500 in 2 seconds
-            startCounter('satisfactionCounter', 750, 2500); // Satisfaction counter reaches 750 in 2.5 seconds
-            startCounter('financeCounter', 1000, 3000); // Finance counter reaches 1000 in 3 seconds
-        }
-    </script>
-
+    // Call the function on page load to animate the counters
+    window.onload = function() {
+        startCounter('ratingCounter', 500, 2000); // Example: Rating counter reaches 500 in 2 seconds
+        startCounter('satisfactionCounter', 750, 2500); // Satisfaction counter reaches 750 in 2.5 seconds
+        startCounter('financeCounter', 1000, 3000); // Finance counter reaches 1000 in 3 seconds
+    }
+</script>
 
         
         {{--  --}}
@@ -300,50 +304,53 @@
         window.onresize = checkResolution;
     </script>
 
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentor Kami</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Optional: Custom background image styling */
-        .background-image {
-            background-image: url('path/to/your-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+<!-- Tentor Kami -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Optional: Custom background image styling */
+    .background-image {
+        background-image: url('path/to/your-image.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
 </head>
 
-<body class="bg-blue-500 dark:bg-blue-900 min-h-screen"> <!-- Memastikan tinggi layar penuh dengan min-h-screen -->
+<body class=""> <!-- Memastikan tinggi layar penuh dengan min-h-screen -->
 
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto background-image">
+    <div class="max-w-[90rem] px-6 py-14 sm:px-8 lg:px-10 lg:py-16 mx-auto background-image"> <!-- Increased max-width and padding -->
         <!-- Title -->
-        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-gray-800 dark:text-white">Tentor Kami</h2>
-            <p class="mt-1 text-gray-600 dark:text-gray-400">Temui para pengajar profesional kami</p>
+        <div class="max-w-2xl mx-auto text-center mb-12 lg:mb-16">
+            <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 dark:text-white">Tentor Kami</h2>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Temui para pengajar profesional kami</p>
         </div>
         <!-- End Title -->
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Loop for displaying instructors -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16"> <!-- Increased gap and layout -->
+        <!-- Loop for displaying instructors -->
             @forelse ($instructors as $instructor)
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
-                    <!-- Mengubah gambar dari w-24 h-24 menjadi w-32 h-32 untuk memperbesar ukuran gambar -->
-                    <img class="w-32 h-32 object-cover mb-4 border-4 border-gray-200 dark:border-gray-700"
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center text-center"> <!-- Increased padding -->
+                    <!-- Mengubah gambar menjadi w-80 h-80 untuk memperbesar ukuran gambar -->
+                    <img class="w-80 h-80 object-cover mb-6 border-4 border-gray-200 dark:border-gray-700"
                         src="{{ asset($instructor->profile_picture_url) }}"
                         alt="{{ $instructor->name }}">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $instructor->name }}</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ $instructor->name }}</h3>
                     <h4 class="text-sm text-gray-500 dark:text-gray-400">{{ $instructor->biodata }}</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400">Pengajar</p>
-                    <a href="{{ route('frontend.instructorDetails', $instructor->id) }}"
-                        class="mt-3 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                    <!-- Tombol "Lihat Profil" di bawah container card -->
+                <div class="mt-auto flex gap-4"> <!-- Flexbox container with gap -->
+                    <a href="{{ $instructor->cv ? Storage::url($instructor->cv) :'' }}"
+                        class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
                         Lihat Profil
                     </a>
+                    <a href="{{ route('frontend.instructorDetails', $instructor->id) }}"
+                        class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                        Lihat Kelas
+                    </a>
+                </div>
+
                 </div>
             @empty
                 <p class="text-center text-gray-600 dark:text-gray-400">Belum ada mentor yang tersedia.</p>
@@ -352,9 +359,8 @@
         <!-- End Grid -->
     </div>
 
-</body>
 
-</html>
+
 
 
 

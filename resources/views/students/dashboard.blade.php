@@ -53,7 +53,7 @@
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen></iframe>
                             @endif
-                            </a>
+                        </a>
                             <div class="flex flex-col px-4 gap-[32px]">
                                 <div class="flex flex-col gap-[10px]">
                                     <a href="{{ route('frontend.details', $course->slug) }}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->title }}</a>

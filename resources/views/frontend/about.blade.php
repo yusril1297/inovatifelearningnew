@@ -56,7 +56,7 @@
      {{-- Dokumentasi Mengajar --}}
 <div class="container px-4 max-w-full py-10 m-[20px]">
     <!-- Menambahkan teks "Tentor Kami" di atas konten -->
-    <h1 class="text-4xl font-bold text-center mb-8">Tentor Kami</h1>
+    <h1 class="text-4xl font-bold text-center mb-8">Dokummentasi Mengajar</h1>
 
     <div class="flex justify-between gap-6">
         <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/3">

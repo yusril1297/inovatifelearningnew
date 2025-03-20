@@ -21,6 +21,7 @@ class FrontController extends Controller
 
         $courses = Course::published()->with(['category', 'enrollments'])->get();
         $settings = setting::first();
+
         $instructors = User::where('role', 1)  // Mengambil role 1 (instruktur)
         ->orWhere('role', 0) // Menambahkan role 0 (admin)
         ->get();
