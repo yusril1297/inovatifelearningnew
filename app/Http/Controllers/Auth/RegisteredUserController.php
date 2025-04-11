@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
             case 0:
                 return redirect()->route('admin.dashboard');
             case 1:
-                return redirect()->route('instructor.dashboard');
+                return redirect()->route('frontend.home');
             default:
                 return redirect()->route('frontend.home');
         }
