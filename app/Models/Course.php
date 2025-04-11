@@ -28,18 +28,18 @@ class Course extends Model
     ];
 
     // Menyimpan slug secara otomatis saat menyimpan course
-    // public static function boot()
-    // {
-    //     parent::boot();
+    public static function boot()
+    {
+        parent::boot();
 
-    //     static::creating(function ($course) {
-    //         $course->slug = Str::slug($course->title);
-    //     });
+        static::creating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
 
-    //     static::updating(function ($course) {
-    //         $course->slug = Str::slug($course->title);
-    //     });
-    // }
+        static::updating(function ($course) {
+            $course->slug = Str::slug($course->title);
+        });
+    }
 
     // Relasi ke model Category
     public function category()

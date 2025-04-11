@@ -26,13 +26,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="flex justify-between items-center mt-4">
-                    <input type="text" placeholder="Masukkan Kupon" class="border p-2 rounded w-1/2">
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Terapkan Kupon</button>
-                </div>
+                
             </div>
             <div class="bg-gray-100 p-4 mt-4 rounded-lg">
-                <h3 class="text-lg font-semibold">Total Keranjang Belanja</h3>
+                <h3 class="text-lg font-semibold">Rincian Pembayaran Kursus</h3>
                 <div class="flex justify-between mt-2">
                     <span>Subtotal</span>
                     <span class="font-bold">Rp{{ number_format($course->price, 0, ',', '.') }}</span>

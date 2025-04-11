@@ -20,6 +20,8 @@ class InstructorController extends Controller
         return view('admin.instructors.index', compact('instructors'));
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      */
