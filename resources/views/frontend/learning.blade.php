@@ -4,14 +4,16 @@
 
   {{-- Detail Content --}}
   <div class="text-black font-poppins pt-10 pb-[50px]">
+
     <section id="video-content" class="max-w-[1100px] w-full mx-auto mt-[130px]">
         <div class="video-player relative flex flex-nowrap gap-5">
             <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
-                <iframe
-                    src="https://www.youtube.com/embed/{{ \Str::afterLast($video->url, 'v=') }}" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                <iframe src="{{ $video->url }}" allowfullscreen allowtransparency
+                    allow="autoplay"></iframe>
             </div>
             <div
                 class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
+                {{-- <p>{{ $video->title }}</p> --}}
                 <p class="font-bold text-lg text-black">{{ $course->videos->count()}}</p>
                 <div class="flex flex-col gap-3">
                     <div
@@ -48,7 +50,7 @@
                                     fill="currentColor" />
                             </svg>
                         </div>
-                        <a href="{{ route('frontend.learning',['course' => $course->slug, 'video' => $video->id]) }}">
+                        <a href="{{ route('frontend.learning',['course' => $course->slug, 'video' => $video]) }}">
                             <p class="font-semibold group-hover:text-white transition-all duration-300 {{$isActive ? 'text-white' : 'text-black'}}">
                                 {{$video->title}}
                             </p>
