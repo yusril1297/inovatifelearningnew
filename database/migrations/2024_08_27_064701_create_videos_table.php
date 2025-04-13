@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('url')->nullable(); // Kolom untuk URL YouTube
-            $table->string('filename')->nullable(); // Kolom untuk video yang diunggah langsung
+            $table->string('type')->nullable(); // Kolom untuk video yang diunggah langsung
             $table->timestamps();
         });
     }

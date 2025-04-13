@@ -34,7 +34,7 @@
               <span>
                 <i class="ti ti-cards"></i>
               </span>
-              <span class="hide-menu text-red-500">Manage Student</span>
+              <span class="hide-men">Manage Student</span>
             </a>
           </li>
           <li class="sidebar-item">
