@@ -5,7 +5,7 @@
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class=" bg-white rounded-xl shadow-lg p-4 flex flex-col ">
-    <h1><i class="ri-notification-4-line"></i></h1>
+    <h1><i class="ri-notification-4-line "></i></h1>
 
      <!-- Menampilkan pesan sukses -->
      @if(session('success'))

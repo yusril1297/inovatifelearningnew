@@ -44,5 +44,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('notifications', $notifications);
         }
     });
+    View::composer('layouts.admin.navbar', function ($view) {
+        if(Auth::check()){
+            $user = Auth::user();
+            $notifications = $user->notifications()->where('is_read', false)->count();
+            $view->with('notifications', $notifications);
+        }
+    });
 }
 }
