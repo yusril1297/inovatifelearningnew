@@ -9,7 +9,7 @@
                         
                             @if ($notifications > 0)
                                 <span class="position-absolute badge rounded-pill bg-danger" 
-                                      style="top: -5px; right: -5px; font-size: 10px;">
+                                      style="top: 5px; right: 5px; font-size: 10px;">
                                     {{ $notifications }}
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
