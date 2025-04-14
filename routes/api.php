@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 
 Route::post('/midtrans/webhook', [PaymentController::class, 'handleWebhook']);
+Route::post('/payment/{enrollment}', [PaymentController::class, 'getSnapToken']);

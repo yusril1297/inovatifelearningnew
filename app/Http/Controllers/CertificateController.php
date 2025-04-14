@@ -112,8 +112,22 @@ class CertificateController extends Controller
     /**
      * Download the certificate
      */
-    public function downloadCertificate(Certificate $certificate)
+    public function downloadCertificate($courseId)
     {
-        return response()->download(storage_path('app/public/' . $certificate->certificate_url));
+        $user = Auth::user();
+        
+        $course = Course::findOrFail($courseId);
+        $data = [
+            "name" => $user->name,
+            "course" => $course->title,
+            "certificate_code" => rand(10000, 99999),
+            "description" => $course->description,
+            "date" => now()->format('d F Y')
+        ];
+
+        $pdf = Pdf::loadView('certificates.index', $data);
+
+        return $pdf->download( 'certificate.pdf');
+
     }
 }

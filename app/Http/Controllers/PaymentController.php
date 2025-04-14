@@ -13,6 +13,7 @@ use App\Models\Course;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use function PHPUnit\Framework\returnArgument;
 
 
 
@@ -138,6 +139,7 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
+
         try {
             // Generate unique order_id
             $orderId = 'ORDER-' . uniqid();
@@ -163,6 +165,13 @@ class PaymentController extends Controller
             \Midtrans\Config::$isSanitized = true;
             \Midtrans\Config::$is3ds = true;
 
+
+            Log::info('Midtrans Config: ', [
+                'serverKey' => config('services.midtrans.server_key'),
+                'clientKey' => config('services.midtrans.client_key'),
+                'isProduction' => config('services.midtrans.is_production'),
+            ]);
+
             // Detail transaksi
             $transactionDetails = [
                 'order_id' => $orderId,
@@ -176,7 +185,7 @@ class PaymentController extends Controller
                 'transaction_details' => $transactionDetails,
                 'customer_details' => $customerDetails,
                 'callbacks' => [
-                    'finish' => url('/payment/success')
+                    'finish' => url('/payment/success/'.$orderId)
                 ]
             ];
 
@@ -195,7 +204,7 @@ class PaymentController extends Controller
     {
         try {
             $payload = $request->all();
-            Log::info('Webhook Payload: ', $payload);
+            Log::info('Webhook Payload terbaru: ', $payload);
             Log::info('Headers: ', $request->headers->all());
 
             // Validasi payload
@@ -209,43 +218,45 @@ class PaymentController extends Controller
                 'payment_type' => 'nullable|string',
             ]);
 
+            
             // Hitung expected signature key
             $serverKey = config('services.midtrans.server_key');
             $grossAmount = number_format($validated['gross_amount'], 2, '.', ''); // pastikan dua desimal
-
+            
             // Pastikan status_code dalam bentuk string
             $statusCode = (string)$validated['status_code'];
-
+            
             // Menghitung expected signature key sesuai urutan Midtrans
             $expectedSignatureKey = hash('sha512', $validated['order_id'] . $statusCode . $grossAmount . $serverKey);
-
+            
             // Logging untuk debug
             Log::info("Calculated Signature Key: " . $expectedSignatureKey);
             Log::info("Received Signature Key: " . $validated['signature_key']);
-
+            
             // Cek apakah signature valid
             if ($validated['signature_key'] !== $expectedSignatureKey) {
                 Log::error('Invalid Signature Key');
                 return response()->json(['message' => 'Invalid Signature Key'], 403);
             }
-
+            
             // Cari data pembayaran berdasarkan order_id
             $payment = Payment::where('order_id', $validated['order_id'])->first();
-
+            
             if (!$payment) {
                 Log::error("Payment not found for order_id: {$validated['order_id']}");
                 return response()->json(['message' => 'Payment not found'], 404);
             }
-
+            
             // Pastikan relasi enrollment benar
             $enrollment = $payment->enrollment;
-
+            
             if (!$enrollment) {
                 Log::error("Enrollment not found for order_id: {$validated['order_id']}");
                 return response()->json(['message' => 'Enrollment not found'], 404);
             }
-
+            
             // Perbarui status enrollment berdasarkan status transaksi
+           
             switch ($validated['transaction_status']) {
                 case 'settlement':
                     $enrollment->update(['status' => 'active']);
@@ -260,6 +271,20 @@ class PaymentController extends Controller
                     break;
             }
 
+            $status = "";
+
+            if($validated['transaction_status'] == 'settlement') {
+                $status = 'active';
+            } elseif ($validated['transaction_status'] == 'pending') {
+                $status = 'pending';
+            } elseif ($validated['transaction_status'] == 'cancel' || $validated['transaction_status'] == 'deny' || $validated['transaction_status'] == 'expire') {
+                $status = 'failed';
+            } else {
+                $status = 'failed';
+            
+            }
+
+            
             // Simpan atau perbarui detail pembayaran
             Payment::updateOrCreate(
                 [
@@ -269,20 +294,20 @@ class PaymentController extends Controller
                     'enrollment_id' => $enrollment->id,
                     'payment_method' => $validated['payment_type'] ?? 'unknown',
                     'amount' => $validated['gross_amount'],
-                    'status' => $validated['transaction_status'],
+                    'status' => $status ,
                     'payment_date' => $payload['settlement_time'] ?? now(),
                     'payment_details' => json_encode($payload),
-                ]
-            );
-            
-            $course = Course::find($enrollment->course_id);
-            \App\Models\Notification::create([
-                'user_id' => $course->instructor_id,
-                'title'=> 'Subscription Baru Berhasil',
-                'body' => 'Pengguna baru telah berlangganan kursus Anda',
-                'course_id' => $course->id,
-            ]);
-            $enrollment->save();
+                    ]
+                );
+
+                
+                $course = Course::find($enrollment->course_id);
+                \App\Models\Notification::create([
+                    'user_id' => $course->instructor_id,
+                    'title'=> 'Subscription Baru Berhasil',
+                    'body' => 'Pengguna baru telah berlangganan kursus Anda',
+                    'course_id' => $course->id,
+                ]);
             
             Log::info('Webhook processed successfully for order_id: ' . $validated['order_id']);
             return response()->json(['message' => 'Webhook processed'], 200);

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
@@ -35,8 +36,13 @@ class AppServiceProvider extends ServiceProvider
         });
         $view->with('categories', $categories);
     });
-    }
 
-   
-
+    View::composer('layouts.instructor.navbar', function ($view) {
+        if(Auth::check()){
+            $user = Auth::user();
+            $notifications = $user->notifications()->where('is_read', false)->count();
+            $view->with('notifications', $notifications);
+        }
+    });
+}
 }

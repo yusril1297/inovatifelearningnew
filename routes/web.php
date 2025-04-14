@@ -21,7 +21,7 @@ use App\Http\Controllers\CertificateController;
 
 Route::middleware(['auth'])->prefix('certificate')->name('certificate.')->group(function () {
     Route::get('/course/{course}/generate', [CertificateController::class, 'generateCertificate'])->name('generate');
-    Route::get('/{certificate}/download', [CertificateController::class, 'downloadCertificate'])->name('download');
+    Route::get('/course/{courseId}', [CertificateController::class, 'downloadCertificate'])->name('download');
 });
 
 
@@ -111,6 +111,8 @@ Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function
     Route::delete('courses/{course}/certificate/{certificate}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteCertificate'])->name('courses.deleteCertificate');
 
     Route::resource('students', StudentController::class);
+
+    Route::get("notification", [\App\Http\Controllers\NotificationController::class, 'index'])->name('notification.index');
 });
 
 

@@ -67,6 +67,7 @@
                             return response.json();
                         })
                         .then(data => {
+                            console.log("kontol");
                             if (data.snapToken) {
                                 snap.pay(data.snapToken, {
                                     onSuccess: function(result) {

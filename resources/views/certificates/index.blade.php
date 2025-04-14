@@ -156,14 +156,15 @@
         <img class="logo" src="https://www.transparenttextures.com/patterns/azur-lane.png" alt="Inovative Learning">
         <h1>SERTIFIKAT PELATIHAN</h1>
         <p class="subtitle">Dengan bangga diberikan kepada</p>
-        <h2>{{ $user }}</h2>
+        <h2>{{ $name }}</h2>
         <p class="subtitle">Atas keberhasilan menyelesaikan pelatihan:</p>
         <h3>{{ $course }}</h3>
 
         <div class="divider"></div>
 
         <div class="certificate-body">
-            <p><strong>Deskripsi Pelatihan:</strong> Pelatihan ini dirancang untuk meningkatkan keterampilan peserta dalam bidang yang relevan, serta memberikan pengetahuan yang aplikatif untuk kebutuhan profesional di dunia kerja.</p>
+            <p><strong>Deskripsi Pelatihan:</strong>{!! $description !!}
+            </p>
         </div>
 
         <div class="certificate-details">

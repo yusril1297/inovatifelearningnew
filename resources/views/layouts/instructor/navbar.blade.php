@@ -4,10 +4,20 @@
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                 <!-- Notification Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <i class="ti ti-bell fs-4" style="font-size: 24px;"></i> <!-- Notification Icon -->
+                    <a class="nav-link position-relative" href="{{ route("notification.index") }}">
+                        <i class="ti ti-bell fs-4" style="font-size: 24px;"></i>
+                    
+                        @if ($notifications > 0)
+                            <span class="position-absolute badge rounded-pill bg-danger" 
+                                  style="top: -5px; right: -5px; font-size: 10px;">
+                                {{ $notifications }}
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        @endif
                     </a>
                 </li>
+
+                
 
                 <!-- Profile Dropdown -->
                 <li class="nav-item dropdown">

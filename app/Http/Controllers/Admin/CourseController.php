@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
@@ -160,11 +161,14 @@ private function convertYouTubeUrl($url)
     $videos = $course->videos;
     $pdfs = Pdf::where('course_id', $course->id)->get(); // Pastikan model menggunakan Pdf
     $certificates = Certificate::where('course_id', $course->id)->get(); // Ambil semua sertifikat
+
+    $user = Auth::user();
+
     
     // Tentukan tampilan berdasarkan role user
     $view = Auth::user()->role == 0 ? 'admin.courses.show' : 'instructor.courses.show';
     
-    return view($view, compact('course', 'videos', 'pdfs', 'certificates')); // Kirim ke view
+    return view($view, compact('course', 'videos', 'pdfs', 'certificates',)); // Kirim ke view
 }
 
     

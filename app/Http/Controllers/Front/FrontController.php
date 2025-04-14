@@ -50,7 +50,9 @@ class FrontController extends Controller
         })->when($level, function ($query, $level) {
             return $query->where('level_id', $level);
         })
-        ->where('status', 'published')->get();
+        ->where('status', 'published')
+        ->has('videos')
+        ->get();
 
         $settings = setting::first();
         $enrollments = Enrollment::where('user_id', Auth::id())->where('status', 'active')->get();
@@ -98,9 +100,10 @@ class FrontController extends Controller
             $user = Auth::user();
             $enrollment = $user->enrollments()
                 ->where('course_id', $courses->id)
+                ->where('status', 'active')
+                ->where('exp_time', '>', now())
                 ->first();
         }
-        // dd($courses->videos);
         return view('frontend.details', compact('courses', 'enrollment', 'settings'));
     }
 
@@ -133,7 +136,9 @@ class FrontController extends Controller
         $video = $course->videos()->where('id', $video)->firstOrFail();
 
         // Cek apakah pengguna sudah terdaftar di course
-        $enrollment = $user->enrollments()->where('course_id', $course->id)->first();
+        $enrollment = $user->enrollments()->where('course_id', $course->id)     
+        ->where('status', 'active')
+        ->first();
 
         // Jika course gratis dan pengguna belum terdaftar, enroll otomatis
         if ($course->is_free && !$enrollment) {
@@ -148,7 +153,7 @@ class FrontController extends Controller
         }
 
         // Pastikan pengguna memiliki akses
-        if (!$course->is_free && (!$enrollment || $enrollment->status !== 'active')) {
+        if (!$course->is_free && (!$enrollment  || $enrollment->exp_time < now())) {
             // Redirect ke checkout
             if (!$enrollment) {
                 return redirect()->route('frontend.checkout', ['course' => $course->slug]);
@@ -157,6 +162,8 @@ class FrontController extends Controller
                 return redirect()->route('frontend.checkout', ['course' => $course->slug, 'enrollmentId' => $enrollment->id]);
             }
         }
+
+
 
         return view('frontend.learning', compact('course', 'video', 'enrollment', 'settings'));
     }

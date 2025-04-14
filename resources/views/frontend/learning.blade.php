@@ -63,10 +63,10 @@
             </div>
         </div>
     </section>
-    <section id="Video-Resources" class="flex flex-col mt-5">
-        <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
+    <section id="Video-Resources" class="flex flex-col mt-3">
+        <div class="max-w-[1100px] w-full mx-auto flex flex-col">
             <h1 class="title font-extrabold text-[30px] leading-[45px]">{{$course->title}}</h1>
-            <div class="flex items-center gap-5">
+            <div class="flex items-center gap-3">
                 <div class="flex items-center gap-[6px]">
                     <p class="font-semibold">{{ $course->category->name}}</p>
                 </div>
@@ -79,10 +79,16 @@
                     </div>
                     <p class="font-semibold">{{ $course->enrollments->count() }}</p>
                 </div>
-                <div class="flex items-center gap-[6px]">
-                    <p class="font-semibold">About</p>
+                 <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-4 mb-40"> 
                 </div>
-                
+            </div>
+            <div class="flex items-center gap-[6px]">
+                <p class="font-semibold text-xl">About</p>
+            </div>
+            <div class="flex flex-col gap-5 w-[700px] shrink-0">
+                <p class="font-medium leading-[30px]">
+                    {!! $course->description !!}
+                </p>
             </div>
         </div>
     </section>
