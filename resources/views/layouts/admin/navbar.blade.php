@@ -4,10 +4,17 @@
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                 <!-- Notifikasi Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <!-- Bell Icon -->
-                        <i class="ti ti-bell fs-4"></i>
-                    </a>
+                    <div class="position-relative bg-danger w-fit h-fit">
+                        <i class="ti ti-bell fs-4 bg-black" style="font-size: 24px;"></i>
+                        
+                            @if ($notifications > 0)
+                                <span class="position-absolute badge rounded-pill bg-danger" 
+                                      style="top: -5px; right: -5px; font-size: 10px;">
+                                    {{ $notifications }}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            @endif
+                    </div>
                 </li>
                 
                 <!-- Profile Dropdown -->
