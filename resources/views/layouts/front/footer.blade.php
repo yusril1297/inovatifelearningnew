@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Footer Design</title>
+  <!-- Font Awesome CDN for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     footer {
-      background-color: #141E61; /* Updated background color */
+      background-color: #141E61;
       color: #ffffff;
       padding: 40px;
     }
@@ -31,9 +33,9 @@
       width: 80%;
       padding: 10px;
       margin-right: 10px;
-      color: #000000; /* Black color for the text */
-      background-color: #f1f1f1; /* Slightly lighter background than container */
-      border: 1px solid #ccc; /* Border to define the input field */
+      color: #000000;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
     }
 
     .newsletter button {
@@ -46,12 +48,23 @@
 
     .newsletter p {
       font-size: 12px;
+      margin-top: 10px;
     }
 
-    .newsletter .social-media a {
+    .social-media {
+      margin-top: 15px;
+    }
+
+    .social-media a {
       margin-right: 15px;
       color: #ffffff;
+      font-size: 20px;
       text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-media a:hover {
+      color: #f9a825;
     }
 
     .company-info {
@@ -65,7 +78,7 @@
     }
 
     .b-corp img {
-      width: 120px; /* Increased logo size */
+      width: 120px;
       margin-bottom: 10px;
     }
 
@@ -94,39 +107,45 @@
 
   <footer>
     <div class="footer-content">
-    <div class="newsletter">
-    <h2>Ajukan Pertanyaan Jika Masih Bingung</h2>
-    <input type="email" id="emailInput" placeholder="Email Address" />
-    <button onclick="sendEmail()">Sign me up</button>
-    <p><a href="mailto:yusrilsaiful97@gmail.com">Hubungi via Email</a></p>
-</div>
+      <div class="newsletter">
+        <h2>Ajukan Pertanyaan Jika Masih Bingung</h2>
+        <input type="email" id="emailInput" placeholder="Email Address" />
+        <button onclick="sendEmail()">Sign me up</button>
+        <p><a href="mailto:admin@ibereality.com">Hubungi via Email</a></p>
 
-<script>
-    function sendEmail() {
-        let userEmail = document.getElementById("emailInput").value;
-        if (userEmail) {
-            window.location.href = `mailto:yusrilsaiful97@gmail.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
-        } else {
-            alert("Silakan masukkan alamat email Anda terlebih dahulu.");
-        }
-    }
-</script>
+        <!-- Social Media Icons -->
+        <div class="social-media">
+          <a href="https://facebook.com/share/16MMY4vRw2/" target="_blank"><i class="fab fa-facebook-f"></i></a> 
+          <a href="https://instagram.com/ibereality/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://tiktok.com/@ibereality" target="_blank"><i class="fab fa-tiktok"></i></a> 
+        </div>
+      </div>
 
       <div class="company-info">
         <div class="b-corp">
-          <img src="assets/images/logos/logommi.png" alt="B Corporation Logo" />
           <p>Certified Chicago Community Member</p>
-          <p>Kami berkomitmen untuk mendidik dan berkolaborasi dengan bisnis yang sejalan dalam upaya menciptakan perubahan yang berdampak positif secara lingkungan dan sosial. Bersama-sama, kita dapat membuat perbedaan</p>
+          <p>PT Integrasi Bisnis Eksekutif merupakan perusahaan teknologi yang fokus membangun ekosistem dengan tiga pilar model yaitu layanan teknologi, penyedia teknologi, dan pembelajaran teknologi.</p>
         </div>
         <div class="contact-info">
           <p>Selamat Datang, Hallo!</p>
-          <p>Surabaya, Indonesia</p>
-          <p>(773) 348-4581</p>
-          <a href="mailto:enovativemanagemen@gmail.com">Contact</a>
+          <p>Gedung PIDI4.0, Jl. Raya Kby. Lama Lantai 8, Sukabumi Sel., Kec. Kb. Jeruk, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 11560</p>
+          <p>+6281236868738</p>
+          <a href="https://wa.me/+6281236868738">Contact</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <script>
+    function sendEmail() {
+      let userEmail = document.getElementById("emailInput").value;
+      if (userEmail) {
+        window.location.href = `mailto:admin@ibereality.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
+      } else {
+        alert("Silakan masukkan alamat email Anda terlebih dahulu.");
+      }
+    }
+  </script>
 
 </body>
 </html>

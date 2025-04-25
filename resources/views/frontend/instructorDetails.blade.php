@@ -25,26 +25,30 @@
                     <!-- Filters -->
                     <form class="hidden lg:block">
                         <h3 class="sr-only">Kategori</h3>
-                        <ul role="list"
-                            class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                            <li>
-                                <div class="text-center">
-                                    <img class="rounded-full size-24 mx-auto"
-                                        src="{{ $instructor->profile_picture_url }}"
-                                        alt="Avatar">
-                                    <div class="mt-2 sm:mt-4">
-                                        <h3 class="font-medium text-gray-900">
-                                           {{ $instructor->name}}
-                                        </h3>
-                                        <h4 class="text-sm text-gray-500">
-                                            {{ $instructor->biodata }}
-                                        </h4>
-                                        <p class="text-sm text-gray-500">
-                                           Instructor
-                                        </p>
-                                    </div>
-                            </li>
-                        </ul>
+                        <ul role="list" 
+    class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+    <li>
+        <div class="text-center">
+            <img class="rounded-full size-24 mx-auto"
+                src="{{ $instructor->profile_picture_url }}"
+                alt="Avatar">
+            <div class="mt-2 sm:mt-4">
+                <!-- Nama instruktur lebih bold -->
+                <h3 class="text-lg font-bold text-gray-900">
+                    {{ $instructor->name }}
+                </h3>
+                <!-- Label Instructor juga bold -->
+                <p class="text-sm font-bold text-gray-900">
+                    Instructor
+                </p>
+                <h4 class="text-sm text-gray-500 mt-1">
+                    {{ $instructor->biodata }}
+                </h4>
+            </div>
+        </div>
+    </li>
+</ul>
+
                     </form>
                     <!-- Product grid -->
                     @foreach ($courses as $course)

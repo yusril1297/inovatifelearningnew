@@ -486,9 +486,15 @@
 <div class="max-w-[95rem] px-12 py-10 sm:px-16 lg:px-20 lg:py-14 mx-auto flex flex-col items-center">
     <!-- Grid -->
     <div class="grid md:grid-cols-2 items-center gap-16 xl:gap-40 text-center md:text-left">
-        <div class="flex justify-center">
-            <iframe class="w-[740px] h-[330px]" src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw" frameborder="0" allowfullscreen></iframe>
-        </div>
+    <div class="flex justify-center">
+    <iframe class="w-[740px] h-[330px]" 
+        src="https://www.youtube.com/embed/3ofWUw3wc0Y?si=mDVExWTybrjcRoVF" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
         
        <!-- Text Content -->
 <div class="w-full max-w-lg ml-auto text-right">

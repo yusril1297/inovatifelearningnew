@@ -10,10 +10,9 @@
 
     <!-- Description Section -->
     <div class="description">
-        <p>Platform belajar online yang menyediakan solusi pembelajaran fleksibel, inovatif, dan terjangkau. Kami menawarkan materi berkualitas tinggi yang disusun oleh para ahli, serta akses yang dapat dinikmati kapan saja dan di mana saja, memberikan kebebasan penuh bagi pengguna untuk belajar sesuai waktu mereka, kami memastikan pengalaman belajar yang efektif dan menyenangkan.  
-        Kami juga menyediakan berbagai pilihan kursus dalam berbagai bidang, mulai dari teknologi hingga pengembangan diri, yang dapat diakses oleh siapa saja, dari pelajar hingga profesional.  
-        Setelah menyelesaikan kursus, peserta akan mendapatkan sertifikat terakreditasi yang dapat memperkuat profil profesional mereka. Kami juga memberikan dukungan pelanggan terbaik yang siap membantu kapan saja, serta harga yang kompetitif dengan model berlangganan yang fleksibel, sehingga memudahkan setiap orang untuk belajar tanpa hambatan.  
-        Dengan fokus pada hasil belajar, kami berkomitmen untuk mendukung pengguna dalam mencapai tujuan mereka, memastikan setiap langkah dalam perjalanan belajar berjalan dengan lancar dan memberikan manfaat nyata..</p>
+        <p>PT Integrasi Bisnis Eksekutif, perusahaan teknologi yang berfokus pada pengembangan dan implementasi solusi industri 4.0. Berdiri sejak tahun 2017 sebagai perusahaan jasa riset perangkat lunak, IBE REALITY telah tumbuh menjadi entitas yang memiliki kompetensi unggul dalam bidang teknologi perangkat lunak dan robotika. Seiring berkembangnya era digital dan kebutuhan industri akan transformasi cerdas, IBE REALITY menghadirkan tiga pilar utama layanan untuk mendukung adaptasi menuju industri 4.0. Pilar pertama, IBE LEARNING, merupakan platform edukasi yang menyediakan pembelajaran robotika interaktif untuk berbagai jenjang pendidikan. Pilar kedua, IBE STORE, menjadi pusat penjualan komponen elektronik, alat edukasi, dan produk teknologi berbasis robotika. Sementara itu, pilar ketiga, IBE REALITY, menyediakan layanan konsultasi dan implementasi teknologi untuk perusahaan yang ingin mengadopsi sistem berbasis industri 4.0 secara menyeluruh dan terintegrasi.
+
+</p>
     </div>
 
     <style> 
