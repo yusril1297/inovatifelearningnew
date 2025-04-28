@@ -52,5 +52,16 @@
     </div>
   </footer>
 
+  <script>
+    function sendEmail() {
+      let userEmail = document.getElementById("emailInput").value;
+      if (userEmail) {
+        window.location.href = `mailto:admin@ibereality.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
+      } else {
+        alert("Silakan masukkan alamat email Anda terlebih dahulu.");
+      }
+    }
+  </script>
+
 </body>
 </html>

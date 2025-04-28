@@ -27,10 +27,11 @@
             margin-left: 100px;
         }
 
-        .navbar .logo img {
-            height: 40px;
-            width: 40px;
-        }
+        .logo-img {
+    height: 100px; /* atau 60px */
+    width: 60px;
+}
+
 
         /* Center Menu */
         .navbar .menu {
@@ -195,7 +196,8 @@
         <div class="flex lg:flex-1" style="margin-left: 100px;">
             <a href="{{ route('frontend.home') }}" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="{{ asset($settings->path_logo ?? 'default-logo.png') }}" alt="">
+                <img class="h-20 w-30" src="{{ asset($settings->path_logo ?? 'default-logo.png') }}" alt="">
+
             </a>
         </div>
 

@@ -1,4 +1,8 @@
 
+<head>
+  <link href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+</head>
+
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div>
@@ -10,54 +14,61 @@
         </div>
       </div>
       <!-- Sidebar navigation-->
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-        <ul id="sidebarnav">
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">Home</span>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
-              <span>
-                <i class="ti ti-layout-dashboard"></i>
-              </span>
-              <span class="hide-menu">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">UI COMPONENTS</span>
-          </li> 
-          
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('instructor.students.index') }}" aria-expanded="false">
-              <span>
-                <i class="ti ti-cards"></i>
-              </span>
-              <span class="hide-men">Manage Student</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('instructor.courses.index') }}" aria-expanded="false">
-              <span>
-                <i class="ti ti-cards"></i>
-              </span>
-              <span class="hide-menu">Courses</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('profile.edit') }}" aria-expanded="false">
-              <span>
-                <i class="ti ti-cards"></i>
-              </span>
-              <span class="hide-menu">Profile</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- End Sidebar navigation -->
+<nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+  <ul id="sidebarnav">
+    
+    <!-- Home/Dashboard -->
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-home"></i>
+        </span>
+        <span class="hide-menu">Dashboard</span>
+      </a>
+    </li>
+
+    <!-- Manage Student -->
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{{ route('instructor.students.index') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-users"></i>
+        </span>
+        <span class="hide-menu">Manage Student</span>
+      </a>
+    </li>
+
+    <!-- Courses -->
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{{ route('instructor.courses.index') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-book"></i>
+        </span>
+        <span class="hide-menu">Courses</span>
+      </a>
+    </li>
+
+    <!-- Profile -->
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{{ route('profile.edit') }}" aria-expanded="false">
+        <span>
+          <i class="ti ti-user-circle"></i>
+        </span>
+        <span class="hide-menu">Profile</span>
+      </a>
+    </li>
+
+
+  </ul>
+</nav>
+<!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->
   </aside>
 
   
+
+
+
+
+
+
