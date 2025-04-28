@@ -20,7 +20,7 @@
     <div class="max-w-[90rem] px-6 py-14 sm:px-8 lg:px-10 lg:py-16 mx-auto background-image"> <!-- Increased max-width and padding -->
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-12 lg:mb-16">
-            <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 dark:text-white">Tentor Kami</h2>
+            <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800">Tentor Kami</h2>
             <p class="mt-2 text-gray-600 dark:text-gray-400">Temui para pengajar profesional kami</p>
         </div>
         <!-- End Title -->

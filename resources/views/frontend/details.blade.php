@@ -4,13 +4,13 @@
     {{-- Detail Content --}}
     <div class="text-black font-poppins pt-10 pb-[50px]">
         <section id="video-content" class="max-w-[1100px] w-full mx-auto mt-[130px]">
-            <div class="video-player relative flex flex-nowrap gap-5">
+            <div class="video-player relative flex flex-col md:flex-row flex-nowrap gap-5 px-12 lg:px-2">
                 <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
                     <iframe src="{{ $courses->youtube_thumbnail_url }}" allowfullscreen allowtransparency
                         allow="autoplay"></iframe>
                 </div>
                 <div
-                    class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
+                    class="video-player-sidebar flex flex-col shrink-0 md:w-[330px] w-full h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
                     <p class="font-bold text-lg text-black">{{ $courses->videos->count() }} Video</p>
                    
                     <div class="flex flex-col gap-3">
@@ -69,66 +69,67 @@
 
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="Video-Resources" class="flex flex-col mt-5">
-            <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
-                <h1 class="title font-extrabold text-[30px] leading-[45px]">{{ $courses->title }}</h1>
-                <div class="flex items-center gap-5">
-                    <div class="flex items-center gap-[6px]">
-                        
-                        {{ $courses->category->name }}
-                    </div>
-                    @if(Auth::check())
-                     @if($enrollment?->status === 'active')
-                     <a href="{{ route('certificate.download', ['courseId'=> $courses->id]) }} class="flex items-center gap-[6px]">
-                        <p class="font-semibold">Certificate</p>
-                    </a>
-                    @else
-                    <a href="javascript:void(0)" class="flex items-center gap-[6px]">
-                        <p class="font-semibold">Certificate</p>
-                    </a>
-                    @endif
-                    @endif
-                    <div class="flex items-center gap-[6px]">
-                        <div>
-                            <img src="{{ asset('assets/icon/profile-2user.svg') }}" alt="icon">
+                <section id="Video-Resources" class="flex flex-col mt-5">
+                    <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
+                        <h1 class="title font-extrabold text-[30px] leading-[45px]">{{ $courses->title }}</h1>
+                        <div class="flex items-center gap-5">
+                            <div class="flex items-center gap-[6px]">
+                                
+                                {{ $courses->category->name }}
+                            </div>
+                            @if(Auth::check())
+                             @if($enrollment?->status === 'active')
+                             <a href="{{ route('certificate.download', ['courseId'=> $courses->id]) }} class="flex items-center gap-[6px]">
+                                <p class="font-semibold">Certificate</p>
+                            </a>
+                            @else
+                            <a href="javascript:void(0)" class="flex items-center gap-[6px]">
+                                <p class="font-semibold">Certificate</p>
+                            </a>
+                            @endif
+                            @endif
+                            <div class="flex items-center gap-[6px]">
+                                <div>
+                                    <img src="{{ asset('assets/icon/profile-2user.svg') }}" alt="icon">
+                                </div>
+                                <p class="font-semibold">{{ $courses->enrollments->count() }}</p>
+                            </div>
+        
                         </div>
-                        <p class="font-semibold">{{ $courses->enrollments->count() }}</p>
                     </div>
-
+                    <div class="max-w-[1100px] w-full mx-auto flex mt-5">
+        
+                        {{-- <a href="{{ $enrollment
+                            ? route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id])
+                            : route('frontend.checkout', ['course' => $courses->slug]) }}"
+                            class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                            {{ $enrollment ? 'Go to Class' : 'Buy Class' }}
+                        </a> --}}
+                        @if ($enrollment?->status === 'active')
+                            <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
+                                class="lex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">Go to Class</a>
+                        @else
+                            <a class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
+                                href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}">Buy Class</a>
+                        @endif
+                        
+                    </div>
+                    <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-4 mb-40 mt-10"> 
+                        <div class="flex items-center gap-[6px]">
+                            <p class="font-semibold text-xl">About</p>
+                        </div>
+                        <div class="flex flex-col gap-5 w-[700px] shrink-0">
+                            <p class="font-medium leading-[30px]">
+                                {!! $courses->description !!}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="max-w-[1100px] w-full mx-auto flex mt-5">
-
-                {{-- <a href="{{ $enrollment
-                    ? route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id])
-                    : route('frontend.checkout', ['course' => $courses->slug]) }}"
-                    class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                    {{ $enrollment ? 'Go to Class' : 'Buy Class' }}
-                </a> --}}
-                @if ($enrollment?->status === 'active')
-                    <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
-                        class="lex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">Go to Class</a>
-                @else
-                    <a class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
-                        href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}">Buy Class</a>
-                @endif
-                
-            </div>
-        </div>
-        <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-4 mb-40"> 
-            <div class="flex items-center gap-[6px]">
-                <p class="font-semibold text-xl">About</p>
-            </div>
-            <div class="flex flex-col gap-5 w-[700px] shrink-0">
-                <p class="font-medium leading-[30px]">
-                    {!! $courses->description !!}
-                </p>
-            </div>
-        </div>
+                    </div>
+                </section>
             </div>
         </section>
+        
     </div>
     {{-- End Detail Content --}}
 

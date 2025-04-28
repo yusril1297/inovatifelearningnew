@@ -4,126 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Footer Design</title>
-  <style>
-    footer {
-      background-color: #141E61; /* Updated background color */
-      color: #ffffff;
-      padding: 40px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .newsletter {
-      flex: 1;
-      padding-right: 20px;
-    }
-
-    .newsletter h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .newsletter input {
-      width: 80%;
-      padding: 10px;
-      margin-right: 10px;
-      color: #000000; /* Black color for the text */
-      background-color: #f1f1f1; /* Slightly lighter background than container */
-      border: 1px solid #ccc; /* Border to define the input field */
-    }
-
-    .newsletter button {
-      padding: 10px;
-      background-color: #f9a825;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-    }
-
-    .newsletter p {
-      font-size: 12px;
-    }
-
-    .newsletter .social-media a {
-      margin-right: 15px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .company-info {
-      flex: 2;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .b-corp {
-      flex: 1;
-    }
-
-    .b-corp img {
-      width: 120px; /* Increased logo size */
-      margin-bottom: 10px;
-    }
-
-    .b-corp p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .contact-info {
-      flex: 1;
-      text-align: right;
-    }
-
-    .contact-info p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .contact-info a {
-      color: #f9a825;
-      text-decoration: none;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100">
 
-  <footer>
-    <div class="footer-content">
-    <div class="newsletter">
-    <h2>Ajukan Pertanyaan Jika Masih Bingung</h2>
-    <input type="email" id="emailInput" placeholder="Email Address" />
-    <button onclick="sendEmail()">Sign me up</button>
-    <p><a href="mailto:yusrilsaiful97@gmail.com">Hubungi via Email</a></p>
-</div>
+  <footer class="bg-[#141E61] text-white py-10">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-8">
 
-<script>
-    function sendEmail() {
-        let userEmail = document.getElementById("emailInput").value;
-        if (userEmail) {
-            window.location.href = `mailto:yusrilsaiful97@gmail.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
-        } else {
-            alert("Silakan masukkan alamat email Anda terlebih dahulu.");
+      <!-- Newsletter Section -->
+      <div class="flex-1 lg:flex-initial w-full lg:w-1/3">
+        <h2 class="text-xl mb-4">Ajukan Pertanyaan Jika Masih Bingung</h2>
+        <input type="email" id="emailInput" placeholder="Email Address" class="w-full p-3 mb-4 text-black bg-gray-200 border border-gray-300"/>
+        <button onclick="sendEmail()" class="w-full p-3 bg-yellow-500 text-white border-none cursor-pointer mb-4">Sign me up</button>
+        <p class="text-sm"><a href="mailto:yusrilsaiful97@gmail.com" class="text-white hover:underline">Hubungi via Email</a></p>
+      </div>
+
+      <script>
+        function sendEmail() {
+          let userEmail = document.getElementById("emailInput").value;
+          if (userEmail) {
+              window.location.href = `mailto:yusrilsaiful97@gmail.com?subject=Pertanyaan&body=Halo, saya ingin bertanya. Email saya: ${userEmail}`;
+          } else {
+              alert("Silakan masukkan alamat email Anda terlebih dahulu.");
+          }
         }
-    }
-</script>
+      </script>
 
-      <div class="company-info">
-        <div class="b-corp">
-          <img src="assets/images/logos/logommi.png" alt="B Corporation Logo" />
-          <p>Certified Chicago Community Member</p>
-          <p>Kami berkomitmen untuk mendidik dan berkolaborasi dengan bisnis yang sejalan dalam upaya menciptakan perubahan yang berdampak positif secara lingkungan dan sosial. Bersama-sama, kita dapat membuat perbedaan</p>
+      <!-- Company Info Section -->
+      <div class="flex-1 lg:flex-2 flex flex-col lg:flex-row justify-between items-center lg:items-start space-y-6 lg:space-y-0 lg:w-2/3">
+
+        <!-- B-Corp Section -->
+        <div class="flex-1 w-full lg:w-1/3 text-center lg:text-left">
+          <img src="assets/images/logos/logommi.png" alt="B Corporation Logo" class="w-32 mb-4 mx-auto lg:mx-0"/>
+          <p class="text-sm mb-4">Certified Chicago Community Member</p>
+          <p class="text-sm mb-4">Kami berkomitmen untuk mendidik dan berkolaborasi dengan bisnis yang sejalan dalam upaya menciptakan perubahan yang berdampak positif secara lingkungan dan sosial. Bersama-sama, kita dapat membuat perbedaan.</p>
         </div>
-        <div class="contact-info">
-          <p>Selamat Datang, Hallo!</p>
-          <p>Surabaya, Indonesia</p>
-          <p>(773) 348-4581</p>
-          <a href="mailto:enovativemanagemen@gmail.com">Contact</a>
+
+        <!-- Contact Info Section -->
+        <div class="flex-1 w-full lg:w-1/3 text-center lg:text-right">
+          <p class="text-sm mb-4">Selamat Datang, Hallo!</p>
+          <p class="text-sm mb-4">Surabaya, Indonesia</p>
+          <p class="text-sm mb-4">(773) 348-4581</p>
+          <a href="mailto:enovativemanagemen@gmail.com" class="text-yellow-500 hover:underline">Contact</a>
         </div>
+
       </div>
     </div>
   </footer>

@@ -9,7 +9,7 @@
     </div>
 
     <!-- Form container with padding and margin -->
-    <div class="flex flex-col items-center justify-center px-600 py-800 md:w-full lg:w-100/300 xl:w-100/200 lg:py-0 pt-12 pb-12 mb-12"> <!-- Increased width here -->
+    <div class="flex flex-col items-center justify-center px-600 py-800 md:w-full lg:w-100/300 xl:w-100/200 lg:py-0 pt-12 pb-12 mb-12 px-8"> <!-- Increased width here -->
         <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 

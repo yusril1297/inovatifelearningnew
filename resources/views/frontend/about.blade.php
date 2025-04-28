@@ -54,41 +54,43 @@
     
 
      {{-- Dokumentasi Mengajar --}}
-<div class="container px-4 max-w-full py-10 m-[20px]">
-    <!-- Menambahkan teks "Tentor Kami" di atas konten -->
-    <h1 class="text-4xl font-bold text-center mb-8">Dokummentasi Mengajar</h1>
-
-    <div class="flex justify-between gap-6">
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/3">
-            <img src="https://gurulesku.id/wp-content/uploads/2020/01/Lowongan-Tentor-Les-Privat.jpg" alt="Karya 1" class="w-full">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Ini adalah karya yang dibuat sekitar tujuh minggu lalu, dengan hasil percetakan 3D yang sangat detail dan cermat, menghasilkan desain yang unik dan fungsional.</p>
-            </div>
-        </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/3">
-            <img src="https://assets.kompasiana.com/items/album/2023/01/07/les-privat-ke-rumah-63b96aba08a8b541570edde2.jpg" alt="Karya 2" class="w-full">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Proyek ini selesai sekitar tujuh minggu yang lalu, memanfaatkan teknologi pencetakan 3D untuk membuat laci dengan desain yang modern dan sangat praktis.</p>
-            </div>
-        </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/3">
-            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
-            </div>
-        </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/3">
-            <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
+     <div class="container px-[20px] max-w-full py-10 mr-[20px]">
+        <!-- Menambahkan teks "Dokumentasi Mengajar" di atas konten -->
+        <h1 class="text-4xl font-bold text-center mb-8">Dokumentasi Mengajar</h1>
+    
+        <div class="flex justify-center w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all ">
+                    <img src="https://gurulesku.id/wp-content/uploads/2020/01/Lowongan-Tentor-Les-Privat.jpg" alt="Karya 1" class="w-full">
+                    <div class="p-4 text-center">
+                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                        <p class="text-xs text-gray-500">Ini adalah karya yang dibuat sekitar tujuh minggu lalu, dengan hasil percetakan 3D yang sangat detail dan cermat, menghasilkan desain yang unik dan fungsional.</p>
+                    </div>
+                </div>
+                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                    <img src="https://assets.kompasiana.com/items/album/2023/01/07/les-privat-ke-rumah-63b96aba08a8b541570edde2.jpg" alt="Karya 2" class="w-full">
+                    <div class="p-4 text-center">
+                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                        <p class="text-xs text-gray-500">Proyek ini selesai sekitar tujuh minggu yang lalu, memanfaatkan teknologi pencetakan 3D untuk membuat laci dengan desain yang modern dan sangat praktis.</p>
+                    </div>
+                </div>
+                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                    <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
+                    <div class="p-4 text-center">
+                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                        <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
+                    </div>
+                </div>
+                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all>
+                    <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
+                    <div class="p-4 text-center">
+                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                        <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {{--  --}}
     <!-- dokuemtadi-->

@@ -43,6 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Check if #course-slider element exists
+let grouupCells;
+
+if (window.innerWidth < 768) { // Untuk layar kecil (mobile)
+    grouupCells = 1;
+} else if (window.innerWidth < 1024) { // Untuk layar medium (tablet)
+    grouupCells = 2;
+} else { // Untuk layar besar (desktop)
+    grouupCells = 3;
+}
+
 if ($('#course-slider').length) {
     // Initialize Flickity slider
     $('#course-slider').flickity({
@@ -50,7 +60,7 @@ if ($('#course-slider').length) {
         cellAlign: 'left',
         contain: true,
         adaptiveHeight: true,
-        groupCells: 3,
+        groupCells: grouupCells,
         pageDots: false,
         prevNextButtons: false
     });

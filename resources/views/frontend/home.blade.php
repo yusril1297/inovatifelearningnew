@@ -23,8 +23,14 @@
     <div class="overflow-hidden">
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-28 bg-blue-500 bg-opacity-50 bg-with-shadow mt-[0.7px]">
             <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
+                <!-- Image -->
+                <div class="justify-center lg:justify-end">
+                    <img src="assets/icon/foto5.png"
+                        alt="Gambar Belajar" class="max-w-[600px] h-auto rounded-lg"> <!-- Ukuran gambar diperbesar -->
+                </div>
+                
                 <!-- Text Content -->
-                <div class="lg:ml-12 text-center lg:text-left">
+                <div class="lg:ml-12 text-left ">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
                         Belajar Bersama
                     </h1>
@@ -43,12 +49,6 @@
                             Belajar Sekarang
                         </a>
                     </div>
-                </div>
-        
-                <!-- Image -->
-                <div class="justify-center lg:justify-end">
-                    <img src="assets/icon/foto5.png"
-                        alt="Gambar Belajar" class="max-w-[600px] h-auto rounded-lg"> <!-- Ukuran gambar diperbesar -->
                 </div>
             </div>
         </div>
@@ -79,46 +79,51 @@
 </head>
 
 <div class="container mx-auto py-20">
-    <h2 class="text-2xl font-bold text-center mb-8">Keunggulan Kami</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center">Keunggulan Kami</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
         <!-- Card 1 -->
-        <div class="border rounded-lg shadow-md p-6">
-            <div class="flex flex-col items-center mb-4">
-                <i class="fas fa-star text-5xl mb-3"></i> <!-- Rating Icon -->
-                <h3 class="text-3xl font-semibold text-center mt-4">Rating</h3>
+        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col">
+            <div class="mr-7">
+                <div class="flex flex-col items-center mb-4 align-cent">
+                    <i class="fas fa-star md:text-5xl text-xl mb-3"></i> <!-- Rating Icon -->
+                    <h3 class="md:text-3xl text:xl font-semibold text-center mt-4">Rating</h3>
+                </div>
+                <div class="text-center">
+                    <span id="ratingCounter" class="md:text-5xl text-xl font-bold">0</span>
+                </div>
             </div>
-            <div class="text-center">
-                <span id="ratingCounter" class="text-5xl font-bold">0</span>
-            </div>
-            <p class="text-gray-600 text-xl text-center pt-6">
+            <p class="text-gray-600 md:text-xl text-left md:text-center text-md pt-6">
                 Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
             </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="border rounded-lg shadow-md p-6">
-            <div class="flex flex-col items-center mb-4">
-                <i class="fas fa-smile-beam text-5xl mb-3"></i> <!-- Satisfaction Icon -->
-                <h3 class="text-3xl font-semibold text-center mt-4">Kepuasan</h3>
+        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col">
+            <div class="mr-7">
+                <div class="flex flex-col items-center mb-4">
+                    <i class="fas fa-smile-beam md:text-5xl text-xl mb-3"></i> <!-- Satisfaction Icon -->
+                    <h3 class="md:text-3xl text-xl font-semibold text-center mt-4">Kepuasan</h3>
+                </div>
+                <div class="text-center">
+                    <span id="satisfactionCounter" class="md:text-5xl text-xl font-bold">0</span>
+                </div>
             </div>
-            <div class="text-center">
-                <span id="satisfactionCounter" class="text-5xl font-bold">0</span>
-            </div>
-            <p class="text-gray-600 text-xl text-center pt-6">
+            <p class="text-gray-600 md:text-xl text-md pt-6 text-left md:text-center">
                 Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
             </p>
-        </div>
-        
+        </div>   
         <!-- Card 3 -->
-        <div class="border rounded-lg shadow-md p-6">
-            <div class="flex flex-col items-center mb-4">
-                <i class="fas fa-wallet text-5xl mb-3"></i> <!-- Finance Icon -->
-                <h3 class="text-3xl font-semibold text-center mt-4">Finance</h3>
+        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col justify-between">
+            <div class="mr-7">
+                <div class="flex flex-col items-center mb-4">
+                    <i class="fas fa-wallet md:text-5xl text-xl  mb-3"></i> <!-- Finance Icon -->
+                    <h3 class="md:text-3xl text-xl font-semibold text-center mt-4">Finance</h3>
+                </div>
+                <div class="text-center">
+                    <span id="financeCounter" class="md:text-5xl text-xl font-bold">0</span>
+                </div>
             </div>
-            <div class="text-center">
-                <span id="financeCounter" class="text-5xl font-bold">0</span>
-            </div>
-            <p class="text-gray-600 text-xl text-center pt-6">
+            <p class="text-gray-600 md:text-xl text-md text-left md:text-center pt-6">
                 Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
             </p>
         </div>
@@ -180,7 +185,7 @@
         @if($courses->count() > 0)
         <div id="course-slider" class="w-full">
         @foreach($courses as $course)
-            <div class="course-card w-1/3 px-3 pb-[70px] mt-[2px]">
+            <div class="course-card lg:w-1/3 md:w-1/3 w-full px-3 pb-[70px] mt-[2px]">
                 <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#adc7fe]">
                     <a href="{{ route('frontend.details', $course->slug) }}" class="thumbnail w-full h-[350px] shrink-0 rounded-[10px] overflow-hidden">
                         @if($course->youtube_thumbnail_url)
@@ -250,29 +255,29 @@
     <h1 class="text-4xl font-bold text-center mb-8">Dokumentasi Mengajar</h1>
 
     <div class="flex justify-center w-full">
-        <div class="flex justify-center gap-6 max-w-screen-3xl w-full px-[100px]">
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all ">
                 <img src="https://gurulesku.id/wp-content/uploads/2020/01/Lowongan-Tentor-Les-Privat.jpg" alt="Karya 1" class="w-full">
                 <div class="p-4 text-center">
                     <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
                     <p class="text-xs text-gray-500">Ini adalah karya yang dibuat sekitar tujuh minggu lalu, dengan hasil percetakan 3D yang sangat detail dan cermat, menghasilkan desain yang unik dan fungsional.</p>
                 </div>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/4">
+            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
                 <img src="https://assets.kompasiana.com/items/album/2023/01/07/les-privat-ke-rumah-63b96aba08a8b541570edde2.jpg" alt="Karya 2" class="w-full">
                 <div class="p-4 text-center">
                     <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
                     <p class="text-xs text-gray-500">Proyek ini selesai sekitar tujuh minggu yang lalu, memanfaatkan teknologi pencetakan 3D untuk membuat laci dengan desain yang modern dan sangat praktis.</p>
                 </div>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/4">
+            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
                 <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
                 <div class="p-4 text-center">
                     <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
                     <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
                 </div>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/4">
+            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all>
                 <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
                 <div class="p-4 text-center">
                     <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
@@ -322,13 +327,13 @@
     <div class="max-w-[90rem] px-6 py-14 sm:px-8 lg:px-10 lg:py-16 mx-auto background-image"> <!-- Increased max-width and padding -->
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-12 lg:mb-16">
-            <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 dark:text-white">Tentor Kami</h2>
+            <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 ">Tentor Kami</h2>
             <p class="mt-2 text-gray-600 dark:text-gray-400">Temui para pengajar profesional kami</p>
         </div>
         <!-- End Title -->
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16"> <!-- Increased gap and layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 text-center"> <!-- Increased gap and layout -->
         <!-- Loop for displaying instructors -->
             @forelse ($instructors as $instructor)
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center text-center"> <!-- Increased padding -->
@@ -434,44 +439,44 @@
 </head>
 <body>
 
-<section class="features">
-    <div class="feature-item">
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div class="feature-item text-center">
         <div class="icon">
             <i class="fas fa-chalkboard-teacher"></i>
         </div>
         <div class="text">
-            <h3>Guru Berpengalaman</h3>
-            <p>Guru kami memberikan pengalaman belajar yang progresif dan efektif.</p>
+            <h3 class="text-left">Guru Berpengalaman</h3>
+            <p class="text-left">Guru kami memberikan pengalaman belajar yang progresif dan efektif.</p>
         </div>
     </div>
 
-    <div class="feature-item">
+    <div class="feature-item text-center">
         <div class="icon">
             <i class="fas fa-certificate"></i>
         </div>
         <div class="text">
-            <h3>Pelatih Bersertifikat</h3>
-            <p>Kuriculum kami dirancang oleh lembaga pembelajaran yang kredibel.</p>
+            <h3 class="text-left">Pelatih Bersertifikat</h3>
+            <p class="text-left">Kuriculum kami dirancang oleh lembaga pembelajaran yang kredibel.</p>
         </div>
     </div>
 
-    <div class="feature-item">
+    <div class="feature-item text-center">
         <div class="icon">
             <i class="fas fa-book-open"></i>
         </div>
         <div class="text">
-            <h3>Metode Pembelajaran</h3>
-            <p>Kami menyediakan berbagai metode pembelajaran, dari privat hingga kelompok!</p>
+            <h3 class="text-left">Metode Pembelajaran</h3>
+            <p class="text-left">Kami menyediakan berbagai metode pembelajaran, dari privat hingga kelompok!</p>
         </div>
     </div>
 
-    <div class="feature-item">
+    <div class="feature-item text-center">
         <div class="icon">
             <i class="fas fa-desktop"></i>
         </div>
         <div class="text">
-            <h3>Multipatform</h3>
-            <p>Nikmati pembelajaran online di mana saja, melalui smartphone atau desktop.</p>
+            <h3 class="text-left">Multipatform</h3>
+            <p class="text-left">Nikmati pembelajaran online di mana saja, melalui smartphone atau desktop.</p>
         </div>
     </div>
 </section>
@@ -487,14 +492,14 @@
     <!-- Grid -->
     <div class="grid md:grid-cols-2 items-center gap-16 xl:gap-40 text-center md:text-left">
         <div class="flex justify-center">
-            <iframe class="w-[740px] h-[330px]" src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw" frameborder="0" allowfullscreen></iframe>
+            <iframe class="w-[440px] h-[230px] md:w-[540px] md:h-[300px]" src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw" frameborder="0" allowfullscreen></iframe>
         </div>
         
        <!-- Text Content -->
 <div class="w-full max-w-lg ml-auto text-right">
     <div class="space-y-6 sm:space-y-8">
         <!-- Title -->
-        <div class="space-y-2 md:space-y-4">
+        <div class="space-y-2 md:space-y-4 text-left">
             <h2 class="font-bold text-4xl lg:text-5xl text-gray-800 dark:text-neutral-500">
                 Manfaat
             </h2>
@@ -505,8 +510,8 @@
         <!-- End Title -->
 
         <!-- List -->
-        <ul class="space-y-4 sm:space-y-5">
-            <li class="flex flex-row-reverse gap-x-4 items-center">
+        <ul class="space-y-4 sm:space-y-5 text-left">
+            <li class="flex  gap-x-4 items-center">
                 <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -518,7 +523,7 @@
                     Tentor Ahli
                 </span>
             </li>
-            <li class="flex flex-row-reverse gap-x-4 items-center">
+            <li class="flex  gap-x-4 items-center">
                 <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -530,7 +535,7 @@
                     Pembelajaran Mandiri
                 </span>
             </li>
-            <li class="flex flex-row-reverse gap-x-4 items-center">
+            <li class="flex  gap-x-4 items-center">
                 <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -543,7 +548,7 @@
                 </span>
             </li>
             
-            <li class="flex flex-row-reverse gap-x-4 items-center">
+            <li class="flex  gap-x-4 items-center">
                 <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"

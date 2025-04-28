@@ -41,6 +41,32 @@
             flex-grow: 1;
         }
 
+        @media (max-width: 767px) {
+        .navbar .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        .navbar .menu.open {
+            display: flex;
+        }
+    }
+
+
+        @media (min-width: 768px) {
+        .navbar .menu {
+            display: flex;  /* Tampil di ukuran layar medium dan lebih besar */
+        }
+}
+
         /* Menu item styling */
         .navbar .menu a,
         .navbar .menu button {
@@ -162,7 +188,10 @@
 
 <body>
     <!-- Navbar -->
-    <div class="navbar" x-data="{ open: false }">
+    <!-- Tombol Hamburger untuk Mobile -->
+
+
+    <div class="navbar"  x-data="{ open: false, navOpen:false }">
         <div class="flex lg:flex-1" style="margin-left: 100px;">
             <a href="{{ route('frontend.home') }}" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
@@ -170,7 +199,13 @@
             </a>
         </div>
 
-        <div class="menu">
+        <div class="flex md:hidden">
+            <button @click="navOpen = !navOpen" class="text-gray-700 focus:outline-none">
+                <!-- Tampilkan ikon X saat navOpen true, dan hamburger saat false -->
+                <i class="bi" :class="navOpen ? 'bi-x' : 'bi-list'" style="font-size: 2rem;"></i>
+            </button>
+        </div>
+        <div class="menu" :class="{ 'open': navOpen }">
             <a href="{{ route('frontend.home') }}">Home</a>
             <a href="{{ route('frontend.allCourses') }}">Semua Kursus</a>
             <a href="{{ route('frontend.about') }}">Tentang Kami</a>
@@ -200,6 +235,8 @@
                 </div>
             </div>
             <a href="{{ route('frontend.instructor') }}">Instructor</a>
+            
+           
         </div>
         <div class="login">
             @guest
@@ -207,14 +244,14 @@
                 <a href="{{ route('login') }}">Log in</a>
             @else
                 <!-- Profile Dropdown Trigger with Name and Picture -->
-                <div class="relative">
+                <div class="relative justify-end">
                     <button type="button" class="flex items-center space-x-3 text-sm font-semibold leading-6 text-gray-700 focus:outline-none" onclick="toggleDropdown()">
                         <span class="mr-2">{{ Auth::user()->name }}</span>
                         <img src="{{ Auth::user()->profile_picture_url }}" alt="Profile Picture" class="w-10 h-10 rounded-full">
                     </button>
 
                     <!-- Dropdown Menu -->
-                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50">
                         @if (Auth::user()->role == 0)
                             <!-- Admin -->
                             <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
