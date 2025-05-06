@@ -20,39 +20,127 @@
 </head>
 
 <body class="bg-gray-100">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Example</title>
+    <!-- Tambahkan Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        /* Custom styles for the layout */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
     <div class="overflow-hidden">
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-28 bg-blue-500 bg-opacity-50 bg-with-shadow mt-[0.7px]">
-            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
-                <!-- Image -->
-                <div class="justify-center lg:justify-end">
-                    <img src="assets/icon/foto5.png"
-                        alt="Gambar Belajar" class="max-w-[600px] h-auto rounded-lg"> <!-- Ukuran gambar diperbesar -->
-                </div>
+            <!-- Slider Wrapper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
+                            <!-- Text Content -->
+                            <div class="lg:ml-12 text-center lg:text-left">
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+                                    Belajar Bersama
+                                </h1>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+                                    Mentor Berpengalaman
+                                </h1>
+                                <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
+                                    Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
+                                </h2>
+                                <div class="flex items-center gap-4 mt-24">
+                                    <a href="{{ route('frontend.allCourses') }}"
+                                        class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                        Belajar Sekarang
+                                    </a>
+                                </div>
+                            </div>
                 
-                <!-- Text Content -->
-                <div class="lg:ml-12 text-left ">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                        Belajar Bersama
-                    </h1>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                        Mentor Berpengalaman
-                    </h1>
-                    <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
-                        Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
-                    </h2>
-                    <div class="flex items-center gap-4 mt-24"> <!-- Margin atas 100px -->
-                        <a href="{{ route('frontend.allCourses') }}"
-                            class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                            Belajar Sekarang
-                        </a>
+                            <!-- Image -->
+                            <div class="justify-center lg:justify-end">
+                                <img src="assets/icon/foto5.png"
+                                    alt="Gambar Belajar" class="max-w-[600px] h-auto rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 (Can add more slides here) -->
+                    <div class="swiper-slide">
+                        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
+                            <!-- Text Content -->
+                            <div class="lg:ml-12 text-center lg:text-left">
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+                                    Pelatihan Profesional
+                                </h1>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
+                                    Untuk Semua Orang
+                                </h1>
+                                <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
+                                    Bergabung dengan komunitas lebih dari 500+ member.
+                                </h2>
+                                <div class="flex items-center gap-4 mt-24">
+                                    <a href="{{ route('frontend.allCourses') }}"
+                                        class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                                        </svg>
+                                        Belajar Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                
+                            <!-- Image -->
+                            <div class="justify-center lg:justify-end">
+                                <img src="assets/icon/foto5.png"
+                                    alt="Gambar Pelatihan" class="max-w-[600px] h-auto rounded-lg">
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
+
+    <!-- Tambahkan Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Inisialisasi Swiper
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 3000, // Delay 3 detik
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+
+</body>
+</html>
 
   <!-- End Hero -->
   
@@ -78,57 +166,55 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<div class="container mx-auto py-20">
-    <h2 class="text-2xl font-bold mb-8 text-center">Keunggulan Kami</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
-        <!-- Card 1 -->
-        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col">
-            <div class="mr-7">
-                <div class="flex flex-col items-center mb-4 align-cent">
-                    <i class="fas fa-star md:text-5xl text-xl mb-3"></i> <!-- Rating Icon -->
-                    <h3 class="md:text-3xl text:xl font-semibold text-center mt-4">Rating</h3>
-                </div>
-                <div class="text-center">
-                    <span id="ratingCounter" class="md:text-5xl text-xl font-bold">0</span>
-                </div>
-            </div>
-            <p class="text-gray-600 md:text-xl text-left md:text-center text-md pt-6">
-                Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung
-            </p>
-        </div>
+<div class="container mx-auto py-20 px-4">
+  <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">Keunggulan Kami</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Card 2 -->
-        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col">
-            <div class="mr-7">
-                <div class="flex flex-col items-center mb-4">
-                    <i class="fas fa-smile-beam md:text-5xl text-xl mb-3"></i> <!-- Satisfaction Icon -->
-                    <h3 class="md:text-3xl text-xl font-semibold text-center mt-4">Kepuasan</h3>
-                </div>
-                <div class="text-center">
-                    <span id="satisfactionCounter" class="md:text-5xl text-xl font-bold">0</span>
-                </div>
-            </div>
-            <p class="text-gray-600 md:text-xl text-md pt-6 text-left md:text-center">
-                Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
-            </p>
-        </div>   
-        <!-- Card 3 -->
-        <div class="border rounded-lg shadow-md p-6 flex flex-row md:flex-col justify-between">
-            <div class="mr-7">
-                <div class="flex flex-col items-center mb-4">
-                    <i class="fas fa-wallet md:text-5xl text-xl  mb-3"></i> <!-- Finance Icon -->
-                    <h3 class="md:text-3xl text-xl font-semibold text-center mt-4">Finance</h3>
-                </div>
-                <div class="text-center">
-                    <span id="financeCounter" class="md:text-5xl text-xl font-bold">0</span>
-                </div>
-            </div>
-            <p class="text-gray-600 md:text-xl text-md text-left md:text-center pt-6">
-                Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
-            </p>
-        </div>
+    <!-- Card 1 -->
+    <div class="border-2 rounded-lg shadow-xl p-6 flex flex-col items-center bg-white hover:shadow-2xl transition-all">
+      <div class="flex flex-col items-center mb-6">
+        <i class="fas fa-star text-5xl text-indigo-600 mb-4"></i>
+        <h3 class="text-2xl font-semibold text-gray-800 text-center">Rating</h3>
+      </div>
+      <div class="text-center">
+        <span id="ratingCounter" class="text-5xl font-bold text-indigo-600">0</span>
+      </div>
+      <p class="text-gray-600 mt-6 text-lg text-center">
+        Membantu siswa memilih kursus berkualitas, memberikan umpan balik cepat untuk perbaikan, menyesuaikan materi dengan preferensi pengguna, menjaga kualitas pengajaran, dan membangun komunitas belajar yang terhubung.
+      </p>
     </div>
+
+    <!-- Card 2 -->
+    <div class="border-2 rounded-lg shadow-xl p-6 flex flex-col items-center bg-white hover:shadow-2xl transition-all">
+      <div class="flex flex-col items-center mb-6">
+        <i class="fas fa-smile-beam text-5xl text-yellow-500 mb-4"></i>
+        <h3 class="text-2xl font-semibold text-gray-800 text-center">Kepuasan</h3>
+      </div>
+      <div class="text-center">
+        <span id="satisfactionCounter" class="text-5xl font-bold text-yellow-500">0</span>
+      </div>
+      <p class="text-gray-600 mt-6 text-lg text-center">
+        Kami juga menjaga kualitas pengajaran dengan menghadirkan pengajaran yang profesional dan berbobot, serta membangun komunitas belajar yang terhubung, di mana siswa dapat saling mendukung dan berkembang bersama.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="border-2 rounded-lg shadow-xl p-6 flex flex-col items-center bg-white hover:shadow-2xl transition-all">
+      <div class="flex flex-col items-center mb-6">
+        <i class="fas fa-wallet text-5xl text-green-500 mb-4"></i>
+        <h3 class="text-2xl font-semibold text-gray-800 text-center">Finance</h3>
+      </div>
+      <div class="text-center">
+        <span id="financeCounter" class="text-5xl font-bold text-green-500">0</span>
+      </div>
+      <p class="text-gray-600 mt-6 text-lg text-center">
+        Kami berkomitmen untuk menawarkan solusi yang terjangkau tanpa mengorbankan kualitas pembelajaran. Dengan memberikan opsi pembayaran yang fleksibel dan transparan, siswa dapat memilih program yang sesuai dengan anggaran mereka.
+      </p>
+    </div>
+
+  </div>
 </div>
+
 
 <script>
     // Function to increment the counter
@@ -255,37 +341,38 @@
     <h1 class="text-4xl font-bold text-center mb-8">Dokumentasi Mengajar</h1>
 
     <div class="flex justify-center w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all ">
-                <img src="https://gurulesku.id/wp-content/uploads/2020/01/Lowongan-Tentor-Les-Privat.jpg" alt="Karya 1" class="w-full">
-                <div class="p-4 text-center">
-                    <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                    <p class="text-xs text-gray-500">Ini adalah karya yang dibuat sekitar tujuh minggu lalu, dengan hasil percetakan 3D yang sangat detail dan cermat, menghasilkan desain yang unik dan fungsional.</p>
-                </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="assets/icon/dm1.png" alt="Karya 1" class="w-full h-64 object-cover">
+            <div class="p-4 text-center">
+                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                <p class="text-xs text-gray-500">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung</p>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-                <img src="https://assets.kompasiana.com/items/album/2023/01/07/les-privat-ke-rumah-63b96aba08a8b541570edde2.jpg" alt="Karya 2" class="w-full">
-                <div class="p-4 text-center">
-                    <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                    <p class="text-xs text-gray-500">Proyek ini selesai sekitar tujuh minggu yang lalu, memanfaatkan teknologi pencetakan 3D untuk membuat laci dengan desain yang modern dan sangat praktis.</p>
-                </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="assets/icon/dm2.png" alt="Karya 2" class="w-full h-64 object-cover">
+            <div class="p-4 text-center">
+                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                <p class="text-xs text-gray-500">Seorang anak dan teman sedang belajar bersama di meja, saling membantu menyelesaikan tugas dengan fokus dan kerjasama.</p>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-                <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
-                <div class="p-4 text-center">
-                    <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                    <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
-                </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="assets/icon/dm3.png" alt="Karya 3" class="w-full h-64 object-cover">
+            <div class="p-4 text-center">
+                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                <p class="text-xs text-gray-500">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung</p>
             </div>
-            <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all>
-                <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
-                <div class="p-4 text-center">
-                    <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                    <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
-                </div>
+        </div>
+        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <img src="assets/icon/dm4.png" alt="Karya 4" class="w-full h-64 object-cover">
+            <div class="p-4 text-center">
+                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
+                <p class="text-xs text-gray-500">Seorang anak sedang fokus belajar di depan laptop, membuka materi pelajaran online dan mencatat poin-poin penting di buku catatannya</p>
             </div>
         </div>
     </div>
+</div>
+
 </div>
 
 
@@ -321,10 +408,9 @@
     }
 </style>
 </head>
-
 <body class=""> <!-- Memastikan tinggi layar penuh dengan min-h-screen -->
 
-    <div class="max-w-[90rem] px-6 py-14 sm:px-8 lg:px-10 lg:py-16 mx-auto background-image"> <!-- Increased max-width and padding -->
+    <div class="w-full px-6 py-14 sm:px-8 lg:px-10 lg:py-16 mx-auto background-image"> <!-- Menyesuaikan lebar penuh dan padding -->
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-12 lg:mb-16">
             <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 ">Tentor Kami</h2>
@@ -333,8 +419,8 @@
         <!-- End Title -->
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 text-center"> <!-- Increased gap and layout -->
-        <!-- Loop for displaying instructors -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-center"> <!-- Menyesuaikan gap dan layout -->
+            <!-- Loop for displaying instructors -->
             @forelse ($instructors as $instructor)
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 flex flex-col items-center text-center"> <!-- Increased padding -->
                     <!-- Mengubah gambar menjadi w-80 h-80 untuk memperbesar ukuran gambar -->
@@ -345,17 +431,16 @@
                     <h4 class="text-sm text-gray-500 dark:text-gray-400">{{ $instructor->biodata }}</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400">Pengajar</p>
                     <!-- Tombol "Lihat Profil" di bawah container card -->
-                <div class="mt-auto flex gap-4"> <!-- Flexbox container with gap -->
-                    <a href="{{ $instructor->cv ? Storage::url($instructor->cv) :'' }}"
-                        class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
-                        Lihat Profil
-                    </a>
-                    <a href="{{ route('frontend.instructorDetails', $instructor->id) }}"
-                        class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
-                        Lihat Kelas
-                    </a>
-                </div>
-
+                    <div class="mt-auto flex gap-4"> <!-- Flexbox container with gap -->
+                        <a href="{{ $instructor->cv ? Storage::url($instructor->cv) :'' }}"
+                            class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Lihat Profil
+                        </a>
+                        <a href="{{ route('frontend.instructorDetails', $instructor->id) }}"
+                            class="inline-block px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Lihat Kelas
+                        </a>
+                    </div>
                 </div>
             @empty
                 <p class="text-center text-gray-600 dark:text-gray-400">Belum ada mentor yang tersedia.</p>
@@ -363,127 +448,69 @@
         </div>
         <!-- End Grid -->
     </div>
+</body>
+
+    </div>
 
 
 
 
 
 
- <!-- Why SocioEdu --> 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitur Pembelajaran</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.24/dist/tailwind.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
-    <style> 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        .features {
-            width: calc(100% - 100px); /* Mengurangi 50px dari kiri dan kanan */
-            margin: 50px auto; /* Memberikan margin luar 50px di kiri dan kanan */
-            padding: 50px 20px;
-            display: flex;
-            justify-content: space-between;  
-            flex-wrap: wrap;  /* Menyesuaikan elemen untuk responsif */
-            gap: 20px;  /* Jarak antar elemen */
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            flex: 1;
-            max-width: calc(33.33% - 20px);  /* Membatasi lebar elemen menjadi sepertiga */
-        }
-
-        .icon i {
-            font-size: 2.5rem;  /* Membesarkan ukuran ikon */
-            color: rgb(16, 1, 225);
-        }
-
-        .text h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .text p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.5;  
-        }
-
-        @media (max-width: 768px) {
-            .feature-item {
-                max-width: calc(50% - 20px);  
-            }
-        }
-
-        @media (max-width: 480px) {
-            .feature-item {
-                max-width: 100%;  
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    <div class="feature-item text-center">
-        <div class="icon">
-            <i class="fas fa-chalkboard-teacher"></i>
-        </div>
-        <div class="text">
-            <h3 class="text-left">Guru Berpengalaman</h3>
-            <p class="text-left">Guru kami memberikan pengalaman belajar yang progresif dan efektif.</p>
-        </div>
-    </div>
-
-    <div class="feature-item text-center">
-        <div class="icon">
-            <i class="fas fa-certificate"></i>
-        </div>
-        <div class="text">
-            <h3 class="text-left">Pelatih Bersertifikat</h3>
-            <p class="text-left">Kuriculum kami dirancang oleh lembaga pembelajaran yang kredibel.</p>
-        </div>
-    </div>
-
-    <div class="feature-item text-center">
-        <div class="icon">
-            <i class="fas fa-book-open"></i>
-        </div>
-        <div class="text">
-            <h3 class="text-left">Metode Pembelajaran</h3>
-            <p class="text-left">Kami menyediakan berbagai metode pembelajaran, dari privat hingga kelompok!</p>
-        </div>
-    </div>
-
-    <div class="feature-item text-center">
-        <div class="icon">
-            <i class="fas fa-desktop"></i>
-        </div>
-        <div class="text">
-            <h3 class="text-left">Multipatform</h3>
-            <p class="text-left">Nikmati pembelajaran online di mana saja, melalui smartphone atau desktop.</p>
+<section class="py-16 px-6 md:px-12 lg:px-24 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold text-white mb-8">Fitur Pembelajaran Kami</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Feature 1 -->
+            <div class="feature-item p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
+                <div class="text-indigo-500 text-4xl mb-4">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Guru Berpengalaman</h3>
+                <p class="text-gray-600">Guru kami memberikan pengalaman belajar yang progresif dan efektif.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="feature-item p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
+                <div class="text-indigo-500 text-4xl mb-4">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Pelatih Bersertifikat</h3>
+                <p class="text-gray-600">Kurikulum kami dirancang oleh lembaga pembelajaran yang kredibel.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="feature-item p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
+                <div class="text-indigo-500 text-4xl mb-4">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Metode Pembelajaran</h3>
+                <p class="text-gray-600">Kami menyediakan berbagai metode pembelajaran, dari privat hingga kelompok!</p>
+            </div>
+            <!-- Feature 4 -->
+            <div class="feature-item p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
+                <div class="text-indigo-500 text-4xl mb-4">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">Multipatform</h3>
+                <p class="text-gray-600">Nikmati pembelajaran online di mana saja, melalui smartphone atau desktop.</p>
+            </div>
         </div>
     </div>
 </section>
 
 </body>
 </html>
-<!-- End Why SocioEdu -->
+
 
 
 
@@ -495,75 +522,68 @@
             <iframe class="w-[440px] h-[230px] md:w-[540px] md:h-[300px]" src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw" frameborder="0" allowfullscreen></iframe>
         </div>
         
-       <!-- Text Content -->
-<div class="w-full max-w-lg ml-auto text-right">
-    <div class="space-y-6 sm:space-y-8">
+    <!-- Text Content -->
+<div class="w-full max-w-2xl mx-auto px-6 py-12 lg:px-16">
+    <div class="space-y-8">
         <!-- Title -->
-        <div class="space-y-2 md:space-y-4 text-left">
-            <h2 class="font-bold text-4xl lg:text-5xl text-gray-800 dark:text-neutral-500">
+        <div class="space-y-4 text-left">
+            <h2 class="text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-neutral-200">
                 Manfaat
             </h2>
-            <p class="text-lg text-gray-500 dark:text-neutral-500">
+            <p class="text-lg text-gray-600 dark:text-neutral-400">
                 Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar Innovative Elearning
             </p>
         </div>
         <!-- End Title -->
 
         <!-- List -->
-        <ul class="space-y-4 sm:space-y-5 text-left">
-            <li class="flex  gap-x-4 items-center">
-                <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
-                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <ul class="space-y-6 sm:space-y-8">
+            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
+                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </span>
-                <span class="text-base sm:text-lg text-gray-600 dark:text-neutral-500">
+                <span class="text-lg text-gray-700 dark:text-neutral-300">
                     Tentor Ahli
                 </span>
             </li>
-            <li class="flex  gap-x-4 items-center">
-                <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
-                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
+                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </span>
-                <span class="text-base sm:text-lg text-gray-600 dark:text-neutral-500">
+                <span class="text-lg text-gray-700 dark:text-neutral-300">
                     Pembelajaran Mandiri
                 </span>
             </li>
-            <li class="flex  gap-x-4 items-center">
-                <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
-                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
+                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </span>
-                <span class="text-base sm:text-lg text-gray-600 dark:text-neutral-500">
-                Motivasi dan Penghargaan
+                <span class="text-lg text-gray-700 dark:text-neutral-300">
+                    Motivasi dan Penghargaan
                 </span>
             </li>
-            
-            <li class="flex  gap-x-4 items-center">
-                <span class="size-6 flex justify-center items-center rounded-full bg-blue-100 text-blue-600">
-                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
+                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </span>
-                <span class="text-base sm:text-lg text-gray-600 dark:text-neutral-500">
-                Akses ke Sumber Belajar yang Beragam
+                <span class="text-lg text-gray-700 dark:text-neutral-300">
+                    Akses ke Sumber Belajar yang Beragam
                 </span>
             </li>
         </ul>
         <!-- End List -->
     </div>
 </div>
+<!-- End Grid -->
+
 </div>
 <!-- End Grid -->
 </div>
