@@ -118,9 +118,13 @@ Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/information', [ProfileController::class, 'editInformation'])->name('profile.edit.information');
+    Route::get('/profile/cv', [ProfileController::class, 'editCv'])->name('profile.edit.cv');
+    Route::get('/profile/avatar', [ProfileController::class, 'editAvatar'])->name('profile.edit.avatar');
+    Route::get('/profile/password', [ProfileController::class, 'editPassword'])->name('profile.edit.password');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.update.avatar');
+    
     Route::put('/profile/cv', [ProfileController::class, 'updateCv'])->name('profile.update.cv');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 

@@ -18,12 +18,35 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function editInformation(Request $request): View
     {
-        return view('profile.edit', [
+        return view('profile.edit_information', [
             'user' => $request->user(),
         ]);
     }
+
+    public function editAvatar(Request $request): View
+    {
+        return view('profile.edit_avatar', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    public function editCv(Request $request): View
+    {
+        return view('profile.edit_cv', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    public function editPassword(Request $request): View
+    {
+        return view('profile.edit_password', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    
 
     /**
      * Update the user's profile information.

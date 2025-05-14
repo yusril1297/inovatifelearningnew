@@ -1,86 +1,96 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@yield('title', 'Dashboard')</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}"/>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png"/>
+	<!--plugins-->
+	<link rel="stylesheet" href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" />
+	<link rel="stylesheet" href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" />
+	<link rel="stylesheet" href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" />
 
-  {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" /> --}}
-  @yield('styles')
-  @yield('editstyles')
-  @yield('show')
-  <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+	{{-- Loader --}}
+	<link rel="stylesheet" href="{{ asset('assets/css/pace.min.css') }}" />
+	<script src="{{ asset('assets/js/pace.min.js') }}" ></script>
 
-<!-- Summernote CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" rel="stylesheet">
+	{{-- Bootstrap Css --}}
+	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
+	{{-- <link href="{{ asset('assets/css/jquery.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('assets/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('assets/css/metisMenu.min.css') }}" rel="stylesheet"/>
+	<!-- loader-->
+	<link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet"/>
+	<script src="{{ asset('assets/js/pace.min.js') }}"></script> 
 
-
-  <!-- DataTables  -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{ asset('assets/css/dark-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}"/> --}}
+	<title>Admin Dashboard</title>
 </head>
 
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
+  <div class="wrapper">
     <!-- Sidebar Start -->
     @include('layouts.admin.sidebar')
     <!--  Sidebar End -->
-    <!--  Main wrapper -->
-    <div class="body-wrapper" style="background-color: #F3FFD3;">
       <!--  Header Start -->
       @include('layouts.admin.navbar')
       <!--  Header End -->
-      <div class="container-fluid"  >
+      <div class="page-wrapper"  >
+       <div class="page-content">
         @yield('content')
-     
+       </div>
       </div>
-    </div>
   </div>
-  <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
-<script src="{{ asset('assets/js/app.min.js') }}"></script>
-<script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
-<script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
-<!-- Summernote JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
-<script>
-  $(document).ready(function() {
-      $('#summernote').summernote({
-          height: 300,   // Atur tinggi editor
-          placeholder: 'Tulis konten course Anda di sini...',
-          toolbar: [
-              ['style', ['style']],
-              ['font', ['bold', 'underline', 'clear']],
-              ['fontname', ['fontname']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['table', ['table']],
-              ['insert', ['link', 'picture', 'video']],
-              ['view', ['fullscreen', 'codeview', 'help']]
-          ]
-      });
-  });
+  <!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+	<!--plugins-->
+	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/js/simplebar.min.js') }}"></script> 
+	<script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+	<script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<script src="{{ asset('assets/plugins') }}"></script>
+	<script src="{{ asset('assets/js/index.js') }}"></script>
+	<!--app JS-->
+	<script src="{{ asset('assets/js/app.js') }}"></script>
+	<script>
+		new PerfectScrollbar(".app-container")
+	</script>
+	<script>
+// Fungsi untuk toggle submenu
+function toggleDropdown(element) {
+var submenu = element.nextElementSibling; // Ambil <ul> berikutnya setelah <a>
+if (submenu.style.display === "none" || submenu.style.display === "") {
+    submenu.style.display = "block"; // Tampilkan submenu
+} else {
+    submenu.style.display = "none"; // Sembunyikan submenu
+}
+}
 </script>
-
-
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script>
-  $(document).ready(function() {
-      $('#dataTable').DataTable(); 
-  });
-</script>
-
-
 
 </body>
 

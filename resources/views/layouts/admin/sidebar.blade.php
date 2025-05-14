@@ -1,96 +1,82 @@
-<aside class="left-sidebar"> 
-    <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-        <ul id="sidebarnav">
+<div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+        <div>
+            <h4 class="logo-text">Admin Dashboard</h4>
+        </div>
+    </div>
 
-           
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
 
-            <!-- DASHBOARD -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-layout-dashboard"></i>
-                    </span>
-                    <span class="hide-menu">Dashboard</span>
-                </a>
-            </li>
+        <!-- Dashboard Menu -->
+        <li>
+            <a href="javascript:;" class="has-arrow" onclick="toggleDropdown(this)">
+                <div class="parent-icon"><i class="bx bx-category"></i></div>
+                <div class="menu-title">Dashboard</div>
+            </a>
+            <ul style="display: none;">
+                <li><a href="{{ route('dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>
+                <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Category</a></li>
+                <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                <li><a href="{{ route('admin.enrollments.index') }}"><i class='bx bx-folder'></i>Enrollments</a></li>
+                <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Manage Instructors</a></li>
+                <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Levels</a></li>
+                <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user-circle'></i>Students</a></li>
+                <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
+            </ul>
+        </li>
 
-            <!-- MENU -->
-            <li class="nav-small-cap">
-                <i class="ti ti-menu-2 nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">MENU</span>
-            </li>
+        <!-- User Profile Dropdown -->
+        <li>
+            <a href="javascript:;" class="has-arrow" onclick="toggleDropdown(this)">
+                <div class="parent-icon"><i class="bx bx-user-circle"></i></div>
+                <div class="menu-title">User Profile</div>
+            </a>
+            <ul style="display: none;">
+                <li><a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-image'></i>Update Avatar</a></li>
+                <li><a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file'></i>Update CV Profile</a></li>
+                <li><a href="{{ route('profile.edit.information') }}"><i class='bx bx-user'></i>Profile Information</a></li>
+                <li><a href="{{ route('profile.edit.password') }}"><i class='bx bx-lock-alt'></i>Update Password</a></li>
 
-            <!-- CATEGORY -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-category"></i>
-                    </span>
-                    <span class="hide-menu">Category</span>
-                </a>
-            </li>
+                @if (Auth::user()->role !== 0)
+                    <li>
+                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                            <i class='bx bx-user text-danger'></i>Delete Account
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
 
-            <!-- MANAGE INSTRUCTOR -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.instructors.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-users"></i>
-                    </span>
-                    <span class="hide-menu">Manage Instructor</span>
-                </a>
-            </li>
+    </ul>
+    <!--end navigation-->
+</div>
 
-            <!-- MANAGE STUDENTS -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.students.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-user"></i>
-                    </span>
-                    <span class="hide-menu">Manage Students</span>
-                </a>
-            </li>
+<!-- Modal - moved outside the sidebar structure -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your account? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger">Delete Account</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <!-- MANAGE COURSES -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.courses.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-book-2"></i>
-                    </span>
-                    <span class="hide-menu">Manage Courses</span>
-                </a>
-            </li>
-
-           <!-- LEVELS -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.levels.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-stairs"></i>
-                    </span>
-                    <span class="hide-menu">Levels</span>
-                </a>
-            </li>
-
-
-            <!-- ENROLLMENT -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.enrollments.index') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-file-text"></i>
-                    </span>
-                    <span class="hide-menu">Enrollment</span>
-                </a>
-            </li>
-
-            <!-- SETTING -->
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.settings') }}" aria-expanded="false">
-                    <span>
-                        <i class="ti ti-settings"></i>
-                    </span>
-                    <span class="hide-menu">Setting</span>
-                </a>
-            </li>
-
-        </ul>
-    </nav>
-</aside>
+<!-- Script -->
+<script>
+function toggleDropdown(element) {
+    var dropdown = element.nextElementSibling;
+    if (dropdown && dropdown.tagName.toLowerCase() === "ul") {
+        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    }
+}
+</script>
