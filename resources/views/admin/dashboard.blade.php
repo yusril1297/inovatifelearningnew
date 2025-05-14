@@ -215,7 +215,7 @@
 										
 									@endif
 								  </td>
-								  <td>{{ $course->description }}</td>
+								  <td>{!! $course->description  !!}</td>
 								  <td>{{ $course->instructor->name }}</td>
 								  <td>{{ $course->category->name }}</td>
 								  <td>{{ $course->level->name }}</td>
