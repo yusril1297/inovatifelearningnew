@@ -257,9 +257,12 @@ class PaymentController extends Controller
             
             // Perbarui status enrollment berdasarkan status transaksi
            
+            $status = 'pending';
+
             switch ($validated['transaction_status']) {
                 case 'settlement':
                     $enrollment->update(['status' => 'active']);
+                    $status = 'completed';
                     break;
                 case 'pending':
                     $enrollment->update(['status' => 'pending']);
@@ -268,20 +271,8 @@ class PaymentController extends Controller
                 case 'deny':
                 case 'expire':
                     $enrollment->update(['status' => 'canceled']);
+                    $status = 'failed';
                     break;
-            }
-
-            $status = "";
-
-            if($validated['transaction_status'] == 'settlement') {
-                $status = 'active';
-            } elseif ($validated['transaction_status'] == 'pending') {
-                $status = 'pending';
-            } elseif ($validated['transaction_status'] == 'cancel' || $validated['transaction_status'] == 'deny' || $validated['transaction_status'] == 'expire') {
-                $status = 'failed';
-            } else {
-                $status = 'failed';
-            
             }
 
             
