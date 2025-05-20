@@ -94,13 +94,22 @@
                 </div>
                 
                 <div class="max-w-[1100px] w-full mx-auto flex mt-5 px-1">
-                    @if ($enrollment?->status === 'active')
-                        <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
-                            class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">Go to Class</a>
-                    @else
-                        <a class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
-                            href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}">Buy Class</a>
-                    @endif
+                  @if (Auth::check())
+    @if (Auth::user()->role == 2)
+        @if ($enrollment?->status === 'active')
+            <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
+               class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                Go to Class
+            </a>
+        @else
+            <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
+               class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                Buy Class
+            </a>
+        @endif
+    @endif
+@endif
+
                 </div>
                 
                 <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-4 mb-20 md:mb-40 mt-10 px-1"> 
