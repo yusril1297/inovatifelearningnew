@@ -1,137 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Footer Design</title>
+  <title>Responsive Footer Design</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
   <!-- Font Awesome CDN for social media icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    footer {
-      background-color: #141E61;
-      color: #ffffff;
-      padding: 40px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .newsletter {
-      flex: 1;
-      padding-right: 20px;
-    }
-
-    .newsletter h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .newsletter input {
-      width: 80%;
-      padding: 10px;
-      margin-right: 10px;
-      color: #000000;
-      background-color: #f1f1f1;
-      border: 1px solid #ccc;
-    }
-
-    .newsletter button {
-      padding: 10px;
-      background-color: #f9a825;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-    }
-
-    .newsletter p {
-      font-size: 12px;
-      margin-top: 10px;
-    }
-
-    .social-media {
-      margin-top: 15px;
-    }
-
-    .social-media a {
-      margin-right: 15px;
-      color: #ffffff;
-      font-size: 20px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .social-media a:hover {
-      color: #f9a825;
-    }
-
-    .company-info {
-      flex: 2;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .b-corp {
-      flex: 1;
-    }
-
-    .b-corp img {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-
-    .b-corp p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .contact-info {
-      flex: 1;
-      text-align: right;
-    }
-
-    .contact-info p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .contact-info a {
-      color: #f9a825;
-      text-decoration: none;
-    }
-  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <footer>
-    <div class="footer-content">
-      <div class="newsletter">
-        <h2>Ajukan Pertanyaan Jika Masih Bingung</h2>
-        <input type="email" id="emailInput" placeholder="Email Address" />
-        <button onclick="sendEmail()">Sign me up</button>
-        <p><a href="mailto:admin@ibereality.com">Hubungi via Email</a></p>
-
-        <!-- Social Media Icons -->
-        <div class="social-media">
-          <a href="https://facebook.com/share/16MMY4vRw2/" target="_blank"><i class="fab fa-facebook-f"></i></a> 
-          <a href="https://instagram.com/ibereality/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://tiktok.com/@ibereality" target="_blank"><i class="fab fa-tiktok"></i></a> 
+  <footer class="bg-[#141E61] text-white">
+    <div class="container mx-auto px-4 py-8">
+      <!-- Footer content container -->
+      <div class="flex flex-col lg:flex-row gap-8">
+        
+        <!-- Newsletter Section -->
+        <div class="w-full lg:w-1/3">
+          <h2 class="text-xl font-semibold mb-3">Ajukan Pertanyaan Jika Masih Bingung</h2>
+          <div class="flex flex-col sm:flex-row mb-2">
+            <input 
+              type="email" 
+              id="emailInput" 
+              placeholder="Email Address" 
+              class="w-full sm:w-2/3 p-2 text-black bg-gray-100 border border-gray-300 rounded-md mb-2 sm:mb-0 sm:mr-2"
+            />
+            <button 
+              onclick="sendEmail()" 
+              class="bg-yellow-600 hover:bg-yellow-700 transition-colors text-white py-2 px-4 rounded-md"
+            >
+              Sign me up
+            </button>
+          </div>
+          <p class="text-sm mt-2"><a href="mailto:admin@ibereality.com" class="hover:underline">Hubungi via Email</a></p>
+          
+          <!-- Social Media Icons -->
+          <div class="mt-4 flex space-x-4">
+            <a href="https://facebook.com/share/16MMY4vRw2/" target="_blank" class="text-white text-2xl hover:text-yellow-500 transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/ibereality/" target="_blank" class="text-white text-2xl hover:text-yellow-500 transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@ibereality" target="_blank" class="text-white text-2xl hover:text-yellow-500 transition-colors">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Company Info Section -->
+        <div class="w-full lg:w-2/3 flex flex-col md:flex-row gap-6">
+          <!-- B-Corp Info -->
+          <div class="w-full md:w-1/2">
+            <p class="font-medium mb-2">Certified Chicago Community Member</p>
+            <p class="text-sm mb-4">PT Integrasi Bisnis Eksekutif merupakan perusahaan teknologi yang fokus membangun ekosistem dengan tiga pilar model yaitu layanan teknologi, penyedia teknologi, dan pembelajaran teknologi.</p>
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="w-full md:w-1/2 md:text-right">
+            <p class="font-medium mb-2">Selamat Datang, Hallo!</p>
+            <p class="text-sm mb-2">Gedung PIDI4.0, Jl. Raya Kby. Lama Lantai 8, Sukabumi Sel., Kec. Kb. Jeruk, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 11560</p>
+            <p class="text-sm mb-2">+6281236868738</p>
+            <a href="https://wa.me/+6281236868738" class="inline-block mt-1 text-yellow-500 hover:underline">Contact</a>
+          </div>
         </div>
       </div>
-
-      <div class="company-info">
-        <div class="b-corp">
-          <p>Certified Chicago Community Member</p>
-          <p>PT Integrasi Bisnis Eksekutif merupakan perusahaan teknologi yang fokus membangun ekosistem dengan tiga pilar model yaitu layanan teknologi, penyedia teknologi, dan pembelajaran teknologi.</p>
-        </div>
-        <div class="contact-info">
-          <p>Selamat Datang, Hallo!</p>
-          <p>Gedung PIDI4.0, Jl. Raya Kby. Lama Lantai 8, Sukabumi Sel., Kec. Kb. Jeruk, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 11560</p>
-          <p>+6281236868738</p>
-          <a href="https://wa.me/+6281236868738">Contact</a>
-        </div>
+      
+      <!-- Copyright section -->
+      <div class="pt-6 mt-6 border-t border-gray-700 text-center sm:text-left text-sm">
+        <p>&copy; 2025 IBE Reality. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -146,6 +85,5 @@
       }
     }
   </script>
-
 </body>
 </html>
