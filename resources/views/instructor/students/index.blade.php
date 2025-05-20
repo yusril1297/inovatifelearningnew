@@ -1,6 +1,4 @@
-@extends('instructor.dashboard')
-
-@section('title', 'Students')
+@extends('layouts.admin')
 
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
@@ -46,10 +44,4 @@
     </div>
 </div>
 
-
-
 @endsection
-
-@section('editstyles')
-    <link href="{{ asset('assets/css/edit.css') }}" rel="stylesheet">
-@endsection 

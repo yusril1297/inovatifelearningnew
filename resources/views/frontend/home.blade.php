@@ -2,148 +2,205 @@
 
 @section('content')
  
-
-
-    <!-- Link ke Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Link ke Animate.css untuk animasi -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-    <!-- Optional: Custom CSS jika perlu -->
-    <style>
-        /* Menambahkan shadow hitam dengan opasitas pada bagian atas background */
-        .bg-with-shadow {
-            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5); /* Shadow hitam dengan opasitas */
-        }
-    </style>
-</head>
-
-<body class="bg-gray-100">
-<!DOCTYPE html>
-<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider Example</title>
-    <!-- Tambahkan Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <title>Responsive Slider</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
     <style>
-        /* Custom styles for the layout */
+        .bg-with-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Custom animation for slide elements */
+        .swiper-slide-active .slide-content {
+            opacity: 1 !important;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Custom responsive padding */
+        @media (max-width: 640px) {
+            .hero-section {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+        }
+        
+        /* Make sure images don't overflow */
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Additional Swiper styles */
         .swiper-container {
             width: 100%;
             height: 100%;
+            overflow: hidden;
         }
+        
         .swiper-slide {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100% !important;
+        }
+        
+        /* Fix for fade effect */
+        .swiper-slide:not(.swiper-slide-active) {
+            opacity: 0;
         }
     </style>
 </head>
-<body>
-
-    <div class="overflow-hidden">
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-28 bg-blue-500 bg-opacity-50 bg-with-shadow mt-[0.7px]">
-            <!-- Slider Wrapper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
-                            <!-- Text Content -->
-                            <div class="lg:ml-12 text-center lg:text-left">
-                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                                    Belajar Bersama
-                                </h1>
-                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                                    Mentor Berpengalaman
-                                </h1>
-                                <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
-                                    Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
-                                </h2>
-                                <div class="flex items-center gap-4 mt-24">
-                                    <a href="{{ route('frontend.allCourses') }}"
-                                        class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                                        </svg>
-                                        Belajar Sekarang
-                                    </a>
-                                </div>
-                            </div>
-                
-                            <!-- Image -->
-                            <div class="justify-center lg:justify-end">
-                                <img src="assets/icon/foto5.png"
-                                    alt="Gambar Belajar" class="max-w-[600px] h-auto rounded-lg">
+<body class="bg-gray-100">
+    <div class="hero-section w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 bg-blue-500 bg-opacity-50 bg-with-shadow">
+        <!-- Slider Wrapper -->
+        <div class="swiper-container max-w-7xl mx-auto">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="slide-content flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-8 md:px-12 opacity-0">
+                        <!-- Text Content -->
+                        <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
+                                Belajar Bersama
+                            </h1>
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
+                                Mentor Berpengalaman
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-6">
+                                Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
+                            </h2>
+                            <div class="flex justify-center lg:justify-start items-center gap-4 mt-8 lg:mt-12">
+                                <a href="#courses"
+                                    class="bg-blue-600 text-white py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 text-base sm:text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                    Belajar Sekarang
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <!-- Slide 2 (Can add more slides here) -->
-                    <div class="swiper-slide">
-                        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mx-12 opacity-0 animate__animated animate__fadeIn animate__delay-1s">
-                            <!-- Text Content -->
-                            <div class="lg:ml-12 text-center lg:text-left">
-                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                                    Pelatihan Profesional
-                                </h1>
-                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-6">
-                                    Untuk Semua Orang
-                                </h1>
-                                <h2 class="text-3xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-8">
-                                    Bergabung dengan komunitas lebih dari 500+ member.
-                                </h2>
-                                <div class="flex items-center gap-4 mt-24">
-                                    <a href="{{ route('frontend.allCourses') }}"
-                                        class="bg-blue-600 text-white py-3 px-6 lg:py-4 lg:px-8 text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                                        </svg>
-                                        Belajar Sekarang
-                                    </a>
-                                </div>
-                            </div>
-                
-                            <!-- Image -->
-                            <div class="justify-center lg:justify-end">
-                                <img src="assets/icon/foto5.png"
-                                    alt="Gambar Pelatihan" class="max-w-[600px] h-auto rounded-lg">
-                            </div>
+            
+                        <!-- Image -->
+                        <div class="hero-image w-full lg:w-1/2 flex justify-center lg:justify-end">
+                            <img src="assets/icon/foto5.png"
+                                alt="Gambar Belajar" class="rounded-lg shadow-lg max-w-full">
                         </div>
                     </div>
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
+                
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="slide-content flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-8 md:px-12 opacity-0">
+                        <!-- Text Content -->
+                        <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
+                                Pelatihan Profesional
+                            </h1>
+                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
+                                Untuk Semua Orang
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-6">
+                                Bergabung dengan komunitas lebih dari 500+ member.
+                            </h2>
+                            <div class="flex justify-center lg:justify-start items-center gap-4 mt-8 lg:mt-12">
+                                <a href="#courses"
+                                    class="bg-blue-600 text-white py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 text-base sm:text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                    Belajar Sekarang
+                                </a>
+                            </div>
+                        </div>
+            
+                        <!-- Image -->
+                        <div class="hero-image w-full lg:w-1/2 flex justify-center lg:justify-end">
+                            <img src="assets/icon/foto5.png" 
+                                alt="Gambar Pelatihan" class="rounded-lg shadow-lg max-w-full">
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Add Pagination -->
+            <div class="swiper-pagination mt-8"></div>
+            
+            <!-- Add Navigation -->
+            <div class="swiper-button-next hidden md:flex text-blue-600"></div>
+            <div class="swiper-button-prev hidden md:flex text-blue-600"></div>
         </div>
     </div>
+    <!-- End Hero Section -->
 
-    <!-- Tambahkan Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
     <script>
-        // Inisialisasi Swiper
-        const swiper = new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: {
-                delay: 3000, // Delay 3 detik
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper-container', {
+                // Optional parameters
+                loop: true,
+                effect: 'fade', // Use fade effect
+                fadeEffect: {
+                    crossFade: true // Enable cross-fade effect
+                },
+                speed: 1000,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                
+                // If you need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                
+                // Make sure slide has full width
+                slidesPerView: 1,
+                
+                // On init event
+                on: {
+                    init: function() {
+                        setTimeout(() => {
+                            const activeSlide = document.querySelector('.swiper-slide-active .slide-content');
+                            if (activeSlide) {
+                                activeSlide.classList.add('animate__animated', 'animate__fadeIn');
+                            }
+                        }, 100);
+                    },
+                    slideChangeTransitionStart: function() {
+                        document.querySelectorAll('.slide-content').forEach(content => {
+                            content.style.opacity = 0;
+                            content.classList.remove('animate__animated', 'animate__fadeIn');
+                        });
+                    },
+                    slideChangeTransitionEnd: function() {
+                        setTimeout(() => {
+                            const activeSlide = document.querySelector('.swiper-slide-active .slide-content');
+                            if (activeSlide) {
+                                activeSlide.classList.add('animate__animated', 'animate__fadeIn');
+                            }
+                        }, 100);
+                    }
+                }
+            });
         });
     </script>
-
-</body>
-</html>
-
-  <!-- End Hero -->
-  
+    <!-- End Swiper JS -->
 
     <!--
           This example requires some changes to your config:
@@ -515,78 +572,62 @@
 
 
    <!-- Benefit -->
-<div class="max-w-[95rem] px-12 py-10 sm:px-16 lg:px-20 lg:py-14 mx-auto flex flex-col items-center">
-    <!-- Grid -->
-    <div class="grid md:grid-cols-2 items-center gap-16 xl:gap-40 text-center md:text-left">
-        <div class="flex justify-center">
-            <iframe class="w-[440px] h-[230px] md:w-[540px] md:h-[300px]" src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw" frameborder="0" allowfullscreen></iframe>
+<div class="w-full max-w-[95rem] px-4 py-10 sm:px-6 md:px-8 lg:px-20 lg:py-14 mx-auto">
+    <!-- Grid Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center">
+        <!-- Video Column -->
+        <div class="flex justify-center w-full">
+            <div class="w-full max-w-[540px] aspect-video rounded-lg overflow-hidden shadow-lg">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/DubiRbeDpnM?si=NsEk3AhrJsLORlZw"
+                    title="Innovative Elearning Video"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
         </div>
-        
-    <!-- Text Content -->
-<div class="w-full max-w-2xl mx-auto px-6 py-12 lg:px-16">
-    <div class="space-y-8">
-        <!-- Title -->
-        <div class="space-y-4 text-left">
-            <h2 class="text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-neutral-200">
-                Manfaat
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-neutral-400">
-                Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar Innovative Elearning
-            </p>
-        </div>
-        <!-- End Title -->
 
-        <!-- List -->
-        <ul class="space-y-6 sm:space-y-8">
-            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
-                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                </span>
-                <span class="text-lg text-gray-700 dark:text-neutral-300">
-                    Tentor Ahli
-                </span>
-            </li>
-            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
-                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                </span>
-                <span class="text-lg text-gray-700 dark:text-neutral-300">
-                    Pembelajaran Mandiri
-                </span>
-            </li>
-            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
-                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                </span>
-                <span class="text-lg text-gray-700 dark:text-neutral-300">
-                    Motivasi dan Penghargaan
-                </span>
-            </li>
-            <li class="flex gap-x-6 items-center transition transform hover:scale-105 hover:shadow-lg">
-                <span class="flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                </span>
-                <span class="text-lg text-gray-700 dark:text-neutral-300">
-                    Akses ke Sumber Belajar yang Beragam
-                </span>
-            </li>
-        </ul>
-        <!-- End List -->
+        <!-- Benefits Column -->
+        <div class="w-full">
+            <div class="space-y-6 md:space-y-8">
+                <!-- Title Section -->
+                <div class="space-y-3">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-neutral-200">
+                        Manfaat
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-600 dark:text-neutral-400">
+                        Nikmati berbagai manfaat dan fasilitas menarik dalam komunitas belajar Innovative Elearning
+                    </p>
+                </div>
+
+                <!-- Benefits List -->
+                <ul class="space-y-4 sm:space-y-6">
+                    @php
+                        $benefits = [
+                            'Tentor Ahli',
+                            'Pembelajaran Mandiri',
+                            'Motivasi dan Penghargaan',
+                            'Akses ke Sumber Belajar yang Beragam',
+                        ];
+                    @endphp
+
+                    @foreach ($benefits as $benefit)
+                        <li class="flex items-center gap-4 p-2 rounded-lg transition-all duration-200 hover:shadow-md hover:translate-x-1">
+                            <span class="flex-shrink-0 flex justify-center items-center w-10 h-10 rounded-full bg-blue-100 text-blue-600">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="text-base sm:text-lg text-gray-700 dark:text-neutral-300">{{ $benefit }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-<!-- End Grid -->
 
-</div>
-<!-- End Grid -->
-</div>
 <!-- End Benefit -->
 
 

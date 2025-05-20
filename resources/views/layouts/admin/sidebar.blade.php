@@ -16,12 +16,30 @@
             </a>
             <ul style="display: none;">
                 <li><a href="{{ route('dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>
+                @if (Auth::user()->role == 0)          
                 <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Category</a></li>
-                <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                @else
+                    <li><a href="{{ route('instructor.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                @endif
+                @if (Auth::user()->role == 0)
                 <li><a href="{{ route('admin.enrollments.index') }}"><i class='bx bx-folder'></i>Enrollments</a></li>
-                <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Manage Instructors</a></li>
-                <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Levels</a></li>
-                <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user-circle'></i>Students</a></li>
+                    
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Manage Instructors</a></li> 
+                @endif
+                @if (Auth::user()->role == 0)
+                   <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Levels</a></li> 
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                @else
+                    <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                @endif
+
                 <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
             </ul>
         </li>
