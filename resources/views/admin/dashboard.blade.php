@@ -24,7 +24,7 @@
 					   <div class="card-body">
 						   <div class="d-flex align-items-center">
 							   <div>
-								   <p class="mb-0 text-secondary">Total Revenue</p>
+								   <p class="mb-0 text-secondary">Total Insturctur</p>
 								   <h4 class="my-1 text-danger">{{ $totalRevenue }}</h4>
 								   <p class="mb-0 font-13">+5.4% from last week</p>
 							   </div>
@@ -54,7 +54,7 @@
 					   <div class="card-body">
 						   <div class="d-flex align-items-center">
 							   <div>
-								   <p class="mb-0 text-secondary">Total User</p>
+								   <p class="mb-0 text-secondary">Total Student</p>
 								   <h4 class="my-1 text-warning">{{ $totalUser }}</h4>
 								   <p class="mb-0 font-13">+8.4% from last week</p>
 							   </div>
@@ -66,126 +66,262 @@
 				  </div> 
 				</div><!--end row-->
 
-				<div class="row">
-                   <div class="col-12 col-lg-8 d-flex">
-                      <div class="card radius-10 w-100">
-						<div class="card-header">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">Sales Overview</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						  <div class="card-body">
-							<div class="d-flex align-items-center ms-auto font-13 gap-2 mb-3">
-								<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #14abef"></i>Sales</span>
-								<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #ffc107"></i>Visits</span>
-							</div>
-							<div class="chart-container-1">
-								<canvas id="chart1"></canvas>
-							  </div>
-						  </div>
-						  <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
-							<div class="col">
-							  <div class="p-3">
-								<h5 class="mb-0">24.15M</h5>
-								<small class="mb-0">Overall Visitor <span> <i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
-							  </div>
-							</div>
-							<div class="col">
-							  <div class="p-3">
-								<h5 class="mb-0">12:38</h5>
-								<small class="mb-0">Visitor Duration <span> <i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
-							  </div>
-							</div>
-							<div class="col">
-							  <div class="p-3">
-								<h5 class="mb-0">639.82</h5>
-								<small class="mb-0">Pages/Visit <span> <i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
-							  </div>
-							</div>
-						  </div>
-					  </div>
-				   </div>
+				<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Overview</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    .card-body {
+      padding: 1.5rem;
+    }
+    .chart-container-1 {
+      height: 300px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -0.5rem;
+    }
+    .col {
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+    .border {
+      border: 1px solid #ddd;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .gap-2 {
+      gap: 0.5rem;
+    }
+    .font-13 {
+      font-size: 13px;
+    }
+    .d-flex {
+      display: flex;
+    }
+    .align-items-center {
+      align-items: center;
+    }
+    .ms-auto {
+      margin-left: auto;
+    }
+    .mb-0 {
+      margin-bottom: 0;
+    }
+    .mb-3 {
+      margin-bottom: 1rem;
+    }
+    .p-3 {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sales Overview -->
+<div class="row">
+  <div class="col-12 col-lg-8 d-flex">
+    <div class="card radius-10 w-100">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <div>
+            <h6 class="mb-0">Sales Overview</h6>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center ms-auto font-13 gap-2 mb-3">
+          <span class="border px-1 rounded cursor-pointer">
+            <i class="bx bxs-circle me-1" style="color: #14abef"></i>Sales
+          </span>
+          <span class="border px-1 rounded cursor-pointer">
+            <i class="bx bxs-circle me-1" style="color: #ffc107"></i>Visits
+          </span>
+        </div>
+        <div class="chart-container-1">
+          <canvas id="chart1"></canvas>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
+        <div class="col">
+          <div class="p-3">
+            <h5 class="mb-0">24.15M</h5>
+            <small class="mb-0">Overall Visitor <span><i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <h5 class="mb-0">12:38</h5>
+            <small class="mb-0">Visitor Duration <span><i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
+          </div>
+        </div>
+        <div class="col">
+          <div class="p-3">
+            <h5 class="mb-0">639.82</h5>
+            <small class="mb-0">Pages/Visit <span><i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Chart Configuration -->
+<script>
+  const ctx = document.getElementById('chart1').getContext('2d');
+
+  const chart1 = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: [120, 190, 300, 250, 220, 270, 320],
+          borderColor: '#14abef',
+          backgroundColor: 'rgba(20, 171, 239, 0.1)',
+          tension: 0.4,
+          fill: true
+        },
+        {
+          label: 'Visits',
+          data: [400, 420, 460, 410, 390, 430, 480],
+          borderColor: '#ffc107',
+          backgroundColor: 'rgba(255, 193, 7, 0.1)',
+          tension: 0.4,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#666'
+          }
+        },
+        x: {
+          ticks: {
+            color: '#666'
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
 				   <div class="col-12 col-lg-4 d-flex">
-                       <div class="card radius-10 w-100">
+					<div class="card radius-10 w-100">
 						<div class="card-header">
-							<div class="d-flex align-items-center">
-								<div>
-									<h6 class="mb-0">Trending Products</h6>
-								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>
-									</ul>
-								</div>
+						<div class="d-flex align-items-center">
+							<div>
+							<h6 class="mb-0">Categories</h6>
 							</div>
 						</div>
-						   <div class="card-body">
-							<div class="chart-container-2">
-								<canvas id="chart2"></canvas>
-							  </div>
-						   </div>
-						   <ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">Jeans <span class="badge bg-success rounded-pill">25</span>
-							</li>
-							<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">T-Shirts <span class="badge bg-danger rounded-pill">10</span>
-							</li>
-							<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Shoes <span class="badge bg-primary rounded-pill">65</span>
-							</li>
-							<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
-							</li>
+						</div>
+						<div class="card-body">
+						<div class="chart-container-2" style="height:300px; position: relative;">
+							<canvas id="chart2"></canvas>
+						</div>
+						</div>
+						<ul class="list-group list-group-flush">
+						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
+							Mobile Development <span class="badge bg-success rounded-pill">25</span>
+						</li>
+						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+							Design <span class="badge bg-danger rounded-pill">10</span>
+						</li>
+						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+							UI/UX <span class="badge bg-primary rounded-pill">65</span>
+						</li>
+						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+							Photography <span class="badge bg-warning text-dark rounded-pill">14</span>
+						</li>
 						</ul>
-					   </div>
-				   </div>
+					</div>
+					
+
+							<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+							<script>
+							const ctx2 = document.getElementById('chart2').getContext('2d');
+							const chart2 = new Chart(ctx2, {
+								type: 'pie',
+								data: {
+								labels: ['Mobile Development', 'Design', 'UI/UX', 'Photography'],
+								datasets: [{
+									data: [25, 10, 65, 14],
+									backgroundColor: [
+									'#198754', // green
+									'#dc3545', // red
+									'#0d6efd', // blue
+									'#ffc107'  // yellow
+									],
+									hoverOffset: 30,
+								}]
+								},
+								options: {
+								responsive: true,
+								plugins: {
+									legend: {
+									position: 'bottom',
+									labels: {
+										boxWidth: 12,
+										padding: 15,
+									}
+									}
+								}
+								}
+							});
+							</script>
+
 				</div><!--end row-->
 
+				<!--Daftar Kursus-->
 				 <div class="card radius-10">
 					<div class="card-header">
 						<div class="d-flex align-items-center">
 							<div>
-								<h6 class="mb-0">List class</h6>
+								<h6 class="mb-0">Daftar Kursus</h6>
 							</div>
-							<div class="dropdown ms-auto">
-								<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="javascript:;">Action</a>
-									</li>
-									<li><a class="dropdown-item" href="javascript:;">Another action</a>
-									</li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-									</li>
-								</ul>
-							</div>
+							
 						</div>
 					</div>
                          <div class="card-body">
@@ -195,11 +331,10 @@
 							 <tr>
 							   <th>Title</th>
 							   <th>Thumbnail</th>
-							   <th>Description</th>
 							   <th>Insturctur</th>
 							   <th>Category</th>
 							   <th>Level</th>
-							   <th>Price</th>
+							   <th>Harga</th>
 							 </tr>
 							 </thead>
 							 <tbody>
@@ -215,7 +350,7 @@
 										
 									@endif
 								  </td>
-								  <td>{!! $course->description  !!}</td>
+								 
 								  <td>{{ $course->instructor->name }}</td>
 								  <td>{{ $course->category->name }}</td>
 								  <td>{{ $course->level->name }}</td>
@@ -230,142 +365,43 @@
 						  </div>
 						 </div>
 					</div>
+					<!--end row-->
 
-
-					<div class="row">
-						<div class="col-12 col-lg-7 col-xl-8 d-flex">
-						  <div class="card radius-10 w-100">
-							<div class="card-header bg-transparent">
-								<div class="d-flex align-items-center">
-									<div>
-										<h6 class="mb-0">Recent Orders</h6>
-									</div>
-									<div class="dropdown ms-auto">
-										<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-										</a>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="javascript:;">Action</a>
-											</li>
-											<li><a class="dropdown-item" href="javascript:;">Another action</a>
-											</li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							   </div>
-							 <div class="card-body">
-								<div class="row">
-								  <div class="col-lg-7 col-xl-8 border-end">
-									 <div id="geographic-map-2"></div>
-								  </div>
-								  <div class="col-lg-5 col-xl-4">
-			                       
-									<div class="mb-4">
-									<p class="mb-2"><i class="flag-icon flag-icon-us me-1"></i> USA <span class="float-end">70%</span></p>
-									<div class="progress" style="height: 7px;">
-										 <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 70%"></div>
-									 </div>
-									</div>
-			   
-									<div class="mb-4">
-									 <p class="mb-2"><i class="flag-icon flag-icon-ca me-1"></i> Canada <span class="float-end">65%</span></p>
-									 <div class="progress" style="height: 7px;">
-										 <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 65%"></div>
-									 </div>
-									</div>
-			   
-									<div class="mb-4">
-									 <p class="mb-2"><i class="flag-icon flag-icon-gb me-1"></i> England <span class="float-end">60%</span></p>
-									 <div class="progress" style="height: 7px;">
-										 <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 60%"></div>
-									   </div>
-									</div>
-			   
-									<div class="mb-4">
-									 <p class="mb-2"><i class="flag-icon flag-icon-au me-1"></i> Australia <span class="float-end">55%</span></p>
-									 <div class="progress" style="height: 7px;">
-										 <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 55%"></div>
-									   </div>
-									</div>
-			   
-									<div class="mb-4">
-									 <p class="mb-2"><i class="flag-icon flag-icon-in me-1"></i> India <span class="float-end">50%</span></p>
-									 <div class="progress" style="height: 7px;">
-										 <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 50%"></div>
-									   </div>
-									</div>
-
-									<div class="mb-0">
-									   <p class="mb-2"><i class="flag-icon flag-icon-cn me-1"></i> China <span class="float-end">45%</span></p>
-									   <div class="progress" style="height: 7px;">
-										   <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" style="width: 45%"></div>
-										 </div>
-									</div>
-
-								  </div>
-								</div>
-							 </div>
-						   </div>
-						</div>
-			   
-						<div class="col-12 col-lg-5 col-xl-4 d-flex">
-							<div class="card w-100 radius-10">
-						     <div class="card-body">
-							  <div class="card radius-10 border shadow-none">
-								<div class="card-body">
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-secondary">Total Likes</p>
-											<h4 class="my-1">45.6M</h4>
-											<p class="mb-0 font-13">+6.2% from last week</p>
-										</div>
-										<div class="widgets-icons-2 bg-gradient-cosmic text-white ms-auto"><i class='bx bxs-heart-circle'></i>
-										</div>
-									</div>
-								</div>
-							 </div>
-							 <div class="card radius-10 border shadow-none">
-								<div class="card-body">
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-secondary">Comments</p>
-											<h4 class="my-1">25.6K</h4>
-											<p class="mb-0 font-13">+3.7% from last week</p>
-										</div>
-										<div class="widgets-icons-2 bg-gradient-ibiza text-white ms-auto"><i class='bx bxs-comment-detail'></i>
-										</div>
-									</div>
-								</div>
-							 </div>
-							 <div class="card radius-10 mb-0 border shadow-none">
-								<div class="card-body">
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-secondary">Total Shares</p>
-											<h4 class="my-1">85.4M</h4>
-											<p class="mb-0 font-13">+4.6% from last week</p>
-										</div>
-										<div class="widgets-icons-2 bg-gradient-kyoto text-dark ms-auto"><i class='bx bxs-share-alt'></i>
-										</div>
-									</div>
-								</div>
-							  </div>
-							 </div>
-
+					<!--Daftar user-->
+				 <div class="card radius-10">
+					<div class="card-header">
+						<div class="d-flex align-items-center">
+							<div>
+								<h6 ssass="mb-0">Daftar User</h6>
 							</div>
-			   
+							
 						</div>
-					 </div><!--end row-->
+					</div>
+                         <div class="card-body">
+						 <div class="table-responsive">
+						   <table class="table align-middle mb-0">
+							<thead class="table-light">
+							 <tr>
+							   <th>Title</th>
+							   <th>Email</th>
+							   <th>Role</th>
+							   <th>Tanggal</th>
+							 </tr>
+							 </thead>
+							 
+						  </table>
+						  </div>
+						 </div>
+					</div>
+					<!--end row-->
 
+					<!--Pendapatan-->
 					 <div class="row row-cols-1 row-cols-lg-3">
+						
 						 <div class="col d-flex">
                            <div class="card radius-10 w-100">
 							   <div class="card-body">
-								<p class="font-weight-bold mb-1 text-secondary">Weekly Revenue</p>
+								<p class="font-weight-bold mb-1 text-secondary">Pendapatan</p>
 								<div class="d-flex align-items-center mb-4">
 									<div>
 										<h4 class="mb-0">$89,540</h4>
@@ -381,28 +417,16 @@
 							   </div>
 						   </div>
 						 </div>
+
+
 						 <div class="col d-flex">
 							<div class="card radius-10 w-100">
 								<div class="card-header bg-transparent">
 									<div class="d-flex align-items-center">
 										<div>
-											<h6 class="mb-0">Orders Summary</h6>
+											<h6 class="mb-0">Top Pencarian</h6>
 										</div>
-										<div class="dropdown ms-auto">
-											<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="javascript:;">Action</a>
-												</li>
-												<li><a class="dropdown-item" href="javascript:;">Another action</a>
-												</li>
-												<li>
-													<hr class="dropdown-divider">
-												</li>
-												<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-												</li>
-											</ul>
-										</div>
+									
 									</div>
 								</div>
 								<div class="card-body">
@@ -425,23 +449,9 @@
 								 <div class="card-header bg-transparent">
 									<div class="d-flex align-items-center">
 										<div>
-											<h6 class="mb-0">Top Selling Categories</h6>
+											<h6 class="mb-0">Penjualan Kelas</h6>
 										</div>
-										<div class="dropdown ms-auto">
-											<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="javascript:;">Action</a>
-												</li>
-												<li><a class="dropdown-item" href="javascript:;">Another action</a>
-												</li>
-												<li>
-													<hr class="dropdown-divider">
-												</li>
-												<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-												</li>
-											</ul>
-										</div>
+										
 									 </div>
 								 </div>
 								<div class="card-body">
