@@ -32,7 +32,7 @@
                     <!-- Category Dropdown -->
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open" type="button" class="text-gray-700 group inline-flex items-center px-3 py-2 font-medium hover:text-blue-600" aria-expanded="false">
-                            Category
+                            Category 
                             <svg class="ml-2 h-5 w-5 text-gray-700 group-hover:text-blue-600 transition-transform duration-200" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                             </svg>
@@ -88,6 +88,7 @@
                             <div x-show="profileOpen" @click.away="profileOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 @if (Auth::user()->role == 0)
                                     <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Dashboard</a>
+                                @elseif(Auth::user()->role == 2)
                                     <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Courses</a>
                                 @endif
                                 <a href="{{ route('profile.edit.information') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">My Profile</a>
@@ -145,11 +146,10 @@
                             </div>
                         </div>
                         <div class="mt-3 space-y-1 px-2 relative z-50">
+                          
                             @if (Auth::user()->role == 0)
                                 <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Dashboard</a>
-                            @elseif(Auth::user()->role == 1)
-                                <a href="{{ route('instructor.dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Dashboard</a>
-                            @else
+                            @elseif(Auth::user()->role == 2)
                                 <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">My Courses</a>
                             @endif
                             <a href="{{ route('profile.edit.information') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">My Profile</a>

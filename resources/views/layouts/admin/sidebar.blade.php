@@ -9,12 +9,13 @@
     <ul class="metismenu" id="menu">
 
         <!-- Dashboard Menu -->
+        @if (Auth::user()->role != 2)
         <li>
             <a href="javascript:;" class="has-arrow" onclick="toggleDropdown(this)">
                 <div class="parent-icon"><i class="bx bx-category"></i></div>
                 <div class="menu-title">Dashboard</div>
             </a>
-            <ul style="display: none;">
+               <ul style="display: none;">
                 @if (Auth::user()->role == 0)
                     <li><a href="{{ route('admin.dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>  
                 @endif
@@ -46,6 +47,7 @@
                     <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
                 @endif
             </ul>
+            @endif
         </li>
 
         <!-- User Profile Dropdown -->
@@ -66,9 +68,9 @@
                             <i class='bx bx-user text-danger'></i>Delete Account
                         </a>
                     </li>
-                @endif
-            </ul>
-        </li>
+                </ul>
+            </li>
+            @endif
 
     </ul>
     <!--end navigation-->
