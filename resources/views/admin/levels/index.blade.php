@@ -11,7 +11,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
+            <a href="{{ route('admin.levels.create') }}" class="btn btn-success">
                 + Add New Level
             </a>
         </div>

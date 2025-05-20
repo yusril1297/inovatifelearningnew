@@ -10,7 +10,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-success">
+            <a href="{{ route('admin.tags.create') }}" class="btn btn-success">
                 + Add New Tag
             </a>
         </div>

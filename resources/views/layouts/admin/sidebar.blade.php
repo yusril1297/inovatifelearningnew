@@ -15,7 +15,9 @@
                 <div class="menu-title">Dashboard</div>
             </a>
             <ul style="display: none;">
-                <li><a href="{{ route('dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>  
+                @endif
                 @if (Auth::user()->role == 0)          
                 <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Category</a></li>
                 @endif
@@ -40,7 +42,9 @@
                     <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
                 @endif
 
-                <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
+                @endif
             </ul>
         </li>
 

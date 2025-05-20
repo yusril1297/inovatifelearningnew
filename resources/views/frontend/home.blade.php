@@ -133,8 +133,8 @@
             <div class="swiper-pagination mt-8"></div>
             
             <!-- Add Navigation -->
-            <div class="swiper-button-next hidden md:flex text-blue-600"></div>
-            <div class="swiper-button-prev hidden md:flex text-blue-600"></div>
+            {{-- <div class="swiper-button-next hidden  md:flex text-blue-600"></div>
+            <div class="swiper-button-prev hidden  md:flex text-blue-600"></div> --}}
         </div>
     </div>
     <!-- End Hero Section -->
