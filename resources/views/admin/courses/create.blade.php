@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Buat Kursus Baru</h1>
 
-    <form action="{{ route('instructor.courses.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Judul Kursus</label>
