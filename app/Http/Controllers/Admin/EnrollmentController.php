@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Enrollment;
 use App\Models\User;
@@ -42,6 +43,7 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
+        // return redirect()->back()->with('error', 'This method is not implemented yet.');
         // Validasi input
         $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -64,12 +66,24 @@ class EnrollmentController extends Controller
             return redirect()->back()->with('error', 'Student is already enrolled in this course.');
         }
 
+       
+
         // Simpan pendaftaran siswa
-        Enrollment::create([
+        $enrollment = Enrollment::create([ 
             'user_id' => $request->user_id,
             'course_id' => $request->course_id,
             'enrollment_date' => now(),
             'status' => 'active',
+        ]);
+
+         Payment::create([
+            'transaction_id' => 'ENROLL-' . $enrollment->id, // Atau sesuai dengan format yang diinginkan
+            'user_id' => $request->user_id,
+            'order_id' => 'ORDER-' . $enrollment->id, // Atau sesuai dengan format yang diinginkan
+            'enrollment_id' => $enrollment->id,
+            'course_id' => $request->course_id,
+            'amount' => $course->price, // Asumsikan ada field price di model Course
+            'status' => 'completed', // Atau sesuai dengan status pembayaran yang diinginkan
         ]);
 
         return redirect()->route('admin.enrollments.index')->with('success', 'Student has been successfully enrolled in the course.');
