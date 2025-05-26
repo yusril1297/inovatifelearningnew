@@ -74,254 +74,107 @@
 				  </div> 
 				</div><!--end row-->
 
-				<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sales Overview</title>
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      margin: 0;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      overflow: hidden;
-    }
-    .card-header {
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid #eee;
-    }
-    .card-body {
-      padding: 1.5rem;
-    }
-    .chart-container-1 {
-      height: 300px;
-    }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: -0.5rem;
-    }
-    .col {
-      flex: 1;
-      padding: 0.5rem;
-      text-align: center;
-      border-top: 1px solid #eee;
-    }
-    .border {
-      border: 1px solid #ddd;
-    }
-    .cursor-pointer {
-      cursor: pointer;
-    }
-    .gap-2 {
-      gap: 0.5rem;
-    }
-    .font-13 {
-      font-size: 13px;
-    }
-    .d-flex {
-      display: flex;
-    }
-    .align-items-center {
-      align-items: center;
-    }
-    .ms-auto {
-      margin-left: auto;
-    }
-    .mb-0 {
-      margin-bottom: 0;
-    }
-    .mb-3 {
-      margin-bottom: 1rem;
-    }
-    .p-3 {
-      padding: 1rem;
-    }
-  </style>
-</head>
-<body>
-
-<!-- Sales Overview -->
-<div class="row">
-  <div class="col-12 col-lg-8 d-flex">
-    <div class="card radius-10 w-100">
-      <div class="card-header">
-        <div class="d-flex align-items-center">
-          <div>
-            <h6 class="mb-0">Sales Overview</h6>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="d-flex align-items-center ms-auto font-13 gap-2 mb-3">
-          <span class="border px-1 rounded cursor-pointer">
-            <i class="bx bxs-circle me-1" style="color: #14abef"></i>Sales
-          </span>
-          <span class="border px-1 rounded cursor-pointer">
-            <i class="bx bxs-circle me-1" style="color: #ffc107"></i>Visits
-          </span>
-        </div>
-        <div class="chart-container-1">
-          <canvas id="chart1"></canvas>
-        </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
-        <div class="col">
-          <div class="p-3">
-            <h5 class="mb-0">24.15M</h5>
-            <small class="mb-0">Overall Visitor <span><i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3">
-            <h5 class="mb-0">12:38</h5>
-            <small class="mb-0">Visitor Duration <span><i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
-          </div>
-        </div>
-        <div class="col">
-          <div class="p-3">
-            <h5 class="mb-0">639.82</h5>
-            <small class="mb-0">Pages/Visit <span><i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Chart Configuration -->
-<script>
-  const ctx = document.getElementById('chart1').getContext('2d');
-
-  const chart1 = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-      datasets: [
-        {
-          label: 'Sales',
-          data: [120, 190, 300, 250, 220, 270, 320],
-          borderColor: '#14abef',
-          backgroundColor: 'rgba(20, 171, 239, 0.1)',
-          tension: 0.4,
-          fill: true
-        },
-        {
-          label: 'Visits',
-          data: [400, 420, 460, 410, 390, 430, 480],
-          borderColor: '#ffc107',
-          backgroundColor: 'rgba(255, 193, 7, 0.1)',
-          tension: 0.4,
-          fill: true
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: '#666'
-          }
-        },
-        x: {
-          ticks: {
-            color: '#666'
-          }
-        }
-      }
-    }
-  });
-</script>
-
-</body>
-</html>
-
-
-				   <div class="col-12 col-lg-4 d-flex">
-					<div class="card radius-10 w-100">
+				<div class="row">
+                   <div class="col-12 col-lg-8 d-flex">
+                      <div class="card radius-10 w-100">
 						<div class="card-header">
-						<div class="d-flex align-items-center">
-							<div>
-							<h6 class="mb-0">Categories</h6>
+							<div class="d-flex align-items-center">
+								<div>
+									<h6 class="mb-0">User Overview</h6>
+								</div>
+								<div class="dropdown ms-auto">
+									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="javascript:;">Action</a>
+										</li>
+										<li><a class="dropdown-item" href="javascript:;">Another action</a>
+										</li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
+						  <div class="card-body">
+							<div class="d-flex align-items-center ms-auto font-13 gap-2 mb-3">
+								<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #14abef"></i>Enrollment</span>
+								<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #ffc107"></i>User</span>
+							</div>
+							<div class="chart-container-1">
+								<canvas id="chart1"></canvas>
+							  </div>
+						  </div>
+						   @php
+							$enrollments = $enrollmentsByMonth;
+							$user = $userPerMonths
+						   @endphp
+						  <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
+							<div class="col">
+							  <div class="p-3">
+								<h5 class="mb-0">24.15M</h5>
+								<small class="mb-0">Overall Visitor <span> <i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
+							  </div>
+							</div>
+							<div class="col">
+							  <div class="p-3">
+								<h5 class="mb-0">12:38</h5>
+								<small class="mb-0">Visitor Duration <span> <i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
+							  </div>
+							</div>
+							<div class="col">
+							  <div class="p-3">
+								<h5 class="mb-0">639.82</h5>
+								<small class="mb-0">Pages/Visit <span> <i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
+							  </div>
+							</div>
+						  </div>
+					  </div>
+				   </div>
+				   <div class="col-12 col-lg-4 d-flex">
+                       <div class="card radius-10 w-100">
+						<div class="card-header">
+							<div class="d-flex align-items-center">
+								<div>
+									<h6 class="mb-0">Category</h6>
+								</div>
+								<div class="dropdown ms-auto">
+									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="javascript:;">Action</a>
+										</li>
+										<li><a class="dropdown-item" href="javascript:;">Another action</a>
+										</li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<div class="card-body">
-						<div class="chart-container-2" style="height:300px; position: relative;">
-							<canvas id="chart2"></canvas>
-						</div>
-						</div>
-						<ul class="list-group list-group-flush">
-						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-							Mobile Development <span class="badge bg-success rounded-pill">25</span>
-						</li>
-						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-							Design <span class="badge bg-danger rounded-pill">10</span>
-						</li>
-						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-							UI/UX <span class="badge bg-primary rounded-pill">65</span>
-						</li>
-						<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-							Photography <span class="badge bg-warning text-dark rounded-pill">14</span>
-						</li>
+						   <div class="d-flex justify-content-center">
+							<canvas id="chart2" style="max-width: 300px; max-height: 300px;"></canvas>
+							</div>
+
+						   @php
+							$labels = $categoriesWithCount->pluck('name');
+							$counts = $categoriesWithCount->pluck('courses_count');
+						   @endphp
+						   <ul class="list-group list-group-flush">
+							@foreach ($categoriesWithCount as $category )
+								<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">{{ $category->name }} <span class="badge bg-success rounded-pill">{{ $category->courses_count }}</span>
+							</li>
+							@endforeach	
 						</ul>
-					</div>
-					
-
-							<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-							<script>
-							const ctx2 = document.getElementById('chart2').getContext('2d');
-							const chart2 = new Chart(ctx2, {
-								type: 'pie',
-								data: {
-								labels: ['Mobile Development', 'Design', 'UI/UX', 'Photography'],
-								datasets: [{
-									data: [25, 10, 65, 14],
-									backgroundColor: [
-									'#198754', // green
-									'#dc3545', // red
-									'#0d6efd', // blue
-									'#ffc107'  // yellow
-									],
-									hoverOffset: 30,
-								}]
-								},
-								options: {
-								responsive: true,
-								plugins: {
-									legend: {
-									position: 'bottom',
-									labels: {
-										boxWidth: 12,
-										padding: 15,
-									}
-									}
-								}
-								}
-							});
-							</script>
-
-				</div><!--end row-->
-
+					   </div>
+				   </div>
+				</div>
 				<!--Daftar Kursus-->
 				 <div class="card radius-10">
 					<div class="card-header">
@@ -487,6 +340,152 @@
 @endsection
 
 
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = @json($labels);
+        const data = @json($counts);
+
+        new Chart(document.getElementById("chart2"), {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Jumlah Course',
+                    data: data,
+                    backgroundColor: [
+                        '#4bc0c0', '#ff6384', '#ffcd56', '#36a2eb', '#9966ff', '#ff9f40'
+                    ]
+                }]
+            },
+			options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+            }
+        }
+    }
+        });
+
+		const enrollments = @json($enrollments);
+		const users = @json($user);
+
+		let enrollmentData = new Array(12).fill(0);
+		let userData = new Array(12).fill(0);
+		enrollments.forEach(item => {
+			enrollmentData[item.month - 1] = item.count;
+		});
+		users.forEach(item => {
+			userData[item.month - 1] = item.count;
+		});
+
+		console.log(userData);
+
+
+		const chartData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Enrollment',
+                    data: enrollmentData,
+                    backgroundColor: '#3b82f6',
+                    borderColor: '#3b82f6',
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                },
+                {
+                    label: "User",
+                    data: userData,
+                    backgroundColor: '#f59e0b',
+                    borderColor: '#f59e0b',
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                }
+            ]
+        };
+
+        // Chart configuration
+        const config = {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)',
+                        },
+                        ticks: {
+                            font: {
+                                size: 12,
+                                family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                            },
+                            color: '#6c757d'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 90,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)',
+                        },
+                        ticks: {
+                            stepSize: 10,
+                            font: {
+                                size: 12,
+                                family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                            },
+                            color: '#6c757d'
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                elements: {
+                    bar: {
+                        borderWidth: 0,
+                    }
+                }
+            }
+        };
+
+        // Initialize chart
+        const ctx = document.getElementById('chart1').getContext('2d');
+        const userOverviewChart = new Chart(ctx, config);
+
+        // Add some interactivity to the menu dots
+        document.querySelector('.menu-dots').addEventListener('click', function() {
+            alert('Menu options would appear here in a real application');
+        });
+    </script>
+@endpush
 
 @section('styles')
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">

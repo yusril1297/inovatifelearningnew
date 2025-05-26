@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper" data-simplebar="true">
+{{-- <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
             <h4 class="logo-text">Admin Dashboard</h4>
@@ -103,4 +103,83 @@ function toggleDropdown(element) {
         dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
     }
 }
-</script>
+</script> --}}
+
+<div class="sidebar-wrapper" data-simplebar="true">
+			<div class="sidebar-header">
+				<div>
+					<h4 class="logo-text">Admin Dashboard</h4>
+				</div>
+				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
+				</div>
+			 </div>
+			<!--navigation-->
+			<ul class="metismenu" id="menu">
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-home-alt'></i>
+						</div>
+						<div class="menu-title">Dashboard</div>
+					</a>
+					<ul>
+						 @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>  
+                @endif
+                @if (Auth::user()->role == 0)          
+                <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Category</a></li>
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                @else
+                    <li><a href="{{ route('instructor.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                @endif
+                @if (Auth::user()->role == 0)
+                <li><a href="{{ route('admin.enrollments.index') }}"><i class='bx bx-folder'></i>Enrollments</a></li>
+                    
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Manage Instructors</a></li> 
+                @endif
+                @if (Auth::user()->role == 0)
+                   <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Levels</a></li> 
+                @endif
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                @else
+                    <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                @endif
+
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
+                @endif
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
+						</div>
+						<div class="menu-title">Profile</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-radio-circle'></i>Update Avatar</a>
+						</li>
+						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-radio-circle'></i>Update CV Profile</a>
+						</li>
+						<li> <a href="{{ route('profile.edit.information') }}"><i class='bx bx-radio-circle'></i>Profile Information</a>
+						</li>
+						<li> <a href="{{ route('profile.edit.password') }}""><i class='bx bx-radio-circle'></i>Update Password</a>
+						</li>
+                        @if (Auth::user()->role !== 2)
+                    <li>
+                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                            <i class='bx bx-user text-danger'></i>Delete Account
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+					</ul>
+				</li>
+			</ul>
+			<!--end navigation-->
+		</div>

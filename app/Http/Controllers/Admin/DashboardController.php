@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
@@ -39,8 +40,26 @@ class DashboardController extends Controller
         ->orderByRaw("MONTH(STR_TO_DATE(month, '%M'))")
         ->get();
 
+        $categoriesWithCount = Category::withCount('courses')->get();
+       $userPerMonths = DB::table('users')
+    ->selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+    ->whereYear('created_at', Carbon::now()->year)
+    ->groupBy(DB::raw('MONTH(created_at)'))
+    ->orderBy('month')
+    ->get();
 
-        return view('admin.dashboard', compact('totalStudent', 'categories', 'courses','totalInstructor' ,'numOfCategories',"numOfCourse",'enrollments', 'users_count', 'courses_count', 'enrollments_count', 'enrollmentsByMonth','totalUser'));
+$enrollmentsByMonth = DB::table('enrollments')
+    ->selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+    ->whereYear('created_at', Carbon::now()->year)
+    ->groupBy(DB::raw('MONTH(created_at)'))
+    ->orderBy('month')
+    ->get();
+
+    // return $userPerMonths;
+
+
+
+        return view('admin.dashboard', compact('userPerMonths','enrollmentsByMonth','totalStudent','categoriesWithCount','categories', 'categories', 'courses','totalInstructor' ,'numOfCategories',"numOfCourse",'enrollments', 'users_count', 'courses_count', 'enrollments_count', 'enrollmentsByMonth','totalUser'));
 }
 }
 
