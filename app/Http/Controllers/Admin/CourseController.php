@@ -116,6 +116,7 @@ class CourseController extends Controller
         $course->level_id = $validated['level_id'];
         $course->price = $validated['price'];
         $course->status = $validated['status'];
+        $course->subscription_periods = $validated['subscription_periods'];
         $course->meeting_limit = $validated['meeting_limit'] ?? null;
         $course->instructor_id = Auth::id();
     

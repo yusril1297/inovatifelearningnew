@@ -55,9 +55,14 @@ class FrontController extends Controller
         ->get();
 
         $settings = setting::first();
-        $enrollments = Enrollment::where('user_id', Auth::id())->where('status', 'active')->get();
+        $enrollments = Enrollment::where('user_id', Auth::id())
+                ->where('status', 'active')
+                ->where('exp_time', '>', now())
+                ->get();
         $categories = Category::all();
         $levels = Level::all();
+
+        // return $enrollments;
 
         return view('frontend.allCourses', compact('courses', 'settings', 'enrollments','categories','levels'));
     }
