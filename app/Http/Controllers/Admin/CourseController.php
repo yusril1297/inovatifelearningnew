@@ -117,6 +117,7 @@ class CourseController extends Controller
         $course->price = $validated['price'];
         $course->status = $validated['status'];
         $course->subscription_periods = $validated['subscription_periods'];
+        $course->subscription_duration = $validated['subscription_duration'];// Simpan subscription duration jika ada
         $course->meeting_limit = $validated['meeting_limit'] ?? null;
         $course->instructor_id = Auth::id();
     

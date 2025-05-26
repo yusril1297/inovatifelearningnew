@@ -9,7 +9,7 @@
         <div class="video-player relative flex flex-nowrap gap-5">
             <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
                 <iframe src="{{ $video->url }}" allowfullscreen allowtransparency
-                    allow="autoplay"></iframe>
+                        allow="autoplay" class="w-full aspect-video"></iframe>
             </div>
             <div
                 class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
