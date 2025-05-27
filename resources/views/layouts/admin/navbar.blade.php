@@ -258,21 +258,41 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;">
-                            <i class="bx bx-user fs-5"></i><span>Profile</span>
-                        </a></li>
-                    <li>
-                        <div class="dropdown-divider mb-0"></div>
-                    </li>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}" class="d-flex align-items-center gap-2 dropdown-item"
-                            onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i class="bx bx-log-out fs-7"></i> <!-- Ikon logout dengan ukuran fs-5 -->
-                            <span class="mb-0 fs-9">Logout</span> <!-- Ukuran font Logout disesuaikan dengan Profile -->
-                        </a>
-                    </form>
-                </ul>
+    <li>
+        <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+            <i class="bx bx-user fs-5"></i><span>Profile</span>
+        </a>
+    </li>
+    <li>
+        <div class="dropdown-divider mb-0"></div>
+    </li>
+    <li>
+        <a class="dropdown-item d-flex align-items-center" href="{{ route('frontend.home') }}">
+            <i class="bx bx-home fs-5"></i><span>Home</span>
+        </a>
+    </li>
+    <li>
+        <div class="dropdown-divider mb-0"></div>
+    </li>
+    <li>
+        <a class="dropdown-item d-flex align-items-center" href="javascript:history.back();">
+            <i class="bx bx-arrow-back fs-5"></i><span>Back</span>
+        </a>
+    </li>
+    <li>
+        <div class="dropdown-divider mb-0"></div>
+    </li>
+
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="{{ route('logout') }}" class="d-flex align-items-center gap-2 dropdown-item"
+            onclick="event.preventDefault(); this.closest('form').submit();">
+            <i class="bx bx-log-out fs-7"></i>
+            <span class="mb-0 fs-9">Keluar</span>
+        </a>
+    </form>
+</ul>
+
 
             </div>
 				</nav>

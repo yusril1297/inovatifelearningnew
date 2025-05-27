@@ -10,11 +10,11 @@
 							<div class="card-body">
 							<div class="d-flex align-items-center">
 								<div>
-									<p class="mb-0 text-secondary">Total Category</p>
+									<p class="mb-0 text-secondary">Total Kategori</p>
 									<h4 class="my-1 text-info">{{ $numOfCategories }}</h4>
-									<p class="mb-0 font-13">+2.5% from last week</p>
+									<p class="mb-0 font-13">+2.5% Dari Minggu Lalu</p>
 								</div>
-								<div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class='bx bxs-cart'></i>
+								<div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class='bx bx-grid-alt'></i> 
 								</div>
 							</div>
 						</div>
@@ -29,9 +29,9 @@
 							   <div>
 								   <p class="mb-0 text-secondary">Total Insturctur</p>
 								   <h4 class="my-1 text-danger">{{ $totalInstructor }}</h4>
-								   <p class="mb-0 font-13">+5.4% from last week</p>
+								   <p class="mb-0 font-13">+5.4% Dari Minggu Lalu</p>
 							   </div>
-							   <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i class='bx bxs-wallet'></i>
+							   <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i class='bx bxs-group'></i>
 							   </div>
 						   </div>
 					   </div>
@@ -44,9 +44,9 @@
 						  <div class="card-body">
 						   <div class="d-flex align-items-center">
 							   <div>
-								   <p class="mb-0 text-secondary">Total Class</p>
+								   <p class="mb-0 text-secondary">Total Kelas</p>
 								   <h4 class="my-1 text-success">{{ $numOfCourse }}</h4>
-								   <p class="mb-0 font-13">-4.5% from last week</p>
+								   <p class="mb-0 font-13">-4.5% Dari Minggu Lalu</p>
 							   </div>
 							   <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-bar-chart-alt-2' ></i>
 							   </div>
@@ -55,48 +55,35 @@
 					 </a>
 					</div>
 				  </div>
-				  <div class="col">
-					<div class="card radius-10 border-start border-0 border-4 border-warning">
-					   <div class="card-body">
-						   <a href="{{ route('admin.students.index') }}" class="text-decoration-none text-dark">
-							<div class="d-flex align-items-center">
-							   <div>
-								   <p class="mb-0 text-secondary">Total Student</p>
-								   <h4 class="my-1 text-warning">{{ $totalStudent }}</h4>
-								   <p class="mb-0 font-13">+8.4% from last week</p>
-							   </div>
-							   <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i class='bx bxs-group'></i>
-							   </div>
-						   </div>
-						   </a>
-					   </div>
+				  <div class="col"> 
+	<div class="card radius-10 border-start border-0 border-4 border-warning">
+		<div class="card-body">
+			<a href="{{ route('admin.students.index') }}" class="text-decoration-none text-dark">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Total Siswa</p>
+						<h4 class="my-1 text-warning">{{ $totalStudent }}</h4>
+						<p class="mb-0 font-13 text-primary">+8.4% Dari Minggu Lalu</p>
 					</div>
-				  </div> 
-				</div><!--end row-->
+					<div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto">
+						<i class='bx bxs-group'></i>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+</div><!--end row-->
 
-				<div class="row">
-                   <div class="col-12 col-lg-8 d-flex">
-                      <div class="card radius-10 w-100">
+				<div class="row"><!--end User Overview dan categori-->
+        <div class="col-12 col-lg-8 d-flex">
+        <div class="card radius-10 w-100">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
 								<div>
-									<h6 class="mb-0">User Overview</h6>
+									<h6 class="mb-0">Grafik Pengguna</h6>
 								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>
-									</ul>
-								</div>
+								
 							</div>
 						</div>
 						  <div class="card-body">
@@ -116,19 +103,19 @@
 							<div class="col">
 							  <div class="p-3">
 								<h5 class="mb-0">24.15M</h5>
-								<small class="mb-0">Overall Visitor <span> <i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
+								<small class="mb-0">Pengunjung Keseluruhan <span> <i class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
 							  </div>
 							</div>
 							<div class="col">
 							  <div class="p-3">
 								<h5 class="mb-0">12:38</h5>
-								<small class="mb-0">Visitor Duration <span> <i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
+								<small class="mb-0">Durasi Pengunjung<span> <i class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
 							  </div>
 							</div>
 							<div class="col">
 							  <div class="p-3">
 								<h5 class="mb-0">639.82</h5>
-								<small class="mb-0">Pages/Visit <span> <i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
+								<small class="mb-0">Halaman/Kunjungi <span> <i class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
 							  </div>
 							</div>
 						  </div>
@@ -139,23 +126,9 @@
 						<div class="card-header">
 							<div class="d-flex align-items-center">
 								<div>
-									<h6 class="mb-0">Category</h6>
+									<h6 class="mb-0">Kategori</h6>
 								</div>
-								<div class="dropdown ms-auto">
-									<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a class="dropdown-item" href="javascript:;">Action</a>
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Another action</a>
-										</li>
-										<li>
-											<hr class="dropdown-divider">
-										</li>
-										<li><a class="dropdown-item" href="javascript:;">Something else here</a>
-										</li>
-									</ul>
-								</div>
+								
 							</div>
 						</div>
 						   <div class="d-flex justify-content-center">
@@ -175,12 +148,13 @@
 					   </div>
 				   </div>
 				</div>
+        
 				<!--Daftar Kursus-->
 				 <div class="card radius-10">
 					<div class="card-header">
 						<div class="d-flex align-items-center">
 							<div>
-								<h6 class="mb-0">Daftar Kursus</h6>
+								<h6 class="mb-0">Daftar Kelas</h6>
 							</div>
 							
 						</div>
@@ -190,10 +164,10 @@
 						   <table class="table align-middle mb-0">
 							<thead class="table-light">
 							 <tr>
-							   <th>Title</th>
+							   <th>Nama</th>
 							   <th>Thumbnail</th>
 							   <th>Insturctur</th>
-							   <th>Category</th>
+							   <th>Kategori</th>
 							   <th>Level</th>
 							   <th>Harga</th>
 							 </tr>
@@ -243,7 +217,7 @@
 						   <table class="table align-middle mb-0">
 							<thead class="table-light">
 							 <tr>
-							   <th>Title</th>
+							   <th>Nama</th>
 							   <th>Email</th>
 							   <th>Role</th>
 							   <th>Tanggal</th>
@@ -259,83 +233,10 @@
 					<!--Pendapatan-->
 					 <div class="row row-cols-1 row-cols-lg-3">
 						
-						 <div class="col d-flex">
-                           <div class="card radius-10 w-100">
-							   <div class="card-body">
-								<p class="font-weight-bold mb-1 text-secondary">Pendapatan</p>
-								<div class="d-flex align-items-center mb-4">
-									<div>
-										<h4 class="mb-0">$89,540</h4>
-									</div>
-									<div class="">
-										<p class="mb-0 align-self-center font-weight-bold text-success ms-2">4.4% <i class="bx bxs-up-arrow-alt mr-2"></i>
-										</p>
-									</div>
-								</div>
-								<div class="chart-container-0 mt-5">
-									<canvas id="chart3"></canvas>
-								  </div>
-							   </div>
-						   </div>
-						 </div>
+						 
 
 
-						 <div class="col d-flex">
-							<div class="card radius-10 w-100">
-								<div class="card-header bg-transparent">
-									<div class="d-flex align-items-center">
-										<div>
-											<h6 class="mb-0">Top Pencarian</h6>
-										</div>
-									
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="chart-container-1 mt-3">
-										<canvas id="chart4"></canvas>
-									  </div>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">Completed <span class="badge bg-gradient-quepal rounded-pill">25</span>
-									</li>
-									<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Pending <span class="badge bg-gradient-ibiza rounded-pill">10</span>
-									</li>
-									<li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Process <span class="badge bg-gradient-deepblue rounded-pill">65</span>
-									</li>
-								</ul>
-							</div>
-						  </div>
-						  <div class="col d-flex">
-							<div class="card radius-10 w-100">
-								 <div class="card-header bg-transparent">
-									<div class="d-flex align-items-center">
-										<div>
-											<h6 class="mb-0">Penjualan Kelas</h6>
-										</div>
-										
-									 </div>
-								 </div>
-								<div class="card-body">
-								   <div class="chart-container-0">
-									 <canvas id="chart5"></canvas>
-								   </div>
-								</div>
-								<div class="row row-group border-top g-0">
-									<div class="col">
-										<div class="p-3 text-center">
-											<h4 class="mb-0 text-danger">$45,216</h4>
-											<p class="mb-0">Clothing</p>
-										</div>
-									</div>
-									<div class="col">
-										<div class="p-3 text-center">
-											<h4 class="mb-0 text-success">$68,154</h4>
-											<p class="mb-0">Electronic</p>
-										</div>
-									 </div>
-								</div><!--end row-->
-							</div>
-						  </div>
+						 
 					 </div><!--end row-->
 @endsection
 

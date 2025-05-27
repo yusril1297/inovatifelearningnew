@@ -10,18 +10,23 @@
 
         <!-- Pilih Siswa -->
         <div class="form-group">
-            <label for="user_id">Pilih Siswa:</label>
-            <select name="user_id" id="user_id" class="form-control" required>
-                <option value="">-- Pilih Siswa --</option>
-                @foreach($students as $student)
-                    <option value="{{ $student->id }}">{{ $student->name }}</option>
-                @endforeach
-            </select>
-        </div>
+    <label for="user_id">Masukan Email</label>
+    <div>
+        @foreach($students as $student)
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="user_id" id="student_{{ $student->id }}" value="{{ $student->id }}" required>
+                <label class="form-check-label" for="student_{{ $student->id }}">
+                    {{ $student->name }}
+                </label>
+            </div>
+        @endforeach
+    </div>
+</div>
+
 
         <!-- Pilih Kursus -->
         <div class="form-group">
-            <label for="course_id">Pilih Kursus:</label>
+            <label for="course_id">Masukan Password</label>
             <select name="course_id" id="course_id" class="form-control" required>
                 <option value="">-- Pilih Kursus --</option>
                 @foreach($courses as $course)
@@ -31,7 +36,7 @@
         </div>
 
         <!-- Tombol Submit -->
-        <button type="submit" class="btn btn-primary">Daftarkan Siswa</button>
+        <button type="submit" class="btn btn-primary">Daftarkan Instructor</button>
     </form>
 </div>
 @endsection

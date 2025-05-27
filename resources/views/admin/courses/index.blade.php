@@ -3,11 +3,11 @@
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class=" d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
-        <h1 class="mb-3 " style="font-family: 'Oswald', sans-serif;">Course List</h1>
+        <h1 class="mb-3 " style="font-family: 'Oswald', sans-serif;">Daftar Kelas</h1>
           <!-- Menampilkan pesan sukses -->
      
         <a href="{{ route('admin.courses.create') }}" class="btn btn-success">
-            + Add New Course
+            + Tambah Kelas Baru
         </a>
     </div>
 
@@ -20,15 +20,15 @@
                 <table id="dataTable" class="table table-striped align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th>#</th>
-                            <th>Title</th>
+                            <th>No</th>
+                            <th>Nama</th>
                             <th>Instructor</th>
-                            <th>Category</th>
+                            <th>Kategori</th>
                             <th>Thumbnail</th>
-                            <th>Enrolled Student</th>
-                            <th>Price</th>
+                            <th>Daftar Siswa</th>
+                            <th>Harga</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1">
-        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Daftar Pendaftaran</h1>
+        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Enrollment</h1>
         <a href="{{ route('admin.enrollments.create') }}" class="btn btn-success">
             + Tambah Pendaftaran Baru
         </a>
@@ -22,7 +22,7 @@
             <table id="dataTable" class="table table-striped align-middle mb-0">
                 <thead class="table-light">
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Nama Siswa</th>
                 <th>Kursus</th>
                 <th>Metode Pembayaran</th>

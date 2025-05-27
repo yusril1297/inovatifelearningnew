@@ -126,53 +126,53 @@ function toggleDropdown(element) {
                     <li><a href="{{ route('admin.dashboard') }}"><i class='bx bx-category'></i>Dashboard</a></li>  
                 @endif
                 @if (Auth::user()->role == 0)          
-                <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Category</a></li>
+                <li><a href="{{ route('admin.categories.index') }}"><i class='bx bx-category'></i>Kategori</a></li>
                 @endif
                 @if (Auth::user()->role == 0)
-                    <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                    <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Pengolahan Kelas</a></li>
                 @else
-                    <li><a href="{{ route('instructor.courses.index') }}"><i class='bx bx-book'></i>Manage Courses</a></li>
+                    <li><a href="{{ route('instructor.courses.index') }}"><i class='bx bx-book'></i>Pengolahan Kelas</a></li>
                 @endif
                 @if (Auth::user()->role == 0)
                 <li><a href="{{ route('admin.enrollments.index') }}"><i class='bx bx-folder'></i>Enrollments</a></li>
                     
                 @endif
                 @if (Auth::user()->role == 0)
-                    <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Manage Instructors</a></li> 
+                    <li><a href="{{ route('admin.instructors.index') }}"><i class='bx bx-user'></i>Pengolahan Instructors</a></li> 
                 @endif
                 @if (Auth::user()->role == 0)
-                   <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Levels</a></li> 
+                   <li><a href="{{ route('admin.levels.index') }}"><i class='bx bx-trophy'></i>Level</a></li> 
                 @endif
                 @if (Auth::user()->role == 0)
-                    <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                    <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user'></i>Pengolahan Siswa</a></li>
                 @else
-                    <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Manage Students</a></li>
+                    <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Pengolahan Siswa</a></li>
                 @endif
 
                 @if (Auth::user()->role == 0)
-                    <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tags</a></li>
+                    <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tag</a></li>
                 @endif
 					</ul>
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="bx bx-category"></i>
+						<div class="parent-icon"><i class="bx bx-user"></i>
 						</div>
 						<div class="menu-title">Profile</div>
 					</a>
 					<ul>
-						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-radio-circle'></i>Update Avatar</a>
+						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-camera'></i>Perbarui Foto Profile</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-radio-circle'></i>Update CV Profile</a>
+						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file-blank'></i>Perbarui CV Profile</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.information') }}"><i class='bx bx-radio-circle'></i>Profile Information</a>
+						<li> <a href="{{ route('profile.edit.information') }}"><i class='bx bx-info-circle'></i>Profile Information</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.password') }}""><i class='bx bx-radio-circle'></i>Update Password</a>
+						<li> <a href="{{ route('profile.edit.password') }}""><i class='	bx bx-lock'></i>Perbarui Password</a>
 						</li>
                         @if (Auth::user()->role !== 2)
                     <li>
                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
-                            <i class='bx bx-user text-danger'></i>Delete Account
+                            <i class='bx bx-user text-danger'></i>Hapus Akun
                         </a>
                     </li>
                 </ul>
