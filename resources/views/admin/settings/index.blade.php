@@ -10,7 +10,7 @@
             @csrf
             <div class="card-body bg-white rounded-xl shadow-lg p-4">
                 <div class="form-group">
-                    <label for="title">Judul CORS</label>
+                    <label for="title">Nama Situs</label>
                     <textarea name="name_cors" id="title" class="form-control">{{ $data->name_cors ?? 'Default Name' }}</textarea>
                     @error('name_cors')
                         <span class="text-danger">{{ $message }}</span>
@@ -23,7 +23,7 @@
                     <div class="custom-file">
                         <input type="file" accept=".png, .jpg, .jpeg" name="logo" onchange="previewImg()"
                             class="form-control">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="customFile">Pilih berkas</label>
                     </div>
                     @error('logo')
                         <span class="text-danger">{{ $message }}</span>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
                 </div>
         </form>
     </div>

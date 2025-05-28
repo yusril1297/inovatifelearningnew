@@ -152,6 +152,10 @@ function toggleDropdown(element) {
                 @if (Auth::user()->role == 0)
                     <li><a href="{{ route('admin.tags.index') }}"><i class='bx bx-tag'></i>Tag</a></li>
                 @endif
+
+                @if (Auth::user()->role == 0)
+                    <li><a href="{{ route('admin.settings') }}"><i class='bx bx-cog'></i></i></i>Setelan</a></li>
+                @endif
 					</ul>
 				</li>
 				<li>
@@ -161,15 +165,16 @@ function toggleDropdown(element) {
 						<div class="menu-title">Profile</div>
 					</a>
 					<ul>
-						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-camera'></i>Perbarui Foto Profile</a>
+                        <li> <a href="{{ route('profile.edit.information') }}"><i class='bx bx-info-circle'></i>Informasi Profil</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file-blank'></i>Perbarui CV Profile</a>
+						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-camera'></i>Informasi Foto Profile</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.information') }}"><i class='bx bx-info-circle'></i>Profile Information</a>
+						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file-blank'></i>Informasi CV Profile</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.password') }}""><i class='	bx bx-lock'></i>Perbarui Password</a>
+						<li> <a href="{{ route('profile.edit.password') }}"><i class='	bx bx-lock'></i>Perbarui Password</a>
 						</li>
                         @if (Auth::user()->role !== 2)
+                    
                     <li>
                         <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
                             <i class='bx bx-user text-danger'></i>Hapus Akun

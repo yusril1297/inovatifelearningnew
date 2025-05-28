@@ -3,7 +3,7 @@
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
         <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
-            <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Tag List</h1>
+            <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Daftar Tag</h1>
             <!-- Menampilkan pesan sukses -->
             @if (session('success'))
                 <div class="alert alert-success">
@@ -11,7 +11,7 @@
                 </div>
             @endif
             <a href="{{ route('admin.tags.create') }}" class="btn btn-success">
-                + Add New Tag
+                + Tambah Tag Baru
             </a>
         </div>
 
@@ -20,9 +20,9 @@
                 <table id="dataTable" class="table table-striped align-middle mb-0">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Actions</th>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure?')">Delete</button>
+                                            onclick="return confirm('Are you sure?')">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

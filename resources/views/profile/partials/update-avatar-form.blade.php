@@ -4,11 +4,11 @@
     <header class="relative flex justify-between items-center">
         <div>
             <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Update Avatar') }}
+                {{ __('Perbarui Gambar Profil') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                {{ __('Update your account avatar to personalize your profile.') }}
+                {{ __('Perbarui foto profil Anda untuk membuat profil lebih personal.') }}
             </p>
         </div>
         
@@ -19,7 +19,7 @@
         @method('put')
 
         <div>
-            <x-input-label for="avatar" :value="__('Avatar')" />
+            <x-input-label for="avatar" :value="__('Gambar Profil')" />
             <input id="avatar" name="avatar" type="file" class="mt-1 block w-full" />
             <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
         </div>
@@ -31,7 +31,7 @@
         @endif
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Simpan') }}</x-primary-button>
 
             @if (session('status') === 'avatar-updated')
                 <p

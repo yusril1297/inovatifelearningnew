@@ -8,11 +8,11 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="name" class="form-label">Tag Name</label>
+            <label for="name" class="form-label">Nama Tag </label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $tag->name }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.tags.index') }}" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">Perbarui</button>
+        <a href="{{ route('admin.tags.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

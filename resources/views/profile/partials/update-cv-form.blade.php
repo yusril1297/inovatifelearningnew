@@ -3,7 +3,7 @@
     <header class="relative flex justify-between items-center">
         <div>
             <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Update CV Profile') }}
+                {{ __('Perbarui CV Profile') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
@@ -30,7 +30,7 @@
         @endif
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Simpan') }}</x-primary-button>
 
             @if (session('status') === 'cv-updated')
                 <p

@@ -59,7 +59,7 @@ $enrollmentsByMonth = DB::table('enrollments')
 
 
 
-        return view('admin.dashboard', compact('userPerMonths','enrollmentsByMonth','totalStudent','categoriesWithCount','categories', 'categories', 'courses','totalInstructor' ,'numOfCategories',"numOfCourse",'enrollments', 'users_count', 'courses_count', 'enrollments_count', 'enrollmentsByMonth','totalUser'));
+        return view('admin.dashboard', compact('userPerMonths','enrollmentsByMonth','totalStudent','categoriesWithCount','categories', 'categories', 'courses','level','totalInstructor' ,'numOfCategories',"numOfCourse",'enrollments', 'users_count', 'courses_count', 'enrollments_count', 'enrollmentsByMonth','totalUser'));
 }
 }
 

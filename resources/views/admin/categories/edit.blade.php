@@ -44,7 +44,7 @@
 
             <div class="d-flex justify-content-end mt-4">
                 <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary me-2">Kembali</a>
-                <button type="submit" class="btn btn-primary">Update Kategori</button>
+                <button type="submit" class="btn btn-primary">Perbarui Kategori</button>
             </div>
         </form>
     </div>

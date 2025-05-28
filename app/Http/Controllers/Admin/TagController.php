@@ -40,7 +40,7 @@ class TagController extends Controller
         $tag->name = $validated['name'];
         $tag -> save();
 
-        return redirect()->route ('admin.tags.index')->with('success', 'Tag created successfully.');
+        return redirect()->route ('admin.tags.index')->with('success', 'Tag Berhasil Ditambahkan.');
 
     }
 
@@ -73,7 +73,7 @@ class TagController extends Controller
         $tag->name = $validated['name'];
         $tag->save();
         
-        return redirect()->route ('admin.tags.index')->with('success', 'Tag updated successfully.');
+        return redirect()->route ('admin.tags.index')->with('success', 'Tag Berhasil Di Perbarui.');
     }
 
     /**
@@ -83,6 +83,6 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
         $tag->delete();
-        return redirect()->route ('admin.tags.index')->with('success', 'Tag deleted successfully.');
+        return redirect()->route ('admin.tags.index')->with('success', 'Tag Berhasil DI hapus.');
     }
 }
