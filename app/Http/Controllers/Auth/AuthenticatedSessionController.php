@@ -31,11 +31,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // Periksa role pengguna langsung dari field role
-        if ($request->user()->role === 'admin') {
+        if ($request->user()->role === 0) {
             return redirect()->route('admin.dashboard');
-        } elseif ($request->user()->role === 'instructor') {
+        } elseif ($request->user()->role === 1) {
             return redirect()->route('instructor.dashboard');
-        } elseif ($request->user()->role === 'student') {
+        } elseif ($request->user()->role === 2) {
             return redirect()->route('frontend.home');
         }
 
