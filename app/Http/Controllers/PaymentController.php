@@ -29,7 +29,7 @@ class PaymentController extends Controller
             ->where('course_id', $course->id)
             ->where('status', 'active')
             ->where(function ($query) {
-                $query->where('exp_time', '>', Carbon::now())
+                $query->where('exp_time', '<', Carbon::now())
                     ->orWhere('is_lifetime', true);
             })
             ->first();
@@ -65,7 +65,7 @@ class PaymentController extends Controller
                 'exp_time' => $expDate,
                 'is_lifetime' => $isLifetime,
             ]);
-        } elseif ($enrollment->status === 'active' && ($enrollment->is_lifetime || Carbon::parse($enrollment->exp_time)->gt(Carbon::now()))) {
+        } elseif ($enrollment->status === 'active' && ($enrollment->is_lifetime || $enrollment->exp_time < now())) {
             // Jika status sudah active, arahkan ke halaman pembelajaran
             return redirect()->route('frontend.learning', ['course' => $course->slug, 'video' => $course->videos()->first()->id]);
         }

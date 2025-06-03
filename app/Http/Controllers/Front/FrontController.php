@@ -59,6 +59,9 @@ class FrontController extends Controller
                 ->where('status', 'active')
                 ->where('exp_time', '>', now())
                 ->get();
+            
+        // return $enrollments;
+
         $categories = Category::all();
         $levels = Level::all();
 
@@ -143,7 +146,8 @@ class FrontController extends Controller
         $video = $course->videos()->where('id', $video)->firstOrFail();
 
         // Cek apakah pengguna sudah terdaftar di course
-        $enrollment = $user->enrollments()->where('course_id', $course->id)     
+        $enrollment = $user->enrollments()->where('course_id', $course->id)   
+        ->where('exp_time', '>', now())  
         ->where('status', 'active')
         ->first();
 
@@ -158,6 +162,8 @@ class FrontController extends Controller
             ]);
             return redirect()->route('frontend.learning', ['courses' => $course->slug, 'video' => $video->id]);
         }
+
+        // return $enrollment;
 
         // Pastikan pengguna memiliki akses
         if (!$course->is_free && (!$enrollment  || $enrollment->exp_time < now())) {
