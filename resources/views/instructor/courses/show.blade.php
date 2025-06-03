@@ -73,40 +73,6 @@
         </div>
 
      
-{{-- Daftar Sertifikat --}}
-<div class="mt-4">
-    <h4 class="mb-3">Daftar Sertifikat:</h4>
-    @if ($certificates->isNotEmpty())
-        @foreach ($certificates as $certificate)
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $certificate->certificate_code ?? 'Sertifikat' }}</h5>
-                    <div class="mb-3">
-                        @if (Str::endsWith($certificate->certificate_url, ['.pdf']))
-                            <embed src="{{ asset($certificate->certificate_url) }}" type="application/pdf" width="100%" height="400px" />
-                        @else
-                            <img src="{{ asset($certificate->certificate_url) }}" class="img-fluid" alt="Sertifikat">
-                        @endif
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        @if (Auth::check() && (Auth::user()->role == 0 || Auth::user()->role == 1))
-                            <form action="{{ route('courses.deleteCertificate', ['course' => $course->id, 'certificate' => $certificate->id]) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus sertifikat ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus Sertifikat</button>
-                            </form>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    @else
-        <div class="alert alert-info">Tidak ada sertifikat yang ditambahkan.</div>
-        @if (Auth::check() && (Auth::user()->role == 0 || Auth::user()->role == 1))
-            <a href="{{ route('courses.uploadCertificateForm', ['course' => $course->id]) }}" class="btn btn-sm btn-primary">Upload Sertifikat</a>
-        @endif
-    @endif
-</div>
 
     </div>
 @endsection

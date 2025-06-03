@@ -59,7 +59,7 @@
             <input type="number" name="price" id="price" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="subscription">Type Subcription</label>
+            <label for="subscription">Masa Berlaku</label>
             <select name="subscription_periods" id="subcription_periods" class="form-control" required>
                 <option value="week">Minggu</option>
                 <option value="month">Bulan</option>
@@ -68,21 +68,21 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="subscription_duration">Durasi Subscription</label>
+            <label for="subscription_duration">Batas Waktu</label>
             <input type="number" name="subscription_duration" id="subscription_duration" class="form-control" required>
         </div>
 
         <div class="form-group">
             <label for="status">Status</label>
             <select name="status" id="status" class="form-control" required>
-                <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Draft</option>
-                <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Published</option>
+                <option value="draft" {{ old('status') == 'draft' ? 'selected' : '' }}>Sementara</option>
+                <option value="published" {{ old('status') == 'published' ? 'selected' : '' }}>Terbitkan</option>
             </select>
         </div>
 
         <div class="d-flex justify-content-end mt-4">
-            <a href="{{ route('instructor.courses.index') }}" class="btn btn-secondary me-2">Back</a>
-            <button type="submit" class="btn btn-primary">Save Course</button>
+            <a href="{{ route('instructor.courses.index') }}" class="btn btn-secondary me-2">Kembali</a>
+            <button type="submit" class="btn btn-primary">Simpan Kelas</button>
         </div>
     </form>
 </div>

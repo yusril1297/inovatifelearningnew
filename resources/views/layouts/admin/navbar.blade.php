@@ -252,7 +252,7 @@
                     <div class="user-info">
                         <p class="user-name mb-0">{{ Auth::user()->name }}</p>
                         <p class="designation mb-0">
-                            {{ Auth::check() ? (Auth::user()->role == 0 ? 'admin' : (Auth::user()->role == 1 ? 'tutor' : 'student')) : '' }}
+                            {{ Auth::check() ? (Auth::user()->role == 0 ? 'admin' : (Auth::user()->role == 1 ? 'Instructor' : 'Siswa')) : '' }}
                         </p>
 
                     </div>

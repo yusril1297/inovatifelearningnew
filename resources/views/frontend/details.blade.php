@@ -99,12 +99,12 @@
         @if ($enrollment?->status === 'active')
             <a href="{{ route('frontend.learning', ['course' => $courses->slug, 'video' => $courses->videos->first()->id]) }}"
                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                Go to Class
+                Lanjutkan Kelas
             </a>
         @else
             <a href="{{ route('frontend.checkout', ['course' => $courses->slug]) }}"
                class="flex py-2.5 px-3 text-sm font-semibold leading-6 rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                Buy Class
+                Beli Kelas
             </a>
         @endif
     @endif
@@ -114,7 +114,7 @@
                 
                 <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-4 mb-20 md:mb-40 mt-10 px-1"> 
                     <div class="flex items-center gap-[6px]">
-                        <p class="font-semibold text-xl">About</p>
+                        <p class="font-semibold text-xl">Deskripsi</p>
                     </div>
                     <div class="flex flex-col gap-5 w-full md:w-2/3 lg:w-[700px]">
                         <div class="font-medium leading-[30px] prose max-w-none">

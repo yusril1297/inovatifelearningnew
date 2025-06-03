@@ -393,65 +393,52 @@
 
 
 {{-- Dokumentasi Mengajar --}}
-<div class="container px-[20px] max-w-full py-10 mr-[20px]">
-    <!-- Menambahkan teks "Dokumentasi Mengajar" di atas konten -->
-    <h1 class="text-4xl font-bold text-center mb-8">Dokumentasi Mengajar</h1>
+<div class="w-full max-w-screen-3xl mx-auto px-12 py-20 min-h-screen bg-white">
+    <!-- Judul -->
+    <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 text-center pb-10 mb-10">
+        Dokumentasi Belajar
+    </h2>
 
-    <div class="flex justify-center w-full">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-            <img src="assets/icon/dm1.png" alt="Karya 1" class="w-full h-64 object-cover">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung</p>
+    <!-- Grid Foto -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+        <!-- Kartu 1 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dmm1.jpg" alt="Karya 1" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung.</p>
             </div>
         </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-            <img src="assets/icon/dm2.png" alt="Karya 2" class="w-full h-64 object-cover">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Seorang anak dan teman sedang belajar bersama di meja, saling membantu menyelesaikan tugas dengan fokus dan kerjasama.</p>
+
+        <!-- Kartu 2 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd2.jpg" alt="Karya 2" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang anak dan teman sedang belajar bersama di meja, saling membantu menyelesaikan tugas dengan fokus dan kerjasama.</p>
             </div>
         </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-            <img src="assets/icon/dm3.png" alt="Karya 3" class="w-full h-64 object-cover">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung</p>
+
+        <!-- Kartu 3 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd3.jpg" alt="Karya 3" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung.</p>
             </div>
         </div>
-        <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-            <img src="assets/icon/dm4.png" alt="Karya 4" class="w-full h-64 object-cover">
-            <div class="p-4 text-center">
-                <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                <p class="text-xs text-gray-500">Seorang anak sedang fokus belajar di depan laptop, membuka materi pelajaran online dan mencatat poin-poin penting di buku catatannya</p>
+
+        <!-- Kartu 4 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd4.jpg" alt="Karya 4" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang anak sedang fokus belajar di depan laptop, membuka materi pelajaran online dan mencatat poin-poin penting di buku catatannya.</p>
             </div>
         </div>
     </div>
 </div>
 
-</div>
-
-
-
-</div>
-    
-
-    <script>
-        function checkResolution() {
-            const mobileMenu = document.getElementById("testimonial");
-
-            if (window.innerWidth < 768) {
-                document.getElementById("testimonial").style.display = "none";
-            } else {
-                document.getElementById("testimonial").style.display = "block";
-            }
-        }
-
-        checkResolution();
-
-        window.onresize = checkResolution;
-    </script>
 
 
 <!-- Tentor Kami -->

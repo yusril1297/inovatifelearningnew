@@ -108,7 +108,7 @@ function toggleDropdown(element) {
 <div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<h4 class="logo-text">Admin Dashboard</h4>
+					<h4 class="logo-text">LEARNING IBIREALITY</h4>
 				</div>
 				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
 				</div>
