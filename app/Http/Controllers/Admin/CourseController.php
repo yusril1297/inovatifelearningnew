@@ -231,7 +231,8 @@ private function convertYouTubeUrl($url)
         $video->course_id = $course->id;
 
         if ($request->videoType === 'url') {
-            $video->url = $request->url;
+
+            $video->url = $this->convertYouTubeUrl($request['url']);;
         } elseif ($request->hasFile('video')) {
             // Simpan file video ke storage dan simpan nama file ke database
             $filename = time() . '.' . $request->video->extension();
@@ -253,6 +254,7 @@ private function convertYouTubeUrl($url)
     public function uploadPdf(Course $course, Request $request)
     {
         $this->authorizeAccess($course);
+
 
         // Validasi inputan untuk pdf
         $request->validate([
