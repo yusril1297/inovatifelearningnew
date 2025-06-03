@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $users_count = DB::table('users')->count();
         $courses_count = DB::table('courses')->count();
         $enrollments_count = DB::table('enrollments')->count();
-        $courses = Course::with(['category','instructor','level'])->get();
+        $courses = Course::with(['category','instructor','level'])->limit(10)->get();
         // $numOfOrders = Payment::where('status', 'completed')->count();
         // $totalRevenue = Payment::where('status', 'completed')->sum('amount');
         $totalInstructor = User::where('role', 1)->count();
