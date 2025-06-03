@@ -131,6 +131,8 @@ class FrontController extends Controller
     {
         $settings = setting::first();
 
+        // return $settings;
+
         // Cek jika pengguna sudah login
         if (!Auth::check()) {
             return redirect('/login');

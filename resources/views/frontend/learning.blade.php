@@ -71,7 +71,7 @@
                 <div class="flex items-center gap-[6px]">
                     <p class="font-semibold">{{ $course->category->name}}</p>
                 </div>
-                <a href="{{ route('certificate.generate', $course->id) }} class="flex items-center gap-[6px]">
+                <a href="{{ route('certificate.download', ['courseId'=> $course->id]) }}" class="flex items-center gap-[6px]">
                     <p class="font-semibold">Certificate</p>
                 </a>
                 <div class="flex items-center gap-[6px]">

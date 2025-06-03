@@ -130,7 +130,7 @@ function toggleDropdown(element) {
                 @endif
                 @if (Auth::user()->role == 0)
                     <li><a href="{{ route('admin.courses.index') }}"><i class='bx bx-book'></i>Pengolahan Kelas</a></li>
-                @else
+                @elseif (Auth::user()->role == 1)
                     <li><a href="{{ route('instructor.courses.index') }}"><i class='bx bx-book'></i>Pengolahan Kelas</a></li>
                 @endif
                 @if (Auth::user()->role == 0)
@@ -145,7 +145,7 @@ function toggleDropdown(element) {
                 @endif
                 @if (Auth::user()->role == 0)
                     <li><a href="{{ route('admin.students.index') }}"><i class='bx bx-user'></i>Pengolahan Siswa</a></li>
-                @else
+                @elseif (Auth::user()->role == 1)
                     <li><a href="{{ route('instructor.students.index') }}"><i class='bx bx-user'></i>Pengolahan Siswa</a></li>
                 @endif
 
@@ -155,6 +155,10 @@ function toggleDropdown(element) {
 
                 @if (Auth::user()->role == 0)
                     <li><a href="{{ route('admin.settings') }}"><i class='bx bx-cog'></i></i></i>Setelan</a></li>
+                @endif
+
+                @if(Auth::user()->role == 2)
+                    <li><a href="{{ route('admin.students.index') }}">Kursus Saya</a></li>
                 @endif
 					</ul>
 				</li>
@@ -169,8 +173,10 @@ function toggleDropdown(element) {
 						</li>
 						<li> <a href="{{ route('profile.edit.avatar') }}"><i class='bx bx-camera'></i>Informasi Foto Profile</a>
 						</li>
-						<li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file-blank'></i>Informasi CV Profile</a>
+						@if (Auth::user()->role !== 2)
+                            <li> <a href="{{ route('profile.edit.cv') }}"><i class='bx bx-file-blank'></i>Informasi CV Profile</a>
 						</li>
+                        @endif
 						<li> <a href="{{ route('profile.edit.password') }}"><i class='	bx bx-lock'></i>Perbarui Password</a>
 						</li>
                         @if (Auth::user()->role !== 2)
