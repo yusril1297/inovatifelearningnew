@@ -43,7 +43,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.students.create');
     }
 
     /**
@@ -51,7 +51,26 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+        ]);
+        
+        $isTudentExists = User::where('email', $request->email)->where('role', 2)->exists();
+        if ($isTudentExists) {
+            return redirect()->back()->with('error', 'Student with this email already exists.');
+        }
+
+        $student = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 2, // Set role as student
+        ]);
+
+        return redirect()->route('admin.students.index')->with('success', 'Student created successfully!');
     }
 
     /**

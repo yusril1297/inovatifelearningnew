@@ -25,7 +25,7 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        // return view('admin.instructors.create');
+        return view('admin.instructors.create');
     }
 
     /**
@@ -33,20 +33,25 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:8|confirmed',
-        // ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'role' => 1, // role 1 untuk instructor
-        //     'password' => bcrypt($request->password),
-        // ]);
+        $isInstructorExists = User::where('email', $request->email)->where('role', 1)->exists();
+        if ($isInstructorExists) {
+            return redirect()->back()->with('error', 'Instructor with this email already exists.');
+        }
 
-        // return redirect()->route('admin.instructors.index')->with('success', 'Instructor created successfully.');
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => 1, // role 1 untuk instructor
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('admin.instructors.index')->with('success', 'Instructor created successfully.');
     }
 
     /**

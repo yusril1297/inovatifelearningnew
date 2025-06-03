@@ -6,8 +6,8 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
    
  <div class="d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1">
-        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Pengolahan instructor</h1>
-        <a href="{{ route('admin.enrollments.create') }}" class="btn btn-success">
+        <h1 class="mb-3" style="font-family: 'Oswald', sans-serif;">Pengolahan Siswa</h1>
+        <a href="{{ route('admin.students.create') }}" class="btn btn-success">
             + Tambah Siswa Baru
         </a>
     </div>

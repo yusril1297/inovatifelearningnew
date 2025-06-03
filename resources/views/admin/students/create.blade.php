@@ -5,38 +5,42 @@
     <h2>Daftarkan Siswa ke Kelas</h2>
     
     <!-- Form untuk mendaftarkan siswa ke kursus -->
-    <form action="{{ route('admin.enrollments.store') }}" method="POST">
-        @csrf
+    <form action="{{ route('admin.students.store') }}" method="POST">
+    @csrf
 
-        <!-- Pilih Siswa -->
-        <div class="form-group">
-    <label for="user_id">Masukan Email</label>
-    <div>
-        @foreach($students as $student)
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="user_id" id="student_{{ $student->id }}" value="{{ $student->id }}" required>
-                <label class="form-check-label" for="student_{{ $student->id }}">
-                    {{ $student->name }}
-                </label>
-            </div>
-        @endforeach
+    <!-- Nama -->
+    <div class="form-group mt-3">
+        <label for="name">Nama:</label>
+        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+               value="{{ old('name') }}" required>
+        @error('name')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
     </div>
-</div>
 
+    <!-- Email -->
+    <div class="form-group mt-3">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+               value="{{ old('email') }}" required>
+        @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <!-- Pilih Kursus -->
-        <div class="form-group">
-            <label for="course_id">Masukan Password</label>
-            <select name="course_id" id="course_id" class="form-control" required>
-                <option value="">-- Pilih Kursus --</option>
-                @foreach($courses as $course)
-                    <option value="{{ $course->id }}">{{ $course->title }}</option>
-                @endforeach
-            </select>
-        </div>
+    <!-- Password -->
+    <div class="form-group mt-3">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror"
+               required>
+        @error('password')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <!-- Tombol Submit -->
-        <button type="submit" class="btn btn-primary">Daftarkan Instructor</button>
-    </form>
+    <!-- Tombol Submit -->
+    <button type="submit" class="btn btn-primary mt-4">Daftarkan Instructor</button>
+</form>
+
 </div>
 @endsection

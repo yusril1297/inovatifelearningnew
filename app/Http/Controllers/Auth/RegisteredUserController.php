@@ -66,4 +66,5 @@ class RegisteredUserController extends Controller
         }
 
     }
+    
 }
