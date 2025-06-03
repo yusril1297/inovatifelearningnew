@@ -52,44 +52,53 @@
 
     
 
-     {{-- Dokumentasi Mengajar --}}
-     <div class="container px-[20px] max-w-full py-10 mr-[20px]">
-        <!-- Menambahkan teks "Dokumentasi Mengajar" di atas konten -->
-        <h1 class="text-4xl font-bold text-center mb-8">Dokumentasi Mengajar</h1>
-    
-        <div class="flex justify-center w-full">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all ">
-                    <img src="https://gurulesku.id/wp-content/uploads/2020/01/Lowongan-Tentor-Les-Privat.jpg" alt="Karya 1" class="w-full">
-                    <div class="p-4 text-center">
-                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                        <p class="text-xs text-gray-500">Ini adalah karya yang dibuat sekitar tujuh minggu lalu, dengan hasil percetakan 3D yang sangat detail dan cermat, menghasilkan desain yang unik dan fungsional.</p>
-                    </div>
-                </div>
-                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-                    <img src="https://assets.kompasiana.com/items/album/2023/01/07/les-privat-ke-rumah-63b96aba08a8b541570edde2.jpg" alt="Karya 2" class="w-full">
-                    <div class="p-4 text-center">
-                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                        <p class="text-xs text-gray-500">Proyek ini selesai sekitar tujuh minggu yang lalu, memanfaatkan teknologi pencetakan 3D untuk membuat laci dengan desain yang modern dan sangat praktis.</p>
-                    </div>
-                </div>
-                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-                    <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 3" class="w-full">
-                    <div class="p-4 text-center">
-                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                        <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
-                    </div>
-                </div>
-                <div class="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:scale-105 transition-all>
-                    <img src="https://fomu.co.id/wp-content/uploads/2023/10/slider-1.jpg" alt="Karya 4" class="w-full">
-                    <div class="p-4 text-center">
-                        <p class="text-sm text-gray-600 font-bold">Kegiatan Mengajar</p>
-                        <p class="text-xs text-gray-500">Karya ini selesai tercipta sekitar tujuh minggu lalu, menggabungkan seni dan teknologi untuk menghasilkan produk laci yang estetis sekaligus fungsional dengan teknologi pencetakan 3D.</p>
-                    </div>
-                </div>
+    {{-- Dokumentasi Mengajar --}}
+<div class="w-full max-w-screen-3xl mx-auto px-12 py-20 min-h-screen bg-white">
+    <!-- Judul -->
+    <h2 class="text-3xl font-bold md:text-5xl md:leading-tight text-gray-800 text-center pb-10 mb-10">
+        Dokumentasi Belajar
+    </h2>
+
+    <!-- Grid Foto -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+        <!-- Kartu 1 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dmm1.jpg" alt="Karya 1" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung.</p>
+            </div>
+        </div>
+
+        <!-- Kartu 2 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd2.jpg" alt="Karya 2" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang anak dan teman sedang belajar bersama di meja, saling membantu menyelesaikan tugas dengan fokus dan kerjasama.</p>
+            </div>
+        </div>
+
+        <!-- Kartu 3 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd3.jpg" alt="Karya 3" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang guru sedang memberikan bimbingan kepada siswa, menunjuk layar laptop untuk menjelaskan materi secara langsung.</p>
+            </div>
+        </div>
+
+        <!-- Kartu 4 -->
+        <div class="border-2 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:scale-105 transition duration-300 bg-white">
+            <img src="assets/icon/dd4.jpg" alt="Karya 4" class="w-full h-[22rem] object-cover">
+            <div class="p-6 text-center">
+                <p class="text-xl font-semibold text-gray-700">Kegiatan Mengajar</p>
+                <p class="text-base text-gray-500 mt-3">Seorang anak sedang fokus belajar di depan laptop, membuka materi pelajaran online dan mencatat poin-poin penting di buku catatannya.</p>
             </div>
         </div>
     </div>
+</div>
+
 
 {{--  --}}
     <!-- dokuemtadi-->

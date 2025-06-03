@@ -202,42 +202,7 @@
 					</div>
 					<!--end row-->
 
-					<!--Daftar user-->
-				 <div class="card radius-10">
-					<div class="card-header">
-						<div class="d-flex align-items-center">
-							<div>
-								<h6 ssass="mb-0">Daftar User</h6>
-							</div>
-							
-						</div>
-					</div>
-                         <div class="card-body">
-						 <div class="table-responsive">
-						   <table class="table align-middle mb-0">
-							<thead class="table-light">
-							 <tr>
-							   <th>Nama</th>
-							   <th>Email</th>
-							   <th>Role</th>
-							   <th>Tanggal</th>
-							 </tr>
-							 </thead>
-							 
-						  </table>
-						  </div>
-						 </div>
-					</div>
-					<!--end row-->
-
-					<!--Pendapatan-->
-					 <div class="row row-cols-1 row-cols-lg-3">
-						
-						 
-
-
-						 
-					 </div><!--end row-->
+				
 @endsection
 
 

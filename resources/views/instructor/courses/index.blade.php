@@ -3,7 +3,7 @@
 @section('content')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
     <div class=" d-flex justify-content-between align-items-center bg-white rounded-xl shadow-lg p-4 flex flex-col mb-1 ">
-        <h1 class="mb-3">Course List</h1>
+        <h1 class="mb-3">Daftar Kelas</h1>
           <!-- Menampilkan pesan sukses -->
      @if(session('success'))
      <div class="alert alert-success">
@@ -11,12 +11,12 @@
      </div>
         @endif
         <a href="{{ route('instructor.courses.create') }}" class="btn btn-success">
-            + Add New Course
+            + Tambah kelas baru
         </a>
     </div>
 
     @if($courses->isEmpty())
-        <p>No courses available.</p>
+        <p>Tidak ada kelas yang tersedia</p>
     @else
 
     <div class="card-body bg-white rounded-xl shadow-lg p-4">
@@ -24,7 +24,7 @@
         <table id="dataTable" class="table table-striped align-middle mb-0">
         <thead  class="table-light">
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Thumbnail</th>

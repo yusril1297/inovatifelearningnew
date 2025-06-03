@@ -33,7 +33,7 @@
         <span>
           <i class="ti ti-users"></i>
         </span>
-        <span class="hide-menu">Manage Student</span>
+        <span class="hide-menu">Pengolahan Siswa/span>
       </a>
     </li>
 
@@ -43,7 +43,7 @@
         <span>
           <i class="ti ti-book"></i>
         </span>
-        <span class="hide-menu">Courses</span>
+        <span class="hide-menu">Kelas</span>
       </a>
     </li>
 
