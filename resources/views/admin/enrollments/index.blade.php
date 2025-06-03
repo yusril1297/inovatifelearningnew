@@ -61,6 +61,9 @@
                      @endforeach
                 </tbody>
             </table>
+            <div class="mt-4">
+    {{ $enrollments->links('pagination::bootstrap-5') }}
+</div>
         </div>
     </div>
     @endif

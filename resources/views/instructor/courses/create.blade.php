@@ -11,10 +11,11 @@
             <input type="text" name="title" id="title" class="form-control" required>
         </div>
 
-        <div class="form-group">
-            <label for="description">Deskripsi</label>
-            <textarea name="description" id="summernote" class="form-control" required></textarea>
-        </div>
+         <div class="form-group">
+                <label for="description">Deskripsi</label>
+                <input id="description" type="hidden" name="description" value="{{ old('description') }}">
+  <trix-editor input="description"></trix-editor>
+            </div>
 
         <div class="form-group">
             <label for="category_id">Kategori</label>

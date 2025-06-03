@@ -18,7 +18,7 @@ class EnrollmentController extends Controller
     public function index()
     {
         // Ambil semua enrollments dengan relasi ke user dan course
-        $enrollments = Enrollment::with(['user', 'course'])->get();
+        $enrollments = Enrollment::with(['user', 'course'])->paginate(10);
 
         // Kirim data ke view
         return view('admin.enrollments.index', compact('enrollments'));

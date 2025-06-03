@@ -49,7 +49,7 @@
 
     <!-- Profile -->
     <li class="sidebar-item">
-      <a class="sidebar-link" href="{{ route('profile.edit') }}" aria-expanded="false">
+      <a class="sidebar-link" href="{{ route('profile.edit.information') }}" aria-expanded="false">
         <span>
           <i class="ti ti-user-circle"></i>
         </span>

@@ -30,6 +30,13 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/dark-theme.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}"/> 
+	 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+  <script>
+  document.addEventListener("trix-file-accept", function(event) {
+    event.preventDefault(); // mencegah upload file
+  });
+</script>
 	<title>Admin Dashboard</title>
 </head>
 
