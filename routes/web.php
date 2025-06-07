@@ -51,6 +51,7 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('students')->gro
 
 
     Route::get('/courses/{course}/learning/{video}', [FrontController::class, 'learning'])->name('frontend.learning');
+    Route::get('/courses/{test}/test', [FrontController::class, 'test'])->name('frontend.test');
 });
 
 //admin

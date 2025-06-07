@@ -6,6 +6,8 @@ use  App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Level;
+use App\Models\Question;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
@@ -144,6 +146,7 @@ class FrontController extends Controller
         $user = Auth::user();
         $course = Course::where('slug', $courses)->firstOrFail();
         $video = $course->videos()->where('id', $video)->firstOrFail();
+        $tests = Test::where('course_id', $course->id)->get();
 
         // Cek apakah pengguna sudah terdaftar di course
         $enrollment = $user->enrollments()->where('course_id', $course->id)   
@@ -160,7 +163,7 @@ class FrontController extends Controller
                 'payment_method' => 'free',
                 'payable_amount' => 0,
             ]);
-            return redirect()->route('frontend.learning', ['courses' => $course->slug, 'video' => $video->id]);
+            return view('frontend.learning', compact('course', 'video', 'enrollment', 'settings', 'tests'));
         }
 
         // return $enrollment;
@@ -178,6 +181,14 @@ class FrontController extends Controller
 
 
 
-        return view('frontend.learning', compact('course', 'video', 'enrollment', 'settings'));
+        return view('frontend.learning', compact('course', 'video', 'enrollment', 'settings', 'tests'));
+    }
+
+    public function test(Test $test)
+    {
+        $questions = Question::where('test_id', $test->id)->get();
+        $course = Course::findOrFail($test->course_id);
+        
+        return view('frontend.test', compact('test', 'questions', 'course'));
     }
 }
