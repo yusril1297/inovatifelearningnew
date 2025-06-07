@@ -17,6 +17,7 @@
 	{{-- Loader --}}
 	<link rel="stylesheet" href="{{ asset('assets/css/pace.min.css') }}" />
 	<script src="{{ asset('assets/js/pace.min.js') }}" ></script>
+	{{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
 	{{-- Bootstrap Css --}}
 	<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">

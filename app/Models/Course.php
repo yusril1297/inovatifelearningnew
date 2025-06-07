@@ -131,4 +131,9 @@ class Course extends Model
     {
         return $this->meeting_limit !== null && $this->meetings()->count() >= $this->meeting_limit;
     }
+
+    public function test()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

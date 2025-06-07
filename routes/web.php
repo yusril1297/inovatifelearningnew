@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Admin\LevelController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\StudentDashboardController;
 use App\Http\Controllers\PaymentController;
@@ -111,6 +112,12 @@ Route::middleware(['auth', 'verified', 'role:admin|instructor'])->group(function
     Route::delete('courses/{course}/certificate/{certificate}', [\App\Http\Controllers\Admin\CourseController::class, 'deleteCertificate'])->name('courses.deleteCertificate');
 
     Route::resource('students', StudentController::class);
+
+    //route for test
+    Route::get('courses/test/create-question/{test}', [TestController::class, 'create'])->name('courses.createQuestion');
+    Route::post('courses/test/store-question/{test}', [TestController::class, 'storeQuestion'])->name('courses.storeQuestion');
+    Route::delete('courses/test/delete-question/{question}', [TestController::class, 'destroyQuestion'])->name('courses.deleteQuestion');
+    Route::post('courses/test/store', [TestController::class, 'store'])->name('courses.storeTest');
 
     Route::get("notification", [\App\Http\Controllers\NotificationController::class, 'index'])->name('notification.index');
 });

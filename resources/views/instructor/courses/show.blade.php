@@ -72,7 +72,53 @@
             @endif
         </div>
 
-     
+     <div class="mt-4">
+            <h4 class="mb-3">Daftar Test</h4>
+           @forelse ($tests as $test )
+               <div class="d-flex justify-content-between">
+                <p>{{ $test->name }}</p>
+          <a href={{ route("courses.createQuestion", ['test'=>$test->id]) }} class="btn btn-primary" ">
+                Tambahkan Pertanyan</a>
+               </div>
+           @empty
+                <div class="alert alert-info">Tidak ada test yang ditambahkan.</div>
+           @endforelse
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleLargeModal">Buat
+                Test</button>
+            <!-- Modal -->
+<div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-labelledby="exampleLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleLargeModalLabel">Buat Test</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body with Form -->
+            <form action="{{ route('courses.storeTest') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Judul Test</label>
+                        <input type="text" name="name" class="form-control" placeholder="Masukkan judul test" required>
+                    </div>
+                </div>
+                <input type="text" class="d-none" name="course_id" value="{{ optional($course)->id }}">
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+        </div>
 
     </div>
 @endsection
