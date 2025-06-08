@@ -8,127 +8,341 @@
     <title>Responsive Slider</title>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
+    <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrapt.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/stylet.min.css') }}" rel="stylesheet">
+
+
+<!-- Google Web slide -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Icon Font Stylesheet -->
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Tailwind CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-    <style>
-        .bg-with-shadow {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Custom animation for slide elements */
-        .swiper-slide-active .slide-content {
-            opacity: 1 !important;
-            animation: fadeIn 1s ease forwards;
-        }
-        
-        /* Custom responsive padding */
-        @media (max-width: 640px) {
-            .hero-section {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
-        }
-        
-        /* Make sure images don't overflow */
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* Additional Swiper styles */
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100% !important;
-        }
-        
-        /* Fix for fade effect */
-        .swiper-slide:not(.swiper-slide-active) {
-            opacity: 0;
-        }
-    </style>
+    
+    
+   
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel Example</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet" />
+
+  <style>
+    body, h1, h4, a {
+      font-family: 'Hind', sans-serif;
+      text-decoration: none !important;
+      border: none !important;
+    }
+
+    .carousel-header {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-item {
+      position: relative;
+      z-index: 1;
+    }
+
+    .carousel-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 98, 255, 0.6);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .carousel-caption {
+      position: relative;
+      z-index: 0;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Slide 1 styles */
+    .hero-section {
+      background: linear-gradient(135deg, rgb(0, 140, 255), rgb(0, 55, 221));
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-content {
+      color: wheat;
+    }
+
+    .main-title {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .btn-register {
+      background: linear-gradient(45deg,#0008ff, #0008ff);
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0);
+      transition: all 0.3s ease;
+    }
+
+    .btn-register:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+      background: linear-gradient(45deg, #ff8a65, #ffb74d);
+    }
+
+    .hero-image {
+      max-width: 120%;
+      height: auto;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+    .circle-2 { width: 60px; height: 60px; top: 70%; left: 80%; animation-delay: 2s; }
+    .circle-3 { width: 40px; height: 40px; top: 40%; right: 15%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+    .fade-in { animation: fadeIn 1s ease-in; }
+    .slide-up { animation: slideUp 1s ease-out; }
+
+    @media (max-width: 768px) {
+      .main-title { font-size: 2.5rem; }
+      .hero-section { padding: 2rem 0; }
+      .text-content { text-align: center; margin-bottom: 3rem; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-    <div class="hero-section w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 bg-blue-500 bg-opacity-50 bg-with-shadow">
-        <!-- Slider Wrapper -->
-        <div class="swiper-container max-w-7xl mx-auto">
-            <div class="swiper-wrapper">
-                <!-- Slide 1 -->
-                <div class="swiper-slide">
-                    <div class="slide-content flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-8 md:px-12 opacity-0">
-                        <!-- Text Content -->
-                        <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
-                                Belajar Bersama
-                            </h1>
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
-                                Mentor Berpengalaman
-                            </h1>
-                            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-6">
-                                Sudah dimanfaatkan oleh 400+ member di seluruh dunia.
-                            </h2>
-                            <div class="flex justify-center lg:justify-start items-center gap-4 mt-8 lg:mt-12">
-                                <a href="#courses"
-                                    class="bg-blue-600 text-white py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 text-base sm:text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                    Belajar Sekarang
-                                </a>
-                            </div>
-                        </div>
-            
-                        <!-- Image -->
-                        <div class="hero-image w-full lg:w-1/2 flex justify-center lg:justify-end">
-                            <img src="assets/icon/foto5.png"
-                                alt="Gambar Belajar" class="rounded-lg shadow-lg max-w-full">
-                        </div>
+<body>
+
+<!-- Carousel Start -->
+<div class="container-fluid carousel-header px-0">
+  <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <section class="hero-section d-flex align-items-center">
+          <div class="container">
+            <div class="content-wrapper">
+              <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 col-md-12">
+                  <div class="text-content fade-in">
+                    <h1 class="main-title slide-up">Belajar Bersama<br><span style="color:rgb(0, 0, 0);">Mentor Berpengalaman</span></h1>
+                    <p class="subtitle slide-up" style="animation-delay: 0.3s;">Sempurna dengan metode terintegrasi berikut cara<br>belajar tingkatkan skill Anda dengan mudah!</p>
+                    <p class="description slide-up" style="animation-delay: 0.6s;">Dapatkan Promosi Hari Ini!</p>
+                    <a href="{{ route('frontend.allCourses') }}">
+                    <div class="slide-up" style="animation-delay: 0.9s;">
+                        <button class="btn btn-register text-white">Daftar Sekarang</button>
                     </div>
+                    </a>
+                  </div>
                 </div>
-                
-                <!-- Slide 2 -->
-                <div class="swiper-slide">
-                    <div class="slide-content flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-8 md:px-12 opacity-0">
-                        <!-- Text Content -->
-                        <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
-                                Pelatihan Profesional
-                            </h1>
-                            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-600 leading-tight mb-4">
-                                Untuk Semua Orang
-                            </h1>
-                            <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-neutral-600 mb-6">
-                                Bergabung dengan komunitas lebih dari 500+ member.
-                            </h2>
-                            <div class="flex justify-center lg:justify-start items-center gap-4 mt-8 lg:mt-12">
-                                <a href="#courses"
-                                    class="bg-blue-600 text-white py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 text-base sm:text-lg lg:text-xl rounded-full flex items-center gap-2 shadow-lg hover:bg-blue-700 transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                    Belajar Sekarang
-                                </a>
-                            </div>
-                        </div>
-            
-                        <!-- Image -->
-                        <div class="hero-image w-full lg:w-1/2 flex justify-center lg:justify-end">
-                            <img src="assets/icon/foto5.png" 
-                                alt="Gambar Pelatihan" class="rounded-lg shadow-lg max-w-full">
-                        </div>
-                    </div>
+
+                <div class="col-lg-6 col-md-12">
+                <div class="image-container text-center fade-in" style="padding-top: 350px; padding-bottom: 500px; padding-left: 250px; margin-top: -50px;">
+                    <img src="assets/icon/slide1.png" alt="slide1.png" class="img-fluid" style="width: 500px; max-width: 500%;" />
                 </div>
+                </div>
+
+              </div>
             </div>
+          </div>
+          <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="assets/icon/belajar.jpg" class="img-fluid" alt="Image" />
+        <div class="carousel-caption">
+          <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
+            <div class="d-inline-block p-2 mb-5">
+              <h4 class="text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">Pelatihan Profesional</h4>
+            </div>
+            <h1 class="display-1 text-capitalize mb-3">Untuk </i> Semua Orang</h1>
+            <div class="d-inline-block p-2 mb-4">
+              <h4 class="text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">Bergabung dengan komunitas lebih dari 500+ pengguna</h4>
+            </div>
+            <a href="{{ route('frontend.allCourses') }}">
+                    <div class="slide-up" style="animation-delay: 0.9s;">
+                        <button class="btn btn-register text-white">Daftar Sekarang</button>
+                    </div>
+                    </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="assets/icon/belajar2.jpg" class="img-fluid" alt="Image" />
+        <div class="carousel-caption">
+          <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
+            <div class="d-inline-block p-2 mb-4">
+              <h4 class="text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">Belajar</h4>
+            </div>
+            <h1 class="display-1 text-capitalize mb-3"></i> Terbaik Di Dunia</h1>
+            <div class="d-inline-block p-2 mb-4">
+              <h4 class="text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">Dibangun oleh para profesional</h4>
+            </div>
+            <a href="{{ route('frontend.allCourses') }}">
+                    <div class="slide-up" style="animation-delay: 0.9s;">
+                        <button class="btn btn-register text-white">Daftar Sekarang</button>
+                    </div>
+                    </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Ripple Effect JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const button = document.querySelector('.btn-register');
+    if (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(0, 153, 255, 0.6)';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.animation = 'ripple 0.6s linear';
+        ripple.style.pointerEvents = 'none';
+
+        this.style.position = 'relative';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    }
+  });
+
+  const rippleStyle = document.createElement('style');
+  rippleStyle.textContent = `
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(rippleStyle);
+</script>
+
+</body>
+</html>
+
+
             
+
+
             <!-- Add Pagination -->
             <div class="swiper-pagination mt-8"></div>
             

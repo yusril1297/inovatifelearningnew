@@ -73,6 +73,9 @@
 
                 <!-- Login/Profile Button -->
                 <div class="hidden md:flex md:items-center">
+                     <!-- Mobile Profile Area -->
+                    <div class="mt-3 space-y-1 px-2 relative z-[9999]">
+
                     @guest
                         <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700">
                             Log in
