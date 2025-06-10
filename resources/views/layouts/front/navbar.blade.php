@@ -17,11 +17,16 @@
             <div class="flex justify-between h-20">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="{{ route('frontend.home') }}" class="flex-shrink-0">
-                        <span class="sr-only">Your Company</span>
-                        <img class="h-20 w-auto" src="{{ asset($settings->path_logo ?? 'default-logo.png') }}" alt="Logo">
-                    </a>
-                </div>
+    <a href="{{ route('frontend.home') }}" class="flex-shrink-0">
+        <span class="sr-only">Your Company</span>
+        <img 
+            src="{{ asset($settings->path_logo ?? 'default-logo.png') }}" 
+            alt="Logo"
+            class="h-16 sm:h-20 md:h-24 w-auto max-w-full object-contain"
+        >
+    </a>
+</div>
+
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex md:items-center md:space-x-8">

@@ -1,21 +1,25 @@
+@extends('layouts.front')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiple Choice Test</title>
+    <title></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
+<div class="w-full px-5000 py-10 max-w-screen-xl mx-auto">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ $test->name }}</h1>
+            <h1 class="text-5xl font-bold text-gray-8000 mb-2">{{ $test->name }}</h1>
         </div>
 
         <!-- Test Container -->
-        <div id="testContainer" class="bg-white rounded-xl shadow-lg p-8">
+        <div id="testContainer" class="bg-white rounded-xl shadow-lg p-10">
             <!-- Progress Bar -->
             <div class="mb-8">
                 <div class="flex justify-between items-center mb-2">
@@ -30,7 +34,7 @@
             <!-- Question Container -->
             <div id="questionContainer">
                 <div class="mb-6">
-                    <h2 id="questionNumber" class="text-lg font-semibold text-gray-500 mb-2">Question 1</h2>
+                    <h2 id="questionNumber" class="text-lg font-semibold text-gray-500 mb-2">Pertanyaan 1</h2>
                     <h3 id="questionText" class="text-2xl font-bold text-gray-800 mb-6">{{ $questions[0]->question_text }}</h3>
                 </div>
 
@@ -43,17 +47,17 @@
                 <div class="flex justify-between items-center">
                     <button id="prevBtn" class="flex items-center px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                         <i class="fas fa-chevron-left mr-2"></i>
-                        Previous
+                        Sebelumnya
                     </button>
                     
                     <div class="flex space-x-3">
                         <button id="nextBtn" class="flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                            Next
+                            Selanjutnya
                             <i class="fas fa-chevron-right ml-2"></i>
                         </button>
                         <button id="submitBtn" class="hidden flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
                             <i class="fas fa-check mr-2"></i>
-                            Submit Test
+                            Kumpulkan
                         </button>
                     </div>
                 </div>
@@ -63,15 +67,15 @@
            <div id="resultsContainer" class="hidden">
     <div class="text-center">
         <div id="scoreIcon" class="text-6xl mb-4">🎉</div>
-        <h2 class="text-3xl font-bold text-gray-800 mb-2">Test Complete!</h2>
-        <div id="scoreDisplay" class="text-xl text-gray-600 mb-6">You scored 0 out of 5</div>
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">Tes Selesai!</h2>
+        <div id="scoreDisplay" class="text-xl text-gray-600 mb-6">Anda mendapat skor 0 dari 5</div>
         <div id="scorePercentage" class="text-4xl font-bold text-green-500 mb-8">0%</div>
 
         <!-- Back to Course Button -->
         <a href="{{ route("frontend.learning", ["course" => $course->title, "video"=> $course->videos[0]->id]) }}"
  
            class="flex items-center mx-auto px-6 py-3 mb-4 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition-colors w-max">
-           <i class="fas fa-arrow-left mr-2"></i> Back to Course
+           <i class="fas fa-arrow-left mr-2"></i> Kembali ke Kelas
         </a>
 
         <!-- Detailed Results -->
@@ -81,7 +85,7 @@
 
         <button id="restartBtn" class="flex items-center mx-auto px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
             <i class="fas fa-redo mr-2"></i>
-            Take Test Again
+            Ikuti Tes Lagi
         </button>
     </div>
 </div>
@@ -249,7 +253,7 @@
             questionContainer.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
             
-            document.getElementById('scoreDisplay').textContent = `You scored ${score} out of ${questions.length}`;
+            document.getElementById('scoreDisplay').textContent = `Nilai Anda ${score} dari ${questions.length}`;
             document.getElementById('scorePercentage').textContent = `${percentage}%`;
             
             // Update score color and icon
@@ -284,11 +288,11 @@
         // Display detailed results
         function displayDetailedResults() {
             const detailedResults = document.getElementById('detailedResults');
-            detailedResults.innerHTML = '<h3 class="font-bold text-lg mb-4">Detailed Results:</h3>';
+            detailedResults.innerHTML = '<h3 class="font-bold text-lg mb-4">Detail Terperinci:</h3>';
             
             questions.forEach((question, index) => {
                 const isCorrect = answers[index] === question.correct;
-                const userAnswer = answers[index] !== undefined ? question.options[answers[index]] : 'Not answered';
+                const userAnswer = answers[index] !== undefined ? question.options[answers[index]] : 'Belum Terjawab';
                 const correctAnswer = question.options[question.correct];
                 
                 const resultItem = document.createElement('div');
@@ -300,8 +304,8 @@
                         </div>
                         <div>
                             <p class="font-semibold">${question.question}</p>
-                            <p class="text-sm mt-1">Your answer: <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">${userAnswer}</span></p>
-                            ${!isCorrect ? `<p class="text-sm text-green-600">Correct answer: ${correctAnswer}</p>` : ''}
+                            <p class="text-sm mt-1">Jawaban Anda: <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">${userAnswer}</span></p>
+                            ${!isCorrect ? `<p class="text-sm text-green-600">Jawaban yang benar:: ${correctAnswer}</p>` : ''}
                         </div>
                     </div>
                 `;
@@ -329,3 +333,5 @@
     </script>
 </body>
 </html>
+
+@endsection
