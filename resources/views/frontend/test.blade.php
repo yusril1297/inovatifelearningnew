@@ -71,12 +71,12 @@
         <div id="scoreDisplay" class="text-xl text-gray-600 mb-6">Anda mendapat skor 0 dari 5</div>
         <div id="scorePercentage" class="text-4xl font-bold text-green-500 mb-8">0%</div>
 
-        <!-- Back to Course Button -->
+        {{-- <!-- Back to Course Button -->
         <a href="{{ route("frontend.learning", ["course" => $course->title, "video"=> $course->videos[0]->id]) }}"
  
            class="flex items-center mx-auto px-6 py-3 mb-4 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition-colors w-max">
            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Kelas
-        </a>
+        </a> --}}
 
         <!-- Detailed Results -->
         <div id="detailedResults" class="text-left bg-gray-50 rounded-lg p-6 mb-6">

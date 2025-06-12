@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('path_logo')->nullable();
             $table->timestamps();
         });
-    }
+}
 
     /**
      * Reverse the migrations.
